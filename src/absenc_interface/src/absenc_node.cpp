@@ -66,6 +66,12 @@ class AbsEnc : public rclcpp::Node
     ABSENC::PollSlave(2,&absenc_meas_2);
     ABSENC::PollSlave(3,&absenc_meas_3);
     
+    /*
+      Absencs will report a non-zero status if there is a hardware/communications issue
+    */
+    if(absenc_meas_1.status != 0 ){
+        
+    }
     message.angle_1 = absenc_meas_1.angval < 0 ? absenc_meas_1.angval + 180.f : absenc_meas_1.angval - 180;
     message.angle_2 = absenc_meas_2.angval;
     message.angle_3 = absenc_meas_3.angval < 0 ? 180 + absenc_meas_3.angval : absenc_meas_3.angval - 180.f;
@@ -117,7 +123,7 @@ class AbsEnc : public rclcpp::Node
 
       std::string arm_command = "set_motor_speeds ";
 
-      auto arm_msg_2 = std_msgs::msg::Float32MultiArray();
+      auto arm_msg = std_msgs::msg::Float32MultiArray();
 
 
       // auto layout = std_msgs::msg::MultiArrayLayout();
@@ -177,14 +183,11 @@ class AbsEnc : public rclcpp::Node
       angles[5] = 0.f;
       
       auto arm_msg = std_msgs::msg::String();
-      
       arm_msg.data = arm_command;
-
       arm_publisher->publish(arm_msg);
       
-      arm_msg_2.data = angles;
-
-      arm_controller_publisher->publish(arm_msg_2);
+      arm_msg.data = angles;
+      arm_controller_publisher->publish(arm_msg);
     }
 
 

@@ -59,6 +59,14 @@ class CANController {
     return SUCCESS;
 }
 
+static uint8_t sendBlockingFrame(struct can_frame& frame){
+    while (true){
+        auto status = sendFrame(frame);
+        if (errno != 105); return SUCCESS;
+        usleep(100);
+    }
+}
+
 static uint8_t sendFrame(struct can_frame& frame){
     if (write(s_Socket, &frame, sizeof(struct can_frame)) != sizeof(struct can_frame)) {
         sprintf(s_StatusBuffer,"Error with send frame, did not write all data \n");
@@ -98,35 +106,47 @@ int main(){
         for(int i = 0 ; i < CANController::s_BufferLength ; i++){
             std::cout << CANController::s_StatusBuffer[i];
         }
-    } 
-    struct can_frame frame{};
-    frame.can_id = 0x000502C0;
-    frame.can_dlc = 1;
-    frame.can_id |= CAN_EFF_FLAG;
-    frame.data[0] = 1;
-
-    CANController::sendFrame(frame);
-
-    while(true){
-    if(CANController::readFrame(frame) != SUCCESS){
-        std::cerr << "Fuck you : " << errno;
-        exit(-1);
     }
-    std::cout << std::hex << frame.can_id << std::endl;
-    // for(int i = 0 ; i < frame.can_dlc ; i++){
-    //     std::cout << std::hex << (int)frame.data[i] << ",";
+     
+    
+    // auto deviceID = 0x04;
+    // frame.can_id = 0x000502C0;
+    // frame.can_dlc = 1;
+    // frame.can_id |= CAN_EFF_FLAG;
+    // frame.data[0] = 1;
+
+    // CANController::sendFrame(frame);
+
+    struct can_frame frame{};
+    while(true){
+    CANController::readFrame(frame);
+   
+    if(frame.can_id != 0x82051804 && frame.can_id != 0x82051844 && frame.can_id != 0x82051884 
+                && frame.can_id != 0x820518c4 && frame.can_id != 0x82051984 && frame.can_id != 0x82051944 && frame.can_id != 0x820519c4){
+            std::cout << std::hex << frame.can_id << std::endl;
+             for(int i = 0 ; i < frame.can_dlc ; i++){
+        
+        std::cout << std::hex << (int)frame.data[i] << ",";
+    }
+    // }
     // }
     }
+    }{
+    //}
     // // For a start move command, the id field needs to be added with 0x80. This command is only issued once per move.
-    // frame.can_id = (COMMAND_PREFIX_MOVE_MOTORS << 8) | (0x03 + 0x80);
+    // frame.can_id = (COMMAND_PREFIX_VELOCITY_CONTROL << 8) | (deviceID + 0x80);
     // frame.can_dlc = 8;
     // frame.can_id |= CAN_EFF_FLAG;
-    // float percent = 0.1;
+
+    // float percent = 1000;
     // memcpy(frame.data,&percent, sizeof(float));
     // if(CANController::sendFrame(frame) != SUCCESS){
     // std::cerr << errno;
     //         exit(-1);
     // }
+    int deviceID = 1;
+    int deviceID_2 = 4;
+    
 
         // while(true){
         //     if(CANController::readFrame(frame) != SUCCESS){
@@ -137,25 +157,51 @@ int main(){
         //     for(int i = 0 ; i < frame.can_dlc ; i++){
         //         std::cout << std::hex << (int)frame.data[i] << ",";
         //     }
-            std::cout << "\n";
+            // std::cout << "\n";
         
-        // while(true){
-     
-
-        //     uint64_t buf_data = (1ULL << 0x03);
-        //     frame.can_id = COMMAND_PREFIX_MAINTAIN_SPEED;
-        //     frame.can_id |= CAN_EFF_FLAG;
-        //     frame.can_dlc = 8;
-        //     memcpy(frame.data,&buf_data,sizeof(buf_data));
-        //     if(CANController::sendFrame(frame) != SUCCESS){
-        //             std::cerr << errno;
-        //             exit(-1);
-        //     }
-        //     usleep(200000);
-        // }
+        while(true){
     
- 
-    CANController::closeDevice();
-    std::cout << "fuck you";
+    struct can_frame frame{};
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    frame.can_id = (COMMAND_PREFIX_VELOCITY_CONTROL << 8) | (deviceID + 0x80);
+    frame.can_dlc = 8;
+    frame.can_id |= CAN_EFF_FLAG;
+    float vel = 2000;
+    memcpy(frame.data,&vel, sizeof(float));
+    
+    if(CANController::sendBlockingFrame(frame) != SUCCESS){
+    std::cerr << errno;
+            exit(-1);
+    }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////        
+    frame.can_id = (COMMAND_PREFIX_VELOCITY_CONTROL << 8) | (deviceID_2 + 0x80);
+    frame.can_dlc = 8;
+    frame.can_id |= CAN_EFF_FLAG;
+    vel = 2000;
+    memcpy(frame.data,&vel, sizeof(float));
+    
+    if(CANController::sendBlockingFrame(frame) != SUCCESS){
+        std::cerr << errno;
+            exit(-1);
+    }
+    // uint64_t buf_data = (1ULL << deviceID);
+    // frame.can_id = COMMAND_PREFIX_MAINTAIN_VELOCITY;
+    // frame.can_id |= CAN_EFF_FLAG;
+    // frame.can_dlc = 8;
+    // memcpy(frame.data,&buf_data,sizeof(buf_data));
+    // auto status = CANController::sendBlockingFrame(frame);
 
+    uint64_t buf_data = (1ULL << deviceID) | (1ULL << deviceID_2);
+    frame.can_id = COMMAND_PREFIX_MAINTAIN_VELOCITY;
+    frame.can_id |= CAN_EFF_FLAG;
+    frame.can_dlc = 8;
+    memcpy(frame.data,&buf_data,sizeof(buf_data));
+    status = CANController::sendBlockingFrame(frame);
+
+        }
+    }
 }
+ 
+    // CANController::closeDevice();
+    // std::cout << "fuck you";
+

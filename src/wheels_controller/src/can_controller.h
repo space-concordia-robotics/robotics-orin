@@ -18,6 +18,7 @@
 #include <termios.h>
 #include <net/if.h>
 #include <iostream>
+
 #define STATUS_BUFFER_SIZE 1000
 
 enum status{
@@ -38,10 +39,11 @@ public:
 
     static uint8_t readFrame(struct can_frame& frame);
 
+    static uint8_t sendBlockingFrame(struct can_frame& frame);
+
     static inline void printStatus(){
         printf("%s \n", s_StatusBuffer);
     }
-
 };
 
 

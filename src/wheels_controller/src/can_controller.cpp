@@ -5,6 +5,9 @@
 #include "can_controller.h"
 
 uint8_t CANController::configureCAN(const char* fd_path){
+    /*
+        Open can socket
+    */
     struct sockaddr_can addr{};
     s_Socket = socket(PF_CAN, SOCK_RAW, CAN_RAW);
     s_StatusBuffer = new char[1000];
@@ -29,7 +32,26 @@ uint8_t CANController::configureCAN(const char* fd_path){
     sprintf(s_StatusBuffer,"CAN configuration on %s successful\n",fd_path);
     return SUCCESS;
 }
+/*
+    Someone fuking document this (it wont fucking be me)
+*/
+ uint8_t CANController::sendBlockingFrame(struct can_frame& frame){
+    while (true){
+        auto status = sendFrame(frame);
+        if (errno != 105); break;
+        errno = 0;
+        usleep(100);
+    }
+    int errno_0 = errno;
+    errno = 0;
+    if(errno_0 !=0)
+        std::cout << strerror(errno_0) << "\n";
+    return errno_0 ? CAN_ERROR : SUCCESS;  
+}
 
+/*
+    Send CAN frame 
+*/
 uint8_t CANController::sendFrame(struct can_frame& frame){
     if (write(s_Socket, &frame, sizeof(struct can_frame)) != sizeof(struct can_frame)) {
         sprintf(s_StatusBuffer,"Error with send frame, did not write all data \n");

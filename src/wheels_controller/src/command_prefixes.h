@@ -20,15 +20,3 @@
 
 #define STATUS_FRAME_ID_OFFSET 0x40
 #define DEVICE_MAX_ID 0x3E
-
-//Assumes ID of 4
-
-// command ramp{0x205CE04};
-
-// command coast{0x205C184}; // data 0 0 0 0 1
-// command brake{0x205C184}; // data 1 0 0 0 1
-
-// command hardForwardLimit{0x205CD04} //OFF : Buffer: 0 0 0 0 3 ON : 1 0 0 0 3
-// command hardReverseLimit{0x205CD44} //OFF : Buffer: 0 0 0 0 3 ON : 1 0 0 0 3
-
-//  command stopMotor{0x20500{ID}} // length 8, buffers just 0

@@ -6,6 +6,8 @@
 #include "sensor_msgs/msg/joy.hpp"
 #include "rev_motor_controller.h"
 #include <geometry_msgs/msg/twist.hpp>
+#include <chrono>
+using namespace std::chrono;
 
 #define DEVICE_1_ID 1
 #define DEVICE_2_ID 2
@@ -23,14 +25,31 @@ public:
     void JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg);
 
 private :
+
+    void accelerateTwist();
+    void accelerateValue();
+
     //rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_msg_callback;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_msg_publisher;
 
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_msg_callback;
 
+    // geometry_msgs::msg::Twist twist_msg;
+
     void pollControllersCallback();
     rclcpp::TimerBase::SharedPtr timer;
+
+    float old_linear_y;
+    float old_angular_z;
+    
+    float linear_y;
+    float angular_z;
+    float linear_acceleration_rate = 0.5;
+    float angular_acceleration_rate = 0.75;
+    float max_speed = 0.5;
+    float max_angular_speed = 1;
+
 //    rclcpp::Publisher<geometry_msgs::msg::Twist_>::SharedPtr twist_message_publisher;
 };
 

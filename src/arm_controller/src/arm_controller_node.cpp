@@ -69,9 +69,9 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
 
 void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){    
 
-    if(joy_msg->buttons[5] == 0){
-        return;
-    }
+    // if(joy_msg->buttons[5] == 0){
+    //     return;
+    // }
     // LEFT HORIZ : axes[0]
     // LEFT VERT : axes[1]
     // if(joy_msg->buttons[4] == 1){

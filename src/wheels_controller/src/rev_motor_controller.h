@@ -21,14 +21,21 @@
 
 typedef struct Device{
     bool isRunning = false;
+    uint8_t id;
 } device;
 
 
 
 class RevMotorController{
 
-    inline static std::map<uint8_t, Device*> s_Devices;
+    // inline static std::map<uint8_t, Device*> s_Devices;
+    
+    
+    
+    // inline static <s_Devices;
+
 public:
+    inline static Device s_Devices[6];
 
     static void requestStatusFrame();
 
@@ -41,6 +48,7 @@ public:
     static void voltagePercentControl(uint8_t deviceID,float percent);
     static void stopMotor(uint8_t device_id);
     static void velocityControl(uint8_t deviceID, float velocity);
+    static void startMotor(uint64_t mask);
     void printStatus();
 };
 
