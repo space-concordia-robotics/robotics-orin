@@ -18,6 +18,7 @@ devpath = "/dev/cadmouse"
 
 def map_range(value, min, max, new_min, new_max):
   value = value - min
+  value = value / (max - min)
   value = value * (new_max - new_min)
   value = value + new_min
   return value
@@ -234,8 +235,6 @@ class IkNode(Node):
 
         solution1_angles = [float(self.phi), -(math.pi/2 - x), -(math.pi - b2), -a_3]
       elif cu >= 0 and cv >= 0: # first quadrant (fourth is not implemented)
-        self.get_logger().warn(f"first ")
-
         solution0_angles = [float(self.phi), (math.pi / 2) - (b1 + a1),
                           math.pi - b2, math.pi - (self.pitch + a2 + b3)]
         # If want to pick alternate solution
@@ -294,7 +293,8 @@ class IkNode(Node):
     # self.get_logger().info(f"Received from cad mouse")
     old_values = (self.x, self.y, self.z, self.th, self.pitch)
     x, y, spin, trim, dpad_x, dpad_y = message.axes
-    trim  = map_range(trim, -1.0, 1.0, 1.0, 3.0)
+    trim  = map_range(trim, -1.0, 1.0, 0.5, 3.0)
+
     # Move up and down with trigger and button 2
     up_down = message.buttons[0] - message.buttons[1]
 
