@@ -70,6 +70,7 @@ def generate_launch_description():
             name='wheels_controller_node',
             output='screen',
             parameters=[
+                # Put at 10,000 for max speed
                 {'multiplier': 2000},
                 {'local_mode': False}
             ]
