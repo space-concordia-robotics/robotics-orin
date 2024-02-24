@@ -1,0 +1,1 @@
+Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6

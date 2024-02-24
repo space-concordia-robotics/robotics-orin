@@ -1,0 +1,24 @@
+[5.444s] Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6
+[7.065s] [  8%] Built target absenc_interface__cpp
+[7.066s] [ 11%] Built target absenc_interface__rosidl_generator_c
+[7.067s] [ 20%] Built target absenc_interface__rosidl_typesupport_c
+[7.067s] [ 29%] Built target absenc_interface__rosidl_typesupport_fastrtps_cpp
+[7.068s] [ 38%] Built target absenc_interface__rosidl_typesupport_cpp
+[7.068s] [ 47%] Built target absenc_interface__rosidl_typesupport_introspection_cpp
+[7.069s] [ 55%] Built target absenc_interface__rosidl_typesupport_introspection_c
+[7.069s] [ 64%] Built target absenc_interface__rosidl_typesupport_fastrtps_c
+[7.070s] [ 64%] Built target absenc_interface
+[7.074s] [ 67%] Built target absenc_interface__py
+[7.074s] [ 70%] [32mBuilding CXX object CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o[0m
+[7.074s] [ 76%] Built target absenc_interface__python
+[7.074s] [ 82%] Built target absenc_interface__rosidl_typesupport_c__pyext
+[7.075s] [ 94%] Built target absenc_interface__rosidl_typesupport_fastrtps_c__pyext
+[7.075s] [ 94%] Built target absenc_interface__rosidl_typesupport_introspection_c__pyext
+[7.076s] [01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:12:10:[m[K [01;31m[Kfatal error: [m[Karm_controller/msg/arm_motor_values.hpp: No such file or directory
+[7.076s]    12 | #include [01;31m[K"arm_controller/msg/arm_motor_values.hpp"[m[K
+[7.076s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.076s] compilation terminated.
+[7.076s] make[2]: *** [CMakeFiles/absenc_node.dir/build.make:63: CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o] Error 1
+[7.076s] make[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/absenc_node.dir/all] Error 2
+[7.076s] make: *** [Makefile:141: all] Error 2
+[7.078s] Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6

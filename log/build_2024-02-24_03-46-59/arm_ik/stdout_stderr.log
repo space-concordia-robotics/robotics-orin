@@ -1,0 +1,17 @@
+running develop
+running egg_info
+writing arm_ik.egg-info/PKG-INFO
+writing dependency_links to arm_ik.egg-info/dependency_links.txt
+writing entry points to arm_ik.egg-info/entry_points.txt
+writing requirements to arm_ik.egg-info/requires.txt
+writing top-level names to arm_ik.egg-info/top_level.txt
+reading manifest file 'arm_ik.egg-info/SOURCES.txt'
+writing manifest file 'arm_ik.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages/arm-ik.egg-link (link to .)
+Installing CadMouseJoyNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+Installing IKNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+Installing state_publisher script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+
+Installed /home/nvidia/robotics-orin/build/arm_ik
+running install_data

@@ -1,0 +1,260 @@
+[0.000000] (-) TimerEvent: {}
+[0.000812] (-) JobUnselected: {'identifier': 'JetsonGPIO'}
+[0.000993] (-) JobUnselected: {'identifier': 'absenc_interface'}
+[0.001353] (-) JobUnselected: {'identifier': 'sil'}
+[0.001624] (-) JobUnselected: {'identifier': 'wheels_controller'}
+[0.001799] (arm_controller) JobQueued: {'identifier': 'arm_controller', 'dependencies': OrderedDict()}
+[0.001869] (arm_controller) JobStarted: {'identifier': 'arm_controller'}
+[0.099445] (-) TimerEvent: {}
+[0.200299] (-) TimerEvent: {}
+[0.301356] (-) TimerEvent: {}
+[0.402265] (-) TimerEvent: {}
+[0.503058] (-) TimerEvent: {}
+[0.603588] (-) TimerEvent: {}
+[0.655379] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'cmake'}
+[0.656999] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'build'}
+[0.658566] (arm_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/arm_controller', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/arm_controller', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2416'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-11.4/lib64:/home/nvidia/robotics-orin/install/arm_controller/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('CONDA_SHLVL', '1'), ('TERM_PROGRAM_VERSION', '1.86.2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1651'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5330'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59409'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2490,unix/nvidia:/tmp/.ICE-unix/2490'), ('INVOCATION_ID', '980309ab9388401cb18f6b144981c701'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-98d03a3650.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/arm_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/foxy')]), 'shell': False}
+[0.703787] (-) TimerEvent: {}
+[0.783865] (arm_controller) StdoutLine: {'line': b'[  9%] Built target arm_controller__rosidl_generator_c\n'}
+[0.785557] (arm_controller) StdoutLine: {'line': b'[ 12%] Built target arm_controller__cpp\n'}
+[0.803954] (-) TimerEvent: {}
+[0.823534] (arm_controller) StdoutLine: {'line': b'[ 30%] Built target arm_controller__rosidl_typesupport_introspection_c\n'}
+[0.824252] (arm_controller) StdoutLine: {'line': b'[ 39%] Built target arm_controller__rosidl_typesupport_c\n'}
+[0.824541] (arm_controller) StdoutLine: {'line': b'[ 30%] Built target arm_controller__rosidl_typesupport_cpp\n'}
+[0.829984] (arm_controller) StdoutLine: {'line': b'[ 48%] Built target arm_controller__rosidl_typesupport_introspection_cpp\n'}
+[0.831573] (arm_controller) StdoutLine: {'line': b'[ 57%] Built target arm_controller__rosidl_typesupport_fastrtps_cpp\n'}
+[0.877371] (arm_controller) StdoutLine: {'line': b'[ 66%] Built target arm_controller__rosidl_typesupport_fastrtps_c\n'}
+[0.904116] (-) TimerEvent: {}
+[0.910667] (arm_controller) StdoutLine: {'line': b'[ 66%] Built target arm_controller\n'}
+[0.935748] (arm_controller) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target arm_controller_node\x1b[0m\n'}
+[0.947778] (arm_controller) StdoutLine: {'line': b'[ 69%] Built target arm_controller__py\n'}
+[0.982225] (arm_controller) StdoutLine: {'line': b'[ 72%] \x1b[32mBuilding CXX object CMakeFiles/arm_controller_node.dir/src/arm_controller_node.cpp.o\x1b[0m\n'}
+[0.992415] (arm_controller) StdoutLine: {'line': b'[ 78%] Built target arm_controller__python\n'}
+[1.004322] (-) TimerEvent: {}
+[1.039501] (arm_controller) StdoutLine: {'line': b'[ 90%] Built target arm_controller__rosidl_typesupport_introspection_c__pyext\n'}
+[1.040001] (arm_controller) StdoutLine: {'line': b'[ 90%] Built target arm_controller__rosidl_typesupport_c__pyext\n'}
+[1.047951] (arm_controller) StdoutLine: {'line': b'[ 96%] Built target arm_controller__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.104492] (-) TimerEvent: {}
+[1.205153] (-) TimerEvent: {}
+[1.305804] (-) TimerEvent: {}
+[1.406467] (-) TimerEvent: {}
+[1.507141] (-) TimerEvent: {}
+[1.607800] (-) TimerEvent: {}
+[1.708491] (-) TimerEvent: {}
+[1.809206] (-) TimerEvent: {}
+[1.909876] (-) TimerEvent: {}
+[2.010546] (-) TimerEvent: {}
+[2.111241] (-) TimerEvent: {}
+[2.211953] (-) TimerEvent: {}
+[2.312821] (-) TimerEvent: {}
+[2.413715] (-) TimerEvent: {}
+[2.514576] (-) TimerEvent: {}
+[2.615454] (-) TimerEvent: {}
+[2.716328] (-) TimerEvent: {}
+[2.817226] (-) TimerEvent: {}
+[2.918085] (-) TimerEvent: {}
+[3.018905] (-) TimerEvent: {}
+[3.119661] (-) TimerEvent: {}
+[3.220518] (-) TimerEvent: {}
+[3.321402] (-) TimerEvent: {}
+[3.422255] (-) TimerEvent: {}
+[3.523102] (-) TimerEvent: {}
+[3.623973] (-) TimerEvent: {}
+[3.663601] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArmControllerNode::ArmMessageCallback(arm_controller::msg::ArmMotorValues_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.664263] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:58:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[3.664522] (arm_controller) StderrLine: {'line': b'   58 |     int \x1b[01;35m\x1b[Kstatus\x1b[m\x1b[K = write(fd,out_buf,sizeof(out_buf));\n'}
+[3.664729] (arm_controller) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[3.668423] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArmControllerNode::JoyMessageCallback(sensor_msgs::msg::Joy_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[3.668760] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:104:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[3.668999] (arm_controller) StderrLine: {'line': b'  104 |     int \x1b[01;35m\x1b[Kstatus\x1b[m\x1b[K = write(fd,out_buf,sizeof(out_buf));\n'}
+[3.669244] (arm_controller) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[3.724090] (-) TimerEvent: {}
+[3.824835] (-) TimerEvent: {}
+[3.925721] (-) TimerEvent: {}
+[4.026574] (-) TimerEvent: {}
+[4.127442] (-) TimerEvent: {}
+[4.228295] (-) TimerEvent: {}
+[4.329207] (-) TimerEvent: {}
+[4.430058] (-) TimerEvent: {}
+[4.530926] (-) TimerEvent: {}
+[4.631770] (-) TimerEvent: {}
+[4.732632] (-) TimerEvent: {}
+[4.833507] (-) TimerEvent: {}
+[4.934368] (-) TimerEvent: {}
+[5.035232] (-) TimerEvent: {}
+[5.136093] (-) TimerEvent: {}
+[5.236955] (-) TimerEvent: {}
+[5.337839] (-) TimerEvent: {}
+[5.438703] (-) TimerEvent: {}
+[5.539552] (-) TimerEvent: {}
+[5.640416] (-) TimerEvent: {}
+[5.741284] (-) TimerEvent: {}
+[5.842136] (-) TimerEvent: {}
+[5.942989] (-) TimerEvent: {}
+[6.043819] (-) TimerEvent: {}
+[6.144515] (-) TimerEvent: {}
+[6.245402] (-) TimerEvent: {}
+[6.346233] (-) TimerEvent: {}
+[6.447056] (-) TimerEvent: {}
+[6.547888] (-) TimerEvent: {}
+[6.648600] (-) TimerEvent: {}
+[6.749455] (-) TimerEvent: {}
+[6.850320] (-) TimerEvent: {}
+[6.951171] (-) TimerEvent: {}
+[7.052030] (-) TimerEvent: {}
+[7.152911] (-) TimerEvent: {}
+[7.253802] (-) TimerEvent: {}
+[7.354641] (-) TimerEvent: {}
+[7.455746] (-) TimerEvent: {}
+[7.556611] (-) TimerEvent: {}
+[7.657481] (-) TimerEvent: {}
+[7.758342] (-) TimerEvent: {}
+[7.859210] (-) TimerEvent: {}
+[7.960062] (-) TimerEvent: {}
+[8.060918] (-) TimerEvent: {}
+[8.161805] (-) TimerEvent: {}
+[8.262666] (-) TimerEvent: {}
+[8.363482] (-) TimerEvent: {}
+[8.464295] (-) TimerEvent: {}
+[8.565149] (-) TimerEvent: {}
+[8.666025] (-) TimerEvent: {}
+[8.766866] (-) TimerEvent: {}
+[8.867712] (-) TimerEvent: {}
+[8.968549] (-) TimerEvent: {}
+[9.069414] (-) TimerEvent: {}
+[9.170259] (-) TimerEvent: {}
+[9.271100] (-) TimerEvent: {}
+[9.371930] (-) TimerEvent: {}
+[9.472740] (-) TimerEvent: {}
+[9.573614] (-) TimerEvent: {}
+[9.674450] (-) TimerEvent: {}
+[9.775298] (-) TimerEvent: {}
+[9.876126] (-) TimerEvent: {}
+[9.976978] (-) TimerEvent: {}
+[10.077850] (-) TimerEvent: {}
+[10.178690] (-) TimerEvent: {}
+[10.279533] (-) TimerEvent: {}
+[10.380344] (-) TimerEvent: {}
+[10.481173] (-) TimerEvent: {}
+[10.582002] (-) TimerEvent: {}
+[10.682853] (-) TimerEvent: {}
+[10.783687] (-) TimerEvent: {}
+[10.884526] (-) TimerEvent: {}
+[10.985388] (-) TimerEvent: {}
+[11.086225] (-) TimerEvent: {}
+[11.186958] (-) TimerEvent: {}
+[11.287800] (-) TimerEvent: {}
+[11.388595] (-) TimerEvent: {}
+[11.489264] (-) TimerEvent: {}
+[11.589910] (-) TimerEvent: {}
+[11.690570] (-) TimerEvent: {}
+[11.791234] (-) TimerEvent: {}
+[11.891884] (-) TimerEvent: {}
+[11.992512] (-) TimerEvent: {}
+[12.086588] (arm_controller) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable arm_controller_node\x1b[0m\n'}
+[12.092603] (-) TimerEvent: {}
+[12.193176] (-) TimerEvent: {}
+[12.293880] (-) TimerEvent: {}
+[12.394543] (-) TimerEvent: {}
+[12.495214] (-) TimerEvent: {}
+[12.590760] (arm_controller) StdoutLine: {'line': b'[100%] Built target arm_controller_node\n'}
+[12.595299] (-) TimerEvent: {}
+[12.611391] (arm_controller) CommandEnded: {'returncode': 0}
+[12.691242] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'install'}
+[12.695499] (-) TimerEvent: {}
+[12.712640] (arm_controller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/robotics-orin/build/arm_controller'], 'cwd': '/home/nvidia/robotics-orin/build/arm_controller', 'env': OrderedDict([('GJS_DEBUG_TOPICS', 'JS ERROR;JS LOG'), ('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2416'), ('XDG_SESSION_TYPE', 'x11'), ('GIT_ASKPASS', '/usr/share/code/resources/app/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/usr/local/cuda-11.4/lib64:/home/nvidia/robotics-orin/install/arm_controller/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CHROME_DESKTOP', 'code-url-handler.desktop'), ('CONDA_SHLVL', '1'), ('TERM_PROGRAM_VERSION', '1.86.2'), ('DESKTOP_SESSION', 'ubuntu'), ('GIO_LAUNCHED_DESKTOP_FILE', '/usr/share/applications/code.desktop'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('VSCODE_GIT_ASKPASS_MAIN', '/usr/share/code/resources/app/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/usr/share/code/code'), ('MANAGERPID', '1651'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '5330'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59409'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2490,unix/nvidia:/tmp/.ICE-unix/2490'), ('INVOCATION_ID', '980309ab9388401cb18f6b144981c701'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('GDK_BACKEND', 'x11'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'Unity'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/1000/vscode-git-98d03a3650.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('ORIGINAL_XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('GJS_DEBUG_OUTPUT', 'stderr'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/arm_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages:/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/foxy')]), 'shell': False}
+[12.734416] (arm_controller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[12.735383] (arm_controller) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[12.735988] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/rosidl_interfaces/arm_controller\n'}
+[12.737164] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/arm_motor_values.h\n'}
+[12.737556] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__functions.h\n'}
+[12.737894] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__struct.h\n'}
+[12.738162] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__type_support.h\n'}
+[12.738396] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/rosidl_generator_c__visibility_control.h\n'}
+[12.738864] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/library_path.sh\n'}
+[12.739299] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/library_path.dsv\n'}
+[12.740425] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_fastrtps_c.h\n'}
+[12.740726] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[12.741343] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_fastrtps_c.so\n'}
+[12.742203] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[12.742425] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[12.743123] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_fastrtps_cpp.so\n'}
+[12.743828] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_introspection_c.h\n'}
+[12.744090] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[12.744924] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/arm_motor_values.hpp\n'}
+[12.745179] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__builder.hpp\n'}
+[12.745350] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__struct.hpp\n'}
+[12.745569] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__traits.hpp\n'}
+[12.745805] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__type_support.hpp\n'}
+[12.746035] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[12.746874] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_introspection_cpp.hpp\n'}
+[12.747373] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/pythonpath.sh\n'}
+[12.747770] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/pythonpath.dsv\n'}
+[12.748149] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages/arm_controller/__init__.py\n'}
+[12.748756] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages/arm_controller/msg/__init__.py\n'}
+[12.748997] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages/arm_controller/msg/_arm_motor_values.py\n'}
+[12.749706] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so\n'}
+[12.750314] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so\n'}
+[12.750997] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.11/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so\n'}
+[12.751577] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__python.so\n'}
+[12.751959] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/msg/ArmMotorValues.idl\n'}
+[12.752366] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/msg/ArmMotorValues.msg\n'}
+[12.752942] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/arm_controller/arm_controller_node\n'}
+[12.753363] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/package_run_dependencies/arm_controller\n'}
+[12.753731] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/parent_prefix_path/arm_controller\n'}
+[12.754102] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.sh\n'}
+[12.754441] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.dsv\n'}
+[12.754794] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.sh\n'}
+[12.755157] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.dsv\n'}
+[12.755480] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.bash\n'}
+[12.755809] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.sh\n'}
+[12.756145] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.zsh\n'}
+[12.756479] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.dsv\n'}
+[12.756751] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.dsv\n'}
+[12.773756] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/packages/arm_controller\n'}
+[12.774113] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/rosidl_cmake-extras.cmake\n'}
+[12.774393] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[12.774752] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[12.775105] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[12.775457] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[12.775803] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[12.776152] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[12.776503] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig.cmake\n'}
+[12.776733] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig-version.cmake\n'}
+[12.777070] (arm_controller) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.xml\n'}
+[12.777653] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_generator_c.so\n'}
+[12.778287] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_introspection_c.so\n'}
+[12.778899] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_c.so\n'}
+[12.779607] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_introspection_cpp.so\n'}
+[12.780113] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_cpp.so\n'}
+[12.795595] (-) TimerEvent: {}
+[12.858589] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_generator_cExport.cmake\n'}
+[12.859071] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_generator_cExport-noconfig.cmake\n'}
+[12.859233] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cExport.cmake\n'}
+[12.859452] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[12.859738] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cExport.cmake\n'}
+[12.859939] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[12.860322] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_generator_cppExport.cmake\n'}
+[12.860929] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[12.861202] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[12.861673] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cppExport.cmake\n'}
+[12.861866] (arm_controller) StdoutLine: {'line': b'-- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[12.866295] (arm_controller) CommandEnded: {'returncode': 0}
+[12.895799] (-) TimerEvent: {}
+[12.996584] (-) TimerEvent: {}
+[13.097590] (-) TimerEvent: {}
+[13.198322] (-) TimerEvent: {}
+[13.299099] (-) TimerEvent: {}
+[13.400767] (-) TimerEvent: {}
+[13.501572] (-) TimerEvent: {}
+[13.602709] (-) TimerEvent: {}
+[13.703852] (-) TimerEvent: {}
+[13.805630] (-) TimerEvent: {}
+[13.907133] (-) TimerEvent: {}
+[14.008688] (-) TimerEvent: {}
+[14.110278] (-) TimerEvent: {}
+[14.213813] (-) TimerEvent: {}
+[14.315229] (-) TimerEvent: {}
+[14.417191] (-) TimerEvent: {}
+[14.473460] (arm_controller) JobEnded: {'identifier': 'arm_controller', 'rc': 0}
+[14.475325] (-) EventReactorShutdown: {}

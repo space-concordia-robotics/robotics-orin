@@ -1,0 +1,315 @@
+[0.000000] (-) TimerEvent: {}
+[0.000408] (absenc_interface) JobQueued: {'identifier': 'absenc_interface', 'dependencies': OrderedDict()}
+[0.000697] (arm_controller) JobQueued: {'identifier': 'arm_controller', 'dependencies': OrderedDict()}
+[0.000844] (sil) JobQueued: {'identifier': 'sil', 'dependencies': OrderedDict()}
+[0.001201] (wheels_controller) JobQueued: {'identifier': 'wheels_controller', 'dependencies': OrderedDict()}
+[0.001449] (absenc_interface) JobStarted: {'identifier': 'absenc_interface'}
+[0.099533] (-) TimerEvent: {}
+[0.200263] (-) TimerEvent: {}
+[0.300922] (-) TimerEvent: {}
+[0.401598] (-) TimerEvent: {}
+[0.502084] (-) TimerEvent: {}
+[0.514840] (arm_controller) JobStarted: {'identifier': 'arm_controller'}
+[0.602304] (-) TimerEvent: {}
+[0.703093] (-) TimerEvent: {}
+[0.803925] (-) TimerEvent: {}
+[0.904671] (-) TimerEvent: {}
+[0.999480] (sil) JobStarted: {'identifier': 'sil'}
+[1.004946] (-) TimerEvent: {}
+[1.105503] (-) TimerEvent: {}
+[1.206639] (-) TimerEvent: {}
+[1.308155] (-) TimerEvent: {}
+[1.408857] (-) TimerEvent: {}
+[1.483080] (wheels_controller) JobStarted: {'identifier': 'wheels_controller'}
+[1.509075] (-) TimerEvent: {}
+[1.610881] (-) TimerEvent: {}
+[1.711689] (-) TimerEvent: {}
+[1.812898] (-) TimerEvent: {}
+[1.913694] (-) TimerEvent: {}
+[1.971310] (absenc_interface) JobProgress: {'identifier': 'absenc_interface', 'progress': 'cmake'}
+[1.972424] (absenc_interface) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia/robotics-orin/src/absenc_interface', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/absenc_interface'], 'cwd': '/home/nvidia/robotics-orin/build/absenc_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2934'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1909'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59929'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2971,unix/nvidia:/tmp/.ICE-unix/2971'), ('INVOCATION_ID', 'b0329f79702e4d72833628c80150e48e'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f84547bc_853e_4015_ab2f_d52d05562527'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.84'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/absenc_interface'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.981170] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'cmake'}
+[1.982269] (arm_controller) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia/robotics-orin/src/arm_controller', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/arm_controller'], 'cwd': '/home/nvidia/robotics-orin/build/arm_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2934'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1909'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59929'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2971,unix/nvidia:/tmp/.ICE-unix/2971'), ('INVOCATION_ID', 'b0329f79702e4d72833628c80150e48e'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f84547bc_853e_4015_ab2f_d52d05562527'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.84'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/arm_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.989647] (sil) JobProgress: {'identifier': 'sil', 'progress': 'cmake'}
+[1.990919] (sil) JobProgress: {'identifier': 'sil', 'progress': 'build'}
+[1.992190] (sil) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/sil', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/sil', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2934'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1909'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59929'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2971,unix/nvidia:/tmp/.ICE-unix/2971'), ('INVOCATION_ID', 'b0329f79702e4d72833628c80150e48e'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f84547bc_853e_4015_ab2f_d52d05562527'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.84'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/sil'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[1.999391] (wheels_controller) JobProgress: {'identifier': 'wheels_controller', 'progress': 'cmake'}
+[2.000688] (wheels_controller) JobProgress: {'identifier': 'wheels_controller', 'progress': 'build'}
+[2.001103] (wheels_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/wheels_controller', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/wheels_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2934'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1909'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59929'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2971,unix/nvidia:/tmp/.ICE-unix/2971'), ('INVOCATION_ID', 'b0329f79702e4d72833628c80150e48e'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f84547bc_853e_4015_ab2f_d52d05562527'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.84'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/wheels_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.009680] (absenc_interface) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[2.010677] (arm_controller) StdoutLine: {'line': b'-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)\n'}
+[2.013799] (-) TimerEvent: {}
+[2.045576] (absenc_interface) StdoutLine: {'line': b'-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3") \n'}
+[2.046071] (absenc_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3\n'}
+[2.052434] (arm_controller) StdoutLine: {'line': b'-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3") \n'}
+[2.053017] (arm_controller) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3\n'}
+[2.080190] (wheels_controller) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wheels_controller_node\x1b[0m\n'}
+[2.102624] (sil) StdoutLine: {'line': b'[100%] Built target talker\n'}
+[2.113988] (-) TimerEvent: {}
+[2.129433] (sil) CommandEnded: {'returncode': 0}
+[2.139624] (wheels_controller) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/rev_motor_controller.cpp.o\x1b[0m\n'}
+[2.140102] (wheels_controller) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o\x1b[0m\n'}
+[2.148633] (wheels_controller) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/can_controller.cpp.o\x1b[0m\n'}
+[2.188624] (sil) JobProgress: {'identifier': 'sil', 'progress': 'install'}
+[2.214983] (sil) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/robotics-orin/build/sil'], 'cwd': '/home/nvidia/robotics-orin/build/sil', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2934'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/aarch64-linux-gnu:/opt/ros/foxy/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1909'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('IM_CONFIG_PHASE', '1'), ('ROS_DISTRO', 'foxy'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:59929'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/foxy/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2971,unix/nvidia:/tmp/.ICE-unix/2971'), ('INVOCATION_ID', 'b0329f79702e4d72833628c80150e48e'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/f84547bc_853e_4015_ab2f_d52d05562527'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.84'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/foxy'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/sil'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/foxy/lib/python3.8/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/opt/ros/foxy')]), 'shell': False}
+[2.217814] (-) TimerEvent: {}
+[2.237038] (sil) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[2.237607] (sil) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[2.238441] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/lib/sil/talker\n'}
+[2.259263] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/package_run_dependencies/sil\n'}
+[2.281599] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/parent_prefix_path/sil\n'}
+[2.301967] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/ament_prefix_path.sh\n'}
+[2.318089] (-) TimerEvent: {}
+[2.322050] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/ament_prefix_path.dsv\n'}
+[2.341851] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/path.sh\n'}
+[2.362437] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/path.dsv\n'}
+[2.386304] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.bash\n'}
+[2.407301] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.sh\n'}
+[2.418284] (-) TimerEvent: {}
+[2.420114] (arm_controller) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[2.428436] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.zsh\n'}
+[2.433682] (arm_controller) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[2.446753] (absenc_interface) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[2.448758] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.dsv\n'}
+[2.457576] (absenc_interface) StdoutLine: {'line': b'-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)\n'}
+[2.468097] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/package.dsv\n'}
+[2.487877] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/packages/sil\n'}
+[2.494719] (arm_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.499793] (arm_controller) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[2.507961] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/cmake/silConfig.cmake\n'}
+[2.514478] (absenc_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.518421] (-) TimerEvent: {}
+[2.521058] (absenc_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)\n'}
+[2.526650] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/cmake/silConfig-version.cmake\n'}
+[2.545414] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/package.xml\n'}
+[2.575932] (sil) CommandEnded: {'returncode': 0}
+[2.618554] (-) TimerEvent: {}
+[2.720528] (-) TimerEvent: {}
+[2.755212] (absenc_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.759733] (arm_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.820718] (-) TimerEvent: {}
+[2.827840] (absenc_interface) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.829915] (absenc_interface) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.842748] (arm_controller) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)\n'}
+[2.844604] (arm_controller) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[2.920969] (-) TimerEvent: {}
+[3.022939] (-) TimerEvent: {}
+[3.036209] (absenc_interface) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[3.059168] (arm_controller) StdoutLine: {'line': b'-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)\n'}
+[3.124632] (-) TimerEvent: {}
+[3.196687] (absenc_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[3.221044] (arm_controller) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)\n'}
+[3.224778] (-) TimerEvent: {}
+[3.252177] (absenc_interface) StdoutLine: {'line': b'-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found version "3.11.5") \n'}
+[3.253677] (arm_controller) StderrLine: {'line': b'CMake Warning at CMakeLists.txt:18 (find_package):\n'}
+[3.254825] (arm_controller) StderrLine: {'line': b'  By not providing "FindJetsonGPIO.cmake" in CMAKE_MODULE_PATH this project\n'}
+[3.255624] (arm_controller) StderrLine: {'line': b'  has asked CMake to find a package configuration file provided by\n'}
+[3.256116] (arm_controller) StderrLine: {'line': b'  "JetsonGPIO", but CMake did not find one.\n'}
+[3.256666] (arm_controller) StderrLine: {'line': b'\n'}
+[3.257102] (arm_controller) StderrLine: {'line': b'  Could not find a package configuration file provided by "JetsonGPIO" with\n'}
+[3.257513] (arm_controller) StderrLine: {'line': b'  any of the following names:\n'}
+[3.258363] (arm_controller) StderrLine: {'line': b'\n'}
+[3.258738] (arm_controller) StderrLine: {'line': b'    JetsonGPIOConfig.cmake\n'}
+[3.259345] (arm_controller) StderrLine: {'line': b'    jetsongpio-config.cmake\n'}
+[3.259720] (arm_controller) StderrLine: {'line': b'\n'}
+[3.260292] (arm_controller) StderrLine: {'line': b'  Add the installation prefix of "JetsonGPIO" to CMAKE_PREFIX_PATH or set\n'}
+[3.260455] (arm_controller) StderrLine: {'line': b'  "JetsonGPIO_DIR" to a directory containing one of the above files.  If\n'}
+[3.262271] (arm_controller) StderrLine: {'line': b'  "JetsonGPIO" provides a separate development package or SDK, be sure it has\n'}
+[3.262783] (arm_controller) StderrLine: {'line': b'  been installed.\n'}
+[3.263148] (arm_controller) StderrLine: {'line': b'\n'}
+[3.263659] (arm_controller) StderrLine: {'line': b'\n'}
+[3.295100] (arm_controller) StdoutLine: {'line': b'-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found version "3.11.5") \n'}
+[3.325060] (-) TimerEvent: {}
+[3.348790] (absenc_interface) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):\n'}
+[3.349598] (absenc_interface) StderrLine: {'line': b'  execute_process(/home/nvidia/anaconda3/bin/python3 -m rosidl_adapter\n'}
+[3.349800] (absenc_interface) StderrLine: {'line': b'  --package-name absenc_interface --arguments-file\n'}
+[3.350124] (absenc_interface) StderrLine: {'line': b'  /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter__arguments__absenc_interface.json\n'}
+[3.350539] (absenc_interface) StderrLine: {'line': b'  --output-dir\n'}
+[3.350882] (absenc_interface) StderrLine: {'line': b'  /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter/absenc_interface\n'}
+[3.351426] (absenc_interface) StderrLine: {'line': b'  --output-file\n'}
+[3.351764] (absenc_interface) StderrLine: {'line': b'  /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter/absenc_interface.idls)\n'}
+[3.352148] (absenc_interface) StderrLine: {'line': b'  returned error code 1:\n'}
+[3.352303] (absenc_interface) StderrLine: {'line': b'\n'}
+[3.352599] (absenc_interface) StderrLine: {'line': b'  Traceback (most recent call last):\n'}
+[3.352822] (absenc_interface) StderrLine: {'line': b'\n'}
+[3.353731] (absenc_interface) StderrLine: {'line': b'    File "<frozen runpy>", line 198, in _run_module_as_main\n'}
+[3.354134] (absenc_interface) StderrLine: {'line': b'    File "<frozen runpy>", line 88, in _run_code\n'}
+[3.354665] (absenc_interface) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__main__.py", line 19, in <module>\n'}
+[3.355007] (absenc_interface) StderrLine: {'line': b'      sys.exit(main())\n'}
+[3.355172] (absenc_interface) StderrLine: {'line': b'               ^^^^^^\n'}
+[3.355753] (absenc_interface) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/main.py", line 53, in main\n'}
+[3.356107] (absenc_interface) StderrLine: {'line': b'      abs_idl_file = convert_to_idl(\n'}
+[3.356508] (absenc_interface) StderrLine: {'line': b'                     ^^^^^^^^^^^^^^^\n'}
+[3.356839] (absenc_interface) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__init__.py", line 18, in convert_to_idl\n'}
+[3.357223] (absenc_interface) StderrLine: {'line': b'      from rosidl_adapter.msg import convert_msg_to_idl\n'}
+[3.357411] (absenc_interface) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/msg/__init__.py", line 16, in <module>\n'}
+[3.357989] (absenc_interface) StderrLine: {'line': b'      from rosidl_adapter.resource import expand_template\n'}
+[3.358170] (absenc_interface) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/resource/__init__.py", line 19, in <module>\n'}
+[3.358488] (absenc_interface) StderrLine: {'line': b'      import em\n'}
+[3.359794] (absenc_interface) StderrLine: {'line': b'\n'}
+[3.360155] (absenc_interface) StderrLine: {'line': b"  ModuleNotFoundError: No module named 'em'\n"}
+[3.360572] (absenc_interface) StderrLine: {'line': b'\n'}
+[3.360752] (absenc_interface) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.361075] (absenc_interface) StderrLine: {'line': b'  /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)\n'}
+[3.361505] (absenc_interface) StderrLine: {'line': b'  CMakeLists.txt:18 (rosidl_generate_interfaces)\n'}
+[3.361832] (absenc_interface) StderrLine: {'line': b'\n'}
+[3.362243] (absenc_interface) StderrLine: {'line': b'\n'}
+[3.362560] (absenc_interface) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.362979] (absenc_interface) StdoutLine: {'line': b'See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeOutput.log".\n'}
+[3.363423] (absenc_interface) StdoutLine: {'line': b'See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeError.log".\n'}
+[3.391069] (arm_controller) StderrLine: {'line': b'CMake Error at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):\n'}
+[3.392505] (arm_controller) StderrLine: {'line': b'  execute_process(/home/nvidia/anaconda3/bin/python3 -m rosidl_adapter\n'}
+[3.392988] (arm_controller) StderrLine: {'line': b'  --package-name arm_controller --arguments-file\n'}
+[3.393375] (arm_controller) StderrLine: {'line': b'  /home/nvidia/robotics-orin/build/arm_controller/rosidl_adapter__arguments__arm_controller.json\n'}
+[3.393788] (arm_controller) StderrLine: {'line': b'  --output-dir\n'}
+[3.394180] (arm_controller) StderrLine: {'line': b'  /home/nvidia/robotics-orin/build/arm_controller/rosidl_adapter/arm_controller\n'}
+[3.394877] (arm_controller) StderrLine: {'line': b'  --output-file\n'}
+[3.395597] (arm_controller) StderrLine: {'line': b'  /home/nvidia/robotics-orin/build/arm_controller/rosidl_adapter/arm_controller.idls)\n'}
+[3.395737] (arm_controller) StderrLine: {'line': b'  returned error code 1:\n'}
+[3.395837] (arm_controller) StderrLine: {'line': b'\n'}
+[3.395930] (arm_controller) StderrLine: {'line': b'  Traceback (most recent call last):\n'}
+[3.396020] (arm_controller) StderrLine: {'line': b'\n'}
+[3.396133] (arm_controller) StderrLine: {'line': b'    File "<frozen runpy>", line 198, in _run_module_as_main\n'}
+[3.396248] (arm_controller) StderrLine: {'line': b'    File "<frozen runpy>", line 88, in _run_code\n'}
+[3.396379] (arm_controller) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__main__.py", line 19, in <module>\n'}
+[3.396504] (arm_controller) StderrLine: {'line': b'      sys.exit(main())\n'}
+[3.396623] (arm_controller) StderrLine: {'line': b'               ^^^^^^\n'}
+[3.396737] (arm_controller) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/main.py", line 53, in main\n'}
+[3.396845] (arm_controller) StderrLine: {'line': b'      abs_idl_file = convert_to_idl(\n'}
+[3.396975] (arm_controller) StderrLine: {'line': b'                     ^^^^^^^^^^^^^^^\n'}
+[3.397089] (arm_controller) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__init__.py", line 18, in convert_to_idl\n'}
+[3.397202] (arm_controller) StderrLine: {'line': b'      from rosidl_adapter.msg import convert_msg_to_idl\n'}
+[3.397311] (arm_controller) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/msg/__init__.py", line 16, in <module>\n'}
+[3.397430] (arm_controller) StderrLine: {'line': b'      from rosidl_adapter.resource import expand_template\n'}
+[3.397687] (arm_controller) StderrLine: {'line': b'    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/resource/__init__.py", line 19, in <module>\n'}
+[3.398205] (arm_controller) StderrLine: {'line': b'      import em\n'}
+[3.398490] (arm_controller) StderrLine: {'line': b'\n'}
+[3.398895] (arm_controller) StderrLine: {'line': b"  ModuleNotFoundError: No module named 'em'\n"}
+[3.399069] (arm_controller) StderrLine: {'line': b'\n'}
+[3.400006] (arm_controller) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[3.400374] (arm_controller) StderrLine: {'line': b'  /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)\n'}
+[3.400731] (arm_controller) StderrLine: {'line': b'  CMakeLists.txt:20 (rosidl_generate_interfaces)\n'}
+[3.401409] (arm_controller) StderrLine: {'line': b'\n'}
+[3.401579] (arm_controller) StderrLine: {'line': b'\n'}
+[3.402572] (arm_controller) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[3.402978] (arm_controller) StdoutLine: {'line': b'See also "/home/nvidia/robotics-orin/build/arm_controller/CMakeFiles/CMakeOutput.log".\n'}
+[3.403590] (arm_controller) StdoutLine: {'line': b'See also "/home/nvidia/robotics-orin/build/arm_controller/CMakeFiles/CMakeError.log".\n'}
+[3.425398] (-) TimerEvent: {}
+[3.526048] (-) TimerEvent: {}
+[3.626998] (-) TimerEvent: {}
+[3.727850] (-) TimerEvent: {}
+[3.828617] (-) TimerEvent: {}
+[3.850732] (sil) JobEnded: {'identifier': 'sil', 'rc': 0}
+[3.852998] (absenc_interface) CommandEnded: {'returncode': 1}
+[3.860823] (arm_controller) CommandEnded: {'returncode': 1}
+[3.929212] (-) TimerEvent: {}
+[4.030102] (-) TimerEvent: {}
+[4.130762] (-) TimerEvent: {}
+[4.208858] (absenc_interface) JobEnded: {'identifier': 'absenc_interface', 'rc': 1}
+[4.210698] (arm_controller) JobEnded: {'identifier': 'arm_controller', 'rc': 'SIGINT'}
+[4.230833] (-) TimerEvent: {}
+[4.331387] (-) TimerEvent: {}
+[4.432195] (-) TimerEvent: {}
+[4.533018] (-) TimerEvent: {}
+[4.633849] (-) TimerEvent: {}
+[4.734677] (-) TimerEvent: {}
+[4.761915] (wheels_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid WheelsControllerNode::pollControllersCallback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[4.762637] (wheels_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:49:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kframe\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[4.763009] (wheels_controller) StderrLine: {'line': b'   49 |     struct can_frame \x1b[01;35m\x1b[Kframe\x1b[m\x1b[K;\n'}
+[4.763123] (wheels_controller) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[4.834869] (-) TimerEvent: {}
+[4.935721] (-) TimerEvent: {}
+[5.036552] (-) TimerEvent: {}
+[5.137388] (-) TimerEvent: {}
+[5.238216] (-) TimerEvent: {}
+[5.339044] (-) TimerEvent: {}
+[5.439897] (-) TimerEvent: {}
+[5.540697] (-) TimerEvent: {}
+[5.641504] (-) TimerEvent: {}
+[5.742318] (-) TimerEvent: {}
+[5.843135] (-) TimerEvent: {}
+[5.944004] (-) TimerEvent: {}
+[6.044855] (-) TimerEvent: {}
+[6.145663] (-) TimerEvent: {}
+[6.246353] (-) TimerEvent: {}
+[6.347157] (-) TimerEvent: {}
+[6.448016] (-) TimerEvent: {}
+[6.548854] (-) TimerEvent: {}
+[6.649681] (-) TimerEvent: {}
+[6.750496] (-) TimerEvent: {}
+[6.851366] (-) TimerEvent: {}
+[6.952198] (-) TimerEvent: {}
+[7.053052] (-) TimerEvent: {}
+[7.153901] (-) TimerEvent: {}
+[7.254721] (-) TimerEvent: {}
+[7.355546] (-) TimerEvent: {}
+[7.456396] (-) TimerEvent: {}
+[7.557194] (-) TimerEvent: {}
+[7.657920] (-) TimerEvent: {}
+[7.758760] (-) TimerEvent: {}
+[7.859621] (-) TimerEvent: {}
+[7.960464] (-) TimerEvent: {}
+[8.061303] (-) TimerEvent: {}
+[8.162147] (-) TimerEvent: {}
+[8.262954] (-) TimerEvent: {}
+[8.363767] (-) TimerEvent: {}
+[8.464621] (-) TimerEvent: {}
+[8.565458] (-) TimerEvent: {}
+[8.666296] (-) TimerEvent: {}
+[8.767140] (-) TimerEvent: {}
+[8.868023] (-) TimerEvent: {}
+[8.968857] (-) TimerEvent: {}
+[9.069759] (-) TimerEvent: {}
+[9.170588] (-) TimerEvent: {}
+[9.272293] (-) TimerEvent: {}
+[9.372992] (-) TimerEvent: {}
+[9.473756] (-) TimerEvent: {}
+[9.574432] (-) TimerEvent: {}
+[9.675071] (-) TimerEvent: {}
+[9.775755] (-) TimerEvent: {}
+[9.876508] (-) TimerEvent: {}
+[9.977126] (-) TimerEvent: {}
+[10.077740] (-) TimerEvent: {}
+[10.178348] (-) TimerEvent: {}
+[10.278983] (-) TimerEvent: {}
+[10.379679] (-) TimerEvent: {}
+[10.480304] (-) TimerEvent: {}
+[10.580938] (-) TimerEvent: {}
+[10.681575] (-) TimerEvent: {}
+[10.782208] (-) TimerEvent: {}
+[10.882840] (-) TimerEvent: {}
+[10.983487] (-) TimerEvent: {}
+[11.084121] (-) TimerEvent: {}
+[11.184730] (-) TimerEvent: {}
+[11.285326] (-) TimerEvent: {}
+[11.385953] (-) TimerEvent: {}
+[11.486583] (-) TimerEvent: {}
+[11.587156] (-) TimerEvent: {}
+[11.687733] (-) TimerEvent: {}
+[11.788285] (-) TimerEvent: {}
+[11.888847] (-) TimerEvent: {}
+[11.989435] (-) TimerEvent: {}
+[12.090056] (-) TimerEvent: {}
+[12.190680] (-) TimerEvent: {}
+[12.291294] (-) TimerEvent: {}
+[12.391887] (-) TimerEvent: {}
+[12.492503] (-) TimerEvent: {}
+[12.593352] (-) TimerEvent: {}
+[12.694162] (-) TimerEvent: {}
+[12.795055] (-) TimerEvent: {}
+[12.895920] (-) TimerEvent: {}
+[12.996872] (-) TimerEvent: {}
+[13.097670] (-) TimerEvent: {}
+[13.198509] (-) TimerEvent: {}
+[13.299336] (-) TimerEvent: {}
+[13.400138] (-) TimerEvent: {}
+[13.500930] (-) TimerEvent: {}
+[13.544212] (wheels_controller) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable wheels_controller_node\x1b[0m\n'}
+[13.601104] (-) TimerEvent: {}
+[13.701866] (-) TimerEvent: {}
+[13.802567] (-) TimerEvent: {}
+[13.903142] (-) TimerEvent: {}
+[14.003651] (-) TimerEvent: {}
+[14.053931] (wheels_controller) StdoutLine: {'line': b'[100%] Built target wheels_controller_node\n'}
+[14.073963] (wheels_controller) JobEnded: {'identifier': 'wheels_controller', 'rc': 'SIGINT'}
+[14.085166] (-) EventReactorShutdown: {}

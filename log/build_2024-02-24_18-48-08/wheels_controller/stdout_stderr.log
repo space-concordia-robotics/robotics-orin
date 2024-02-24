@@ -1,0 +1,26 @@
+[35m[1mScanning dependencies of target wheels_controller_node[0m
+[ 25%] [32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o[0m
+[01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:[m[K In member function ‘[01m[Kvoid WheelsControllerNode::pollControllersCallback()[m[K’:
+[01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:49:22:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kframe[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   49 |     struct can_frame [01;35m[Kframe[m[K;
+      |                      [01;35m[K^~~~~[m[K
+[ 50%] [32m[1mLinking CXX executable wheels_controller_node[0m
+[100%] Built target wheels_controller_node
+-- Install configuration: ""
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node
+-- Set runtime path of "/home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node" to ""
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/package_run_dependencies/wheels_controller
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/parent_prefix_path/wheels_controller
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.sh
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.dsv
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.sh
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.dsv
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.bash
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.sh
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.zsh
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.dsv
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/packages/wheels_controller
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig.cmake
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig-version.cmake
+-- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.xml

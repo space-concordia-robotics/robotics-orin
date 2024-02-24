@@ -1,0 +1,434 @@
+[11.018s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[11.018s] DEBUG:colcon:Parsed command line arguments: Namespace(allow_overriding=[], ament_cmake_args=None, base_paths=['.'], build_base='build', catkin_cmake_args=None, catkin_skip_building_tests=False, cmake_args=None, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, cmake_target=None, cmake_target_skip_unavailable=False, continue_on_error=False, event_handlers=None, executor='parallel', ignore_user_meta=False, install_base='install', log_base=None, log_level=None, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0xffff8cb0e730>>, merge_install=False, metas=['./colcon.meta'], packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_end=None, packages_ignore=None, packages_ignore_regex=None, packages_select=None, packages_select_build_failed=False, packages_select_by_dep=None, packages_select_regex=None, packages_select_test_failures=False, packages_skip=None, packages_skip_build_finished=False, packages_skip_by_dep=None, packages_skip_regex=None, packages_skip_test_passed=False, packages_skip_up_to=None, packages_start=None, packages_up_to=None, packages_up_to_regex=None, parallel_workers=6, paths=None, symlink_install=False, test_result_base=None, verb_extension=<colcon_core.verb.build.BuildVerb object at 0xffff8cb0e730>, verb_name='build', verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0xffff8c72ed60>)
+[11.453s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[11.453s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[11.453s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[11.453s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[11.453s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[11.453s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[11.453s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/nvidia/robotics-orin'
+[11.453s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[11.454s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[11.471s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[11.471s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[11.471s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[11.471s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[11.471s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[11.472s] Level 1:colcon.colcon_core.package_identification:_identify(JetsonGPIO) by extensions ['ignore', 'ignore_ament_install']
+[11.472s] Level 1:colcon.colcon_core.package_identification:_identify(JetsonGPIO) by extension 'ignore'
+[11.472s] Level 1:colcon.colcon_core.package_identification:_identify(JetsonGPIO) ignored
+[11.472s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[11.472s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[11.472s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['ignore', 'ignore_ament_install']
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'ignore'
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'ignore_ament_install'
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['colcon_pkg']
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'colcon_pkg'
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['colcon_meta']
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'colcon_meta'
+[11.473s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['ros']
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'ros'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['cmake', 'python']
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'cmake'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'python'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extensions ['python_setup_py']
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch) by extension 'python_setup_py'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['ignore', 'ignore_ament_install']
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'ignore'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'ignore_ament_install'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['colcon_pkg']
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'colcon_pkg'
+[11.474s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['colcon_meta']
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'colcon_meta'
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['ros']
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'ros'
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['cmake', 'python']
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'cmake'
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'python'
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extensions ['python_setup_py']
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(launch/__pycache__) by extension 'python_setup_py'
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[11.475s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[11.476s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extensions ['ignore', 'ignore_ament_install']
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extension 'ignore'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extension 'ignore_ament_install'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extensions ['colcon_pkg']
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extension 'colcon_pkg'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extensions ['colcon_meta']
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extension 'colcon_meta'
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extensions ['ros']
+[11.477s] Level 1:colcon.colcon_core.package_identification:_identify(src/absenc_interface) by extension 'ros'
+[11.482s] DEBUG:colcon.colcon_core.package_identification:Package 'src/absenc_interface' with type 'ros.ament_cmake' and name 'absenc_interface'
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extensions ['ignore', 'ignore_ament_install']
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extension 'ignore'
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extension 'ignore_ament_install'
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extensions ['colcon_pkg']
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extension 'colcon_pkg'
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extensions ['colcon_meta']
+[11.482s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extension 'colcon_meta'
+[11.483s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extensions ['ros']
+[11.483s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_controller) by extension 'ros'
+[11.483s] DEBUG:colcon.colcon_core.package_identification:Package 'src/arm_controller' with type 'ros.ament_cmake' and name 'arm_controller'
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extensions ['ignore', 'ignore_ament_install']
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extension 'ignore'
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extension 'ignore_ament_install'
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extensions ['colcon_pkg']
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extension 'colcon_pkg'
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extensions ['colcon_meta']
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extension 'colcon_meta'
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extensions ['ros']
+[11.484s] Level 1:colcon.colcon_core.package_identification:_identify(src/arm_ik) by extension 'ros'
+[11.485s] DEBUG:colcon.colcon_core.package_identification:Package 'src/arm_ik' with type 'ros.ament_python' and name 'arm_ik'
+[11.485s] Level 1:colcon.colcon_core.package_identification:_identify(src/gps) by extensions ['ignore', 'ignore_ament_install']
+[11.485s] Level 1:colcon.colcon_core.package_identification:_identify(src/gps) by extension 'ignore'
+[11.485s] Level 1:colcon.colcon_core.package_identification:_identify(src/gps) ignored
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extensions ['ignore', 'ignore_ament_install']
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extension 'ignore'
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extension 'ignore_ament_install'
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extensions ['colcon_pkg']
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extension 'colcon_pkg'
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extensions ['colcon_meta']
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extension 'colcon_meta'
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extensions ['ros']
+[11.486s] Level 1:colcon.colcon_core.package_identification:_identify(src/sil) by extension 'ros'
+[11.488s] DEBUG:colcon.colcon_core.package_identification:Package 'src/sil' with type 'ros.ament_cmake' and name 'sil'
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extensions ['ignore', 'ignore_ament_install']
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extension 'ignore'
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extension 'ignore_ament_install'
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extensions ['colcon_pkg']
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extension 'colcon_pkg'
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extensions ['colcon_meta']
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extension 'colcon_meta'
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extensions ['ros']
+[11.489s] Level 1:colcon.colcon_core.package_identification:_identify(src/wheels_controller) by extension 'ros'
+[11.490s] DEBUG:colcon.colcon_core.package_identification:Package 'src/wheels_controller' with type 'ros.ament_cmake' and name 'wheels_controller'
+[11.490s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[11.490s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[11.490s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[11.490s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[11.490s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[12.539s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[12.539s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[12.940s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 6 installed packages in /home/nvidia/robotics-orin/install
+[13.141s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 319 installed packages in /opt/ros/humble
+[13.343s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 290 installed packages in /opt/ros/foxy
+[13.358s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'cmake_args' from command line to 'None'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'cmake_target' from command line to 'None'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'cmake_clean_cache' from command line to 'False'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'cmake_clean_first' from command line to 'False'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'cmake_force_configure' from command line to 'False'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'ament_cmake_args' from command line to 'None'
+[14.035s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'catkin_cmake_args' from command line to 'None'
+[14.036s] Level 5:colcon.colcon_core.verb:set package 'absenc_interface' build argument 'catkin_skip_building_tests' from command line to 'False'
+[14.036s] DEBUG:colcon.colcon_core.verb:Building package 'absenc_interface' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/robotics-orin/build/absenc_interface', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/robotics-orin/install/absenc_interface', 'merge_install': False, 'path': '/home/nvidia/robotics-orin/src/absenc_interface', 'symlink_install': False, 'test_result_base': None}
+[14.236s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'cmake_args' from command line to 'None'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'cmake_target' from command line to 'None'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'cmake_clean_first' from command line to 'False'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'cmake_force_configure' from command line to 'False'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'ament_cmake_args' from command line to 'None'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[14.237s] Level 5:colcon.colcon_core.verb:set package 'arm_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[14.237s] DEBUG:colcon.colcon_core.verb:Building package 'arm_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/robotics-orin/build/arm_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/robotics-orin/install/arm_controller', 'merge_install': False, 'path': '/home/nvidia/robotics-orin/src/arm_controller', 'symlink_install': False, 'test_result_base': None}
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'cmake_args' from command line to 'None'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'cmake_target' from command line to 'None'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'cmake_clean_cache' from command line to 'False'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'cmake_clean_first' from command line to 'False'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'cmake_force_configure' from command line to 'False'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'ament_cmake_args' from command line to 'None'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'catkin_cmake_args' from command line to 'None'
+[14.436s] Level 5:colcon.colcon_core.verb:set package 'arm_ik' build argument 'catkin_skip_building_tests' from command line to 'False'
+[14.436s] DEBUG:colcon.colcon_core.verb:Building package 'arm_ik' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/robotics-orin/build/arm_ik', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/robotics-orin/install/arm_ik', 'merge_install': False, 'path': '/home/nvidia/robotics-orin/src/arm_ik', 'symlink_install': False, 'test_result_base': None}
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'cmake_args' from command line to 'None'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'cmake_target' from command line to 'None'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'cmake_clean_cache' from command line to 'False'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'cmake_clean_first' from command line to 'False'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'cmake_force_configure' from command line to 'False'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'ament_cmake_args' from command line to 'None'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'catkin_cmake_args' from command line to 'None'
+[14.636s] Level 5:colcon.colcon_core.verb:set package 'sil' build argument 'catkin_skip_building_tests' from command line to 'False'
+[14.636s] DEBUG:colcon.colcon_core.verb:Building package 'sil' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/robotics-orin/build/sil', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/robotics-orin/install/sil', 'merge_install': False, 'path': '/home/nvidia/robotics-orin/src/sil', 'symlink_install': False, 'test_result_base': None}
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'cmake_args' from command line to 'None'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'cmake_target' from command line to 'None'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'cmake_clean_cache' from command line to 'False'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'cmake_clean_first' from command line to 'False'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'cmake_force_configure' from command line to 'False'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'ament_cmake_args' from command line to 'None'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'catkin_cmake_args' from command line to 'None'
+[14.836s] Level 5:colcon.colcon_core.verb:set package 'wheels_controller' build argument 'catkin_skip_building_tests' from command line to 'False'
+[14.836s] DEBUG:colcon.colcon_core.verb:Building package 'wheels_controller' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nvidia/robotics-orin/build/wheels_controller', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nvidia/robotics-orin/install/wheels_controller', 'merge_install': False, 'path': '/home/nvidia/robotics-orin/src/wheels_controller', 'symlink_install': False, 'test_result_base': None}
+[15.035s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[15.237s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[15.238s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nvidia/robotics-orin/src/absenc_interface' with build type 'ament_cmake'
+[15.238s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nvidia/robotics-orin/src/absenc_interface'
+[15.445s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[15.446s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[15.446s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[16.276s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nvidia/robotics-orin/src/arm_controller' with build type 'ament_cmake'
+[16.277s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nvidia/robotics-orin/src/arm_controller'
+[16.485s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[16.486s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[17.316s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/nvidia/robotics-orin/src/arm_ik' with build type 'ament_python'
+[17.317s] Level 1:colcon.colcon_core.shell:create_environment_hook('arm_ik', 'ament_prefix_path')
+[17.527s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/hook/ament_prefix_path.ps1'
+[17.529s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/hook/ament_prefix_path.dsv'
+[17.530s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/hook/ament_prefix_path.sh'
+[17.735s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[17.736s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[18.565s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nvidia/robotics-orin/src/sil' with build type 'ament_cmake'
+[18.566s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nvidia/robotics-orin/src/sil'
+[18.775s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[18.775s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[19.608s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nvidia/robotics-orin/src/wheels_controller' with build type 'ament_cmake'
+[19.608s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nvidia/robotics-orin/src/wheels_controller'
+[19.815s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[19.815s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[20.649s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6
+[20.666s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[21.149s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/nvidia/robotics-orin/src/arm_ik'
+[21.360s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[21.360s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[22.205s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/sil': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/sil -- -j6 -l6
+[22.217s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/wheels_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/wheels_controller -- -j6 -l6
+[22.240s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[22.361s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/sil' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/sil -- -j6 -l6
+[22.409s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/arm_controller
+[22.414s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/wheels_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/wheels_controller -- -j6 -l6
+[22.455s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/sil': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/sil
+[22.488s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sil)
+[22.490s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/sil' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/sil
+[22.753s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil' for CMake module files
+[22.754s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil' for CMake config files
+[22.755s] Level 1:colcon.colcon_core.shell:create_environment_hook('sil', 'cmake_prefix_path')
+[22.990s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/sil/share/sil/hook/cmake_prefix_path.ps1'
+[22.991s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/sil/share/sil/hook/cmake_prefix_path.dsv'
+[22.991s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/sil/share/sil/hook/cmake_prefix_path.sh'
+[22.993s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/lib'
+[22.993s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/bin'
+[22.993s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/lib/pkgconfig/sil.pc'
+[22.994s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/lib/python3.8/site-packages'
+[22.994s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/bin'
+[23.205s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.ps1'
+[23.207s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/sil/share/sil/package.dsv'
+[23.208s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.sh'
+[23.209s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.bash'
+[23.211s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.zsh'
+[23.212s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/sil/share/colcon-core/packages/sil)
+[23.233s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(arm_controller)
+[23.234s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/arm_controller
+[23.450s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller' for CMake module files
+[23.451s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller' for CMake config files
+[23.452s] Level 1:colcon.colcon_core.shell:create_environment_hook('arm_controller', 'cmake_prefix_path')
+[23.658s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/cmake_prefix_path.ps1'
+[23.659s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/cmake_prefix_path.dsv'
+[23.660s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/cmake_prefix_path.sh'
+[23.661s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/lib'
+[23.661s] Level 1:colcon.colcon_core.shell:create_environment_hook('arm_controller', 'ld_library_path_lib')
+[23.867s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/ld_library_path_lib.ps1'
+[23.868s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/ld_library_path_lib.dsv'
+[23.869s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/ld_library_path_lib.sh'
+[23.870s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/bin'
+[23.870s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/lib/pkgconfig/arm_controller.pc'
+[23.870s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/lib/python3.8/site-packages'
+[23.871s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/bin'
+[24.078s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.ps1'
+[24.079s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.dsv'
+[24.080s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.sh'
+[24.081s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.bash'
+[24.081s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.zsh'
+[24.082s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/arm_controller/share/colcon-core/packages/arm_controller)
+[24.097s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/wheels_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/wheels_controller
+[24.107s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/src/arm_ik': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/nvidia/robotics-orin/build/arm_ik/prefix_override:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_ik build --build-base /home/nvidia/robotics-orin/build/arm_ik/build install --record /home/nvidia/robotics-orin/build/arm_ik/install.log --single-version-externally-managed
+[24.332s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(sil)
+[24.542s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil' for CMake module files
+[24.543s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil' for CMake config files
+[24.544s] Level 1:colcon.colcon_core.shell:create_environment_hook('sil', 'cmake_prefix_path')
+[24.762s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/sil/share/sil/hook/cmake_prefix_path.ps1'
+[24.763s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/sil/share/sil/hook/cmake_prefix_path.dsv'
+[24.764s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/sil/share/sil/hook/cmake_prefix_path.sh'
+[24.765s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/lib'
+[24.765s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/bin'
+[24.765s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/lib/pkgconfig/sil.pc'
+[24.766s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/lib/python3.8/site-packages'
+[24.766s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/sil/bin'
+[24.973s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.ps1'
+[24.974s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/sil/share/sil/package.dsv'
+[24.975s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.sh'
+[24.976s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.bash'
+[24.977s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/sil/share/sil/package.zsh'
+[24.977s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/sil/share/colcon-core/packages/sil)
+[24.980s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wheels_controller)
+[24.981s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/wheels_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/wheels_controller
+[25.190s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller' for CMake module files
+[25.191s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller' for CMake config files
+[25.192s] Level 1:colcon.colcon_core.shell:create_environment_hook('wheels_controller', 'cmake_prefix_path')
+[25.398s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/hook/cmake_prefix_path.ps1'
+[25.399s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/hook/cmake_prefix_path.dsv'
+[25.400s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/hook/cmake_prefix_path.sh'
+[25.401s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/lib'
+[25.401s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/bin'
+[25.401s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/lib/pkgconfig/wheels_controller.pc'
+[25.402s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/lib/python3.8/site-packages'
+[25.402s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/bin'
+[25.610s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.ps1'
+[25.612s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv'
+[25.612s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.sh'
+[25.613s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.bash'
+[25.613s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.zsh'
+[25.614s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/wheels_controller/share/colcon-core/packages/wheels_controller)
+[25.624s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/src/arm_ik' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/nvidia/robotics-orin/build/arm_ik/prefix_override:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/arm_ik build --build-base /home/nvidia/robotics-orin/build/arm_ik/build install --record /home/nvidia/robotics-orin/build/arm_ik/install.log --single-version-externally-managed
+[25.834s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik' for CMake module files
+[25.835s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik' for CMake config files
+[25.837s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik/lib'
+[25.837s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik/bin'
+[25.837s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik/lib/pkgconfig/arm_ik.pc'
+[25.838s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages'
+[25.838s] Level 1:colcon.colcon_core.shell:create_environment_hook('arm_ik', 'pythonpath')
+[26.046s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/hook/pythonpath.ps1'
+[26.047s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/hook/pythonpath.dsv'
+[26.048s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/hook/pythonpath.sh'
+[26.049s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_ik/bin'
+[26.049s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(arm_ik)
+[26.301s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/package.ps1'
+[26.302s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/package.dsv'
+[26.303s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/package.sh'
+[26.304s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/package.bash'
+[26.305s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_ik/share/arm_ik/package.zsh'
+[26.305s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/arm_ik/share/colcon-core/packages/arm_ik)
+[26.513s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(arm_controller)
+[26.718s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller' for CMake module files
+[26.719s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller' for CMake config files
+[26.720s] Level 1:colcon.colcon_core.shell:create_environment_hook('arm_controller', 'cmake_prefix_path')
+[26.923s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/cmake_prefix_path.ps1'
+[26.925s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/cmake_prefix_path.dsv'
+[26.925s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/cmake_prefix_path.sh'
+[26.926s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/lib'
+[26.926s] Level 1:colcon.colcon_core.shell:create_environment_hook('arm_controller', 'ld_library_path_lib')
+[27.132s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/ld_library_path_lib.ps1'
+[27.133s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/ld_library_path_lib.dsv'
+[27.134s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/hook/ld_library_path_lib.sh'
+[27.134s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/bin'
+[27.134s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/lib/pkgconfig/arm_controller.pc'
+[27.135s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/lib/python3.8/site-packages'
+[27.135s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/arm_controller/bin'
+[27.341s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.ps1'
+[27.342s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.dsv'
+[27.343s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.sh'
+[27.344s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.bash'
+[27.344s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.zsh'
+[27.345s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/arm_controller/share/colcon-core/packages/arm_controller)
+[27.554s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(wheels_controller)
+[27.759s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller' for CMake module files
+[27.760s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller' for CMake config files
+[27.761s] Level 1:colcon.colcon_core.shell:create_environment_hook('wheels_controller', 'cmake_prefix_path')
+[27.966s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/hook/cmake_prefix_path.ps1'
+[27.967s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/hook/cmake_prefix_path.dsv'
+[27.968s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/hook/cmake_prefix_path.sh'
+[27.969s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/lib'
+[27.969s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/bin'
+[27.969s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/lib/pkgconfig/wheels_controller.pc'
+[27.969s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/lib/python3.8/site-packages'
+[27.969s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/wheels_controller/bin'
+[28.175s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.ps1'
+[28.177s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv'
+[28.177s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.sh'
+[28.178s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.bash'
+[28.179s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.zsh'
+[28.179s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/wheels_controller/share/colcon-core/packages/wheels_controller)
+[34.503s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6
+[34.606s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/absenc_interface
+[34.779s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(absenc_interface)
+[34.780s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/absenc_interface
+[35.014s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface' for CMake module files
+[35.016s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface' for CMake config files
+[35.017s] Level 1:colcon.colcon_core.shell:create_environment_hook('absenc_interface', 'cmake_prefix_path')
+[35.222s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/cmake_prefix_path.ps1'
+[35.223s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/cmake_prefix_path.dsv'
+[35.224s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/cmake_prefix_path.sh'
+[35.225s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/lib'
+[35.225s] Level 1:colcon.colcon_core.shell:create_environment_hook('absenc_interface', 'ld_library_path_lib')
+[35.430s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/ld_library_path_lib.ps1'
+[35.432s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/ld_library_path_lib.dsv'
+[35.432s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/ld_library_path_lib.sh'
+[35.433s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/bin'
+[35.433s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/lib/pkgconfig/absenc_interface.pc'
+[35.433s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.8/site-packages'
+[35.434s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/bin'
+[35.639s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.ps1'
+[35.640s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.dsv'
+[35.641s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.sh'
+[35.642s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.bash'
+[35.642s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.zsh'
+[35.643s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/absenc_interface/share/colcon-core/packages/absenc_interface)
+[35.944s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(absenc_interface)
+[36.149s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface' for CMake module files
+[36.150s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface' for CMake config files
+[36.151s] Level 1:colcon.colcon_core.shell:create_environment_hook('absenc_interface', 'cmake_prefix_path')
+[36.360s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/cmake_prefix_path.ps1'
+[36.362s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/cmake_prefix_path.dsv'
+[36.362s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/cmake_prefix_path.sh'
+[36.363s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/lib'
+[36.363s] Level 1:colcon.colcon_core.shell:create_environment_hook('absenc_interface', 'ld_library_path_lib')
+[36.568s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/ld_library_path_lib.ps1'
+[36.569s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/ld_library_path_lib.dsv'
+[36.570s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/hook/ld_library_path_lib.sh'
+[36.570s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/bin'
+[36.570s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/lib/pkgconfig/absenc_interface.pc'
+[36.571s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.8/site-packages'
+[36.571s] Level 1:colcon.colcon_core.environment:checking '/home/nvidia/robotics-orin/install/absenc_interface/bin'
+[36.776s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.ps1'
+[36.778s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.dsv'
+[36.779s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.sh'
+[36.779s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.bash'
+[36.780s] INFO:colcon.colcon_core.shell:Creating package script '/home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.zsh'
+[36.781s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nvidia/robotics-orin/install/absenc_interface/share/colcon-core/packages/absenc_interface)
+[36.781s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[36.782s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[36.782s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[36.782s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[36.996s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[36.996s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[36.997s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[37.032s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[37.237s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/robotics-orin/install/local_setup.ps1'
+[37.238s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nvidia/robotics-orin/install/_local_setup_util_ps1.py'
+[37.240s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/robotics-orin/install/setup.ps1'
+[37.445s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/robotics-orin/install/local_setup.sh'
+[37.446s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nvidia/robotics-orin/install/_local_setup_util_sh.py'
+[37.447s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/robotics-orin/install/setup.sh'
+[37.651s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/robotics-orin/install/local_setup.bash'
+[37.652s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/robotics-orin/install/setup.bash'
+[37.855s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nvidia/robotics-orin/install/local_setup.zsh'
+[37.856s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nvidia/robotics-orin/install/setup.zsh'

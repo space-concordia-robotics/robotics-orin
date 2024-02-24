@@ -1,0 +1,84 @@
+[1.749s] Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[1.842s] [  3%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.842s] [35m[1mScanning dependencies of target ament_cmake_python_copy_arm_controller[0m
+[1.843s] [35m[1mScanning dependencies of target arm_controller__cpp[0m
+[1.865s] [  6%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.884s] [  6%] Built target ament_cmake_python_copy_arm_controller
+[1.905s] [35m[1mScanning dependencies of target ament_cmake_python_build_arm_controller_egg[0m
+[2.447s] [  6%] Built target arm_controller__cpp
+[2.491s] [  9%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.515s] [ 12%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.527s] [35m[1mScanning dependencies of target arm_controller__rosidl_generator_c[0m
+[2.534s] [ 15%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.622s] [ 18%] [32mBuilding C object CMakeFiles/arm_controller__rosidl_generator_c.dir/rosidl_generator_c/arm_controller/msg/detail/arm_motor_values__functions.c.o[0m
+[2.905s] [ 21%] [32m[1mLinking C shared library libarm_controller__rosidl_generator_c.so[0m
+[2.910s] running egg_info
+[2.912s] creating arm_controller.egg-info
+[2.915s] writing arm_controller.egg-info/PKG-INFO
+[2.917s] writing dependency_links to arm_controller.egg-info/dependency_links.txt
+[2.919s] writing top-level names to arm_controller.egg-info/top_level.txt
+[2.952s] writing manifest file 'arm_controller.egg-info/SOURCES.txt'
+[3.083s] reading manifest file 'arm_controller.egg-info/SOURCES.txt'
+[3.087s] writing manifest file 'arm_controller.egg-info/SOURCES.txt'
+[3.110s] [ 21%] Built target arm_controller__rosidl_generator_c
+[3.192s] [ 21%] Built target ament_cmake_python_build_arm_controller_egg
+[3.200s] [ 24%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.208s] [ 27%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[3.247s] [ 30%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[3.360s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_cpp[0m
+[3.435s] [ 33%] [32mBuilding CXX object CMakeFiles/arm_controller__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/arm_controller/msg/arm_motor_values__type_support.cpp.o[0m
+[3.500s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_fastrtps_cpp[0m
+[3.575s] [ 36%] [32mBuilding CXX object CMakeFiles/arm_controller__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/arm_controller/msg/detail/dds_fastrtps/arm_motor_values__type_support.cpp.o[0m
+[3.598s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_introspection_cpp[0m
+[3.666s] [ 39%] [32mBuilding CXX object CMakeFiles/arm_controller__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/arm_controller/msg/detail/arm_motor_values__type_support.cpp.o[0m
+[4.030s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_fastrtps_c[0m
+[4.060s] [ 42%] [32mBuilding CXX object CMakeFiles/arm_controller__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/arm_controller/msg/detail/arm_motor_values__type_support_c.cpp.o[0m
+[4.075s] [ 45%] [32m[1mLinking CXX shared library libarm_controller__rosidl_typesupport_cpp.so[0m
+[4.110s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_introspection_c[0m
+[4.141s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_c[0m
+[4.164s] [ 48%] [32mBuilding C object CMakeFiles/arm_controller__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/arm_controller/msg/detail/arm_motor_values__type_support.c.o[0m
+[4.190s] [ 51%] [32mBuilding CXX object CMakeFiles/arm_controller__rosidl_typesupport_c.dir/rosidl_typesupport_c/arm_controller/msg/arm_motor_values__type_support.cpp.o[0m
+[4.229s] [ 51%] Built target arm_controller__rosidl_typesupport_cpp
+[4.273s] [ 54%] [32m[1mLinking C shared library libarm_controller__rosidl_typesupport_introspection_c.so[0m
+[4.287s] [ 57%] [32m[1mLinking CXX shared library libarm_controller__rosidl_typesupport_c.so[0m
+[4.377s] [ 57%] Built target arm_controller__rosidl_typesupport_introspection_c
+[4.439s] [ 57%] Built target arm_controller__rosidl_typesupport_c
+[4.625s] [ 60%] [32m[1mLinking CXX shared library libarm_controller__rosidl_typesupport_introspection_cpp.so[0m
+[4.633s] [ 63%] [32m[1mLinking CXX shared library libarm_controller__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.760s] [ 63%] Built target arm_controller__rosidl_typesupport_introspection_cpp
+[4.764s] [ 66%] [32m[1mLinking CXX shared library libarm_controller__rosidl_typesupport_fastrtps_c.so[0m
+[4.778s] [ 66%] Built target arm_controller__rosidl_typesupport_fastrtps_cpp
+[4.892s] [ 66%] Built target arm_controller__rosidl_typesupport_fastrtps_c
+[4.910s] [35m[1mScanning dependencies of target arm_controller[0m
+[4.930s] [ 66%] Built target arm_controller
+[4.950s] [35m[1mScanning dependencies of target arm_controller__py[0m
+[4.950s] [35m[1mScanning dependencies of target arm_controller_node[0m
+[4.969s] [ 69%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.039s] [ 72%] [32mBuilding CXX object CMakeFiles/arm_controller_node.dir/src/arm_controller_node.cpp.o[0m
+[5.556s] [ 72%] Built target arm_controller__py
+[5.575s] [35m[1mScanning dependencies of target arm_controller__rosidl_generator_py[0m
+[5.625s] [ 75%] [32mBuilding C object CMakeFiles/arm_controller__rosidl_generator_py.dir/rosidl_generator_py/arm_controller/msg/_arm_motor_values_s.c.o[0m
+[5.804s] [ 78%] [32m[1mLinking C shared library rosidl_generator_py/arm_controller/libarm_controller__rosidl_generator_py.so[0m
+[5.866s] [ 78%] Built target arm_controller__rosidl_generator_py
+[5.885s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_c__pyext[0m
+[5.885s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_introspection_c__pyext[0m
+[5.886s] [35m[1mScanning dependencies of target arm_controller__rosidl_typesupport_fastrtps_c__pyext[0m
+[5.919s] [ 81%] [32mBuilding C object CMakeFiles/arm_controller__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/arm_controller/_arm_controller_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.922s] [ 84%] [32mBuilding C object CMakeFiles/arm_controller__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/arm_controller/_arm_controller_s.ep.rosidl_typesupport_c.c.o[0m
+[5.932s] [ 87%] [32mBuilding C object CMakeFiles/arm_controller__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/arm_controller/_arm_controller_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[6.082s] [ 90%] [32m[1mLinking C shared library rosidl_generator_py/arm_controller/arm_controller_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so[0m
+[6.094s] [ 93%] [32m[1mLinking C shared library rosidl_generator_py/arm_controller/arm_controller_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so[0m
+[6.103s] [ 96%] [32m[1mLinking C shared library rosidl_generator_py/arm_controller/arm_controller_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so[0m
+[6.151s] [ 96%] Built target arm_controller__rosidl_typesupport_fastrtps_c__pyext
+[6.162s] [ 96%] Built target arm_controller__rosidl_typesupport_introspection_c__pyext
+[6.168s] [ 96%] Built target arm_controller__rosidl_typesupport_c__pyext
+[9.914s] [01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:[m[K In member function ‘[01m[Kvoid ArmControllerNode::ArmMessageCallback(arm_controller::msg::ArmMotorValues_<std::allocator<void> >::SharedPtr)[m[K’:
+[9.914s] [01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:62:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[9.914s]    62 |     int [01;35m[Kstatus[m[K = write(fd,out_buf,sizeof(out_buf));
+[9.914s]       |         [01;35m[K^~~~~~[m[K
+[9.918s] [01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:[m[K In member function ‘[01m[Kvoid ArmControllerNode::JoyMessageCallback(sensor_msgs::msg::Joy_<std::allocator<void> >::SharedPtr)[m[K’:
+[9.919s] [01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:110:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[9.919s]   110 |     int [01;35m[Kstatus[m[K = write(fd,out_buf,sizeof(out_buf));
+[9.919s]       |         [01;35m[K^~~~~~[m[K
+[27.298s] [100%] [32m[1mLinking CXX executable arm_controller_node[0m
+[28.373s] [100%] Built target arm_controller_node

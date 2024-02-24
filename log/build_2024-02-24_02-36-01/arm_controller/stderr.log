@@ -1,0 +1,18 @@
+In file included from [01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:2[m[K:
+[01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:[m[K In member function ‘[01m[Kvoid ArmControllerNode::ArmMessageCallback(arm_controller::msg::ArmMotorValues_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:57:34:[m[K [01;31m[Kerror: [m[K‘[01m[Kspeed[m[K’ was not declared in this scope; did you mean ‘[01m[Kspeeds[m[K’?
+   57 |         float swapped = bswap_32([01;31m[Kspeed[m[K[i]);
+      |                                  [01;31m[K^~~~~[m[K
+[01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:55:11:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kspeeds[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   55 |     float [01;35m[Kspeeds[m[K [6]= {msg->val[0],msg->val[1],msg->val[2],msg->val[3],0,0};
+      |           [01;35m[K^~~~~~[m[K
+[01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:62:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   62 |     int [01;35m[Kstatus[m[K = write(fd,out_buf,sizeof(out_buf));
+      |         [01;35m[K^~~~~~[m[K
+[01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:[m[K In member function ‘[01m[Kvoid ArmControllerNode::JoyMessageCallback(sensor_msgs::msg::Joy_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:109:9:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kstatus[m[K’ [[01;35m[K-Wunused-variable[m[K]
+  109 |     int [01;35m[Kstatus[m[K = write(fd,out_buf,sizeof(out_buf));
+      |         [01;35m[K^~~~~~[m[K
+make[2]: *** [CMakeFiles/arm_controller_node.dir/build.make:63: CMakeFiles/arm_controller_node.dir/src/arm_controller_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/arm_controller_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

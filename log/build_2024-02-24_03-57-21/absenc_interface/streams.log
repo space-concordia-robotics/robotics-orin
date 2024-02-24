@@ -1,0 +1,104 @@
+[0.659s] Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6
+[0.755s] [  8%] Built target absenc_interface__cpp
+[0.755s] [ 11%] Built target absenc_interface__rosidl_generator_c
+[0.790s] [ 26%] Built target absenc_interface__rosidl_typesupport_c
+[0.791s] [ 29%] Built target absenc_interface__rosidl_typesupport_introspection_c
+[0.828s] [ 47%] Built target absenc_interface__rosidl_typesupport_cpp
+[0.828s] [ 47%] Built target absenc_interface__rosidl_typesupport_introspection_cpp
+[0.834s] [ 55%] Built target absenc_interface__rosidl_typesupport_fastrtps_cpp
+[0.884s] [ 64%] Built target absenc_interface__rosidl_typesupport_fastrtps_c
+[0.919s] [ 64%] Built target absenc_interface
+[0.939s] [35m[1mScanning dependencies of target absenc_node[0m
+[0.954s] [ 67%] Built target absenc_interface__py
+[0.983s] [ 70%] [32mBuilding CXX object CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o[0m
+[0.995s] [ 76%] Built target absenc_interface__python
+[1.036s] [ 82%] Built target absenc_interface__rosidl_typesupport_introspection_c__pyext
+[1.036s] [ 88%] Built target absenc_interface__rosidl_typesupport_c__pyext
+[1.044s] [ 94%] Built target absenc_interface__rosidl_typesupport_fastrtps_c__pyext
+[3.512s] [01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:[m[K In member function ‘[01m[Kvoid AbsEnc::ikValuesCallback(sensor_msgs::msg::JointState_<std::allocator<void> >::SharedPtr)[m[K’:
+[3.512s] [01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:87:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::array<float, 4>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.512s]    87 |       for (int i = 0; [01;35m[Ki < std::size(ik_angles)[m[K; i++) {
+[3.513s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[3.513s] [01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:92:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::array<float, 4>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+[3.513s]    92 |       for (int i = 0; [01;35m[Ki < std::size(ik_angles)[m[K; i++) {
+[3.513s]       |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[10.992s] [ 97%] [32m[1mLinking CXX executable absenc_node[0m
+[11.432s] [100%] Built target absenc_node
+[11.455s] Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6
+[11.559s] Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/absenc_interface
+[11.576s] -- Install configuration: ""
+[11.577s] -- Execute custom install script
+[11.577s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/rosidl_interfaces/absenc_interface
+[11.578s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__functions.h
+[11.578s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__struct.h
+[11.578s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__type_support.h
+[11.579s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/encoder_values.h
+[11.579s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/rosidl_generator_c__visibility_control.h
+[11.579s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/library_path.sh
+[11.580s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/library_path.dsv
+[11.580s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_fastrtps_c.h
+[11.581s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[11.581s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_fastrtps_c.so
+[11.582s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_fastrtps_cpp.hpp
+[11.582s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[11.583s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_fastrtps_cpp.so
+[11.583s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_introspection_c.h
+[11.584s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[11.584s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__builder.hpp
+[11.585s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__struct.hpp
+[11.585s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__traits.hpp
+[11.585s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__type_support.hpp
+[11.585s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/encoder_values.hpp
+[11.586s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/rosidl_generator_cpp__visibility_control.hpp
+[11.586s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_introspection_cpp.hpp
+[11.587s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/pythonpath.sh
+[11.587s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/pythonpath.dsv
+[11.587s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages/absenc_interface/__init__.py
+[11.588s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages/absenc_interface/msg/__init__.py
+[11.588s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages/absenc_interface/msg/_encoder_values.py
+[11.589s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so
+[11.589s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so
+[11.590s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so
+[11.590s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__python.so
+[11.591s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/msg/EncoderValues.idl
+[11.591s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/msg/EncoderValues.msg
+[11.592s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/absenc_interface/absenc_node
+[11.592s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/package_run_dependencies/absenc_interface
+[11.592s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/parent_prefix_path/absenc_interface
+[11.593s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/ament_prefix_path.sh
+[11.593s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/ament_prefix_path.dsv
+[11.593s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/path.sh
+[11.594s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/path.dsv
+[11.594s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.bash
+[11.595s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.sh
+[11.595s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.zsh
+[11.595s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.dsv
+[11.596s] -- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.dsv
+[11.613s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/packages/absenc_interface
+[11.614s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/rosidl_cmake-extras.cmake
+[11.615s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_dependencies-extras.cmake
+[11.615s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_libraries-extras.cmake
+[11.615s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_targets-extras.cmake
+[11.616s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_include_directories-extras.cmake
+[11.616s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[11.616s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[11.616s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interfaceConfig.cmake
+[11.617s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interfaceConfig-version.cmake
+[11.617s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.xml
+[11.617s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_generator_c.so
+[11.617s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_introspection_c.so
+[11.618s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_c.so
+[11.618s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_introspection_cpp.so
+[11.618s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_cpp.so
+[11.691s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_generator_cExport.cmake
+[11.691s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_generator_cExport-noconfig.cmake
+[11.692s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cExport.cmake
+[11.692s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[11.693s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cExport.cmake
+[11.693s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cExport-noconfig.cmake
+[11.693s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_generator_cppExport.cmake
+[11.693s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cppExport.cmake
+[11.694s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[11.694s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cppExport.cmake
+[11.694s] -- Up-to-date: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cppExport-noconfig.cmake
+[11.697s] Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/absenc_interface

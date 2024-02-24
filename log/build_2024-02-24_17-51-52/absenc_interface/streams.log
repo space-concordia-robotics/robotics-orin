@@ -1,0 +1,49 @@
+[5.389s] Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/absenc_interface -- -j6 -l6
+[7.062s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[7.062s] -- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3") 
+[7.062s] -- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3
+[7.062s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[7.062s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[7.062s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.062s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[7.063s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.063s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[7.063s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[7.063s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[7.063s] -- Found arm_controller: 0.0.0 (/home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake)
+[7.063s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[7.063s] -- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found version "3.11.5") 
+[7.063s] -- Found ament_cmake_ros: 0.9.2 (/opt/ros/foxy/share/ament_cmake_ros/cmake)
+[7.063s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[7.065s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[7.108s] -- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3.5") 
+[7.109s] -- Found python_cmake_module: 0.8.1 (/opt/ros/foxy/share/python_cmake_module/cmake)
+[7.162s] -- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3
+[7.164s] -- Using PYTHON_INCLUDE_DIRS: /home/nvidia/anaconda3/include/python3.11
+[7.164s] -- Using PYTHON_LIBRARIES: /home/nvidia/anaconda3/lib/libpython3.11.so
+[7.245s] -- Configuring done
+[7.313s] -- Generating done
+[7.320s] -- Build files have been written to: /home/nvidia/robotics-orin/build/absenc_interface
+[7.448s] [  8%] Built target absenc_interface__rosidl_generator_c
+[7.451s] [ 11%] Built target absenc_interface__cpp
+[7.521s] [ 20%] Built target absenc_interface__rosidl_typesupport_introspection_c
+[7.521s] [ 29%] Built target absenc_interface__rosidl_typesupport_introspection_cpp
+[7.522s] [ 38%] Built target absenc_interface__rosidl_typesupport_c
+[7.538s] [ 47%] Built target absenc_interface__rosidl_typesupport_cpp
+[7.546s] [ 55%] Built target absenc_interface__rosidl_typesupport_fastrtps_cpp
+[7.598s] [ 64%] Built target absenc_interface__rosidl_typesupport_fastrtps_c
+[7.637s] [ 64%] Built target absenc_interface
+[7.660s] [35m[1mScanning dependencies of target absenc_node[0m
+[7.681s] [ 67%] Built target absenc_interface__py
+[7.709s] [ 70%] [32mBuilding CXX object CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o[0m
+[7.727s] [ 76%] Built target absenc_interface__python
+[7.774s] [ 82%] Built target absenc_interface__rosidl_typesupport_introspection_c__pyext
+[7.776s] [ 88%] Built target absenc_interface__rosidl_typesupport_c__pyext
+[7.781s] [ 94%] Built target absenc_interface__rosidl_typesupport_fastrtps_c__pyext
+[7.878s] [01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:12:10:[m[K [01;31m[Kfatal error: [m[Karm_controller/msg/arm_motor_values.hpp: No such file or directory
+[7.878s]    12 | #include [01;31m[K"arm_controller/msg/arm_motor_values.hpp"[m[K
+[7.878s]       |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+[7.878s] compilation terminated.
+[7.883s] make[2]: *** [CMakeFiles/absenc_node.dir/build.make:63: CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o] Error 1
+[7.884s] make[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/absenc_node.dir/all] Error 2
+[7.885s] make: *** [Makefile:141: all] Error 2

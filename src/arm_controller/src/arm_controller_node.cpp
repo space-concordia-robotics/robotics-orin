@@ -1,4 +1,7 @@
 #include "arm_controller_node.h"
+#include <byteswap.h>
+
+
 
 ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
 
@@ -7,7 +10,7 @@ ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
     fd = open("/dev/ttyTHS0",O_RDWR);
     // fd = open("/dev/ttyACM0",O_RDWR);
     if(fd < 0){
-        RCLCPP_ERROR(this->get_logger(),"Error opening file \n");
+        RCLCPP_ERROR(this->get_logger(),"Error opening file %i\n",errno);
     }
 
 
@@ -51,6 +54,7 @@ void ArmControllerNode::ArmMessageCallback(const arm_controller::msg::ArmMotorVa
 
     float speeds [6]= {msg->val[0],msg->val[1],msg->val[2],msg->val[3],0,0};
     for(int i = 0 ; i < 6 ; i++){
+        // float swapped = bswap_32(speeds[i]);
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speeds[i],sizeof(float));
     }
     out_buf[26] = 0x0A;
@@ -64,8 +68,9 @@ void ArmControllerNode::ArmMessageCallback(const arm_controller::msg::ArmMotorVa
 
 void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){    
 
-    if(joy_msg->buttons[5] == 0)
+    if(joy_msg->buttons[5] == 0){
         return;
+    }
     // LEFT HORIZ : axes[0]
     // LEFT VERT : axes[1]
     // if(joy_msg->buttons[4] == 1){
@@ -97,6 +102,7 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
         float speed = speeds[i] * 250.f;
         std::cout << speed << "\n";
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speed,sizeof(float));
+        
     }
     out_buf[26] = 0x0A;
     

@@ -1,0 +1,56 @@
+[0.887s] Invoking command in '/home/nvidia/robotics-orin/build/sil': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/foxy:/home/nvidia/ros2_humble/install/ament_uncrustify:/home/nvidia/ros2_humble/install/tracetools_trace:/home/nvidia/ros2_humble/install/tracetools_read:/home/nvidia/ros2_humble/install/sensor_msgs_py:/home/nvidia/ros2_humble/install/rpyutils:/home/nvidia/ros2_humble/install/rosidl_runtime_py:/home/nvidia/ros2_humble/install/rosidl_cli:/home/nvidia/ros2_humble/install/launch_pytest:/home/nvidia/ros2_humble/install/launch_testing:/home/nvidia/ros2_humble/install/launch_yaml:/home/nvidia/ros2_humble/install/launch_xml:/home/nvidia/ros2_humble/install/launch:/home/nvidia/ros2_humble/install/osrf_pycommon:/home/nvidia/ros2_humble/install/domain_coordinator:/home/nvidia/ros2_humble/install/ament_xmllint:/home/nvidia/ros2_humble/install/ament_pyflakes:/home/nvidia/ros2_humble/install/ament_pycodestyle:/home/nvidia/ros2_humble/install/ament_pep257:/home/nvidia/ros2_humble/install/ament_pclint:/home/nvidia/ros2_humble/install/ament_package:/home/nvidia/ros2_humble/install/ament_mypy:/home/nvidia/ros2_humble/install/ament_lint_cmake:/home/nvidia/ros2_humble/install/ament_flake8:/home/nvidia/ros2_humble/install/ament_copyright:/home/nvidia/ros2_humble/install/ament_lint:/home/nvidia/ros2_humble/install/ament_index_python:/home/nvidia/ros2_humble/install/ament_cpplint:/home/nvidia/ros2_humble/install/ament_cppcheck:/home/nvidia/ros2_humble/install/ament_clang_tidy:/home/nvidia/ros2_humble/install/ament_clang_format CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nvidia/robotics-orin/src/sil -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/sil
+[1.020s] -- The C compiler identification is GNU 9.4.0
+[1.163s] -- The CXX compiler identification is GNU 9.4.0
+[1.182s] -- Check for working C compiler: /usr/bin/cc
+[1.339s] -- Check for working C compiler: /usr/bin/cc -- works
+[1.340s] -- Detecting C compiler ABI info
+[1.490s] -- Detecting C compiler ABI info - done
+[1.506s] -- Detecting C compile features
+[1.506s] -- Detecting C compile features - done
+[1.510s] -- Check for working CXX compiler: /usr/bin/c++
+[1.684s] -- Check for working CXX compiler: /usr/bin/c++ -- works
+[1.685s] -- Detecting CXX compiler ABI info
+[1.854s] -- Detecting CXX compiler ABI info - done
+[1.870s] -- Detecting CXX compile features
+[1.871s] -- Detecting CXX compile features - done
+[1.874s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[1.936s] -- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3") 
+[1.936s] -- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3
+[2.348s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[2.390s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.500s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.513s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[2.743s] -- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  
+[2.803s] -- Found FastRTPS: /opt/ros/foxy/include  
+[2.953s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[3.050s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[3.070s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.072s] -- Looking for pthread.h
+[3.236s] -- Looking for pthread.h - found
+[3.237s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[3.400s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed
+[3.400s] -- Looking for pthread_create in pthreads
+[3.544s] -- Looking for pthread_create in pthreads - not found
+[3.544s] -- Looking for pthread_create in pthread
+[3.708s] -- Looking for pthread_create in pthread - found
+[3.711s] -- Found Threads: TRUE  
+[3.957s] -- Found ament_lint_auto: 0.9.8 (/opt/ros/foxy/share/ament_lint_auto/cmake)
+[4.013s] Traceback (most recent call last):
+[4.013s]   File "/opt/ros/foxy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 21, in <module>
+[4.014s]     from catkin_pkg.package import parse_package_string
+[4.014s] ModuleNotFoundError: No module named 'catkin_pkg'
+[4.023s] CMake Error at /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:94 (message):
+[4.023s]   execute_process(/home/nvidia/anaconda3/bin/python3
+[4.023s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[4.023s]   /home/nvidia/robotics-orin/src/sil/package.xml
+[4.023s]   /home/nvidia/robotics-orin/build/sil/ament_cmake_core/package.cmake)
+[4.023s]   returned error code 1
+[4.023s] Call Stack (most recent call first):
+[4.023s]   /opt/ros/foxy/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[4.023s]   /opt/ros/foxy/share/ament_lint_auto/cmake/ament_lint_auto_find_test_dependencies.cmake:31 (ament_package_xml)
+[4.023s]   CMakeLists.txt:41 (ament_lint_auto_find_test_dependencies)
+[4.024s] 
+[4.024s] 
+[4.027s] -- Configuring incomplete, errors occurred!
+[4.027s] See also "/home/nvidia/robotics-orin/build/sil/CMakeFiles/CMakeOutput.log".
+[4.027s] See also "/home/nvidia/robotics-orin/build/sil/CMakeFiles/CMakeError.log".

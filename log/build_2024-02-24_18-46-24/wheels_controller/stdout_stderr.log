@@ -1,0 +1,13 @@
+[ 25%] [32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o[0m
+In file included from [01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:1[m[K:
+[01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.h:26:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kcallback_group[m[K’ in namespace ‘[01m[Krclcpp[m[K’ does not name a type; did you mean ‘[01m[KCallbackGroup[m[K’?
+   26 |     rclcpp::[01;31m[Kcallback_group[m[K::CallbackGroup::SharedPtr update_group;
+      |             [01;31m[K^~~~~~~~~~~~~~[m[K
+      |             [32m[KCallbackGroup[m[K
+[01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:[m[K In member function ‘[01m[Kvoid WheelsControllerNode::pollControllersCallback()[m[K’:
+[01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:49:22:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kframe[m[K’ [[01;35m[K-Wunused-variable[m[K]
+   49 |     struct can_frame [01;35m[Kframe[m[K;
+      |                      [01;35m[K^~~~~[m[K
+make[2]: *** [CMakeFiles/wheels_controller_node.dir/build.make:63: CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o] Error 1
+make[1]: *** [CMakeFiles/Makefile2:78: CMakeFiles/wheels_controller_node.dir/all] Error 2
+make: *** [Makefile:141: all] Error 2

@@ -1,0 +1,6 @@
+[35m[1mScanning dependencies of target wheels_controller_node[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/rev_motor_controller.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o[0m
+[ 75%] [32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/can_controller.cpp.o[0m
+[100%] [32m[1mLinking CXX executable wheels_controller_node[0m
+[100%] Built target wheels_controller_node

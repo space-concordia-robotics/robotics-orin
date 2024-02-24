@@ -1,0 +1,144 @@
+[2.318s] Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[2.423s] [  3%] Built target arm_controller__cpp
+[2.430s] [ 12%] Built target arm_controller__rosidl_generator_c
+[2.441s] [ 12%] Built target ament_cmake_python_copy_arm_controller
+[2.506s] [ 21%] Built target arm_controller__rosidl_typesupport_cpp
+[2.509s] [ 30%] Built target arm_controller__rosidl_typesupport_fastrtps_cpp
+[2.520s] [ 39%] Built target arm_controller__rosidl_typesupport_introspection_c
+[2.521s] [ 48%] Built target arm_controller__rosidl_typesupport_introspection_cpp
+[2.537s] [ 57%] Built target arm_controller__rosidl_typesupport_c
+[2.567s] [ 66%] Built target arm_controller__rosidl_typesupport_fastrtps_c
+[2.617s] [ 66%] Built target arm_controller
+[2.689s] [ 72%] Built target arm_controller_node
+[2.717s] [ 75%] Built target arm_controller__py
+[2.761s] [ 81%] Built target arm_controller__rosidl_generator_py
+[2.862s] [ 87%] Built target arm_controller__rosidl_typesupport_introspection_c__pyext
+[2.868s] [ 93%] Built target arm_controller__rosidl_typesupport_c__pyext
+[2.869s] [100%] Built target arm_controller__rosidl_typesupport_fastrtps_c__pyext
+[3.106s] running egg_info
+[3.109s] writing arm_controller.egg-info/PKG-INFO
+[3.109s] writing dependency_links to arm_controller.egg-info/dependency_links.txt
+[3.109s] writing top-level names to arm_controller.egg-info/top_level.txt
+[3.201s] reading manifest file 'arm_controller.egg-info/SOURCES.txt'
+[3.202s] writing manifest file 'arm_controller.egg-info/SOURCES.txt'
+[3.275s] [100%] Built target ament_cmake_python_build_arm_controller_egg
+[3.371s] Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[4.205s] Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/arm_controller
+[4.223s] -- Install configuration: ""
+[4.224s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/rosidl_interfaces/arm_controller
+[4.224s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller
+[4.224s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg
+[4.224s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/arm_motor_values.h
+[4.225s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail
+[4.225s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__functions.h
+[4.225s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__functions.c
+[4.225s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__struct.h
+[4.226s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__type_support.h
+[4.226s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/rosidl_generator_c__visibility_control.h
+[4.226s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/library_path.sh
+[4.226s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/library_path.dsv
+[4.226s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_generator_c.so
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_fastrtps_c.h
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_fastrtps_c.so
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller
+[4.227s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/arm_motor_values.hpp
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__traits.hpp
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__struct.hpp
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__builder.hpp
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller
+[4.228s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg
+[4.229s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[4.229s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail
+[4.229s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_fastrtps_cpp.hpp
+[4.229s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/dds_fastrtps
+[4.229s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_fastrtps_cpp.so
+[4.229s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller
+[4.230s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg
+[4.230s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[4.230s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail
+[4.230s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_introspection_c.h
+[4.230s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__type_support.c
+[4.231s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_introspection_c.so
+[4.231s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_c.so
+[4.231s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller
+[4.231s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg
+[4.231s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail
+[4.231s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__rosidl_typesupport_introspection_cpp.hpp
+[4.232s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/include/arm_controller/arm_controller/msg/detail/arm_motor_values__type_support.cpp
+[4.232s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_introspection_cpp.so
+[4.232s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_typesupport_cpp.so
+[4.232s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/pythonpath.sh
+[4.232s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/pythonpath.dsv
+[4.232s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller-0.0.0-py3.9.egg-info
+[4.233s] -- Installing: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller-0.0.0-py3.9.egg-info/dependency_links.txt
+[4.233s] -- Installing: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller-0.0.0-py3.9.egg-info/SOURCES.txt
+[4.233s] -- Installing: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller-0.0.0-py3.9.egg-info/PKG-INFO
+[4.233s] -- Installing: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller-0.0.0-py3.9.egg-info/top_level.txt
+[4.233s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller
+[4.234s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so
+[4.234s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so
+[4.234s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/__init__.py
+[4.234s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/msg
+[4.234s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/msg/_arm_motor_values_s.c
+[4.234s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/msg/__init__.py
+[4.235s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/msg/_arm_motor_values.py
+[4.235s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so
+[4.235s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/libarm_controller__rosidl_generator_py.so
+[4.235s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/_arm_controller_s.ep.rosidl_typesupport_fastrtps_c.c
+[4.235s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/_arm_controller_s.ep.rosidl_typesupport_introspection_c.c
+[4.236s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/_arm_controller_s.ep.rosidl_typesupport_c.c
+[4.293s] Listing '/home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller'...
+[4.293s] Listing '/home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/msg'...
+[4.309s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so
+[4.310s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so
+[4.310s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/python3.9/site-packages/arm_controller/arm_controller_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so
+[4.311s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/libarm_controller__rosidl_generator_py.so
+[4.311s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/msg/ArmMotorValues.idl
+[4.312s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/msg/ArmMotorValues.msg
+[4.312s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/lib/arm_controller/arm_controller_node
+[4.312s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/package_run_dependencies/arm_controller
+[4.312s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/parent_prefix_path/arm_controller
+[4.313s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.sh
+[4.313s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.dsv
+[4.313s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.sh
+[4.314s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.dsv
+[4.314s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.bash
+[4.314s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.sh
+[4.314s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.zsh
+[4.314s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.dsv
+[4.314s] -- Installing: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.dsv
+[4.314s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/packages/arm_controller
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_generator_cExport.cmake
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_generator_cExport-noconfig.cmake
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_typesupport_fastrtps_cExport.cmake
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_generator_cppExport.cmake
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_typesupport_fastrtps_cppExport.cmake
+[4.315s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cExport.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cExport.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cExport-noconfig.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cppExport.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[4.316s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cppExport.cmake
+[4.317s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controller__rosidl_typesupport_cppExport-noconfig.cmake
+[4.317s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_generator_pyExport.cmake
+[4.317s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/export_arm_controller__rosidl_generator_pyExport-noconfig.cmake
+[4.317s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/rosidl_cmake-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_include_directories-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_libraries-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_targets-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/ament_cmake_export_dependencies-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig.cmake
+[4.318s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig-version.cmake
+[4.319s] -- Up-to-date: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.xml
+[4.323s] Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/arm_controller

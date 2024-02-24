@@ -1,0 +1,19 @@
+[2.659s] Invoking command in '/home/nvidia/robotics-orin/build/arm_ik': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/nvidia/robotics-orin/build/arm_ik/prefix_override:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/nvidia/robotics-orin/build/arm_ik/build --no-deps install_data
+[3.068s] running develop
+[3.311s] running egg_info
+[3.311s] writing arm_ik.egg-info/PKG-INFO
+[3.312s] writing dependency_links to arm_ik.egg-info/dependency_links.txt
+[3.312s] writing entry points to arm_ik.egg-info/entry_points.txt
+[3.312s] writing requirements to arm_ik.egg-info/requires.txt
+[3.313s] writing top-level names to arm_ik.egg-info/top_level.txt
+[3.363s] reading manifest file 'arm_ik.egg-info/SOURCES.txt'
+[3.364s] writing manifest file 'arm_ik.egg-info/SOURCES.txt'
+[3.421s] running build_ext
+[3.422s] Creating /home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages/arm-ik.egg-link (link to .)
+[3.423s] Installing CadMouseJoyNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+[3.424s] Installing IKNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+[3.424s] Installing state_publisher script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+[3.424s] 
+[3.425s] Installed /home/nvidia/robotics-orin/build/arm_ik
+[3.425s] running install_data
+[3.504s] Invoked command in '/home/nvidia/robotics-orin/build/arm_ik' returned '0': CONDA_PROMPT_MODIFIER=(base) PYTHONPATH=/home/nvidia/robotics-orin/build/arm_ik/prefix_override:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --editable --build-directory /home/nvidia/robotics-orin/build/arm_ik/build --no-deps install_data

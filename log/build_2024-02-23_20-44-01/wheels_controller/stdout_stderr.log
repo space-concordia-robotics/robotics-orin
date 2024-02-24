@@ -1,0 +1,19 @@
+[100%] Built target wheels_controller_node
+-- Install configuration: ""
+-- Execute custom install script
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/package_run_dependencies/wheels_controller
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/parent_prefix_path/wheels_controller
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.sh
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.dsv
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.sh
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.dsv
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.bash
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.sh
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.zsh
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.dsv
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/packages/wheels_controller
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig.cmake
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig-version.cmake
+-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.xml

@@ -1,0 +1,52 @@
+[1.973s] Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nvidia/robotics-orin/src/absenc_interface -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/absenc_interface
+[2.009s] -- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+[2.044s] -- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3") 
+[2.045s] -- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3
+[2.446s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[2.456s] -- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+[2.513s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.520s] -- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+[2.754s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.827s] -- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+[2.829s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.035s] -- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+[3.196s] -- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+[3.251s] -- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found version "3.11.5") 
+[3.348s] CMake Error at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):
+[3.348s]   execute_process(/home/nvidia/anaconda3/bin/python3 -m rosidl_adapter
+[3.349s]   --package-name absenc_interface --arguments-file
+[3.349s]   /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter__arguments__absenc_interface.json
+[3.349s]   --output-dir
+[3.350s]   /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter/absenc_interface
+[3.350s]   --output-file
+[3.350s]   /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter/absenc_interface.idls)
+[3.351s]   returned error code 1:
+[3.351s] 
+[3.351s]   Traceback (most recent call last):
+[3.352s] 
+[3.353s]     File "<frozen runpy>", line 198, in _run_module_as_main
+[3.353s]     File "<frozen runpy>", line 88, in _run_code
+[3.353s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[3.354s]       sys.exit(main())
+[3.354s]                ^^^^^^
+[3.354s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/main.py", line 53, in main
+[3.355s]       abs_idl_file = convert_to_idl(
+[3.355s]                      ^^^^^^^^^^^^^^^
+[3.355s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__init__.py", line 18, in convert_to_idl
+[3.356s]       from rosidl_adapter.msg import convert_msg_to_idl
+[3.356s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/msg/__init__.py", line 16, in <module>
+[3.357s]       from rosidl_adapter.resource import expand_template
+[3.357s]     File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/resource/__init__.py", line 19, in <module>
+[3.358s]       import em
+[3.358s] 
+[3.359s]   ModuleNotFoundError: No module named 'em'
+[3.359s] 
+[3.359s] Call Stack (most recent call first):
+[3.360s]   /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[3.360s]   CMakeLists.txt:18 (rosidl_generate_interfaces)
+[3.361s] 
+[3.361s] 
+[3.361s] -- Configuring incomplete, errors occurred!
+[3.362s] See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeOutput.log".
+[3.363s] See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeError.log".
+[3.852s] Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '1': CMAKE_PREFIX_PATH=/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nvidia/robotics-orin/src/absenc_interface -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/absenc_interface

@@ -1,0 +1,31 @@
+running develop
+running egg_info
+creating arm_ik.egg-info
+writing arm_ik.egg-info/PKG-INFO
+writing dependency_links to arm_ik.egg-info/dependency_links.txt
+writing entry points to arm_ik.egg-info/entry_points.txt
+writing requirements to arm_ik.egg-info/requires.txt
+writing top-level names to arm_ik.egg-info/top_level.txt
+writing manifest file 'arm_ik.egg-info/SOURCES.txt'
+reading manifest file 'arm_ik.egg-info/SOURCES.txt'
+writing manifest file 'arm_ik.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages/site.py
+Creating /home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages/arm-ik.egg-link (link to .)
+Installing CadMouseJoyNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+Installing IKNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+Installing state_publisher script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik
+
+Installed /home/nvidia/robotics-orin/build/arm_ik
+running install_data
+creating /home/nvidia/robotics-orin/install/arm_ik/share/ament_index
+creating /home/nvidia/robotics-orin/install/arm_ik/share/ament_index/resource_index
+creating /home/nvidia/robotics-orin/install/arm_ik/share/ament_index/resource_index/packages
+copying resource/arm_ik -> /home/nvidia/robotics-orin/install/arm_ik/share/ament_index/resource_index/packages
+copying package.xml -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik
+copying urdf/astro_arm.urdf -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik
+copying meshes/wrist.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik
+copying meshes/upper_base_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik
+copying meshes/distal_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik
+copying meshes/base_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik
+copying meshes/proximal_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik

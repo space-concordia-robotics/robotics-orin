@@ -23,7 +23,7 @@ public:
     void JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg);
 
 private :
-    rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
+    //rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_msg_callback;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_msg_publisher;
 

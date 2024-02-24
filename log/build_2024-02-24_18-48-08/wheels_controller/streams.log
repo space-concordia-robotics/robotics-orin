@@ -1,0 +1,30 @@
+[0.803s] Invoking command in '/home/nvidia/robotics-orin/build/wheels_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/wheels_controller -- -j6 -l6
+[0.892s] [35m[1mScanning dependencies of target wheels_controller_node[0m
+[0.976s] [ 25%] [32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o[0m
+[5.902s] [01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:[m[K In member function ‘[01m[Kvoid WheelsControllerNode::pollControllersCallback()[m[K’:
+[5.903s] [01m[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:49:22:[m[K [01;35m[Kwarning: [m[Kunused variable ‘[01m[Kframe[m[K’ [[01;35m[K-Wunused-variable[m[K]
+[5.904s]    49 |     struct can_frame [01;35m[Kframe[m[K;
+[5.904s]       |                      [01;35m[K^~~~~[m[K
+[23.581s] [ 50%] [32m[1mLinking CXX executable wheels_controller_node[0m
+[24.651s] [100%] Built target wheels_controller_node
+[24.673s] Invoked command in '/home/nvidia/robotics-orin/build/wheels_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/wheels_controller -- -j6 -l6
+[24.721s] Invoking command in '/home/nvidia/robotics-orin/build/wheels_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/wheels_controller
+[24.737s] -- Install configuration: ""
+[24.737s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node
+[24.747s] -- Set runtime path of "/home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node" to ""
+[24.747s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/package_run_dependencies/wheels_controller
+[24.748s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/parent_prefix_path/wheels_controller
+[24.748s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.sh
+[24.748s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.dsv
+[24.749s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.sh
+[24.750s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.dsv
+[24.750s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.bash
+[24.750s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.sh
+[24.751s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.zsh
+[24.751s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.dsv
+[24.751s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv
+[24.752s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/packages/wheels_controller
+[24.752s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig.cmake
+[24.752s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig-version.cmake
+[24.752s] -- Installing: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.xml
+[24.756s] Invoked command in '/home/nvidia/robotics-orin/build/wheels_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/wheels_controller

@@ -1,0 +1,50 @@
+-- Found ament_cmake: 0.9.12 (/opt/ros/foxy/share/ament_cmake/cmake)
+-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3") 
+-- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3
+-- Override CMake install command with custom implementation using symlinks instead of copying resources
+-- Found rclcpp: 2.4.3 (/opt/ros/foxy/share/rclcpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 1.3.1 (/opt/ros/foxy/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 1.0.4 (/opt/ros/foxy/share/rmw_implementation_cmake/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found sensor_msgs: 2.0.5 (/opt/ros/foxy/share/sensor_msgs/cmake)
+-- Found rosidl_default_generators: 1.0.1 (/opt/ros/foxy/share/rosidl_default_generators/cmake)
+-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found version "3.11.5") 
+CMake Error at /opt/ros/foxy/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:60 (message):
+  execute_process(/home/nvidia/anaconda3/bin/python3 -m rosidl_adapter
+  --package-name absenc_interface --arguments-file
+  /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter__arguments__absenc_interface.json
+  --output-dir
+  /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter/absenc_interface
+  --output-file
+  /home/nvidia/robotics-orin/build/absenc_interface/rosidl_adapter/absenc_interface.idls)
+  returned error code 1:
+
+  Traceback (most recent call last):
+
+    File "<frozen runpy>", line 198, in _run_module_as_main
+    File "<frozen runpy>", line 88, in _run_code
+    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__main__.py", line 19, in <module>
+      sys.exit(main())
+               ^^^^^^
+    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/main.py", line 53, in main
+      abs_idl_file = convert_to_idl(
+                     ^^^^^^^^^^^^^^^
+    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/__init__.py", line 18, in convert_to_idl
+      from rosidl_adapter.msg import convert_msg_to_idl
+    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/msg/__init__.py", line 16, in <module>
+      from rosidl_adapter.resource import expand_template
+    File "/opt/ros/foxy/lib/python3.8/site-packages/rosidl_adapter/resource/__init__.py", line 19, in <module>
+      import em
+
+  ModuleNotFoundError: No module named 'em'
+
+Call Stack (most recent call first):
+  /opt/ros/foxy/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+  CMakeLists.txt:18 (rosidl_generate_interfaces)
+
+
+-- Configuring incomplete, errors occurred!
+See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeOutput.log".
+See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeError.log".

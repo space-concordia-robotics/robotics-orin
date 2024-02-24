@@ -1,0 +1,33 @@
+[1.269s] Invoking command in '/home/nvidia/robotics-orin/build/absenc_interface': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nvidia/robotics-orin/src/absenc_interface -DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/absenc_interface
+[1.301s] -- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.662s] -- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)
+[1.719s] -- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.723s] -- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.735s] -- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.756s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.785s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.889s] -- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.892s] -- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[2.116s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.393s] -- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)
+[2.624s] CMake Error at CMakeLists.txt:16 (find_package):
+[2.624s]   By not providing "Findarm_controller.cmake" in CMAKE_MODULE_PATH this
+[2.624s]   project has asked CMake to find a package configuration file provided by
+[2.624s]   "arm_controller", but CMake did not find one.
+[2.625s] 
+[2.625s]   Could not find a package configuration file provided by "arm_controller"
+[2.625s]   with any of the following names:
+[2.625s] 
+[2.625s]     arm_controllerConfig.cmake
+[2.625s]     arm_controller-config.cmake
+[2.625s] 
+[2.625s]   Add the installation prefix of "arm_controller" to CMAKE_PREFIX_PATH or set
+[2.625s]   "arm_controller_DIR" to a directory containing one of the above files.  If
+[2.625s]   "arm_controller" provides a separate development package or SDK, be sure it
+[2.626s]   has been installed.
+[2.626s] 
+[2.626s] 
+[2.628s] -- Configuring incomplete, errors occurred!
+[2.628s] See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeOutput.log".
+[2.628s] See also "/home/nvidia/robotics-orin/build/absenc_interface/CMakeFiles/CMakeError.log".
+[2.649s] Invoked command in '/home/nvidia/robotics-orin/build/absenc_interface' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake /home/nvidia/robotics-orin/src/absenc_interface -DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/absenc_interface

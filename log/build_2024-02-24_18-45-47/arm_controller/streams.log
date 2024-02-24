@@ -1,0 +1,25 @@
+[1.744s] Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[1.834s] [  3%] Built target arm_controller__cpp
+[1.850s] [ 12%] Built target arm_controller__rosidl_generator_c
+[1.863s] [ 12%] Built target ament_cmake_python_copy_arm_controller
+[1.897s] [ 21%] Built target arm_controller__rosidl_typesupport_fastrtps_cpp
+[1.900s] [ 30%] Built target arm_controller__rosidl_typesupport_introspection_cpp
+[1.903s] [ 39%] Built target arm_controller__rosidl_typesupport_cpp
+[1.920s] [ 57%] Built target arm_controller__rosidl_typesupport_fastrtps_c
+[1.920s] [ 57%] Built target arm_controller__rosidl_typesupport_introspection_c
+[1.925s] [ 66%] Built target arm_controller__rosidl_typesupport_c
+[1.963s] [ 66%] Built target arm_controller
+[2.007s] [ 69%] Built target arm_controller__py
+[2.033s] [ 75%] Built target arm_controller_node
+[2.059s] [ 81%] Built target arm_controller__rosidl_generator_py
+[2.114s] [ 87%] Built target arm_controller__rosidl_typesupport_introspection_c__pyext
+[2.122s] [ 93%] Built target arm_controller__rosidl_typesupport_c__pyext
+[2.134s] [100%] Built target arm_controller__rosidl_typesupport_fastrtps_c__pyext
+[2.535s] running egg_info
+[2.536s] writing arm_controller.egg-info/PKG-INFO
+[2.538s] writing dependency_links to arm_controller.egg-info/dependency_links.txt
+[2.539s] writing top-level names to arm_controller.egg-info/top_level.txt
+[2.633s] reading manifest file 'arm_controller.egg-info/SOURCES.txt'
+[2.634s] writing manifest file 'arm_controller.egg-info/SOURCES.txt'
+[2.708s] [100%] Built target ament_cmake_python_build_arm_controller_egg
+[3.534s] Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
