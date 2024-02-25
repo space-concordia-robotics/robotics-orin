@@ -10,7 +10,7 @@ from geometry_msgs.msg import Quaternion
 from sensor_msgs.msg import JointState
 from std_msgs.msg import String
 import threading
-from absenc_interface.msg import EncoderValues
+# from absenc_interface.msg import EncoderValues
 
 # Publishes angles in radians for the motors
 
@@ -80,8 +80,9 @@ class IkNode(Node):
     self.abs_angles = None
     self.initialized = False
     self.angles = None
-    self.absenc_sub = self.create_subscription(EncoderValues, absenc_topic, self.absenc_callback, 10)
-    self.get_logger().info('Created subscriber for topic "'+absenc_topic)
+    self.abs_angles = [0.0, 0.0, 0.0, 0.0]
+    #self.absenc_sub = self.create_subscription(EncoderValues, absenc_topic, self.absenc_callback, 10)
+    #self.get_logger().info('Created subscriber for topic "'+absenc_topic)
 
   
   def have_abs_angles(self):
@@ -114,7 +115,7 @@ class IkNode(Node):
   
 
   def absenc_callback(self, message):
-    # self.get_logger().info(f"Callback for absenc value")
+    #self.get_logger().info(f"Callback for absenc value")
     self.abs_angles = [0, math.radians(message.angle_1), math.radians(message.angle_2), math.radians(message.angle_3)]
 
 
@@ -189,7 +190,6 @@ class IkNode(Node):
       else:
         angles = [float(self.phi), (math.pi / 2) - (b1 + a1),
                           math.pi - b2, math.pi - (self.pitch + a2 + b3)]
-      
       if self.validAngles(angles):
         self.angles = angles
       else:
@@ -220,7 +220,7 @@ class IkNode(Node):
     # if 2d, force y to be 0
     if self.mode == "2D":
       self.y = 0
-    self.get_logger().info(f"Pitch: {self.pitch}")
+    # self.get_logger().info(f"Pitch: {self.pitch}")
 
     # Perform IK. If out of range, restore point where it was
     if not self.calculate_angles():

@@ -1,7 +1,0 @@
-[01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:12:10:[m[K [01;31m[Kfatal error: [m[Karm_controller/msg/arm_motor_values.hpp: No such file or directory
-   12 | #include [01;31m[K"arm_controller/msg/arm_motor_values.hpp"[m[K
-      |          [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
-compilation terminated.
-make[2]: *** [CMakeFiles/absenc_node.dir/build.make:63: CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:124: CMakeFiles/absenc_node.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2

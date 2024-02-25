@@ -1,0 +1,23 @@
+[1.946s] Invoking command in '/home/nvidia/robotics-orin/build/wheels_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/wheels_controller -- -j6 -l6
+[2.065s] [100%] Built target wheels_controller_node
+[2.096s] Invoked command in '/home/nvidia/robotics-orin/build/wheels_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/wheels_controller -- -j6 -l6
+[3.475s] Invoking command in '/home/nvidia/robotics-orin/build/wheels_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/wheels_controller
+[3.494s] -- Install configuration: ""
+[3.495s] -- Execute custom install script
+[3.495s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node
+[3.495s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/package_run_dependencies/wheels_controller
+[3.495s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/parent_prefix_path/wheels_controller
+[3.496s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.sh
+[3.496s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.dsv
+[3.497s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.sh
+[3.497s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.dsv
+[3.497s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.bash
+[3.498s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.sh
+[3.498s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.zsh
+[3.502s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.dsv
+[3.502s] -- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv
+[3.519s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/packages/wheels_controller
+[3.520s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig.cmake
+[3.520s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig-version.cmake
+[3.521s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.xml
+[5.754s] Invoked command in '/home/nvidia/robotics-orin/build/wheels_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/wheels_controller

@@ -1,0 +1,212 @@
+[0.000000] (-) TimerEvent: {}
+[0.000601] (-) JobUnselected: {'identifier': 'arm_controller'}
+[0.000773] (-) JobUnselected: {'identifier': 'arm_ik'}
+[0.001096] (-) JobUnselected: {'identifier': 'sil'}
+[0.001345] (-) JobUnselected: {'identifier': 'wheels_controller'}
+[0.001476] (absenc_interface) JobQueued: {'identifier': 'absenc_interface', 'dependencies': OrderedDict()}
+[0.001521] (absenc_interface) JobStarted: {'identifier': 'absenc_interface'}
+[0.099745] (-) TimerEvent: {}
+[0.200503] (-) TimerEvent: {}
+[0.301185] (-) TimerEvent: {}
+[0.401760] (-) TimerEvent: {}
+[0.502270] (-) TimerEvent: {}
+[0.603443] (-) TimerEvent: {}
+[0.704016] (-) TimerEvent: {}
+[0.741699] (absenc_interface) JobProgress: {'identifier': 'absenc_interface', 'progress': 'cmake'}
+[0.742932] (absenc_interface) JobProgress: {'identifier': 'absenc_interface', 'progress': 'build'}
+[0.744007] (absenc_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/absenc_interface', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/absenc_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia/robotics-orin/launch'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/absenc_interface'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[0.804226] (-) TimerEvent: {}
+[0.839025] (absenc_interface) StdoutLine: {'line': b'[  2%] Built target absenc_interface__cpp\n'}
+[0.841960] (absenc_interface) StdoutLine: {'line': b'[ 11%] Built target absenc_interface__rosidl_generator_c\n'}
+[0.856883] (absenc_interface) StdoutLine: {'line': b'[ 11%] Built target ament_cmake_python_symlink_absenc_interface\n'}
+[0.876991] (absenc_interface) StdoutLine: {'line': b'[ 23%] Built target absenc_interface__rosidl_typesupport_cpp\n'}
+[0.877722] (absenc_interface) StdoutLine: {'line': b'[ 35%] Built target absenc_interface__rosidl_typesupport_introspection_cpp\n'}
+[0.878872] (absenc_interface) StdoutLine: {'line': b'[ 38%] Built target absenc_interface__rosidl_typesupport_fastrtps_cpp\n'}
+[0.880161] (absenc_interface) StdoutLine: {'line': b'[ 47%] Built target absenc_interface__rosidl_typesupport_introspection_c\n'}
+[0.880541] (absenc_interface) StdoutLine: {'line': b'[ 55%] Built target absenc_interface__rosidl_typesupport_fastrtps_c\n'}
+[0.895245] (absenc_interface) StdoutLine: {'line': b'[ 64%] Built target absenc_interface__rosidl_typesupport_c\n'}
+[0.904361] (-) TimerEvent: {}
+[0.931601] (absenc_interface) StdoutLine: {'line': b'[ 64%] Built target absenc_interface\n'}
+[0.952272] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_node\x1b[0m\n'}
+[0.971746] (absenc_interface) StdoutLine: {'line': b'[ 67%] Built target absenc_interface__py\n'}
+[1.004540] (-) TimerEvent: {}
+[1.012699] (absenc_interface) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding CXX object CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o\x1b[0m\n'}
+[1.013164] (absenc_interface) StdoutLine: {'line': b'[ 76%] Built target absenc_interface__rosidl_generator_py\n'}
+[1.057334] (absenc_interface) StdoutLine: {'line': b'[ 94%] Built target absenc_interface__rosidl_typesupport_fastrtps_c__pyext\n'}
+[1.057946] (absenc_interface) StdoutLine: {'line': b'[ 94%] Built target absenc_interface__rosidl_typesupport_c__pyext\n'}
+[1.058294] (absenc_interface) StdoutLine: {'line': b'[ 94%] Built target absenc_interface__rosidl_typesupport_introspection_c__pyext\n'}
+[1.104700] (-) TimerEvent: {}
+[1.205360] (-) TimerEvent: {}
+[1.306009] (-) TimerEvent: {}
+[1.406659] (-) TimerEvent: {}
+[1.429668] (absenc_interface) StdoutLine: {'line': b'running egg_info\n'}
+[1.430841] (absenc_interface) StdoutLine: {'line': b'writing absenc_interface.egg-info/PKG-INFO\n'}
+[1.431368] (absenc_interface) StdoutLine: {'line': b'writing dependency_links to absenc_interface.egg-info/dependency_links.txt\n'}
+[1.431782] (absenc_interface) StdoutLine: {'line': b'writing top-level names to absenc_interface.egg-info/top_level.txt\n'}
+[1.506823] (-) TimerEvent: {}
+[1.510546] (absenc_interface) StdoutLine: {'line': b"reading manifest file 'absenc_interface.egg-info/SOURCES.txt'\n"}
+[1.511499] (absenc_interface) StdoutLine: {'line': b"writing manifest file 'absenc_interface.egg-info/SOURCES.txt'\n"}
+[1.576384] (absenc_interface) StdoutLine: {'line': b'[ 94%] Built target ament_cmake_python_build_absenc_interface_egg\n'}
+[1.606949] (-) TimerEvent: {}
+[1.707736] (-) TimerEvent: {}
+[1.808558] (-) TimerEvent: {}
+[1.909430] (-) TimerEvent: {}
+[2.010240] (-) TimerEvent: {}
+[2.111063] (-) TimerEvent: {}
+[2.211938] (-) TimerEvent: {}
+[2.312784] (-) TimerEvent: {}
+[2.413642] (-) TimerEvent: {}
+[2.514492] (-) TimerEvent: {}
+[2.615339] (-) TimerEvent: {}
+[2.716212] (-) TimerEvent: {}
+[2.817055] (-) TimerEvent: {}
+[2.917898] (-) TimerEvent: {}
+[3.018721] (-) TimerEvent: {}
+[3.119577] (-) TimerEvent: {}
+[3.220435] (-) TimerEvent: {}
+[3.321296] (-) TimerEvent: {}
+[3.422140] (-) TimerEvent: {}
+[3.522997] (-) TimerEvent: {}
+[3.623874] (-) TimerEvent: {}
+[3.724720] (-) TimerEvent: {}
+[3.825561] (-) TimerEvent: {}
+[3.926366] (-) TimerEvent: {}
+[4.027141] (-) TimerEvent: {}
+[4.127967] (-) TimerEvent: {}
+[4.228819] (-) TimerEvent: {}
+[4.329662] (-) TimerEvent: {}
+[4.430530] (-) TimerEvent: {}
+[4.531390] (-) TimerEvent: {}
+[4.632256] (-) TimerEvent: {}
+[4.733101] (-) TimerEvent: {}
+[4.833942] (-) TimerEvent: {}
+[4.934768] (-) TimerEvent: {}
+[5.035566] (-) TimerEvent: {}
+[5.136372] (-) TimerEvent: {}
+[5.237210] (-) TimerEvent: {}
+[5.338034] (-) TimerEvent: {}
+[5.438860] (-) TimerEvent: {}
+[5.539603] (-) TimerEvent: {}
+[5.640446] (-) TimerEvent: {}
+[5.708822] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid AbsEnc::ikValuesCallback(sensor_msgs::msg::JointState_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[5.709562] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:104:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::array<float, 4>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[5.709947] (absenc_interface) StderrLine: {'line': b'  104 |       for (int i = 0; \x1b[01;35m\x1b[Ki < std::size(ik_angles)\x1b[m\x1b[K; i++) {\n'}
+[5.710164] (absenc_interface) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.710361] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:109:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::array<float, 4>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[5.710568] (absenc_interface) StderrLine: {'line': b'  109 |       for (int i = 0; \x1b[01;35m\x1b[Ki < std::size(ik_angles)\x1b[m\x1b[K; i++) {\n'}
+[5.710781] (absenc_interface) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.714108] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:152:24:\x1b[m\x1b[K \x1b[01;31m\x1b[Kerror: \x1b[m\x1b[Kno match for \xe2\x80\x98\x1b[01m\x1b[Koperator=\x1b[m\x1b[K\xe2\x80\x99 (operand types are \xe2\x80\x98\x1b[01m\x1b[Kstd_msgs::msg::Float32MultiArray_<std::allocator<void> >::_data_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<float>\x1b[m\x1b[K\xe2\x80\x99} and \xe2\x80\x98\x1b[01m\x1b[Kfloat [6]\x1b[m\x1b[K\xe2\x80\x99)\n'}
+[5.714886] (absenc_interface) StderrLine: {'line': b'  152 |       arm_msg_2.data = \x1b[01;31m\x1b[Kangles\x1b[m\x1b[K;\n'}
+[5.715143] (absenc_interface) StderrLine: {'line': b'      |                        \x1b[01;31m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[5.715374] (absenc_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/vector:72\x1b[m\x1b[K,\n'}
+[5.715637] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/functional:62\x1b[m\x1b[K,\n'}
+[5.715863] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[5.716081] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/algorithm:71\x1b[m\x1b[K,\n'}
+[5.716296] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[5.716535] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[5.716759] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.716978] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[5.717194] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:3\x1b[m\x1b[K:\n'}
+[5.717408] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/vector.tcc:198:5:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = float; _Alloc = std::allocator<float>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.717652] (absenc_interface) StderrLine: {'line': b'  198 |     \x1b[01;36m\x1b[Kvector<_Tp, _Alloc>\x1b[m\x1b[K::\n'}
+[5.717870] (absenc_interface) StderrLine: {'line': b'      |     \x1b[01;36m\x1b[K^~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[5.718086] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/vector.tcc:199:42:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kfloat [6]\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kconst std::vector<float>&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.718315] (absenc_interface) StderrLine: {'line': b'  199 |     operator=(\x1b[01;36m\x1b[Kconst vector<_Tp, _Alloc>& __x\x1b[m\x1b[K)\n'}
+[5.718526] (absenc_interface) StderrLine: {'line': b'      |               \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[5.718737] (absenc_interface) StderrLine: {'line': b'In file included from \x1b[01m\x1b[K/usr/include/c++/9/vector:67\x1b[m\x1b[K,\n'}
+[5.718947] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/functional:62\x1b[m\x1b[K,\n'}
+[5.719158] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/pstl/glue_algorithm_defs.h:13\x1b[m\x1b[K,\n'}
+[5.719369] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/usr/include/c++/9/algorithm:71\x1b[m\x1b[K,\n'}
+[5.719654] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executor.hpp:18\x1b[m\x1b[K,\n'}
+[5.719920] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors/multi_threaded_executor.hpp:25\x1b[m\x1b[K,\n'}
+[5.720162] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/executors.hpp:21\x1b[m\x1b[K,\n'}
+[5.720394] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp:155\x1b[m\x1b[K,\n'}
+[5.720625] (absenc_interface) StderrLine: {'line': b'                 from \x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:3\x1b[m\x1b[K:\n'}
+[5.720853] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_vector.h:706:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::vector<_Tp, _Alloc>&&) [with _Tp = float; _Alloc = std::allocator<float>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.721117] (absenc_interface) StderrLine: {'line': b'  706 |       \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(vector&& __x) noexcept(_Alloc_traits::_S_nothrow_move())\n'}
+[5.721354] (absenc_interface) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[5.721583] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_vector.h:706:26:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kfloat [6]\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<float>&&\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.721821] (absenc_interface) StderrLine: {'line': b'  706 |       operator=(\x1b[01;36m\x1b[Kvector&& __x\x1b[m\x1b[K) noexcept(_Alloc_traits::_S_nothrow_move())\n'}
+[5.722051] (absenc_interface) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[5.722277] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_vector.h:727:7:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[Kcandidate: \xe2\x80\x98\x1b[01m\x1b[Kstd::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(std::initializer_list<_Tp>) [with _Tp = float; _Alloc = std::allocator<float>]\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.722512] (absenc_interface) StderrLine: {'line': b'  727 |       \x1b[01;36m\x1b[Koperator\x1b[m\x1b[K=(initializer_list<value_type> __l)\n'}
+[5.722743] (absenc_interface) StderrLine: {'line': b'      |       \x1b[01;36m\x1b[K^~~~~~~~\x1b[m\x1b[K\n'}
+[5.722976] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/usr/include/c++/9/bits/stl_vector.h:727:46:\x1b[m\x1b[K \x1b[01;36m\x1b[Knote: \x1b[m\x1b[K  no known conversion for argument 1 from \xe2\x80\x98\x1b[01m\x1b[Kfloat [6]\x1b[m\x1b[K\xe2\x80\x99 to \xe2\x80\x98\x1b[01m\x1b[Kstd::initializer_list<float>\x1b[m\x1b[K\xe2\x80\x99\n'}
+[5.723209] (absenc_interface) StderrLine: {'line': b'  727 |       operator=(\x1b[01;36m\x1b[Kinitializer_list<value_type> __l\x1b[m\x1b[K)\n'}
+[5.723490] (absenc_interface) StderrLine: {'line': b'      |                 \x1b[01;36m\x1b[K~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~\x1b[m\x1b[K\n'}
+[5.740495] (-) TimerEvent: {}
+[5.841038] (-) TimerEvent: {}
+[5.941846] (-) TimerEvent: {}
+[6.042666] (-) TimerEvent: {}
+[6.143561] (-) TimerEvent: {}
+[6.244422] (-) TimerEvent: {}
+[6.345264] (-) TimerEvent: {}
+[6.446118] (-) TimerEvent: {}
+[6.546969] (-) TimerEvent: {}
+[6.647848] (-) TimerEvent: {}
+[6.748694] (-) TimerEvent: {}
+[6.849528] (-) TimerEvent: {}
+[6.950346] (-) TimerEvent: {}
+[7.051130] (-) TimerEvent: {}
+[7.151974] (-) TimerEvent: {}
+[7.252805] (-) TimerEvent: {}
+[7.353661] (-) TimerEvent: {}
+[7.454516] (-) TimerEvent: {}
+[7.555360] (-) TimerEvent: {}
+[7.656229] (-) TimerEvent: {}
+[7.757080] (-) TimerEvent: {}
+[7.857938] (-) TimerEvent: {}
+[7.958796] (-) TimerEvent: {}
+[8.059618] (-) TimerEvent: {}
+[8.160422] (-) TimerEvent: {}
+[8.261280] (-) TimerEvent: {}
+[8.362132] (-) TimerEvent: {}
+[8.462971] (-) TimerEvent: {}
+[8.563831] (-) TimerEvent: {}
+[8.664658] (-) TimerEvent: {}
+[8.765512] (-) TimerEvent: {}
+[8.866361] (-) TimerEvent: {}
+[8.967179] (-) TimerEvent: {}
+[9.068036] (-) TimerEvent: {}
+[9.168893] (-) TimerEvent: {}
+[9.269735] (-) TimerEvent: {}
+[9.370596] (-) TimerEvent: {}
+[9.471452] (-) TimerEvent: {}
+[9.572289] (-) TimerEvent: {}
+[9.673129] (-) TimerEvent: {}
+[9.773974] (-) TimerEvent: {}
+[9.874796] (-) TimerEvent: {}
+[9.975615] (-) TimerEvent: {}
+[10.076409] (-) TimerEvent: {}
+[10.177236] (-) TimerEvent: {}
+[10.278068] (-) TimerEvent: {}
+[10.378897] (-) TimerEvent: {}
+[10.479750] (-) TimerEvent: {}
+[10.580589] (-) TimerEvent: {}
+[10.681424] (-) TimerEvent: {}
+[10.782275] (-) TimerEvent: {}
+[10.883153] (-) TimerEvent: {}
+[10.984027] (-) TimerEvent: {}
+[11.084871] (-) TimerEvent: {}
+[11.185714] (-) TimerEvent: {}
+[11.286579] (-) TimerEvent: {}
+[11.387460] (-) TimerEvent: {}
+[11.488314] (-) TimerEvent: {}
+[11.589122] (-) TimerEvent: {}
+[11.689863] (-) TimerEvent: {}
+[11.691121] (absenc_interface) StderrLine: {'line': b'make[2]: *** [CMakeFiles/absenc_node.dir/build.make:63: CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o] Error 1\n'}
+[11.692199] (absenc_interface) StderrLine: {'line': b'make[1]: *** [CMakeFiles/Makefile2:128: CMakeFiles/absenc_node.dir/all] Error 2\n'}
+[11.693000] (absenc_interface) StderrLine: {'line': b'make: *** [Makefile:141: all] Error 2\n'}
+[11.697357] (absenc_interface) CommandEnded: {'returncode': 2}
+[11.790046] (-) TimerEvent: {}
+[11.891233] (-) TimerEvent: {}
+[11.991964] (-) TimerEvent: {}
+[12.092580] (-) TimerEvent: {}
+[12.193250] (-) TimerEvent: {}
+[12.294833] (-) TimerEvent: {}
+[12.396023] (-) TimerEvent: {}
+[12.497950] (-) TimerEvent: {}
+[12.598974] (-) TimerEvent: {}
+[12.700440] (-) TimerEvent: {}
+[12.723492] (absenc_interface) JobEnded: {'identifier': 'absenc_interface', 'rc': 2}
+[12.734138] (-) EventReactorShutdown: {}

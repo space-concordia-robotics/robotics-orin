@@ -1,0 +1,23 @@
+[3.163s] Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[4.365s] [100%] Built target arm_controller_node
+[4.371s] Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/arm_controller -- -j6 -l6
+[4.447s] Invoking command in '/home/nvidia/robotics-orin/build/arm_controller': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/arm_controller
+[4.467s] -- Install configuration: ""
+[4.467s] -- Execute custom install script
+[4.468s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/lib/arm_controller/arm_controller_node
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/package_run_dependencies/arm_controller
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/parent_prefix_path/arm_controller
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.sh
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.dsv
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.sh
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.dsv
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.bash
+[4.471s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.sh
+[4.472s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.zsh
+[4.472s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.dsv
+[4.472s] -- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.dsv
+[4.488s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/packages/arm_controller
+[4.489s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig.cmake
+[4.490s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig-version.cmake
+[4.490s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.xml
+[4.507s] Invoked command in '/home/nvidia/robotics-orin/build/arm_controller' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/arm_controller

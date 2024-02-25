@@ -65,10 +65,10 @@ class CadMouseJoyNode(Node):
     answer = input()
     if answer.lower() == 'y':
       print("attempting to copy the udev rule...")
-      while os.getcwd().split("/")[-1] != "robotics-prototype" and os.getcwd() != "/":
-        os.chdir("..")
+      #while os.getcwd().split("/")[-1] != "robotics-orin" and os.getcwd() != "/":
+      #  os.chdir("..")
       # os.system("cat robot/util/udev-rules/10-cadmouse.rules")
-      os.system("sudo cp ./robot/util/udev-rules/10-cadmouse.rules /lib/udev/rules.d/10-cadmouse.rules && sudo udevadm trigger && echo done")
+      os.system("sudo cp ~/robotics-orin/util/udev-rules/10-cadmouse.rules /lib/udev/rules.d/10-cadmouse.rules && sudo udevadm trigger && echo done")
       print("attempting to run again...")
       time.sleep(4)
       self.readMouseInput()

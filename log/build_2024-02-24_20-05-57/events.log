@@ -1,0 +1,968 @@
+[0.000000] (-) TimerEvent: {}
+[0.000627] (absenc_interface) JobQueued: {'identifier': 'absenc_interface', 'dependencies': OrderedDict()}
+[0.001131] (arm_controller) JobQueued: {'identifier': 'arm_controller', 'dependencies': OrderedDict()}
+[0.001388] (sil) JobQueued: {'identifier': 'sil', 'dependencies': OrderedDict()}
+[0.001522] (wheels_controller) JobQueued: {'identifier': 'wheels_controller', 'dependencies': OrderedDict()}
+[0.001558] (arm_ik) JobQueued: {'identifier': 'arm_ik', 'dependencies': OrderedDict([('absenc_interface', '/home/nvidia/robotics-orin/install/absenc_interface')])}
+[0.001596] (absenc_interface) JobStarted: {'identifier': 'absenc_interface'}
+[0.099440] (-) TimerEvent: {}
+[0.200163] (-) TimerEvent: {}
+[0.300682] (-) TimerEvent: {}
+[0.401123] (-) TimerEvent: {}
+[0.502035] (-) TimerEvent: {}
+[0.602835] (-) TimerEvent: {}
+[0.703628] (-) TimerEvent: {}
+[0.739513] (arm_controller) JobStarted: {'identifier': 'arm_controller'}
+[0.803840] (-) TimerEvent: {}
+[0.904710] (-) TimerEvent: {}
+[1.005456] (-) TimerEvent: {}
+[1.106110] (-) TimerEvent: {}
+[1.206957] (-) TimerEvent: {}
+[1.307644] (-) TimerEvent: {}
+[1.408710] (-) TimerEvent: {}
+[1.476452] (sil) JobStarted: {'identifier': 'sil'}
+[1.508839] (-) TimerEvent: {}
+[1.609572] (-) TimerEvent: {}
+[1.710206] (-) TimerEvent: {}
+[1.810842] (-) TimerEvent: {}
+[1.911941] (-) TimerEvent: {}
+[2.012729] (-) TimerEvent: {}
+[2.113406] (-) TimerEvent: {}
+[2.214804] (-) TimerEvent: {}
+[2.219874] (wheels_controller) JobStarted: {'identifier': 'wheels_controller'}
+[2.314986] (-) TimerEvent: {}
+[2.415690] (-) TimerEvent: {}
+[2.516454] (-) TimerEvent: {}
+[2.617179] (-) TimerEvent: {}
+[2.717816] (-) TimerEvent: {}
+[2.818545] (-) TimerEvent: {}
+[2.919479] (-) TimerEvent: {}
+[2.961381] (absenc_interface) JobProgress: {'identifier': 'absenc_interface', 'progress': 'cmake'}
+[2.962818] (absenc_interface) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia/robotics-orin/src/absenc_interface', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/absenc_interface'], 'cwd': '/home/nvidia/robotics-orin/build/absenc_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/absenc_interface'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[2.973129] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'cmake'}
+[2.973647] (arm_controller) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia/robotics-orin/src/arm_controller', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/arm_controller'], 'cwd': '/home/nvidia/robotics-orin/build/arm_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/arm_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[2.979652] (sil) JobProgress: {'identifier': 'sil', 'progress': 'cmake'}
+[2.980109] (sil) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia/robotics-orin/src/sil', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/sil'], 'cwd': '/home/nvidia/robotics-orin/build/sil', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/sil'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[2.986602] (wheels_controller) JobProgress: {'identifier': 'wheels_controller', 'progress': 'cmake'}
+[2.987068] (wheels_controller) Command: {'cmd': ['/usr/bin/cmake', '/home/nvidia/robotics-orin/src/wheels_controller', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/nvidia/robotics-orin/install/wheels_controller'], 'cwd': '/home/nvidia/robotics-orin/build/wheels_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/wheels_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[3.019754] (-) TimerEvent: {}
+[3.120497] (-) TimerEvent: {}
+[3.133631] (arm_controller) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[3.134282] (absenc_interface) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[3.134490] (wheels_controller) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[3.134732] (sil) StdoutLine: {'line': b'-- The C compiler identification is GNU 9.4.0\n'}
+[3.220662] (-) TimerEvent: {}
+[3.258318] (arm_controller) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[3.264019] (sil) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[3.267139] (absenc_interface) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[3.268906] (wheels_controller) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 9.4.0\n'}
+[3.271117] (arm_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[3.272197] (sil) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[3.276092] (absenc_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[3.277663] (wheels_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc\n'}
+[3.320842] (-) TimerEvent: {}
+[3.389528] (arm_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.392127] (arm_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.395142] (wheels_controller) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.395669] (absenc_interface) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.396105] (sil) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc -- works\n'}
+[3.397007] (wheels_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.397210] (sil) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.398027] (absenc_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[3.421025] (-) TimerEvent: {}
+[3.508418] (wheels_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.511540] (arm_controller) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.512119] (sil) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.519213] (absenc_interface) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[3.521074] (-) TimerEvent: {}
+[3.532674] (sil) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.533409] (sil) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.535555] (wheels_controller) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.536249] (wheels_controller) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.538708] (sil) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[3.539030] (arm_controller) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.539380] (arm_controller) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.541383] (wheels_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[3.543430] (arm_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[3.556450] (absenc_interface) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[3.558508] (absenc_interface) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[3.567281] (absenc_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++\n'}
+[3.621297] (-) TimerEvent: {}
+[3.677280] (sil) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[3.677744] (wheels_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[3.679586] (wheels_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.679989] (sil) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.688386] (arm_controller) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[3.688866] (arm_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.717269] (absenc_interface) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ -- works\n'}
+[3.720010] (absenc_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[3.721371] (-) TimerEvent: {}
+[3.813260] (wheels_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.815347] (sil) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.821470] (-) TimerEvent: {}
+[3.826795] (arm_controller) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.835405] (sil) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.836376] (wheels_controller) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.836622] (wheels_controller) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.836750] (sil) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.842144] (arm_controller) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.842903] (arm_controller) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.843669] (wheels_controller) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.843948] (sil) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.847047] (arm_controller) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.857734] (absenc_interface) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[3.873016] (absenc_interface) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[3.873579] (absenc_interface) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[3.877429] (absenc_interface) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.6 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[3.921700] (-) TimerEvent: {}
+[4.022474] (-) TimerEvent: {}
+[4.123201] (-) TimerEvent: {}
+[4.128976] (wheels_controller) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.9 (found version "3.9.5") found components: Interpreter \n'}
+[4.129498] (arm_controller) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.9 (found version "3.9.5") found components: Interpreter \n'}
+[4.129670] (sil) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.9 (found version "3.9.5") found components: Interpreter \n'}
+[4.146871] (absenc_interface) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3.9 (found version "3.9.5") found components: Interpreter \n'}
+[4.223376] (-) TimerEvent: {}
+[4.256807] (wheels_controller) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[4.257772] (arm_controller) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[4.258314] (sil) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[4.263786] (absenc_interface) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[4.313815] (wheels_controller) StdoutLine: {'line': b'-- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[4.314273] (sil) StdoutLine: {'line': b'-- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[4.314423] (absenc_interface) StdoutLine: {'line': b'-- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[4.314557] (arm_controller) StdoutLine: {'line': b'-- Found rclcpp: 16.0.7 (/opt/ros/humble/share/rclcpp/cmake)\n'}
+[4.323477] (-) TimerEvent: {}
+[4.395387] (absenc_interface) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[4.395880] (sil) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[4.396036] (arm_controller) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[4.396168] (wheels_controller) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.5 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[4.404683] (arm_controller) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[4.404915] (absenc_interface) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[4.405040] (wheels_controller) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[4.405155] (sil) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.5 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[4.421780] (absenc_interface) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[4.422079] (wheels_controller) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[4.422231] (arm_controller) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[4.422358] (sil) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.5 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[4.423537] (-) TimerEvent: {}
+[4.451118] (arm_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.451587] (absenc_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.452147] (wheels_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.452339] (sil) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[4.490683] (wheels_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.491188] (absenc_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.491898] (sil) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.492039] (arm_controller) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[4.523687] (-) TimerEvent: {}
+[4.624289] (-) TimerEvent: {}
+[4.626011] (arm_controller) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[4.626400] (absenc_interface) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[4.626551] (wheels_controller) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[4.626685] (sil) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.1 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[4.631324] (arm_controller) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[4.631615] (sil) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[4.631768] (wheels_controller) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[4.631892] (absenc_interface) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.5 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[4.724462] (-) TimerEvent: {}
+[4.825156] (-) TimerEvent: {}
+[4.852436] (arm_controller) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[4.853108] (wheels_controller) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[4.853327] (absenc_interface) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[4.856103] (sil) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "1.1.1f")  \n'}
+[4.904427] (arm_controller) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[4.904918] (absenc_interface) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[4.905071] (wheels_controller) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[4.905699] (sil) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[4.925266] (-) TimerEvent: {}
+[4.992307] (wheels_controller) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[4.992826] (absenc_interface) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[4.992993] (sil) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[4.995335] (arm_controller) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[5.013682] (wheels_controller) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[5.014059] (sil) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[5.014210] (absenc_interface) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[5.014344] (arm_controller) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[5.025424] (-) TimerEvent: {}
+[5.126086] (-) TimerEvent: {}
+[5.142591] (wheels_controller) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[5.143179] (absenc_interface) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[5.143538] (arm_controller) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[5.143680] (absenc_interface) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.143826] (arm_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.143940] (wheels_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.150848] (sil) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[5.151432] (sil) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[5.226279] (-) TimerEvent: {}
+[5.263890] (wheels_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[5.264502] (wheels_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[5.265182] (arm_controller) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[5.265642] (arm_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[5.267576] (absenc_interface) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[5.268535] (absenc_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[5.282356] (sil) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Failed\n'}
+[5.282907] (sil) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads\n'}
+[5.326467] (-) TimerEvent: {}
+[5.373881] (absenc_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[5.374422] (absenc_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[5.378453] (wheels_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[5.379109] (wheels_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[5.383823] (arm_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[5.384224] (arm_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[5.391410] (sil) StdoutLine: {'line': b'-- Looking for pthread_create in pthreads - not found\n'}
+[5.391891] (sil) StdoutLine: {'line': b'-- Looking for pthread_create in pthread\n'}
+[5.426654] (-) TimerEvent: {}
+[5.496120] (arm_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[5.498669] (absenc_interface) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[5.499209] (arm_controller) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[5.502227] (absenc_interface) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[5.502942] (wheels_controller) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[5.506361] (wheels_controller) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[5.511935] (sil) StdoutLine: {'line': b'-- Looking for pthread_create in pthread - found\n'}
+[5.512269] (sil) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[5.526729] (-) TimerEvent: {}
+[5.627315] (-) TimerEvent: {}
+[5.728029] (-) TimerEvent: {}
+[5.800564] (wheels_controller) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.3 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[5.801047] (arm_controller) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[5.801203] (absenc_interface) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[5.806727] (sil) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.9 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[5.828147] (-) TimerEvent: {}
+[5.881710] (wheels_controller) StdoutLine: {'line': b'-- Found sensor_msgs: 4.2.3 (/opt/ros/humble/share/sensor_msgs/cmake)\n'}
+[5.928321] (-) TimerEvent: {}
+[6.006828] (sil) StdoutLine: {'line': b"-- Added test 'copyright' to check source files copyright and LICENSE\n"}
+[6.008305] (sil) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[6.008531] (sil) StdoutLine: {'line': b'-- Configured cppcheck include dirs: \n'}
+[6.008658] (sil) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[6.009780] (sil) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[6.009967] (sil) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[6.011134] (sil) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[6.012671] (sil) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[6.012876] (sil) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[6.014076] (sil) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[6.021874] (sil) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.027210] (absenc_interface) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[6.027487] (wheels_controller) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[6.028374] (-) TimerEvent: {}
+[6.035523] (sil) StdoutLine: {'line': b'-- Generating done\n'}
+[6.038188] (sil) StdoutLine: {'line': b'-- Build files have been written to: /home/nvidia/robotics-orin/build/sil\n'}
+[6.064732] (sil) CommandEnded: {'returncode': 0}
+[6.068483] (sil) JobProgress: {'identifier': 'sil', 'progress': 'build'}
+[6.068611] (sil) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/sil', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/sil', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/sil'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[6.128603] (-) TimerEvent: {}
+[6.140338] (sil) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target talker\x1b[0m\n'}
+[6.227202] (arm_controller) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.228662] (-) TimerEvent: {}
+[6.235563] (wheels_controller) StdoutLine: {'line': b'-- Configuring done\n'}
+[6.246586] (arm_controller) StdoutLine: {'line': b'-- Generating done\n'}
+[6.247092] (arm_controller) StdoutLine: {'line': b'-- Build files have been written to: /home/nvidia/robotics-orin/build/arm_controller\n'}
+[6.251595] (wheels_controller) StdoutLine: {'line': b'-- Generating done\n'}
+[6.254312] (wheels_controller) StdoutLine: {'line': b'-- Build files have been written to: /home/nvidia/robotics-orin/build/wheels_controller\n'}
+[6.277407] (arm_controller) CommandEnded: {'returncode': 0}
+[6.278497] (sil) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/talker.dir/src/SIL_color_publisher_node.cpp.o\x1b[0m\n'}
+[6.279015] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'build'}
+[6.279436] (arm_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/arm_controller', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/arm_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/arm_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[6.288978] (wheels_controller) CommandEnded: {'returncode': 0}
+[6.290261] (wheels_controller) JobProgress: {'identifier': 'wheels_controller', 'progress': 'build'}
+[6.290720] (wheels_controller) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/wheels_controller', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/wheels_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/wheels_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[6.328937] (-) TimerEvent: {}
+[6.357775] (arm_controller) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target arm_controller_node\x1b[0m\n'}
+[6.366484] (wheels_controller) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target wheels_controller_node\x1b[0m\n'}
+[6.429081] (-) TimerEvent: {}
+[6.444171] (arm_controller) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/arm_controller_node.dir/src/arm_controller_node.cpp.o\x1b[0m\n'}
+[6.454272] (wheels_controller) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/wheels_controller_node.cpp.o\x1b[0m\n'}
+[6.460859] (wheels_controller) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/can_controller.cpp.o\x1b[0m\n'}
+[6.473575] (wheels_controller) StdoutLine: {'line': b'[ 75%] \x1b[32mBuilding CXX object CMakeFiles/wheels_controller_node.dir/src/rev_motor_controller.cpp.o\x1b[0m\n'}
+[6.529257] (-) TimerEvent: {}
+[6.629965] (-) TimerEvent: {}
+[6.730710] (-) TimerEvent: {}
+[6.831478] (-) TimerEvent: {}
+[6.932237] (-) TimerEvent: {}
+[6.953631] (absenc_interface) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[7.032433] (-) TimerEvent: {}
+[7.133208] (-) TimerEvent: {}
+[7.234021] (-) TimerEvent: {}
+[7.334849] (-) TimerEvent: {}
+[7.435641] (-) TimerEvent: {}
+[7.536451] (-) TimerEvent: {}
+[7.637166] (-) TimerEvent: {}
+[7.738146] (-) TimerEvent: {}
+[7.838953] (-) TimerEvent: {}
+[7.940011] (-) TimerEvent: {}
+[8.040779] (-) TimerEvent: {}
+[8.140096] (absenc_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[8.140840] (-) TimerEvent: {}
+[8.241358] (-) TimerEvent: {}
+[8.342086] (-) TimerEvent: {}
+[8.442803] (-) TimerEvent: {}
+[8.543561] (-) TimerEvent: {}
+[8.550457] (absenc_interface) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[8.595720] (absenc_interface) StdoutLine: {'line': b'-- Found PythonInterp: /home/nvidia/anaconda3/bin/python3 (found suitable version "3.11.5", minimum required is "3.6") \n'}
+[8.598365] (absenc_interface) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[8.643764] (-) TimerEvent: {}
+[8.647885] (absenc_interface) StdoutLine: {'line': b'-- Found PythonLibs: /home/nvidia/anaconda3/lib/libpython3.11.so (found suitable version "3.11.5", minimum required is "3.5") \n'}
+[8.648336] (absenc_interface) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /home/nvidia/anaconda3/bin/python3\n'}
+[8.648475] (absenc_interface) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /home/nvidia/anaconda3/include/python3.11\n'}
+[8.648587] (absenc_interface) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /home/nvidia/anaconda3/lib/libpython3.11.so\n'}
+[8.692638] (absenc_interface) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[8.743903] (-) TimerEvent: {}
+[8.769402] (absenc_interface) StderrLine: {'line': b'CMake Deprecation Warning at /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_target_interfaces.cmake:32 (message):\n'}
+[8.769903] (absenc_interface) StderrLine: {'line': b'  Use rosidl_get_typesupport_target() and target_link_libraries() instead of\n'}
+[8.770041] (absenc_interface) StderrLine: {'line': b'  rosidl_target_interfaces()\n'}
+[8.770149] (absenc_interface) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[8.770250] (absenc_interface) StderrLine: {'line': b'  CMakeLists.txt:24 (rosidl_target_interfaces)\n'}
+[8.770345] (absenc_interface) StderrLine: {'line': b'\n'}
+[8.770439] (absenc_interface) StderrLine: {'line': b'\n'}
+[8.797469] (absenc_interface) StdoutLine: {'line': b'-- Configuring done\n'}
+[8.844070] (-) TimerEvent: {}
+[8.855297] (absenc_interface) StdoutLine: {'line': b'-- Generating done\n'}
+[8.860776] (absenc_interface) StdoutLine: {'line': b'-- Build files have been written to: /home/nvidia/robotics-orin/build/absenc_interface\n'}
+[8.891829] (absenc_interface) CommandEnded: {'returncode': 0}
+[8.893273] (absenc_interface) JobProgress: {'identifier': 'absenc_interface', 'progress': 'build'}
+[8.893789] (absenc_interface) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/nvidia/robotics-orin/build/absenc_interface', '--', '-j6', '-l6'], 'cwd': '/home/nvidia/robotics-orin/build/absenc_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/absenc_interface'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[8.944305] (-) TimerEvent: {}
+[8.974528] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target ament_cmake_python_symlink_absenc_interface\x1b[0m\n'}
+[8.975040] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__cpp\x1b[0m\n'}
+[8.977904] (absenc_interface) StdoutLine: {'line': b'[  2%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[9.003645] (absenc_interface) StdoutLine: {'line': b'[  5%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[9.021664] (absenc_interface) StdoutLine: {'line': b'[  5%] Built target ament_cmake_python_symlink_absenc_interface\n'}
+[9.044486] (-) TimerEvent: {}
+[9.062282] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target ament_cmake_python_build_absenc_interface_egg\x1b[0m\n'}
+[9.144694] (-) TimerEvent: {}
+[9.245449] (-) TimerEvent: {}
+[9.346249] (-) TimerEvent: {}
+[9.447002] (-) TimerEvent: {}
+[9.525801] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_generator_c\x1b[0m\n'}
+[9.547223] (-) TimerEvent: {}
+[9.558315] (absenc_interface) StdoutLine: {'line': b'[  8%] \x1b[32mBuilding C object CMakeFiles/absenc_interface__rosidl_generator_c.dir/rosidl_generator_c/absenc_interface/msg/detail/encoder_values__functions.c.o\x1b[0m\n'}
+[9.578743] (absenc_interface) StdoutLine: {'line': b'[  8%] Built target absenc_interface__cpp\n'}
+[9.602223] (absenc_interface) StdoutLine: {'line': b'[ 11%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[9.624599] (absenc_interface) StdoutLine: {'line': b'[ 14%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[9.639669] (absenc_interface) StdoutLine: {'line': b'[ 17%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[9.647464] (-) TimerEvent: {}
+[9.679020] (absenc_interface) StdoutLine: {'line': b'[ 20%] \x1b[32m\x1b[1mLinking C shared library libabsenc_interface__rosidl_generator_c.so\x1b[0m\n'}
+[9.747680] (-) TimerEvent: {}
+[9.815077] (absenc_interface) StdoutLine: {'line': b'running egg_info\n'}
+[9.816129] (absenc_interface) StdoutLine: {'line': b'creating absenc_interface.egg-info\n'}
+[9.816628] (absenc_interface) StdoutLine: {'line': b'writing absenc_interface.egg-info/PKG-INFO\n'}
+[9.817109] (absenc_interface) StdoutLine: {'line': b'writing dependency_links to absenc_interface.egg-info/dependency_links.txt\n'}
+[9.817413] (absenc_interface) StdoutLine: {'line': b'writing top-level names to absenc_interface.egg-info/top_level.txt\n'}
+[9.817906] (absenc_interface) StdoutLine: {'line': b"writing manifest file 'absenc_interface.egg-info/SOURCES.txt'\n"}
+[9.847901] (-) TimerEvent: {}
+[9.871295] (absenc_interface) StdoutLine: {'line': b'[ 20%] Built target absenc_interface__rosidl_generator_c\n'}
+[9.943781] (absenc_interface) StdoutLine: {'line': b'[ 23%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[9.948958] (-) TimerEvent: {}
+[9.961593] (absenc_interface) StdoutLine: {'line': b'[ 26%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[10.007133] (absenc_interface) StdoutLine: {'line': b"reading manifest file 'absenc_interface.egg-info/SOURCES.txt'\n"}
+[10.008109] (absenc_interface) StdoutLine: {'line': b"writing manifest file 'absenc_interface.egg-info/SOURCES.txt'\n"}
+[10.049161] (-) TimerEvent: {}
+[10.149968] (-) TimerEvent: {}
+[10.192159] (absenc_interface) StdoutLine: {'line': b'[ 26%] Built target ament_cmake_python_build_absenc_interface_egg\n'}
+[10.194190] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_cpp\x1b[0m\n'}
+[10.195453] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_introspection_cpp\x1b[0m\n'}
+[10.236816] (absenc_interface) StdoutLine: {'line': b'[ 29%] \x1b[32mBuilding CXX object CMakeFiles/absenc_interface__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/absenc_interface/msg/detail/encoder_values__type_support.cpp.o\x1b[0m\n'}
+[10.250182] (-) TimerEvent: {}
+[10.268498] (absenc_interface) StdoutLine: {'line': b'[ 32%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[10.284879] (absenc_interface) StdoutLine: {'line': b'[ 35%] \x1b[32mBuilding CXX object CMakeFiles/absenc_interface__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/absenc_interface/msg/encoder_values__type_support.cpp.o\x1b[0m\n'}
+[10.350376] (-) TimerEvent: {}
+[10.379890] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_fastrtps_cpp\x1b[0m\n'}
+[10.450606] (-) TimerEvent: {}
+[10.462308] (absenc_interface) StdoutLine: {'line': b'[ 38%] \x1b[32mBuilding CXX object CMakeFiles/absenc_interface__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/absenc_interface/msg/detail/dds_fastrtps/encoder_values__type_support.cpp.o\x1b[0m\n'}
+[10.550835] (-) TimerEvent: {}
+[10.651868] (-) TimerEvent: {}
+[10.698297] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_fastrtps_c\x1b[0m\n'}
+[10.752087] (-) TimerEvent: {}
+[10.797826] (absenc_interface) StdoutLine: {'line': b'[ 41%] \x1b[32mBuilding CXX object CMakeFiles/absenc_interface__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/absenc_interface/msg/detail/encoder_values__type_support_c.cpp.o\x1b[0m\n'}
+[10.824250] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_introspection_c\x1b[0m\n'}
+[10.854009] (-) TimerEvent: {}
+[10.916506] (absenc_interface) StdoutLine: {'line': b'[ 44%] \x1b[32mBuilding C object CMakeFiles/absenc_interface__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/absenc_interface/msg/detail/encoder_values__type_support.c.o\x1b[0m\n'}
+[10.954235] (-) TimerEvent: {}
+[11.013130] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_c\x1b[0m\n'}
+[11.054452] (-) TimerEvent: {}
+[11.075363] (absenc_interface) StdoutLine: {'line': b'[ 47%] \x1b[32m\x1b[1mLinking C shared library libabsenc_interface__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[11.078059] (absenc_interface) StdoutLine: {'line': b'[ 50%] \x1b[32mBuilding CXX object CMakeFiles/absenc_interface__rosidl_typesupport_c.dir/rosidl_typesupport_c/absenc_interface/msg/encoder_values__type_support.cpp.o\x1b[0m\n'}
+[11.143610] (absenc_interface) StdoutLine: {'line': b'[ 52%] \x1b[32m\x1b[1mLinking CXX shared library libabsenc_interface__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[11.154673] (-) TimerEvent: {}
+[11.177436] (absenc_interface) StdoutLine: {'line': b'[ 52%] Built target absenc_interface__rosidl_typesupport_introspection_c\n'}
+[11.206313] (absenc_interface) StdoutLine: {'line': b'[ 55%] \x1b[32m\x1b[1mLinking CXX shared library libabsenc_interface__rosidl_typesupport_c.so\x1b[0m\n'}
+[11.250958] (absenc_interface) StdoutLine: {'line': b'[ 55%] Built target absenc_interface__rosidl_typesupport_cpp\n'}
+[11.254860] (-) TimerEvent: {}
+[11.272114] (absenc_interface) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking CXX shared library libabsenc_interface__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[11.355095] (-) TimerEvent: {}
+[11.355752] (absenc_interface) StdoutLine: {'line': b'[ 58%] Built target absenc_interface__rosidl_typesupport_introspection_cpp\n'}
+[11.361226] (absenc_interface) StdoutLine: {'line': b'[ 58%] Built target absenc_interface__rosidl_typesupport_c\n'}
+[11.455309] (-) TimerEvent: {}
+[11.540452] (absenc_interface) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libabsenc_interface__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[11.555511] (-) TimerEvent: {}
+[11.602505] (absenc_interface) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libabsenc_interface__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[11.655737] (-) TimerEvent: {}
+[11.683852] (absenc_interface) StdoutLine: {'line': b'[ 64%] Built target absenc_interface__rosidl_typesupport_fastrtps_cpp\n'}
+[11.741662] (absenc_interface) StdoutLine: {'line': b'[ 64%] Built target absenc_interface__rosidl_typesupport_fastrtps_c\n'}
+[11.755870] (-) TimerEvent: {}
+[11.760021] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface\x1b[0m\n'}
+[11.779060] (absenc_interface) StdoutLine: {'line': b'[ 64%] Built target absenc_interface\n'}
+[11.797533] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__py\x1b[0m\n'}
+[11.798012] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_node\x1b[0m\n'}
+[11.816702] (absenc_interface) StdoutLine: {'line': b'[ 67%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[11.856051] (-) TimerEvent: {}
+[11.901815] (absenc_interface) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/absenc_node.dir/src/absenc_node.cpp.o\x1b[0m\n'}
+[11.907838] (absenc_interface) StdoutLine: {'line': b'[ 73%] \x1b[32mBuilding CXX object CMakeFiles/absenc_node.dir/src/absenc.cpp.o\x1b[0m\n'}
+[11.956240] (-) TimerEvent: {}
+[11.973741] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc.cpp:\x1b[m\x1b[K In static member function \xe2\x80\x98\x1b[01m\x1b[Kstatic ABSENC_Error_t ABSENC::OpenPort(const char*, uint16_t)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[11.974292] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc.cpp:3:64:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused parameter \xe2\x80\x98\x1b[01m\x1b[Kbaud_rate\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-parameter\x1b[m\x1b[K]\n'}
+[11.974442] (absenc_interface) StderrLine: {'line': b'    3 | ABSENC_Error_t ABSENC::OpenPort(const char* fileName, \x1b[01;35m\x1b[Kuint16_t baud_rate\x1b[m\x1b[K){\n'}
+[11.974557] (absenc_interface) StderrLine: {'line': b'      |                                                       \x1b[01;35m\x1b[K~~~~~~~~~^~~~~~~~~\x1b[m\x1b[K\n'}
+[12.056427] (-) TimerEvent: {}
+[12.157162] (-) TimerEvent: {}
+[12.257894] (-) TimerEvent: {}
+[12.352097] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArmControllerNode::ArmMessageCallback(std_msgs::msg::Float32MultiArray_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.352718] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:63:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[12.353000] (arm_controller) StderrLine: {'line': b'   63 |     int \x1b[01;35m\x1b[Kstatus\x1b[m\x1b[K = write(fd,out_buf,sizeof(out_buf));\n'}
+[12.353120] (arm_controller) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[12.353389] (wheels_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid WheelsControllerNode::pollControllersCallback()\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.353626] (wheels_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/wheels_controller/src/wheels_controller_node.cpp:49:22:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kframe\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[12.353746] (wheels_controller) StderrLine: {'line': b'   49 |     struct can_frame \x1b[01;35m\x1b[Kframe\x1b[m\x1b[K;\n'}
+[12.353850] (wheels_controller) StderrLine: {'line': b'      |                      \x1b[01;35m\x1b[K^~~~~\x1b[m\x1b[K\n'}
+[12.358057] (-) TimerEvent: {}
+[12.358797] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid ArmControllerNode::JoyMessageCallback(sensor_msgs::msg::Joy_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[12.359136] (arm_controller) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/arm_controller/src/arm_controller_node.cpp:111:9:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kunused variable \xe2\x80\x98\x1b[01m\x1b[Kstatus\x1b[m\x1b[K\xe2\x80\x99 [\x1b[01;35m\x1b[K-Wunused-variable\x1b[m\x1b[K]\n'}
+[12.359257] (arm_controller) StderrLine: {'line': b'  111 |     int \x1b[01;35m\x1b[Kstatus\x1b[m\x1b[K = write(fd,out_buf,sizeof(out_buf));\n'}
+[12.359359] (arm_controller) StderrLine: {'line': b'      |         \x1b[01;35m\x1b[K^~~~~~\x1b[m\x1b[K\n'}
+[12.458268] (-) TimerEvent: {}
+[12.461905] (absenc_interface) StdoutLine: {'line': b'[ 73%] Built target absenc_interface__py\n'}
+[12.481364] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_generator_py\x1b[0m\n'}
+[12.530436] (absenc_interface) StdoutLine: {'line': b'[ 76%] \x1b[32mBuilding C object CMakeFiles/absenc_interface__rosidl_generator_py.dir/rosidl_generator_py/absenc_interface/msg/_encoder_values_s.c.o\x1b[0m\n'}
+[12.558444] (-) TimerEvent: {}
+[12.659525] (-) TimerEvent: {}
+[12.723363] (absenc_interface) StdoutLine: {'line': b'[ 79%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/absenc_interface/libabsenc_interface__rosidl_generator_py.so\x1b[0m\n'}
+[12.759736] (-) TimerEvent: {}
+[12.795780] (absenc_interface) StdoutLine: {'line': b'[ 79%] Built target absenc_interface__rosidl_generator_py\n'}
+[12.817184] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_introspection_c__pyext\x1b[0m\n'}
+[12.817735] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_c__pyext\x1b[0m\n'}
+[12.837556] (absenc_interface) StdoutLine: {'line': b'\x1b[35m\x1b[1mScanning dependencies of target absenc_interface__rosidl_typesupport_fastrtps_c__pyext\x1b[0m\n'}
+[12.859901] (-) TimerEvent: {}
+[12.879494] (absenc_interface) StdoutLine: {'line': b'[ 82%] \x1b[32mBuilding C object CMakeFiles/absenc_interface__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/absenc_interface/_absenc_interface_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[12.894200] (absenc_interface) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/absenc_interface__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/absenc_interface/_absenc_interface_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[12.894866] (absenc_interface) StdoutLine: {'line': b'[ 88%] \x1b[32mBuilding C object CMakeFiles/absenc_interface__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/absenc_interface/_absenc_interface_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[12.960059] (-) TimerEvent: {}
+[13.061123] (-) TimerEvent: {}
+[13.133986] (absenc_interface) StdoutLine: {'line': b'[ 91%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/absenc_interface/absenc_interface_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so\x1b[0m\n'}
+[13.149012] (absenc_interface) StdoutLine: {'line': b'[ 94%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/absenc_interface/absenc_interface_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so\x1b[0m\n'}
+[13.161305] (-) TimerEvent: {}
+[13.180153] (absenc_interface) StdoutLine: {'line': b'[ 97%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/absenc_interface/absenc_interface_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so\x1b[0m\n'}
+[13.210573] (absenc_interface) StdoutLine: {'line': b'[ 97%] Built target absenc_interface__rosidl_typesupport_introspection_c__pyext\n'}
+[13.228315] (absenc_interface) StdoutLine: {'line': b'[ 97%] Built target absenc_interface__rosidl_typesupport_c__pyext\n'}
+[13.257670] (absenc_interface) StdoutLine: {'line': b'[ 97%] Built target absenc_interface__rosidl_typesupport_fastrtps_c__pyext\n'}
+[13.261463] (-) TimerEvent: {}
+[13.362657] (-) TimerEvent: {}
+[13.463371] (-) TimerEvent: {}
+[13.564111] (-) TimerEvent: {}
+[13.664816] (-) TimerEvent: {}
+[13.765529] (-) TimerEvent: {}
+[13.866276] (-) TimerEvent: {}
+[13.967023] (-) TimerEvent: {}
+[14.067836] (-) TimerEvent: {}
+[14.168563] (-) TimerEvent: {}
+[14.269288] (-) TimerEvent: {}
+[14.370022] (-) TimerEvent: {}
+[14.470792] (-) TimerEvent: {}
+[14.571549] (-) TimerEvent: {}
+[14.672339] (-) TimerEvent: {}
+[14.773087] (-) TimerEvent: {}
+[14.873822] (-) TimerEvent: {}
+[14.974580] (-) TimerEvent: {}
+[15.075329] (-) TimerEvent: {}
+[15.176090] (-) TimerEvent: {}
+[15.276810] (-) TimerEvent: {}
+[15.377541] (-) TimerEvent: {}
+[15.478296] (-) TimerEvent: {}
+[15.579043] (-) TimerEvent: {}
+[15.679808] (-) TimerEvent: {}
+[15.780524] (-) TimerEvent: {}
+[15.881268] (-) TimerEvent: {}
+[15.982034] (-) TimerEvent: {}
+[16.082786] (-) TimerEvent: {}
+[16.183519] (-) TimerEvent: {}
+[16.284298] (-) TimerEvent: {}
+[16.385031] (-) TimerEvent: {}
+[16.485783] (-) TimerEvent: {}
+[16.586532] (-) TimerEvent: {}
+[16.687263] (-) TimerEvent: {}
+[16.788009] (-) TimerEvent: {}
+[16.888741] (-) TimerEvent: {}
+[16.989476] (-) TimerEvent: {}
+[17.090203] (-) TimerEvent: {}
+[17.093176] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:\x1b[m\x1b[K In member function \xe2\x80\x98\x1b[01m\x1b[Kvoid AbsEnc::ikValuesCallback(sensor_msgs::msg::JointState_<std::allocator<void> >::SharedPtr)\x1b[m\x1b[K\xe2\x80\x99:\n'}
+[17.093631] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:94:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::array<float, 4>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[17.093792] (absenc_interface) StderrLine: {'line': b'   94 |       for (int i = 0; \x1b[01;35m\x1b[Ki < std::size(ik_angles)\x1b[m\x1b[K; i++) {\n'}
+[17.093905] (absenc_interface) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.094156] (absenc_interface) StderrLine: {'line': b'\x1b[01m\x1b[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:99:25:\x1b[m\x1b[K \x1b[01;35m\x1b[Kwarning: \x1b[m\x1b[Kcomparison of integer expressions of different signedness: \xe2\x80\x98\x1b[01m\x1b[Kint\x1b[m\x1b[K\xe2\x80\x99 and \xe2\x80\x98\x1b[01m\x1b[Kstd::array<float, 4>::size_type\x1b[m\x1b[K\xe2\x80\x99 {aka \xe2\x80\x98\x1b[01m\x1b[Klong unsigned int\x1b[m\x1b[K\xe2\x80\x99} [\x1b[01;35m\x1b[K-Wsign-compare\x1b[m\x1b[K]\n'}
+[17.094333] (absenc_interface) StderrLine: {'line': b'   99 |       for (int i = 0; \x1b[01;35m\x1b[Ki < std::size(ik_angles)\x1b[m\x1b[K; i++) {\n'}
+[17.094455] (absenc_interface) StderrLine: {'line': b'      |                       \x1b[01;35m\x1b[K~~^~~~~~~~~~~~~~~~~~~~~~\x1b[m\x1b[K\n'}
+[17.190362] (-) TimerEvent: {}
+[17.291142] (-) TimerEvent: {}
+[17.391885] (-) TimerEvent: {}
+[17.492619] (-) TimerEvent: {}
+[17.593394] (-) TimerEvent: {}
+[17.694144] (-) TimerEvent: {}
+[17.794879] (-) TimerEvent: {}
+[17.895613] (-) TimerEvent: {}
+[17.996366] (-) TimerEvent: {}
+[18.097099] (-) TimerEvent: {}
+[18.197835] (-) TimerEvent: {}
+[18.298582] (-) TimerEvent: {}
+[18.399321] (-) TimerEvent: {}
+[18.500087] (-) TimerEvent: {}
+[18.600812] (-) TimerEvent: {}
+[18.701535] (-) TimerEvent: {}
+[18.802242] (-) TimerEvent: {}
+[18.902941] (-) TimerEvent: {}
+[19.003647] (-) TimerEvent: {}
+[19.104367] (-) TimerEvent: {}
+[19.205058] (-) TimerEvent: {}
+[19.305744] (-) TimerEvent: {}
+[19.406429] (-) TimerEvent: {}
+[19.507106] (-) TimerEvent: {}
+[19.607820] (-) TimerEvent: {}
+[19.708499] (-) TimerEvent: {}
+[19.809194] (-) TimerEvent: {}
+[19.909886] (-) TimerEvent: {}
+[20.010574] (-) TimerEvent: {}
+[20.111264] (-) TimerEvent: {}
+[20.212016] (-) TimerEvent: {}
+[20.312728] (-) TimerEvent: {}
+[20.413432] (-) TimerEvent: {}
+[20.514147] (-) TimerEvent: {}
+[20.614830] (-) TimerEvent: {}
+[20.715510] (-) TimerEvent: {}
+[20.816223] (-) TimerEvent: {}
+[20.916906] (-) TimerEvent: {}
+[21.017613] (-) TimerEvent: {}
+[21.118342] (-) TimerEvent: {}
+[21.219112] (-) TimerEvent: {}
+[21.319868] (-) TimerEvent: {}
+[21.420606] (-) TimerEvent: {}
+[21.521317] (-) TimerEvent: {}
+[21.622022] (-) TimerEvent: {}
+[21.722732] (-) TimerEvent: {}
+[21.823460] (-) TimerEvent: {}
+[21.924190] (-) TimerEvent: {}
+[22.024887] (-) TimerEvent: {}
+[22.125600] (-) TimerEvent: {}
+[22.226316] (-) TimerEvent: {}
+[22.327025] (-) TimerEvent: {}
+[22.427734] (-) TimerEvent: {}
+[22.528436] (-) TimerEvent: {}
+[22.629125] (-) TimerEvent: {}
+[22.729819] (-) TimerEvent: {}
+[22.830502] (-) TimerEvent: {}
+[22.931180] (-) TimerEvent: {}
+[23.031894] (-) TimerEvent: {}
+[23.132561] (-) TimerEvent: {}
+[23.233249] (-) TimerEvent: {}
+[23.333934] (-) TimerEvent: {}
+[23.434627] (-) TimerEvent: {}
+[23.535323] (-) TimerEvent: {}
+[23.636060] (-) TimerEvent: {}
+[23.736784] (-) TimerEvent: {}
+[23.837519] (-) TimerEvent: {}
+[23.938198] (-) TimerEvent: {}
+[24.038881] (-) TimerEvent: {}
+[24.139601] (-) TimerEvent: {}
+[24.240312] (-) TimerEvent: {}
+[24.341038] (-) TimerEvent: {}
+[24.440362] (sil) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable talker\x1b[0m\n'}
+[24.441095] (-) TimerEvent: {}
+[24.541635] (-) TimerEvent: {}
+[24.642411] (-) TimerEvent: {}
+[24.743107] (-) TimerEvent: {}
+[24.843848] (-) TimerEvent: {}
+[24.944517] (-) TimerEvent: {}
+[25.045206] (-) TimerEvent: {}
+[25.145900] (-) TimerEvent: {}
+[25.246595] (-) TimerEvent: {}
+[25.274168] (sil) StdoutLine: {'line': b'[100%] Built target talker\n'}
+[25.296920] (sil) CommandEnded: {'returncode': 0}
+[25.338863] (sil) JobProgress: {'identifier': 'sil', 'progress': 'install'}
+[25.346847] (-) TimerEvent: {}
+[25.361919] (sil) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/robotics-orin/build/sil'], 'cwd': '/home/nvidia/robotics-orin/build/sil', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/sil'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[25.383879] (sil) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[25.384841] (sil) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[25.386168] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/lib/sil/talker\n'}
+[25.404322] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/package_run_dependencies/sil\n'}
+[25.424139] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/parent_prefix_path/sil\n'}
+[25.442084] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/ament_prefix_path.sh\n'}
+[25.446916] (-) TimerEvent: {}
+[25.459768] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/ament_prefix_path.dsv\n'}
+[25.477908] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/path.sh\n'}
+[25.497128] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/environment/path.dsv\n'}
+[25.515729] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.bash\n'}
+[25.533532] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.sh\n'}
+[25.547115] (-) TimerEvent: {}
+[25.551355] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.zsh\n'}
+[25.569439] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.dsv\n'}
+[25.588090] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/package.dsv\n'}
+[25.606089] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/packages/sil\n'}
+[25.624154] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/cmake/silConfig.cmake\n'}
+[25.640749] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/cmake/silConfig-version.cmake\n'}
+[25.647261] (-) TimerEvent: {}
+[25.658593] (sil) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/package.xml\n'}
+[25.680228] (sil) CommandEnded: {'returncode': 0}
+[25.747588] (-) TimerEvent: {}
+[25.849043] (-) TimerEvent: {}
+[25.950390] (-) TimerEvent: {}
+[26.051469] (-) TimerEvent: {}
+[26.152524] (-) TimerEvent: {}
+[26.253435] (-) TimerEvent: {}
+[26.354554] (-) TimerEvent: {}
+[26.455826] (-) TimerEvent: {}
+[26.556984] (-) TimerEvent: {}
+[26.658939] (-) TimerEvent: {}
+[26.759644] (-) TimerEvent: {}
+[26.860599] (-) TimerEvent: {}
+[26.961860] (-) TimerEvent: {}
+[27.062963] (-) TimerEvent: {}
+[27.138705] (sil) JobEnded: {'identifier': 'sil', 'rc': 0}
+[27.163152] (-) TimerEvent: {}
+[27.263826] (-) TimerEvent: {}
+[27.364500] (-) TimerEvent: {}
+[27.465172] (-) TimerEvent: {}
+[27.565849] (-) TimerEvent: {}
+[27.666527] (-) TimerEvent: {}
+[27.767206] (-) TimerEvent: {}
+[27.867872] (-) TimerEvent: {}
+[27.968540] (-) TimerEvent: {}
+[28.069203] (-) TimerEvent: {}
+[28.169863] (-) TimerEvent: {}
+[28.270534] (-) TimerEvent: {}
+[28.371201] (-) TimerEvent: {}
+[28.471855] (-) TimerEvent: {}
+[28.572506] (-) TimerEvent: {}
+[28.673160] (-) TimerEvent: {}
+[28.773823] (-) TimerEvent: {}
+[28.874481] (-) TimerEvent: {}
+[28.975152] (-) TimerEvent: {}
+[29.075840] (-) TimerEvent: {}
+[29.176496] (-) TimerEvent: {}
+[29.277198] (-) TimerEvent: {}
+[29.377893] (-) TimerEvent: {}
+[29.478563] (-) TimerEvent: {}
+[29.579236] (-) TimerEvent: {}
+[29.679973] (-) TimerEvent: {}
+[29.780798] (-) TimerEvent: {}
+[29.881499] (-) TimerEvent: {}
+[29.982194] (-) TimerEvent: {}
+[30.082896] (-) TimerEvent: {}
+[30.183593] (-) TimerEvent: {}
+[30.284289] (-) TimerEvent: {}
+[30.384983] (-) TimerEvent: {}
+[30.485675] (-) TimerEvent: {}
+[30.586373] (-) TimerEvent: {}
+[30.687054] (-) TimerEvent: {}
+[30.787764] (-) TimerEvent: {}
+[30.888432] (-) TimerEvent: {}
+[30.987618] (arm_controller) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable arm_controller_node\x1b[0m\n'}
+[30.988481] (-) TimerEvent: {}
+[31.088973] (-) TimerEvent: {}
+[31.189699] (-) TimerEvent: {}
+[31.290391] (-) TimerEvent: {}
+[31.391071] (-) TimerEvent: {}
+[31.492263] (-) TimerEvent: {}
+[31.575987] (absenc_interface) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable absenc_node\x1b[0m\n'}
+[31.592445] (-) TimerEvent: {}
+[31.693274] (-) TimerEvent: {}
+[31.794031] (-) TimerEvent: {}
+[31.819679] (wheels_controller) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable wheels_controller_node\x1b[0m\n'}
+[31.894210] (-) TimerEvent: {}
+[31.994960] (-) TimerEvent: {}
+[32.095682] (-) TimerEvent: {}
+[32.170349] (arm_controller) StdoutLine: {'line': b'[100%] Built target arm_controller_node\n'}
+[32.193219] (arm_controller) CommandEnded: {'returncode': 0}
+[32.198428] (-) TimerEvent: {}
+[32.235672] (arm_controller) JobProgress: {'identifier': 'arm_controller', 'progress': 'install'}
+[32.237821] (arm_controller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/robotics-orin/build/arm_controller'], 'cwd': '/home/nvidia/robotics-orin/build/arm_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/arm_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[32.258078] (arm_controller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[32.258768] (arm_controller) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[32.259637] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/lib/arm_controller/arm_controller_node\n'}
+[32.281380] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/package_run_dependencies/arm_controller\n'}
+[32.298475] (-) TimerEvent: {}
+[32.302772] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/parent_prefix_path/arm_controller\n'}
+[32.324730] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.sh\n'}
+[32.343093] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/ament_prefix_path.dsv\n'}
+[32.361312] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.sh\n'}
+[32.379304] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/environment/path.dsv\n'}
+[32.398700] (-) TimerEvent: {}
+[32.402800] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.bash\n'}
+[32.422665] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.sh\n'}
+[32.443123] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.zsh\n'}
+[32.461055] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/local_setup.dsv\n'}
+[32.478739] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.dsv\n'}
+[32.498789] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/ament_index/resource_index/packages/arm_controller\n'}
+[32.499254] (-) TimerEvent: {}
+[32.516052] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig.cmake\n'}
+[32.534528] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/cmake/arm_controllerConfig-version.cmake\n'}
+[32.551849] (arm_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/arm_controller/share/arm_controller/package.xml\n'}
+[32.560227] (absenc_interface) StdoutLine: {'line': b'[100%] Built target absenc_node\n'}
+[32.572374] (arm_controller) CommandEnded: {'returncode': 0}
+[32.599554] (-) TimerEvent: {}
+[32.701006] (-) TimerEvent: {}
+[32.801796] (-) TimerEvent: {}
+[32.902788] (-) TimerEvent: {}
+[33.003676] (-) TimerEvent: {}
+[33.007463] (wheels_controller) StdoutLine: {'line': b'[100%] Built target wheels_controller_node\n'}
+[33.104161] (-) TimerEvent: {}
+[33.169508] (absenc_interface) CommandEnded: {'returncode': 0}
+[33.176611] (wheels_controller) CommandEnded: {'returncode': 0}
+[33.206297] (-) TimerEvent: {}
+[33.307044] (-) TimerEvent: {}
+[33.407771] (-) TimerEvent: {}
+[33.508874] (-) TimerEvent: {}
+[33.609583] (-) TimerEvent: {}
+[33.710729] (-) TimerEvent: {}
+[33.811546] (-) TimerEvent: {}
+[33.912357] (-) TimerEvent: {}
+[33.948403] (arm_controller) JobEnded: {'identifier': 'arm_controller', 'rc': 0}
+[33.950393] (absenc_interface) JobProgress: {'identifier': 'absenc_interface', 'progress': 'install'}
+[33.950798] (absenc_interface) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/robotics-orin/build/absenc_interface'], 'cwd': '/home/nvidia/robotics-orin/build/absenc_interface', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/absenc_interface'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[33.957262] (wheels_controller) JobProgress: {'identifier': 'wheels_controller', 'progress': 'install'}
+[33.957789] (wheels_controller) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/nvidia/robotics-orin/build/wheels_controller'], 'cwd': '/home/nvidia/robotics-orin/build/wheels_controller', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('CONDA_PROMPT_MODIFIER', '(base)'), ('LANGUAGE', 'en_CA:en'), ('USER', 'nvidia'), ('SSH_AGENT_PID', '2569'), ('XDG_SESSION_TYPE', 'x11'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/home/nvidia/robotics-orin/install/absenc_interface/lib:/usr/local/cuda-11.4/lib64:'), ('HOME', '/home/nvidia'), ('CONDA_SHLVL', '1'), ('OLDPWD', '/home/nvidia'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('MANAGERPID', '1885'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('TERMINATOR_DBUS_NAME', 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873'), ('GIO_LAUNCHED_DESKTOP_FILE_PID', '4562'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/nvidia/robotics-orin/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'nvidia'), ('JOURNAL_STREAM', '8:60814'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('USERNAME', 'nvidia'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('SESSION_MANAGER', 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633'), ('INVOCATION_ID', '0382f09d5629472da55b84a7fae40c29'), ('XDG_MENU_PREFIX', 'gnome-'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('DISPLAY', ':0'), ('TERMINATOR_DBUS_PATH', '/net/tenshu/Terminator2'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1000/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('SSH_AUTH_SOCK', '/run/user/1000/keyring/ssh'), ('AMENT_PREFIX_PATH', '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface'), ('CONDA_PYTHON_EXE', '/home/nvidia/anaconda3/bin/python'), ('SHELL', '/bin/bash'), ('TERMINATOR_UUID', 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('CONDA_DEFAULT_ENV', 'base'), ('GPG_AGENT_INFO', '/run/user/1000/gnupg/S.gpg-agent:0:1'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/nvidia/robotics-orin/build/wheels_controller'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/nvidia/anaconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages'), ('CONDA_PREFIX', '/home/nvidia/anaconda3'), ('COLCON', '1'), ('VTE_VERSION', '6003'), ('CMAKE_PREFIX_PATH', '/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik')]), 'shell': False}
+[33.971162] (absenc_interface) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[33.972417] (absenc_interface) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[33.972786] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/rosidl_interfaces/absenc_interface\n'}
+[33.977913] (wheels_controller) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[33.978524] (wheels_controller) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[33.979278] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/lib/wheels_controller/wheels_controller_node\n'}
+[33.990382] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__functions.h\n'}
+[33.995814] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/package_run_dependencies/wheels_controller\n'}
+[34.006804] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__struct.h\n'}
+[34.010910] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/parent_prefix_path/wheels_controller\n'}
+[34.012452] (-) TimerEvent: {}
+[34.022892] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__type_support.h\n'}
+[34.028315] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.sh\n'}
+[34.039592] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/encoder_values.h\n'}
+[34.045264] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/ament_prefix_path.dsv\n'}
+[34.056774] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/rosidl_generator_c__visibility_control.h\n'}
+[34.060269] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.sh\n'}
+[34.073166] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/library_path.sh\n'}
+[34.076867] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/environment/path.dsv\n'}
+[34.089385] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/library_path.dsv\n'}
+[34.092960] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.bash\n'}
+[34.105936] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_fastrtps_c.h\n'}
+[34.107076] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.sh\n'}
+[34.112605] (-) TimerEvent: {}
+[34.121158] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[34.121723] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.zsh\n'}
+[34.136975] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/local_setup.dsv\n'}
+[34.137758] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__builder.hpp\n'}
+[34.153645] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__struct.hpp\n'}
+[34.154189] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.dsv\n'}
+[34.169957] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__traits.hpp\n'}
+[34.171427] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/ament_index/resource_index/packages/wheels_controller\n'}
+[34.187534] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/encoder_values.hpp\n'}
+[34.188448] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig.cmake\n'}
+[34.204548] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/cmake/wheels_controllerConfig-version.cmake\n'}
+[34.205238] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[34.212697] (-) TimerEvent: {}
+[34.221886] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[34.222443] (wheels_controller) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/wheels_controller/share/wheels_controller/package.xml\n'}
+[34.239167] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_introspection_c.h\n'}
+[34.247265] (wheels_controller) CommandEnded: {'returncode': 0}
+[34.256550] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[34.273898] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/include/absenc_interface/absenc_interface/msg/detail/encoder_values__rosidl_typesupport_introspection_cpp.hpp\n'}
+[34.289592] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/pythonpath.sh\n'}
+[34.306076] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/pythonpath.dsv\n'}
+[34.312839] (-) TimerEvent: {}
+[34.323165] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface-0.0.0-py3.9.egg-info/PKG-INFO\n'}
+[34.339495] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface-0.0.0-py3.9.egg-info/SOURCES.txt\n'}
+[34.356247] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface-0.0.0-py3.9.egg-info/dependency_links.txt\n'}
+[34.372896] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface-0.0.0-py3.9.egg-info/top_level.txt\n'}
+[34.390278] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/__init__.py\n'}
+[34.406571] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/_absenc_interface_s.ep.rosidl_typesupport_c.c\n'}
+[34.413444] (-) TimerEvent: {}
+[34.423215] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/_absenc_interface_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[34.440131] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/_absenc_interface_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[34.465036] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so\n'}
+[34.481143] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so\n'}
+[34.496507] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so\n'}
+[34.512040] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/libabsenc_interface__rosidl_generator_py.so\n'}
+[34.513515] (-) TimerEvent: {}
+[34.527630] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/msg/__init__.py\n'}
+[34.545532] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/msg/_encoder_values.py\n'}
+[34.565326] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/msg/_encoder_values_s.c\n'}
+[34.581539] (absenc_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_fastrtps_c.cpython-311-aarch64-linux-gnu.so\n'}
+[34.582251] (absenc_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_introspection_c.cpython-311-aarch64-linux-gnu.so\n'}
+[34.583021] (absenc_interface) StdoutLine: {'line': b'-- Up-to-date symlink: /home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/absenc_interface_s__rosidl_typesupport_c.cpython-311-aarch64-linux-gnu.so\n'}
+[34.583740] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/msg/EncoderValues.idl\n'}
+[34.598515] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/msg/EncoderValues.msg\n'}
+[34.614021] (-) TimerEvent: {}
+[34.615245] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/lib/absenc_interface/absenc_node\n'}
+[34.631158] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/package_run_dependencies/absenc_interface\n'}
+[34.647833] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/parent_prefix_path/absenc_interface\n'}
+[34.664720] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/ament_prefix_path.sh\n'}
+[34.681377] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/ament_prefix_path.dsv\n'}
+[34.696900] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/path.sh\n'}
+[34.712858] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/environment/path.dsv\n'}
+[34.714401] (-) TimerEvent: {}
+[34.728403] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.bash\n'}
+[34.746322] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.sh\n'}
+[34.763152] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.zsh\n'}
+[34.778754] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/local_setup.dsv\n'}
+[34.794981] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.dsv\n'}
+[34.812952] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/ament_index/resource_index/packages/absenc_interface\n'}
+[34.814873] (-) TimerEvent: {}
+[34.830111] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/rosidl_cmake-extras.cmake\n'}
+[34.846137] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[34.863299] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[34.879520] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[34.896471] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[34.915093] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[34.915516] (-) TimerEvent: {}
+[34.935387] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[34.955357] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interfaceConfig.cmake\n'}
+[34.985844] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interfaceConfig-version.cmake\n'}
+[35.003839] (absenc_interface) StdoutLine: {'line': b'-- Symlinking: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/package.xml\n'}
+[35.016298] (-) TimerEvent: {}
+[35.020643] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_generator_c.so\n'}
+[35.021302] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_generator_c.so" to ""\n'}
+[35.021684] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_fastrtps_c.so\n'}
+[35.022017] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[35.022395] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_fastrtps_cpp.so\n'}
+[35.022761] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[35.023121] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_introspection_c.so\n'}
+[35.023671] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_introspection_c.so" to ""\n'}
+[35.024079] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_c.so\n'}
+[35.024523] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_c.so" to ""\n'}
+[35.024762] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_introspection_cpp.so\n'}
+[35.025223] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[35.025689] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_cpp.so\n'}
+[35.026117] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_typesupport_cpp.so" to ""\n'}
+[35.093399] (absenc_interface) StdoutLine: {'line': b"Listing '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface'...\n"}
+[35.093837] (absenc_interface) StdoutLine: {'line': b"Compiling '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/__init__.py'...\n"}
+[35.094020] (absenc_interface) StdoutLine: {'line': b"Listing '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/msg'...\n"}
+[35.094169] (absenc_interface) StdoutLine: {'line': b"Compiling '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/msg/__init__.py'...\n"}
+[35.094309] (absenc_interface) StdoutLine: {'line': b"Compiling '/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages/absenc_interface/msg/_encoder_values.py'...\n"}
+[35.104860] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_generator_py.so\n'}
+[35.105633] (absenc_interface) StdoutLine: {'line': b'-- Set runtime path of "/home/nvidia/robotics-orin/install/absenc_interface/lib/libabsenc_interface__rosidl_generator_py.so" to ""\n'}
+[35.105851] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_generator_cExport.cmake\n'}
+[35.106241] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_generator_cExport-noconfig.cmake\n'}
+[35.106752] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[35.107339] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[35.107729] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_generator_cppExport.cmake\n'}
+[35.108335] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[35.108669] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[35.109080] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cExport.cmake\n'}
+[35.109602] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[35.109953] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cExport.cmake\n'}
+[35.110303] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[35.110828] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[35.111239] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[35.111678] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cppExport.cmake\n'}
+[35.112178] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/absenc_interface__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[35.112692] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_generator_pyExport.cmake\n'}
+[35.113103] (absenc_interface) StdoutLine: {'line': b'-- Installing: /home/nvidia/robotics-orin/install/absenc_interface/share/absenc_interface/cmake/export_absenc_interface__rosidl_generator_pyExport-noconfig.cmake\n'}
+[35.116512] (-) TimerEvent: {}
+[35.217149] (-) TimerEvent: {}
+[35.318013] (-) TimerEvent: {}
+[35.419205] (-) TimerEvent: {}
+[35.520670] (-) TimerEvent: {}
+[35.621957] (-) TimerEvent: {}
+[35.652158] (wheels_controller) JobEnded: {'identifier': 'wheels_controller', 'rc': 0}
+[35.654374] (absenc_interface) CommandEnded: {'returncode': 0}
+[35.722164] (-) TimerEvent: {}
+[35.823921] (-) TimerEvent: {}
+[35.925855] (-) TimerEvent: {}
+[36.027446] (-) TimerEvent: {}
+[36.128960] (-) TimerEvent: {}
+[36.230524] (-) TimerEvent: {}
+[36.332220] (-) TimerEvent: {}
+[36.434159] (-) TimerEvent: {}
+[36.534920] (-) TimerEvent: {}
+[36.636438] (-) TimerEvent: {}
+[36.737950] (-) TimerEvent: {}
+[36.839045] (-) TimerEvent: {}
+[36.940346] (-) TimerEvent: {}
+[37.041928] (-) TimerEvent: {}
+[37.143261] (-) TimerEvent: {}
+[37.244741] (-) TimerEvent: {}
+[37.345989] (-) TimerEvent: {}
+[37.387869] (absenc_interface) JobEnded: {'identifier': 'absenc_interface', 'rc': 0}
+[37.389737] (arm_ik) JobStarted: {'identifier': 'arm_ik'}
+[37.446299] (-) TimerEvent: {}
+[37.547889] (-) TimerEvent: {}
+[37.650151] (-) TimerEvent: {}
+[37.752219] (-) TimerEvent: {}
+[37.853562] (-) TimerEvent: {}
+[37.955471] (-) TimerEvent: {}
+[38.056595] (-) TimerEvent: {}
+[38.157729] (-) TimerEvent: {}
+[38.258692] (-) TimerEvent: {}
+[38.359669] (-) TimerEvent: {}
+[38.460520] (-) TimerEvent: {}
+[38.561099] (-) TimerEvent: {}
+[38.661670] (-) TimerEvent: {}
+[38.762407] (-) TimerEvent: {}
+[38.863108] (-) TimerEvent: {}
+[38.964355] (-) TimerEvent: {}
+[39.065336] (-) TimerEvent: {}
+[39.166625] (-) TimerEvent: {}
+[39.267327] (-) TimerEvent: {}
+[39.368336] (-) TimerEvent: {}
+[39.468971] (-) TimerEvent: {}
+[39.570222] (-) TimerEvent: {}
+[39.670988] (-) TimerEvent: {}
+[39.771547] (-) TimerEvent: {}
+[39.872157] (-) TimerEvent: {}
+[39.972733] (-) TimerEvent: {}
+[40.073336] (-) TimerEvent: {}
+[40.173934] (-) TimerEvent: {}
+[40.257686] (arm_ik) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'develop', '--editable', '--build-directory', '/home/nvidia/robotics-orin/build/arm_ik/build', '--no-deps', 'install_data'], 'cwd': '/home/nvidia/robotics-orin/build/arm_ik', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'CONDA_PROMPT_MODIFIER': '(base)', 'LANGUAGE': 'en_CA:en', 'USER': 'nvidia', 'SSH_AGENT_PID': '2569', 'XDG_SESSION_TYPE': 'x11', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/nvidia/robotics-orin/install/absenc_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib:/usr/local/cuda-11.4/lib64', 'HOME': '/home/nvidia', 'CONDA_SHLVL': '1', 'OLDPWD': '/home/nvidia', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'MANAGERPID': '1885', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', '_CE_M': '', 'TERMINATOR_DBUS_NAME': 'net.tenshu.Terminator21a9d5db22c73a993ff0b42f64b396873', 'GIO_LAUNCHED_DESKTOP_FILE_PID': '4562', 'IM_CONFIG_PHASE': '1', 'COLCON_PREFIX_PATH': '/home/nvidia/robotics-orin/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'nvidia', 'JOURNAL_STREAM': '8:60814', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'nvidia', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', '_CE_CONDA': '', 'ROS_LOCALHOST_ONLY': '0', 'WINDOWPATH': '2', 'PATH': '/opt/ros/humble/bin:/home/nvidia/anaconda3/bin:/home/nvidia/anaconda3/condabin:/usr/local/cuda-11.4/bin:/home/nvidia/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'SESSION_MANAGER': 'local/nvidia:@/tmp/.ICE-unix/2633,unix/nvidia:/tmp/.ICE-unix/2633', 'INVOCATION_ID': '0382f09d5629472da55b84a7fae40c29', 'XDG_MENU_PREFIX': 'gnome-', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'TERMINATOR_DBUS_PATH': '/net/tenshu/Terminator2', 'LANG': 'en_US.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/gdm/Xauthority', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/opt/ros/humble:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_ik:/home/nvidia/robotics-orin/install/arm_controller:/home/nvidia/robotics-orin/install/absenc_interface', 'CONDA_PYTHON_EXE': '/home/nvidia/anaconda3/bin/python', 'SHELL': '/bin/bash', 'TERMINATOR_UUID': 'urn:uuid:d290d37f-c952-4ef6-8074-60ac27b4d6d2', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'CONDA_DEFAULT_ENV': 'base', 'GPG_AGENT_INFO': '/run/user/1000/gnupg/S.gpg-agent:0:1', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/nvidia/robotics-orin/build/arm_ik', 'LC_ALL': 'en_US.UTF-8', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'CONDA_EXE': '/home/nvidia/anaconda3/bin/conda', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/nvidia/robotics-orin/build/arm_ik/prefix_override:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.9/site-packages:/opt/ros/humble/lib/python3.8/site-packages:/home/nvidia/robotics-orin/build/arm_ik:/home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages:/home/nvidia/robotics-orin/install/absenc_interface/lib/python3.11/site-packages', 'CONDA_PREFIX': '/home/nvidia/anaconda3', 'COLCON': '1', 'VTE_VERSION': '6003', 'CMAKE_PREFIX_PATH': '/home/nvidia/robotics-orin/install/absenc_interface:/home/nvidia/robotics-orin/install/wheels_controller:/home/nvidia/robotics-orin/install/sil:/home/nvidia/robotics-orin/install/arm_controller'}, 'shell': False}
+[40.274071] (-) TimerEvent: {}
+[40.374619] (-) TimerEvent: {}
+[40.475172] (-) TimerEvent: {}
+[40.575751] (-) TimerEvent: {}
+[40.667644] (arm_ik) StdoutLine: {'line': b'running develop\n'}
+[40.675803] (-) TimerEvent: {}
+[40.776277] (-) TimerEvent: {}
+[40.876819] (-) TimerEvent: {}
+[40.950090] (arm_ik) StdoutLine: {'line': b'running egg_info\n'}
+[40.950535] (arm_ik) StdoutLine: {'line': b'creating arm_ik.egg-info\n'}
+[40.950714] (arm_ik) StdoutLine: {'line': b'writing arm_ik.egg-info/PKG-INFO\n'}
+[40.951114] (arm_ik) StdoutLine: {'line': b'writing dependency_links to arm_ik.egg-info/dependency_links.txt\n'}
+[40.951372] (arm_ik) StdoutLine: {'line': b'writing entry points to arm_ik.egg-info/entry_points.txt\n'}
+[40.951849] (arm_ik) StdoutLine: {'line': b'writing requirements to arm_ik.egg-info/requires.txt\n'}
+[40.952009] (arm_ik) StdoutLine: {'line': b'writing top-level names to arm_ik.egg-info/top_level.txt\n'}
+[40.952190] (arm_ik) StdoutLine: {'line': b"writing manifest file 'arm_ik.egg-info/SOURCES.txt'\n"}
+[40.976940] (-) TimerEvent: {}
+[40.999199] (arm_ik) StdoutLine: {'line': b"reading manifest file 'arm_ik.egg-info/SOURCES.txt'\n"}
+[41.000107] (arm_ik) StdoutLine: {'line': b"writing manifest file 'arm_ik.egg-info/SOURCES.txt'\n"}
+[41.057471] (arm_ik) StdoutLine: {'line': b'running build_ext\n'}
+[41.058254] (arm_ik) StdoutLine: {'line': b'Creating /home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages/site.py\n'}
+[41.062507] (arm_ik) StdoutLine: {'line': b'Creating /home/nvidia/robotics-orin/install/arm_ik/lib/python3.8/site-packages/arm-ik.egg-link (link to .)\n'}
+[41.064011] (arm_ik) StdoutLine: {'line': b'Installing CadMouseJoyNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik\n'}
+[41.064290] (arm_ik) StdoutLine: {'line': b'Installing IKNode script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik\n'}
+[41.064483] (arm_ik) StdoutLine: {'line': b'Installing state_publisher script to /home/nvidia/robotics-orin/install/arm_ik/lib/arm_ik\n'}
+[41.064796] (arm_ik) StdoutLine: {'line': b'\n'}
+[41.064936] (arm_ik) StdoutLine: {'line': b'Installed /home/nvidia/robotics-orin/build/arm_ik\n'}
+[41.065045] (arm_ik) StdoutLine: {'line': b'running install_data\n'}
+[41.065175] (arm_ik) StdoutLine: {'line': b'creating /home/nvidia/robotics-orin/install/arm_ik/share/ament_index\n'}
+[41.065329] (arm_ik) StdoutLine: {'line': b'creating /home/nvidia/robotics-orin/install/arm_ik/share/ament_index/resource_index\n'}
+[41.065457] (arm_ik) StdoutLine: {'line': b'creating /home/nvidia/robotics-orin/install/arm_ik/share/ament_index/resource_index/packages\n'}
+[41.065558] (arm_ik) StdoutLine: {'line': b'copying resource/arm_ik -> /home/nvidia/robotics-orin/install/arm_ik/share/ament_index/resource_index/packages\n'}
+[41.065680] (arm_ik) StdoutLine: {'line': b'copying package.xml -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.065794] (arm_ik) StdoutLine: {'line': b'copying urdf/astro_arm.urdf -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.066304] (arm_ik) StdoutLine: {'line': b'copying meshes/wrist.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.077061] (-) TimerEvent: {}
+[41.117604] (arm_ik) StdoutLine: {'line': b'copying meshes/upper_base_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.133619] (arm_ik) StdoutLine: {'line': b'copying meshes/distal_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.177251] (-) TimerEvent: {}
+[41.189533] (arm_ik) StdoutLine: {'line': b'copying meshes/base_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.231252] (arm_ik) StdoutLine: {'line': b'copying meshes/proximal_link.STL -> /home/nvidia/robotics-orin/install/arm_ik/share/arm_ik\n'}
+[41.277421] (-) TimerEvent: {}
+[41.326280] (arm_ik) CommandEnded: {'returncode': 0}
+[41.377609] (-) TimerEvent: {}
+[41.478476] (-) TimerEvent: {}
+[41.579619] (-) TimerEvent: {}
+[41.681235] (-) TimerEvent: {}
+[41.782821] (-) TimerEvent: {}
+[41.885128] (-) TimerEvent: {}
+[41.985945] (-) TimerEvent: {}
+[42.067619] (arm_ik) JobEnded: {'identifier': 'arm_ik', 'rc': 0}
+[42.070065] (-) EventReactorShutdown: {}

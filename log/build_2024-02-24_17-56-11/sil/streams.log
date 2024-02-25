@@ -1,3 +1,0 @@
-[3.704s] Invoking command in '/home/nvidia/robotics-orin/build/sil': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/sil -- -j6 -l6
-[3.817s] [100%] Built target talker
-[3.854s] Invoked command in '/home/nvidia/robotics-orin/build/sil' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik:/opt/ros/foxy CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/sil -- -j6 -l6

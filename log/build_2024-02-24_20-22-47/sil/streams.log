@@ -1,0 +1,23 @@
+[2.727s] Invoking command in '/home/nvidia/robotics-orin/build/sil': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/sil -- -j6 -l6
+[2.840s] [100%] Built target talker
+[2.878s] Invoked command in '/home/nvidia/robotics-orin/build/sil' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --build /home/nvidia/robotics-orin/build/sil -- -j6 -l6
+[4.302s] Invoking command in '/home/nvidia/robotics-orin/build/sil': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/sil
+[4.317s] -- Install configuration: ""
+[4.318s] -- Execute custom install script
+[4.320s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/lib/sil/talker
+[4.320s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/package_run_dependencies/sil
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/parent_prefix_path/sil
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/environment/ament_prefix_path.sh
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/environment/ament_prefix_path.dsv
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/environment/path.sh
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/environment/path.dsv
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.bash
+[4.321s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.sh
+[4.322s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.zsh
+[4.322s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/local_setup.dsv
+[4.322s] -- Symlinking: /home/nvidia/robotics-orin/install/sil/share/sil/package.dsv
+[4.343s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/ament_index/resource_index/packages/sil
+[4.343s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/cmake/silConfig.cmake
+[4.343s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/cmake/silConfig-version.cmake
+[4.343s] -- Up-to-date symlink: /home/nvidia/robotics-orin/install/sil/share/sil/package.xml
+[6.606s] Invoked command in '/home/nvidia/robotics-orin/build/sil' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/nvidia/robotics-orin/install/arm_ik CONDA_PROMPT_MODIFIER=(base) /usr/bin/cmake --install /home/nvidia/robotics-orin/build/sil

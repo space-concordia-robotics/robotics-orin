@@ -1,0 +1,7 @@
+[01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:[m[K In member function ‘[01m[Kvoid AbsEnc::ikValuesCallback(sensor_msgs::msg::JointState_<std::allocator<void> >::SharedPtr)[m[K’:
+[01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:104:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::array<float, 4>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  104 |       for (int i = 0; [01;35m[Ki < std::size(ik_angles)[m[K; i++) {
+      |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~[m[K
+[01m[K/home/nvidia/robotics-orin/src/absenc_interface/src/absenc_node.cpp:109:25:[m[K [01;35m[Kwarning: [m[Kcomparison of integer expressions of different signedness: ‘[01m[Kint[m[K’ and ‘[01m[Kstd::array<float, 4>::size_type[m[K’ {aka ‘[01m[Klong unsigned int[m[K’} [[01;35m[K-Wsign-compare[m[K]
+  109 |       for (int i = 0; [01;35m[Ki < std::size(ik_angles)[m[K; i++) {
+      |                       [01;35m[K~~^~~~~~~~~~~~~~~~~~~~~~[m[K

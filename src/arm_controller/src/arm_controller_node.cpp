@@ -41,18 +41,19 @@ ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
             "joy", 10, std::bind(&ArmControllerNode::JoyMessageCallback, this, std::placeholders::_1)
             );
     
-    arm_vals_msg_callback = this->create_subscription<arm_controller::msg::ArmMotorValues>(
+    arm_vals_msg_callback = this->create_subscription<std_msgs::msg::Float32MultiArray>(
             "arm_values", 10, std::bind(&ArmControllerNode::ArmMessageCallback, this, std::placeholders::_1)
             );
     
 }
-void ArmControllerNode::ArmMessageCallback(const arm_controller::msg::ArmMotorValues::SharedPtr msg){
+void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArray::SharedPtr msg){
+
 
     uint8_t out_buf[1 + 1 + sizeof(float)*6 + 1] ={};
     out_buf[0] = SET_MOTOR_SPEED;
     out_buf[1] = sizeof(float)*6;         
 
-    float speeds [6]= {msg->val[0],msg->val[1],msg->val[2],msg->val[3],0,0};
+    float speeds [6]= {msg->data[0],msg->data[1],msg->data[2],msg->data[3],0,0};
     for(int i = 0 ; i < 6 ; i++){
         // float swapped = bswap_32(speeds[i]);
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speeds[i],sizeof(float));
