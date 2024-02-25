@@ -205,7 +205,12 @@ class IkNode(Node):
   def joy_callback(self, message: Joy):
     # self.get_logger().info(f"Received from cad mouse")
     old_values = (self.x, self.y, self.z, self.th, self.pitch)
+    left_button, right_button = message.buttons
     x, y, z, pitch, roll, yaw = message.axes
+    # If right button, moving end effector, stop these calculations
+    if right_button == 1:
+      return
+
     self.x += (self.sensitivity * x / 30000) # left-right of mouse
     self.y += (self.sensitivity * -y / 30000) # forward-back of mouse
     self.z += (self.sensitivity * -z / 30000) # vertical axis of mouse

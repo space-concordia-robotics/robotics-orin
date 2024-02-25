@@ -18,7 +18,12 @@ class CadMouseJoyNode(Node):
     self.joy_pub = self.create_publisher(Joy, joy_topic, 1)
     self.get_logger().info('Created publisher for topic "'+joy_topic)
 
+    self.declare_parameter('deadzone', value=10)
+
+
   def readMouseInput(self):
+    self.deadzone = self.get_parameter('deadzone').get_parameter_value().integer_value
+
     axis = [0, 0, 0, 0, 0, 0]
     button = [False, False]
     battery = -1
@@ -34,6 +39,11 @@ class CadMouseJoyNode(Node):
               if axis_raw > 32768:
                 axis_raw = axis_raw - 65536
               axis[i] = axis_raw
+              
+              # Apply deadzone
+              if axis[i] < self.deadzone and axis[i] > -self.deadzone:
+                axis[i] = 0
+
             # print(axis)
           elif id == 3:
             button_raw = data[1]

@@ -44,7 +44,7 @@ def generate_launch_description():
                 {'joint_lengths': [1.354, 1.333, 1.250]},
                 {'joint_angle_mins': [-180.0, -60.0, -111.0, -101.0]},
                 {'joint_angle_maxes': [180, 66.0, 115.0, 106.0]},
-                {'sensitivity': 1.5},
+                {'sensitivity': 1.0},
                 {'mode': '2D'}
             ]
                         ),
@@ -52,5 +52,9 @@ def generate_launch_description():
             package='arm_ik',
             executable='CadMouseJoyNode',
             name='cad_mouse_joy_node',
-            output='screen'),
+            output='screen',
+            parameters=[
+                {'deadzone': 20}
+            ]
+            ),
     ])

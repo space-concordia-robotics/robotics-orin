@@ -3,3 +3,7 @@ install/
 JetsonGPIO/
 *.log
 *.pyc
+log/
+
+__pycache__/
+*.py[cod]

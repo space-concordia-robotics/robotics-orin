@@ -134,10 +134,7 @@ class AbsEnc : public rclcpp::Node
 
 
       // Set the base motor speed from the cad mouse directly
-      float yaw_scaled = yaw * 0.75;
-      float yaw_clamped = yaw_scaled > 255.0 ? 255.0 : yaw_scaled;
-      yaw_clamped = yaw_scaled < -255.0 ? -255.0 : yaw_scaled;
-      angles[0] = yaw_clamped;
+      angles[0] = scaleClamp(yaw, -1.00, -255.0, 255.0);
       arm_command += std::to_string(angles[0]);
       arm_command += " ";
 
@@ -190,8 +187,28 @@ class AbsEnc : public rclcpp::Node
       arm_controller_publisher->publish(arm_msg_2);
     }
 
-    void controlEndEffector() {
 
+    void controlEndEffector() {
+      auto arm_msg_2 = std_msgs::msg::Float32MultiArray();
+      std::vector<float> angles(6);
+
+      // Zero out values
+      for (int i = 0; i < 4; i++) {
+        angles[i] = 0;
+      }
+
+      // Control the end effector motors with 3d mouse
+      angles[4] = scaleClamp(yaw, 1.00, -255.0, 255.0);
+      angles[5] = scaleClamp(x, 1.00, -255.0, 255.0);
+
+      arm_msg_2.data = angles;
+      arm_controller_publisher->publish(arm_msg_2);
+    }
+
+    float scaleClamp(float val, float scale, float min, float max) {
+      val *= scale;
+      val = val < min ? min : val;
+      val = val > max ? max : val;
     }
 
     rclcpp::TimerBase::SharedPtr timer;

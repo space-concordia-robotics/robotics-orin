@@ -53,7 +53,7 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
     out_buf[0] = SET_MOTOR_SPEED;
     out_buf[1] = sizeof(float)*6;         
 
-    float speeds [6]= {msg->data[0],msg->data[1],msg->data[2],msg->data[3],0,0};
+    float speeds [6]= {msg->data[0],msg->data[1],msg->data[2],msg->data[3],msg->data[4],msg->data[5]};
     for(int i = 0 ; i < 6 ; i++){
         // float swapped = bswap_32(speeds[i]);
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speeds[i],sizeof(float));
