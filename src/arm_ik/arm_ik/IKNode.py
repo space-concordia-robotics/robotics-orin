@@ -229,21 +229,26 @@ class IkNode(Node):
     # self.get_logger().info(f"Cylindical coordinates: u {self.u} v {self.v} phi {self.phi}")
 
   def calculate_cylindical(self):
-    self.u =  math.sqrt(self.x ** 2 + self.y ** 2)
-    self.v = self.z
-    if self.x == 0:
+    if self.mode == "2D":
+      self.u = self.x
+      self.v = self.z
       self.phi = 0
     else:
-      if self.x >= 0:
-        self.phi = math.atan(self.y / self.x)
+      self.u =  math.sqrt(self.x ** 2 + self.y ** 2)
+      self.v = self.z
+      if self.x == 0:
+        self.phi = 0
       else:
-        if self.y >= 0:
-          # In second quadrant
-          # domain issue: atan is limited to -pi/2 to pi/2 so it loops over when x < 0
-          self.phi = math.pi + math.atan(self.y / self.x)
+        if self.x >= 0:
+          self.phi = math.atan(self.y / self.x)
         else:
-          # In third quadrant
-          self.phi = -(math.pi - math.atan(self.y / self.x))
+          if self.y >= 0:
+            # In second quadrant
+            # domain issue: atan is limited to -pi/2 to pi/2 so it loops over when x < 0
+            self.phi = math.pi + math.atan(self.y / self.x)
+          else:
+            # In third quadrant
+            self.phi = -(math.pi - math.atan(self.y / self.x))
   
   
   def calculate_cartesian(self):

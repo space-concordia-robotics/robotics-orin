@@ -18,7 +18,7 @@ setup(
         # (os.path.join('share', package_name, 'launch'), glob(os.path.join('launch', '*launch.[pxy][yma]*'))),
         (os.path.join('share', package_name), glob('urdf/*')),
         # ('share/ament_index/resource_index/packages', ['resource/' + package_name]),
-        (os.path.join('share', package_name), glob('meshes/*'))
+        (os.path.join('share', package_name, "meshes"), glob('meshes/*'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,

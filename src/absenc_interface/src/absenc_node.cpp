@@ -12,6 +12,7 @@
 // #include "arm_controller/msg/arm_motor_values.hpp"
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
+#include <sensor_msgs/msg/joy.hpp>
     using namespace std::chrono_literals;
 class AbsEnc : public rclcpp::Node
 {
@@ -46,6 +47,9 @@ class AbsEnc : public rclcpp::Node
 
       subscription = this->create_subscription<sensor_msgs::msg::JointState>(
       "joint_states", 10, std::bind(&AbsEnc::ikValuesCallback, this, std::placeholders::_1));
+
+      subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
+      "cad_mouse_joy", 10, std::bind(&AbsEnc::cadValuesCallback, this, std::placeholders::_1));
       
       arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
     }
@@ -79,11 +83,38 @@ class AbsEnc : public rclcpp::Node
     angles_publisher->publish(message);
   }
 
+    void cadValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
+      if (msg->axes.size() < 6) {
+        RCLCPP_ERROR(this->get_logger(),"Axes of cad mouse wrong dimension");
+      }
+      if (msg->buttons.size() < 2) {
+        RCLCPP_ERROR(this->get_logger(),"Axes of cad mouse wrong dimension");
+      }
+
+      x = msg->axes[0];
+      y = msg->axes[1];
+      z = msg->axes[2];
+      pitch = msg->axes[3];
+      roll = msg->axes[4];
+      yaw = msg->axes[5];
+      leftButton = msg->buttons[0];
+      rightButton = msg->buttons[1];
+
+      if (rightButton) {
+        controlEndEffector();
+      }
+    }
+
     void ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg) {
       // Convert ik angles to degrees
       for (int i = 0; i < 4; i++) {
         ik_angles[i] = msg->position[i] * 180.0 / M_PI;
       }
+      if (rightButton) {
+        // Then should be controlling the end effector directly; abort here
+        return;
+      }
+
       std::string arm_command = "set_motor_speeds ";
 
       auto arm_msg_2 = std_msgs::msg::Float32MultiArray();
@@ -94,11 +125,6 @@ class AbsEnc : public rclcpp::Node
 
       std::vector<float> angles(6);
 
-      // dim.label = "";
-      // dim.size = 6;
-      // dim.stride = 1;
-      // layout.dim = dim;
-      // arm_msg_2.layout = layout;
 
       std::cout << "Angles: ";
       for (int i = 0; i < std::size(ik_angles); i++) {
@@ -106,7 +132,17 @@ class AbsEnc : public rclcpp::Node
       }
       std::cout << "\n";
 
-      for (int i = 0; i < std::size(ik_angles); i++) {
+
+      // Set the base motor speed from the cad mouse directly
+      float yaw_scaled = yaw * 0.75;
+      float yaw_clamped = yaw_scaled > 255.0 ? 255.0 : yaw_scaled;
+      yaw_clamped = yaw_scaled < -255.0 ? -255.0 : yaw_scaled;
+      angles[0] = yaw_clamped;
+      arm_command += std::to_string(angles[0]);
+      arm_command += " ";
+
+      // Only the three middle motors have values provided by IK
+      for (int i = 1; i < std::size(ik_angles); i++) {
         float absenc_angle = abs_angles[i];
         float ik_angle = ik_angles[i];
         float motor_sign = motor_signs[i];
@@ -154,8 +190,13 @@ class AbsEnc : public rclcpp::Node
       arm_controller_publisher->publish(arm_msg_2);
     }
 
+    void controlEndEffector() {
+
+    }
+
     rclcpp::TimerBase::SharedPtr timer;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription;
+    rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_cad_mouse;
     rclcpp::Publisher<absenc_interface::msg::EncoderValues>::SharedPtr angles_publisher;
 
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr arm_controller_publisher;
@@ -166,6 +207,10 @@ class AbsEnc : public rclcpp::Node
     std::array<float, 4> abs_angles = {0.0, 0.0, 0.0, 0.0};
     // Controls if motor sign is aligned with encoder direction
     std::array<int, 4> motor_signs = {1, -1, -1, -1};
+    // Store the axes of the cad mouse
+    float x, y, z, pitch, roll, yaw;
+    // Store button states of cad mouse
+    int leftButton, rightButton;
 };
 
 int main(int argc, char * argv[])

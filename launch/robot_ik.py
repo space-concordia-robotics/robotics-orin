@@ -26,7 +26,7 @@ def generate_launch_description():
         Node(
             package='arm_controller',
             executable='arm_controller_node',
-            name='absenc_node',
+            name='arm_controller',
             output='screen'
         ),
         # Node(
