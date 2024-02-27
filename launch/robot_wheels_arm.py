@@ -20,4 +20,10 @@ def generate_launch_description():
             output='screen',
             parameters=[{'multiplier': 3000}]
         ),
+       Node(
+            package='arm_controller',
+            executable='arm_controller_node',
+            name='arm_controller',
+            output='screen'
+        ),
     ])

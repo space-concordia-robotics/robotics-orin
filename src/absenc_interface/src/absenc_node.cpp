@@ -182,9 +182,9 @@ class AbsEnc : public rclcpp::Node
       angles[4] = 0.f;
       angles[5] = 0.f;
       
-      auto arm_msg = std_msgs::msg::String();
-      arm_msg.data = arm_command;
-      arm_publisher->publish(arm_msg);
+      auto arm_msg_s = std_msgs::msg::String();
+      arm_msg_s.data = arm_command;
+      arm_publisher->publish(arm_msg_s);
       
       arm_msg.data = angles;
       arm_controller_publisher->publish(arm_msg);

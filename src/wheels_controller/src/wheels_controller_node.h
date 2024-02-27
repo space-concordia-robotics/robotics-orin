@@ -26,16 +26,13 @@ public:
 
 private :
 
-    void accelerateTwist();
-    void accelerateValue();
+    void AccelerateTwist(geometry_msgs::msg::Twist);
+    float AccelerateValue(float current, float desired, float rate, float dt);
 
     //rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_msg_callback;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_msg_publisher;
-
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_msg_callback;
-
-    // geometry_msgs::msg::Twist twist_msg;
 
     void pollControllersCallback();
     rclcpp::TimerBase::SharedPtr timer;
@@ -49,7 +46,7 @@ private :
     float angular_acceleration_rate = 0.75;
     float max_speed = 0.5;
     float max_angular_speed = 1;
-
+    int initial_ramp_factor = 3;
 //    rclcpp::Publisher<geometry_msgs::msg::Twist_>::SharedPtr twist_message_publisher;
 };
 

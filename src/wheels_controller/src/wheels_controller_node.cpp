@@ -9,6 +9,7 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
         RCLCPP_ERROR(this->get_logger(),"Error accessing CAN interface \n");
         rclcpp::shutdown();
     }
+    RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
 
     /*
      * This command will inform a motor controller to start transmitting periodic status frames.
@@ -29,18 +30,31 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
     twist_msg_publisher = this->create_publisher<geometry_msgs::msg::Twist>("twist_wheels", 10);        
 }
 void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){  
+    // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
 
-    // if(joy_msg->buttons[5] == 1) {
+    // if(joy_msg->buttons[4] != 0 || joy_msg->buttons[5] != 1) 
+    //     return;
+
+    
+     // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed) (FUCKY VERSION)
+    // if(joy_msg->buttons[9] != 0 || joy_msg->buttons[10] != 1){
+    //     return;
+    // }
+
+     if( ! ( joy_msg->buttons[9] == 1 && joy_msg->buttons[10] == 0 ) ){
+        return;
+    }
+
+
 
     float linear_y_axes_val = joy_msg->axes[1];
-    float angular_z_axes_val = joy_msg->axes[3];
-    
+    float angular_z_axes_val = joy_msg->axes[2];
+
     geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
     twist_msg.linear.x = linear_y_axes_val;
     twist_msg.angular.z = angular_z_axes_val;
-    
+
     twist_msg_publisher->publish(twist_msg);
-    // }
 }   
 
 void WheelsControllerNode::pollControllersCallback(){
@@ -54,10 +68,10 @@ void WheelsControllerNode::pollControllersCallback(){
 
     float right_wheels_vel_rpm = right_wheels_velocity * this->get_parameter("multiplier").as_int();
     float left_wheels_vel_rpm = left_wheels_velocity * this->get_parameter("multiplier").as_int();
-
-    std::cout  << "Right wheels velocity (RPM) : " << right_wheels_vel_rpm << "\n";
-    std::cout << "Left wheels velocity (RPM) : " << left_wheels_vel_rpm  << "\n";
     
+    /*
+        Motors 3 and 6 are currently brushed, hence they will not run at the same speed as the brushless motors.
+    */
     RevMotorController::velocityControl(1,right_wheels_vel_rpm);    
     RevMotorController::velocityControl(2,right_wheels_vel_rpm);
     RevMotorController::velocityControl(3,right_wheels_vel_rpm*0.5);
@@ -72,74 +86,82 @@ void WheelsControllerNode::pollControllersCallback(){
     
 }
 
-// void WheelsControllerNode::accelerate_twist(geometry_msgs::msg::Twist twist_msg){
-//     static float last_speed_change_ms;
-//     static float last_linear_speed = 0.0f;
-//     static float last_angular_speed = 0.0f;
-//     static float expire_rate = 300.f;
+void WheelsControllerNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
+    static float last_speed_change_ms;
+    static float last_linear_speed = 0.0f;
+    static float last_angular_speed = 0.0f;
+    static float expire_rate = 3000.f;
 
-//     bool is_expired = false;
+    bool is_expired = false;
     
-//     float twist_linear = twist_msg.linear.x;
-//     float twist_angular = twist_msg.angular.z;
+    float twist_linear = twist_msg.linear.x;
+    float twist_angular = twist_msg.angular.z;
 
-//     std::chrono::milliseconds time_ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
+    std::chrono::milliseconds time_ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch());
     
-//     if(last_speed_change_ms.count() != 0.f){
-//         if( (time_ms - last_speed_change_ms) > expire_rate){
-//             is_expired = true;
-//         }
-//         else {
-//             is_expired = false;
-//         }
+    if(last_speed_change_ms != 0.f){
+        if( (time_ms.count() - last_speed_change_ms) > expire_rate){
+            std::cout << "Command expired\n";
+            is_expired = true;
+        }
+        else {
+            is_expired = false;
+        }
 
-//     }
+    }
 
-//     if (last_speed_change_ms == 0 | is_expired){
-//         last_linear_speed = 0
-//         last_angular_speed = 0
-//         last_speed_change_ms = time.time()*1000 - expire_rate / initial_ramp_factor
-//     }
-//     delta =  ms - last_speed_change_ms
+    if (last_speed_change_ms < 1e-7 || is_expired){
+        last_linear_speed = 0;
+        last_angular_speed = 0;
+        last_speed_change_ms = time_ms.count()- expire_rate / initial_ramp_factor;
+    }
+    float delta =  time_ms.count() - last_speed_change_ms;
     
-//     linear = accelerate_value(last_linear_speed, twist_linear, linear_acceleration_rate, delta.count())
-//     angular = accelerate_value(last_angular_speed, twist_angular, angular_acceleration_rate, delta.count())
+    AccelerateValue(last_linear_speed, twist_linear, linear_acceleration_rate, delta);
+    AccelerateValue(last_angular_speed, twist_angular, angular_acceleration_rate, delta);
     
-//     last_linear_speed = linear;
-//     last_angular_speed = angular
+    last_linear_speed = linear_y;
+    last_angular_speed = angular_z;
 
-//     last_speed_change_ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
+    last_speed_change_ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 
-//     return linear, angular
-// }
+    // return linear, angular;
+    
+}
 
-// float WheelsControllerNode::accelerate_value(float current, flaot desired, float rate, float dt) {
-//     """
-//     Accelerates the current speed to a desired speed at a certain rate while
-//     considering a certain time difference. Ex : Current Speed 0.3 m/s, desired speed 0.5 m/s,
-//     if the rate is 0.1 m/s^2 and dt is 100 milliseconds then the new speed should be 0.31 m/s.
-//     """
-//     if(desired == current)
-//         return desired;
+float WheelsControllerNode::AccelerateValue(float current, float desired, float rate, float dt) {
+    /*
+    Accelerates the current speed to a desired speed at a certain rate while
+    considering a certain time difference. Ex : Current Speed 0.3 m/s, desired speed 0.5 m/s,
+    if the rate is 0.1 m/s^2 and dt is 100 milliseconds then the new speed should be 0.31 m/s.
+    */
+    if( (desired-current) < 1e-6 )
+        return desired;
 
-//     if(desired == 0)
-//         return 0;
+    if(desired < 1e-6)
+        return 0;
 
-//     if(desired < current)
-//         rate = -rate;
+    if(desired < current)
+        rate = -rate;
 
-//     float new_value = current + rate * dt /1000;
+    float new_value = current + rate * dt /1000;
 
-//     if(abs(new_value) > abs(desired)){
-//         new_value = desired;
-//     }
-//     return new_value;
-// }
+    if(abs(new_value) > abs(desired)){
+        new_value = desired;
+    }
+    std::cout << new_value << "\n";
+    return new_value;
+}
 
 void WheelsControllerNode::TwistMessageCallback(const geometry_msgs::msg::Twist::SharedPtr msg)
 {
     this->linear_y = msg->linear.x;
     this->angular_z = msg->angular.z;    
+
+    AccelerateTwist(*msg);
+
+    std::cout  << "Linear  : " << linear_y << "\n";
+    std::cout << "Angular : " << angular_z  << "\n";
 }
 
 int main(int argc, char * argv[])
