@@ -23,11 +23,11 @@ find_package(std_msgs REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-add_executable(talker src/SIL_color_publisher_node.cpp)
-ament_target_dependencies(talker rclcpp std_msgs)
+add_executable(sil_node src/SIL_color_publisher_node.cpp)
+ament_target_dependencies(sil_node rclcpp std_msgs)
 
 install(TARGETS
-  talker
+  sil_node
   DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)

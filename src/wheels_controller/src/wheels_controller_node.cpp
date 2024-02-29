@@ -4,6 +4,15 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
     this->declare_parameter("can_path", "can0");
     this->declare_parameter("multiplier", 2000);
     
+    this->declare_parameter("linear_acceleration_rate", 0.25);
+    this->declare_parameter("angular_acceleration_rate", 0.25);
+    this->declare_parameter("initial_ramp_factor", 3);
+
+    // this->declare_parameter("turning_rate", 2000);
+    // float linear_acceleration_rate = 0.5
+
+    start = std::chrono::system_clock::now();
+
 
     if(CANController::configureCAN("can0") != SUCCESS){
         RCLCPP_ERROR(this->get_logger(),"Error accessing CAN interface \n");
@@ -11,7 +20,7 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
     }
     RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
 
-    /*
+    /*)
      * This command will inform a motor controller to start transmitting periodic status frames.
      */
     // RevMotorController::requestStatusFrame();
@@ -20,32 +29,56 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
     
     timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::pollControllersCallback, this));
     
+    // odom_timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::OdomCallback, this));
+    
     joy_msg_callback = this->create_subscription<sensor_msgs::msg::Joy>(
             "joy", 10, std::bind(&WheelsControllerNode::JoyMessageCallback, this, std::placeholders::_1)
             );
 
     twist_msg_callback = this->create_subscription<geometry_msgs::msg::Twist>(
-            "twist_wheels", 10, std::bind(&WheelsControllerNode::TwistMessageCallback, this, std::placeholders::_1)
+            "cmd_vel", 10, std::bind(&WheelsControllerNode::TwistMessageCallback, this, std::placeholders::_1)
             );
-    twist_msg_publisher = this->create_publisher<geometry_msgs::msg::Twist>("twist_wheels", 10);        
-}
-void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){  
-    // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
-
-    // if(joy_msg->buttons[4] != 0 || joy_msg->buttons[5] != 1) 
-    //     return;
-
+    twist_msg_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);     
     
-     // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed) (FUCKY VERSION)
-    // if(joy_msg->buttons[9] != 0 || joy_msg->buttons[10] != 1){
-    //     return;
-    // }
+    odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>("odom", 10);     
 
+    zed2_odom_callback = this->create_subscription<nav_msgs::msg::Odometry>(
+            "zed/zed_node/odom", 10, std::bind(&WheelsControllerNode::Zed2OdomCallback, this, std::placeholders::_1));
+    
+   
+    sil_publisher = this->create_publisher<std_msgs::msg::String>("SIL_color", 10);
+
+}
+// void WheelsControllerNode::publishOdom(){
+//     odom_publisher->publish(current_odom); 
+// }
+
+void WheelsControllerNode::Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr zed2_odom_msg){
+    auto pose = zed2_odom_msg->pose;
+    auto header = zed2_odom_msg->header;
+    
+    geometry_msgs::msg::Twist twist = geometry_msgs::msg::Twist{};
+    twist.linear.x = this->linear_y;
+    twist.angular.z = this->angular_z;
+
+    header.frame_id = "odom";
+
+    auto odom_msg = nav_msgs::msg::Odometry{};
+    odom_msg.pose = pose;
+    odom_msg.header = header;
+    odom_msg.twist.twist = twist;
+    odom_msg.child_frame_id = "base_link";
+
+    odom_publisher->publish(odom_msg);
+    
+}
+
+void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
+
+    // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
      if( ! ( joy_msg->buttons[9] == 1 && joy_msg->buttons[10] == 0 ) ){
         return;
     }
-
-
 
     float linear_y_axes_val = joy_msg->axes[1];
     float angular_z_axes_val = joy_msg->axes[2];
@@ -53,8 +86,14 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
     geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
     twist_msg.linear.x = linear_y_axes_val;
     twist_msg.angular.z = angular_z_axes_val;
-
     twist_msg_publisher->publish(twist_msg);
+
+    /*
+        Set SIL Color to RED
+    */
+    auto msg = std_msgs::msg::String{};
+    msg.data = "#FF00000";
+    sil_publisher->publish(msg);
 }   
 
 void WheelsControllerNode::pollControllersCallback(){
@@ -90,7 +129,7 @@ void WheelsControllerNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
     static float last_speed_change_ms;
     static float last_linear_speed = 0.0f;
     static float last_angular_speed = 0.0f;
-    static float expire_rate = 3000.f;
+    static float expire_rate = 300.f;
 
     bool is_expired = false;
     
@@ -110,23 +149,21 @@ void WheelsControllerNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
 
     }
 
-    if (last_speed_change_ms < 1e-7 || is_expired){
+    if (last_speed_change_ms < 1e-7 || is_expired) {
         last_linear_speed = 0;
         last_angular_speed = 0;
-        last_speed_change_ms = time_ms.count()- expire_rate / initial_ramp_factor;
+        last_speed_change_ms = time_ms.count ()- (expire_rate / this->get_parameter("initial_ramp_factor").as_int());
     }
     float delta =  time_ms.count() - last_speed_change_ms;
     
-    AccelerateValue(last_linear_speed, twist_linear, linear_acceleration_rate, delta);
-    AccelerateValue(last_angular_speed, twist_angular, angular_acceleration_rate, delta);
+
+    this->linear_y = AccelerateValue(last_linear_speed, twist_linear, this->get_parameter("linear_acceleration_rate").as_double(), delta);
+    this->angular_z = AccelerateValue(last_angular_speed, twist_angular, this->get_parameter("angular_acceleration_rate").as_double(), delta);
     
-    last_linear_speed = linear_y;
-    last_angular_speed = angular_z;
+    last_linear_speed = this->linear_y;
+    last_angular_speed = this->angular_z;
 
     last_speed_change_ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
-
-    // return linear, angular;
-    
 }
 
 float WheelsControllerNode::AccelerateValue(float current, float desired, float rate, float dt) {
@@ -153,15 +190,74 @@ float WheelsControllerNode::AccelerateValue(float current, float desired, float 
     return new_value;
 }
 
-void WheelsControllerNode::TwistMessageCallback(const geometry_msgs::msg::Twist::SharedPtr msg)
+void WheelsControllerNode::TwistMessageCallback(const geometry_msgs::msg::Twist::SharedPtr twist_msg)
 {
-    this->linear_y = msg->linear.x;
-    this->angular_z = msg->angular.z;    
+    this->linear_y = twist_msg->linear.x;
+    this->angular_z = twist_msg->angular.z;    
 
-    AccelerateTwist(*msg);
+    // auto header = std_msgs::msg::Header{};
 
-    std::cout  << "Linear  : " << linear_y << "\n";
-    std::cout << "Angular : " << angular_z  << "\n";
+    // auto stamp = builtin_interfaces::msg::Time{};
+    
+    // auto now = std::chrono::system_clock::now();
+    // auto time_since_start = std::chrono::duration_cast<std::chrono::nanoseconds>(now-start);
+
+    // stamp.nanosec = time_since_start.count();
+    // stamp.sec = time_since_start.count() / 1e9;
+    
+    // header.frame_id = "odom";
+    // header.stamp = stamp;
+
+    // auto point = geometry_msgs::msg::Point{};
+    // point.x = 0.03;
+    // point.y = -0.03;
+    // point.z = -0.619;
+
+    // auto quat = geometry_msgs::msg::Quaternion{};
+    // quat.x = 0.006;
+    // quat.y = 0.006;
+    // quat.z = 0.0002;
+    // quat.w = 0.99999;
+    
+    // auto pose = geometry_msgs::msg::Pose{};
+    // pose.position = point;
+    // pose.orientation = quat;
+    
+
+    
+    // auto odom_msg = nav_msgs::msg::Odometry{};
+    // auto twist_with_cov = geometry_msgs::msg::TwistWithCovariance{};
+    
+    // auto pose_with_cov = geometry_msgs::msg::PoseWithCovariance{};
+    
+    
+    //   std::array<double,36> cov_matrix= {
+    //     1e-5,0,0,0,0,0,
+    //     0,1e-5,0,0,0,0,
+    //     0,0,1e11,0,0,0,
+    //     0,0,0,1e11,0,0,
+    //     0,0,0,0,1e11,0,
+    //     0,0,0,0,0,0.001
+
+    // };
+
+    
+    // pose_with_cov.covariance = cov_matrix;
+    // pose_with_cov.pose = pose;
+    
+    // twist_with_cov.twist = *twist_msg;
+    
+    // odom_msg.header = header;
+    // odom_msg.child_frame_id = "base_link";
+    // odom_msg.twist = twist_with_cov;
+    // odom_msg.pose = pose_with_cov;
+    
+    // this->odom_publisher->publish(odom_msg);
+
+    // // AccelerateTwist(*msg);
+
+    // std::cout  << "Linear  : " << linear_y << "\n";
+    // std::cout << "Angular : " << angular_z  << "\n";
 }
 
 int main(int argc, char * argv[])

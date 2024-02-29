@@ -13,18 +13,21 @@ class Configuration : public rclcpp::Node
 {
 public:
   Configuration()
-  : Node("Configuration_Node")
+  : Node("sil_node")
   {
+    
+    this->declare_parameter("path", "/dev/ttyUSB1");
+
     publisher_ = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
 
     subscription_ = this->create_subscription<std_msgs::msg::String>(
       "SIL_Color", 10, std::bind(&Configuration::topic_callback, this, std::placeholders::_1));
 
     //Opens LED strip communication
-    fd = open("/dev/ttyUSB0", O_RDWR);
+    fd = open(this->get_parameter("path").as_string().c_str(), O_RDWR);
 
     if(fd == -1){
-        std::cerr << "Error opening file " << errno << std::endl;
+        RCLCPP_ERROR(this->get_logger(),"Error opening file \n");
         exit(1);
     }
 
@@ -34,7 +37,6 @@ public:
     cfsetispeed(&options, B115200);
     cfsetospeed(&options, B115200);
     tcsetattr(fd, TCSANOW, &options);
-
   }
 
 private:

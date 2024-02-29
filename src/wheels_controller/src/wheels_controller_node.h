@@ -6,6 +6,15 @@
 #include "sensor_msgs/msg/joy.hpp"
 #include "rev_motor_controller.h"
 #include <geometry_msgs/msg/twist.hpp>
+#include <geometry_msgs/msg/twist_with_covariance.hpp>
+#include <builtin_interfaces/msg/time.hpp>
+#include <nav_msgs/msg/odometry.hpp>
+#include <std_msgs/msg/header.hpp>
+#include <geometry_msgs/msg/pose_with_covariance.hpp>
+#include <geometry_msgs/msg/pose.hpp>
+#include <geometry_msgs/msg/point.hpp>
+#include <geometry_msgs/msg/quaternion.hpp>
+
 #include <chrono>
 using namespace std::chrono;
 
@@ -28,26 +37,43 @@ private :
 
     void AccelerateTwist(geometry_msgs::msg::Twist);
     float AccelerateValue(float current, float desired, float rate, float dt);
+    
+    void publishOdom();
+
+    void Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr odom_msg);
 
     //rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_msg_callback;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_msg_publisher;
+    
+    rclcpp::Publisher<std_msgs::msg::String>::SharedPtr sil_publisher;
+    
+    
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_msg_callback;
 
+    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr zed2_odom_callback;
+    
+
     void pollControllersCallback();
+    
     rclcpp::TimerBase::SharedPtr timer;
+    rclcpp::TimerBase::SharedPtr odom_timer;
+    
+    // nav_msgs::msg::Odometry current_odom;
+
 
     float old_linear_y;
     float old_angular_z;
     
     float linear_y;
     float angular_z;
-    float linear_acceleration_rate = 0.5;
-    float angular_acceleration_rate = 0.75;
     float max_speed = 0.5;
+    std::chrono::time_point<std::chrono::system_clock> start;
+
     float max_angular_speed = 1;
-    int initial_ramp_factor = 3;
-//    rclcpp::Publisher<geometry_msgs::msg::Twist_>::SharedPtr twist_message_publisher;
+   
+   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
+
 };
 
 #endif
