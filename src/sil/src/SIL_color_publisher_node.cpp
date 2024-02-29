@@ -24,7 +24,7 @@ public:
       "SIL_Color", 10, std::bind(&Configuration::topic_callback, this, std::placeholders::_1));
 
     //Opens LED strip communication
-    fd = open(this->get_parameter("path").as_string().c_str(), O_RDWR);
+    fd = open("/dev/ttyUSB1", O_RDWR);
 
     if(fd == -1){
         RCLCPP_ERROR(this->get_logger(),"Error opening file \n");

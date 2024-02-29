@@ -46,7 +46,7 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
             "zed/zed_node/odom", 10, std::bind(&WheelsControllerNode::Zed2OdomCallback, this, std::placeholders::_1));
     
    
-    sil_publisher = this->create_publisher<std_msgs::msg::String>("SIL_color", 10);
+    sil_publisher = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
 
 }
 // void WheelsControllerNode::publishOdom(){
