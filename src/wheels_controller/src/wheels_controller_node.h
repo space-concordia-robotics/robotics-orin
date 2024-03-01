@@ -15,6 +15,7 @@
 #include <geometry_msgs/msg/point.hpp>
 #include <geometry_msgs/msg/quaternion.hpp>
 
+#include "nav2_msgs/action/navigate_to_pose.hpp"
 #include <chrono>
 using namespace std::chrono;
 
