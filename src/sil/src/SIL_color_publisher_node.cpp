@@ -16,7 +16,7 @@ public:
   : Node("sil_node")
   {
     
-    this->declare_parameter("path", "/dev/ttyUSB1");
+    this->declare_parameter("sil_path", "/dev/ttyUSB0");
 
     publisher_ = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
 
@@ -24,13 +24,12 @@ public:
       "SIL_Color", 10, std::bind(&Configuration::topic_callback, this, std::placeholders::_1));
 
     //Opens LED strip communication
-    fd = open("/dev/ttyUSB1", O_RDWR);
+    fd = open(this->get_parameter("sil_path").as_string().c_str(), O_RDWR);
 
     if(fd == -1){
-        RCLCPP_ERROR(this->get_logger(),"Error opening file \n");
-        exit(1);
+        RCLCPP_ERROR(this->get_logger(),"Error opening file (%i)\n",errno);
+        rclcpp::shutdown();
     }
-
     //Set baud rate to 115200
     struct termios options;
     tcgetattr(fd, &options);
@@ -50,7 +49,7 @@ private:
     int nbytes = write(fd, msg->data.c_str(), sizeof(msg->data.c_str()));
 
     if(nbytes == -1){
-        std::cerr << "Error writing into file " << errno << std::endl;
+        RCLCPP_ERROR(this->get_logger(),"writing to file %i\n",errno);
         exit(1);
     }
 

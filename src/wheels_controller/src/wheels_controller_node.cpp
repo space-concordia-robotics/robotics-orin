@@ -79,6 +79,7 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
      if( ! ( joy_msg->buttons[9] == 1 && joy_msg->buttons[10] == 0 ) ){
         return;
     }
+    this->is_manual_control = true;
 
     float linear_y_axes_val = joy_msg->axes[1];
     float angular_z_axes_val = joy_msg->axes[2];
@@ -86,21 +87,39 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
     geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
     twist_msg.linear.x = linear_y_axes_val;
     twist_msg.angular.z = angular_z_axes_val;
-    twist_msg_publisher->publish(twist_msg);
 
-    /*
-        Set SIL Color to RED
-    */
-    auto msg = std_msgs::msg::String{};
-    msg.data = "#FF00000";
-    sil_publisher->publish(msg);
+    twist_msg_publisher->publish(twist_msg);
 }   
 
 void WheelsControllerNode::pollControllersCallback(){
     
-
+    /*
+        Rover not moving
+    */
+    if( abs(this->linear_y) < 1e-3 && abs(this->angular_z) < 1e-3){
+        auto msg = std_msgs::msg::String{};
+        msg.data = "#0000000";
+        sil_publisher->publish(msg);
+        return;
+    }
+    /*
+        Rover is in motion. Determine is manually controlled or autonomous.
+    */
+    else{
+         /*
+        Set SIL Color to RED for manual control
+        */
+        auto msg = std_msgs::msg::String{};
+        if(this->is_manual_control){
+            msg.data = "#FF00000";
+        }
+        else{	
+            msg.data = "#00FF00";
+        }
+        sil_publisher->publish(msg);
+    }
+    
     float slip_track = 1.2f;
-
     // This can be derived from the equation in the paper (to be fucking linked).
     float right_wheels_velocity = this->linear_y - ( this->angular_z * slip_track * 0.5f);
     float left_wheels_velocity = this->linear_y + ( this->angular_z * slip_track * 0.5f);
@@ -121,8 +140,6 @@ void WheelsControllerNode::pollControllersCallback(){
     
     uint64_t mask = 0x7E;
     RevMotorController::startMotor(mask);
-
-    
 }
 
 void WheelsControllerNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
@@ -146,9 +163,7 @@ void WheelsControllerNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
         else {
             is_expired = false;
         }
-
     }
-
     if (last_speed_change_ms < 1e-7 || is_expired) {
         last_linear_speed = 0;
         last_angular_speed = 0;

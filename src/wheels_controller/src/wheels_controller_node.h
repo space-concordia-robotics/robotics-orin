@@ -71,9 +71,10 @@ private :
     std::chrono::time_point<std::chrono::system_clock> start;
 
     float max_angular_speed = 1;
-   
+    bool is_manual_control = false;
+    
    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
-
+//    navigation_goal_status_sub_ = node->create_subscription<action_msgs::msg::GoalStatusArray>
 };
 
 #endif

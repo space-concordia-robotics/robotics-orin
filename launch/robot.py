@@ -18,13 +18,19 @@ def generate_launch_description():
             executable='wheels_controller_node',
             name='wheels_controller_node',
             output='screen',
-            parameters=[{'multiplier': 3000}]
+            parameters=[{'multiplier': 2000}]
         ),
-          Node(
+       Node(
+            package='arm_controller',
+            executable='arm_controller_node',
+            name='arm_controller',
+            output='screen'
+        ),
+        Node(
             package='sil',
             executable='sil_node',
             name='sil_node',
             output='screen',
-            parameters=[{'path': "/dev/ttyUSB1"}]
-        ),
+            parameters=[{'sil_path': "/dev/ttyUSB1"}]
+        )
     ])

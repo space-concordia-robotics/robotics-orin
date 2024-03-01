@@ -81,7 +81,13 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "any": "cpp",
+        "codecvt": "cpp",
+        "forward_list": "cpp",
+        "unordered_set": "cpp",
+        "regex": "cpp",
+        "valarray": "cpp"
     },
     "cmake.sourceDirectory": "/home/nvidia/robotics-orin/src/wheels_controller"
 }
