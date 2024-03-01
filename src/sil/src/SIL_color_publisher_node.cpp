@@ -16,7 +16,7 @@ public:
   : Node("sil_node")
   {
     
-    this->declare_parameter("sil_path", "/dev/ttyUSB0");
+    this->declare_parameter("sil_path", "/dev/ttyUSB1");
 
     publisher_ = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
 

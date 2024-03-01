@@ -74,7 +74,7 @@ private :
     bool is_manual_control = false;
     
    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
-//    navigation_goal_status_sub_ = node->create_subscription<action_msgs::msg::GoalStatusArray>
+   navigation_goal_status_sub_ = node->create_subscription<action_msgs::msg::GoalStatusArray>
 };
 
 #endif

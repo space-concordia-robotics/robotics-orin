@@ -14,7 +14,6 @@ cd $REPO_HOME
 source "$HOME/.bashrc"
 
 # python3 "$REPO_HOME/setup.py" develop
-PYTHONPATH=$PYTHONPATH:/home/$USER/Programming/robotics-prototype
 PYTHONPATH=$PYTHONPATH:/home/$USER/robotics-orin
 
 # Setup canbus
