@@ -4,6 +4,7 @@ JetsonGPIO/
 *.log
 *.pyc
 log/
-
 __pycache__/
 *.py[cod]
+cmake-build-debug/
+.idea
