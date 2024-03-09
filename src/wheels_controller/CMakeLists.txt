@@ -15,6 +15,9 @@ find_package(rclcpp REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(nav2_msgs REQUIRED)
+find_package(action_msgs REQUIRED)
+
 find_package(builtin_interfaces REQUIRED)
 
 find_package(sensor_msgs REQUIRED)
@@ -37,7 +40,7 @@ add_executable(wheels_controller_node src/wheels_controller_node.cpp
 #rosidl_target_interfaces(wheels_controller_node
 #        ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
-ament_target_dependencies(wheels_controller_node rclcpp geometry_msgs nav_msgs sensor_msgs builtin_interfaces std_msgs)
+ament_target_dependencies(wheels_controller_node rclcpp geometry_msgs nav_msgs nav2_msgs sensor_msgs builtin_interfaces action_msgs std_msgs)
 
 install(TARGETS
         wheels_controller_node

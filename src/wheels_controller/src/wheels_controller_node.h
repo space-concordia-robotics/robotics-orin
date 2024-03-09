@@ -70,12 +70,19 @@ private :
     float angular_z;
     float max_speed = 0.5;
     std::chrono::time_point<std::chrono::system_clock> start;
-
+    float sil_mode=0;
     float max_angular_speed = 1;
     bool is_manual_control = false;
+    bool reached_goal = false;
     
+    std::string color;
+
    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
-   navigation_goal_status_sub_ = node->create_subscription<action_msgs::msg::GoalStatusArray>
+
+  rclcpp::Subscription<nav2_msgs::action::NavigateToPose::Impl::GoalStatusMessage>::SharedPtr
+    navigation_goal_status_sub_;
+
+   //navigation_goal_status_sub_ = node->create_subscription<action_msgs::msg::GoalStatusArray>;
 };
 
 #endif

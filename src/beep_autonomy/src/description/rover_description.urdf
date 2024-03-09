@@ -191,7 +191,7 @@
   <joint name="sensor_joint" type="fixed">
     <parent link="base_link"/>
     <child link="os_sensor"/>
-    <origin xyz="0.37 0 0.12"/>
+    <origin xyz="0 0 0.12"/>
   </joint>
 
   <link name="os_imu"/>
@@ -199,7 +199,7 @@
   <joint name="imu_joint" type="fixed">
     <parent link="base_link"/>
     <child link="os_imu"/>
-    <origin xyz="0.37 0 0.12"/>
+    <origin xyz="0 0 0.12"/>
   </joint>
   
   <link name="os_lidar">
@@ -227,7 +227,7 @@
   <joint name="lidar_joint" type="fixed">
     <parent link="base_link"/>
     <child link="os_lidar"/>
-    <origin xyz="0.37 0 0.2" rpy="0 0 0"/>
+    <origin xyz="0 0 0.2" rpy="0 0 0"/>
   </joint>
 
   <link name="gps_link" >

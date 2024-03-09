@@ -53,7 +53,6 @@ private:
         exit(1);
     }
 
-    RCLCPP_INFO(this->get_logger(), "I heard: '%s'", msg->data.c_str());
   }
 
 };

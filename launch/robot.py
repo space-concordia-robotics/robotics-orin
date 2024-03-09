@@ -31,6 +31,7 @@ def generate_launch_description():
             executable='sil_node',
             name='sil_node',
             output='screen',
-            parameters=[{'sil_path': "/dev/ttyUSB1"}]
+            parameters=[{'sil_path': "/dev/ttyUSB0"}]
+
         )
     ])

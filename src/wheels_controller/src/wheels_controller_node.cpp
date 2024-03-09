@@ -2,7 +2,7 @@
 
 WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
     this->declare_parameter("can_path", "can0");
-    this->declare_parameter("multiplier", 2000);
+    this->declare_parameter("multiplier", 500);
     
     this->declare_parameter("linear_acceleration_rate", 0.25);
     this->declare_parameter("angular_acceleration_rate", 0.25);
@@ -48,6 +48,23 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
    
     sil_publisher = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
 
+     navigation_goal_status_sub_ = this->create_subscription<action_msgs::msg::GoalStatusArray>(
+    "navigate_to_pose/_action/status",
+    rclcpp::SystemDefaultsQoS(),
+    [this](const action_msgs::msg::GoalStatusArray::SharedPtr msg) {
+        int status = msg->status_list.back().status;
+        if(status == 2){
+            this->is_manual_control = false;
+        }
+        else if(status == 4){
+            this->reached_goal = true;
+        }
+        else{
+            this->is_manual_control = true;     
+        }
+
+    });
+
 }
 // void WheelsControllerNode::publishOdom(){
 //     odom_publisher->publish(current_odom); 
@@ -75,12 +92,21 @@ void WheelsControllerNode::Zed2OdomCallback(const nav_msgs::msg::Odometry::Share
 
 void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
 
+
+    if(joy_msg->buttons[0] ==1){
+        color = "#0000FF";
+    }
+    if(joy_msg->buttons[1] ==1){
+        color = "#FF0000";
+    }
+    if(joy_msg->buttons[3] ==1){
+        color = "#00FF00";
+    }
+    
     // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
      if( ! ( joy_msg->buttons[9] == 1 && joy_msg->buttons[10] == 0 ) ){
         return;
     }
-    this->is_manual_control = true;
-
     float linear_y_axes_val = joy_msg->axes[1];
     float angular_z_axes_val = joy_msg->axes[2];
 
@@ -89,6 +115,8 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
     twist_msg.angular.z = angular_z_axes_val;
 
     twist_msg_publisher->publish(twist_msg);
+
+    
 }   
 
 void WheelsControllerNode::pollControllersCallback(){
@@ -96,6 +124,13 @@ void WheelsControllerNode::pollControllersCallback(){
     /*
         Rover not moving
     */
+    // if( this->reached_goal ){
+    //     auto msg = std_msgs::msg::String{};
+    //     msg.data = "#00FF000";
+    //     sil_publisher->publish(msg);
+    //     return;
+    // }
+
     if( abs(this->linear_y) < 1e-3 && abs(this->angular_z) < 1e-3){
         auto msg = std_msgs::msg::String{};
         msg.data = "#0000000";
@@ -110,19 +145,21 @@ void WheelsControllerNode::pollControllersCallback(){
         Set SIL Color to RED for manual control
         */
         auto msg = std_msgs::msg::String{};
-        if(this->is_manual_control){
-            msg.data = "#FF00000";
-        }
-        else{	
-            msg.data = "#00FF00";
-        }
+        // if(this->is_manual_control){
+        //     msg.data = "#FF00000";
+        // }
+        // else{	
+        //     msg.data = "#0000FF";
+        // }
+        msg.data = color;
         sil_publisher->publish(msg);
     }
     
     float slip_track = 1.2f;
+    //this->angular_z *= -1.f;
     // This can be derived from the equation in the paper (to be fucking linked).
-    float right_wheels_velocity = this->linear_y - ( this->angular_z * slip_track * 0.5f);
-    float left_wheels_velocity = this->linear_y + ( this->angular_z * slip_track * 0.5f);
+    float right_wheels_velocity = this->linear_y - ( -this->angular_z * slip_track * 0.5f);
+    float left_wheels_velocity = this->linear_y + ( -this->angular_z * slip_track * 0.5f);
 
     float right_wheels_vel_rpm = right_wheels_velocity * this->get_parameter("multiplier").as_int();
     float left_wheels_vel_rpm = left_wheels_velocity * this->get_parameter("multiplier").as_int();
