@@ -75,7 +75,8 @@ class AbsEnc : public rclcpp::Node
       Absencs will report a non-zero status if there is a hardware/communications issue
     */
     if(absenc_meas_1.status != 0 || absenc_meas_2.status != 0 || absenc_meas_3.status != 0){
-        RCLCPP_ERROR(this->get_logger(),"One of the absenc status returned an error\n");
+        RCLCPP_ERROR(this->get_logger(),
+            "One of the absenc status returned an error. Here are the error codes: %d %d %d \n", absenc_meas_1.status, absenc_meas_2.status, absenc_meas_3.status);
         // Sets the values to NaN as an indicator the latest values are unknown
         for (int i = 0; i < std::size(abs_angles); i++) {
             abs_angles[i] = std::numeric_limits<double>::quiet_NaN();

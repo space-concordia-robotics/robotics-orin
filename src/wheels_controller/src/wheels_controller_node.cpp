@@ -40,10 +40,10 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
             );
     twist_msg_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);     
     
-    odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>("odom", 10);     
+    // odom_publisher = this->create_publisher<nav_msgs::msg::Odometry>("odom", 10);     
 
-    zed2_odom_callback = this->create_subscription<nav_msgs::msg::Odometry>(
-            "zed/zed_node/odom", 10, std::bind(&WheelsControllerNode::Zed2OdomCallback, this, std::placeholders::_1));
+    // zed2_odom_callback = this->create_subscription<nav_msgs::msg::Odometry>(
+            // "zed/zed_node/odom", 10, std::bind(&WheelsControllerNode::Zed2OdomCallback, this, std::placeholders::_1));
     
    
     sil_publisher = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
@@ -70,25 +70,25 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
 //     odom_publisher->publish(current_odom); 
 // }
 
-void WheelsControllerNode::Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr zed2_odom_msg){
-    auto pose = zed2_odom_msg->pose;
-    auto header = zed2_odom_msg->header;
+// void WheelsControllerNode::Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr zed2_odom_msg){
+//     auto pose = zed2_odom_msg->pose;
+//     auto header = zed2_odom_msg->header;
     
-    geometry_msgs::msg::Twist twist = geometry_msgs::msg::Twist{};
-    twist.linear.x = this->linear_y;
-    twist.angular.z = this->angular_z;
+//     geometry_msgs::msg::Twist twist = geometry_msgs::msg::Twist{};
+//     twist.linear.x = this->linear_y;
+//     twist.angular.z = this->angular_z;
 
-    header.frame_id = "odom";
+//     header.frame_id = "odom";
 
-    auto odom_msg = nav_msgs::msg::Odometry{};
-    odom_msg.pose = pose;
-    odom_msg.header = header;
-    odom_msg.twist.twist = twist;
-    odom_msg.child_frame_id = "base_link";
+//     auto odom_msg = nav_msgs::msg::Odometry{};
+//     odom_msg.pose = pose;
+//     odom_msg.header = header;
+//     odom_msg.twist.twist = twist;
+//     odom_msg.child_frame_id = "base_link";
 
-    odom_publisher->publish(odom_msg);
+//     odom_publisher->publish(odom_msg);
     
-}
+// }
 
 void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
 

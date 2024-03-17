@@ -16,7 +16,7 @@ do_dnsmasq(){
 	echo "------------(Press any key to continue)------------"
 	echo '---(Press CTRL-C when seeing "os1-992005000098")---'
 	read -n 1 -s
-	sudo dnsmasq -C /dev/null -kd -F 10.5.5.96,10.5.5.96 -i eth1 --bind-dynamic
+	sudo dnsmasq -C /dev/null -F 10.5.5.96,10.5.5.96 -i eth1 --bind-dynamic
 }
 ping_lidar(){
 	ping -c1 os1-992005000098.local

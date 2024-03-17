@@ -8,7 +8,7 @@
 #include <geometry_msgs/msg/twist.hpp>
 #include <geometry_msgs/msg/twist_with_covariance.hpp>
 #include <builtin_interfaces/msg/time.hpp>
-#include <nav_msgs/msg/odometry.hpp>
+// #include <nav_msgs/msg/odometry.hpp>
 #include <std_msgs/msg/header.hpp>
 #include <geometry_msgs/msg/pose_with_covariance.hpp>
 #include <geometry_msgs/msg/pose.hpp>
@@ -41,7 +41,7 @@ private :
     
     void publishOdom();
 
-    void Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr odom_msg);
+    // void Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr odom_msg);
 
     //rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_msg_callback;
@@ -52,7 +52,7 @@ private :
     
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_msg_callback;
 
-    rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr zed2_odom_callback;
+    // rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr zed2_odom_callback;
     
 
     void pollControllersCallback();
@@ -77,7 +77,7 @@ private :
     
     std::string color;
 
-   rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
+//    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr odom_publisher;
 
   rclcpp::Subscription<nav2_msgs::action::NavigateToPose::Impl::GoalStatusMessage>::SharedPtr
     navigation_goal_status_sub_;

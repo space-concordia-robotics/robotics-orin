@@ -8,3 +8,4 @@ __pycache__/
 *.py[cod]
 cmake-build-debug/
 .idea
+.vscode
