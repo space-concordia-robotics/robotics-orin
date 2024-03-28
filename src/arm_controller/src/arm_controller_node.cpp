@@ -4,16 +4,21 @@
 
 
 ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
+    this->declare_parameter("local_mode", false);
+    // Can only set local mode on startup
+    isLocal = this->get_parameter("local_mode").as_bool();
 
-
-
-    fd = open("/dev/ttyTHS0",O_RDWR);
-    if(fd < 0){
-        int errno0 = errno;
-        RCLCPP_ERROR(this->get_logger(),"Error opening file : %i\n",errno0);
-        errno = 0;
-        rclcpp::shutdown();
-    }   
+    if (isLocal) {
+        fd = -1;
+    } else {
+        fd = open("/dev/ttyTHS0",O_RDWR);
+        if(fd < 0){
+            int errno0 = errno;
+            RCLCPP_ERROR(this->get_logger(),"Error opening file : %i\n",errno0);
+            errno = 0;
+            rclcpp::shutdown();
+        }   
+    }
 
     RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
 
@@ -31,11 +36,13 @@ ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
     cfsetospeed(&ttycfg,B57600);
     tcsetattr(fd, TCSANOW, &ttycfg);
 
-    GPIO::setmode(GPIO::BOARD);
+    if (!isLocal) {
+        GPIO::setmode(GPIO::BOARD);
 
-    GPIO::setup(29, GPIO::OUT, GPIO::HIGH);
-    GPIO::setup(31, GPIO::OUT, GPIO::LOW);
-    GPIO::setup(33, GPIO::OUT, GPIO::LOW);
+        GPIO::setup(29, GPIO::OUT, GPIO::HIGH);
+        GPIO::setup(31, GPIO::OUT, GPIO::LOW);
+        GPIO::setup(33, GPIO::OUT, GPIO::LOW);
+    }
 
     
     // this->create_wall_timer( 500ms, std::bind(&WheelsControllerNode::pollControllersCallback, this));
@@ -59,12 +66,16 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speeds[i],sizeof(float));
     }
     out_buf[26] = 0x0A;
-        
-    int status = write(fd,out_buf,sizeof(out_buf));
-    if(status == -1){
-        int errno0 = errno;
-        // RCLCPP_WARN(this->get_logger(),"Write error : %s (%i)\n",strerr(errno0),errno0);
-        errno = 0;
+    
+    if (isLocal) {
+        RCLCPP_INFO(this->get_logger(),"Speeds from arm_values : %f %f %f %f %f %f\n", speeds[0], speeds[1], speeds[2], speeds[3], speeds[4], speeds[5]);
+    } else {
+        int status = write(fd,out_buf,sizeof(out_buf));
+        if(status == -1){
+            int errno0 = errno;
+            // RCLCPP_WARN(this->get_logger(),"Write error : %s (%i)\n",strerr(errno0),errno0);
+            errno = 0;
+        }
     }
 }
 
@@ -134,7 +145,7 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     speeds[5] = joy_msg->buttons[3] - joy_msg->buttons[0];
 
 
-    std::cout << "Motor speeds " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
+    // std::cout << "Motor speeds " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
     // // RIGHT BUMPER
     // if(joy_msg->buttons[7] == 1){
     //     speeds[2] = speeds[5] * -1.f;
@@ -155,9 +166,13 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     /* THIS FUCKING LINE CAUSES THE LINUX KERNEL TO CRASH WHEN USED (DMA ERROR???!!?!)
     // tcflush(fd, TCIOFLUSH); 
     */
-    int status = write(fd,out_buf,sizeof(out_buf));
-    if(status == -1){
-        std::cout << "Error : " << errno << " \n"; 
+    if (isLocal) {
+        RCLCPP_INFO(this->get_logger(),"Speeds from joystick : %f %f %f %f %f %f\n", speeds[0], speeds[1], speeds[2], speeds[3], speeds[4], speeds[5]);
+    } else {
+        int status = write(fd,out_buf,sizeof(out_buf));
+        if(status == -1){
+            RCLCPP_ERROR(this->get_logger(),"Error : %d\n", errno);
+        }
     }
 }
 

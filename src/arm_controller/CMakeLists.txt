@@ -26,7 +26,12 @@ add_executable(arm_controller_node src/arm_controller_node.cpp)
 # rosidl_target_interfaces(arm_controller_node ${PROJECT_NAME} "rosidl_typesupport_cpp")
 
 ament_target_dependencies(arm_controller_node rclcpp sensor_msgs std_msgs)
-target_link_libraries(arm_controller_node JetsonGPIO::JetsonGPIO)
+target_link_libraries(arm_controller_node JetsonGPIO)
+
+install(
+  DIRECTORY src launch
+  DESTINATION share/${PROJECT_NAME}
+)
 
 install(TARGETS
         arm_controller_node

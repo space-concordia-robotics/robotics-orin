@@ -27,6 +27,7 @@ public:
     void ArmMessageCallback(const std_msgs::msg::Float32MultiArray::SharedPtr arm_val_msgs);
 
 private :
+    bool isLocal;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_msg_callback;
     rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr arm_vals_msg_callback;
     
