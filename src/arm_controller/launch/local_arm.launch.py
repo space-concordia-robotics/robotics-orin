@@ -20,4 +20,11 @@ def generate_launch_description():
             output='screen',
             parameters=[{'local_mode': True}]
         ),
+        Node(
+            package='joy_mapping',
+            executable='joy_mapping_node',
+            name='joy_mapping',
+            output='screen',
+            parameters=[{'local_mode': True}]
+        )
     ])
