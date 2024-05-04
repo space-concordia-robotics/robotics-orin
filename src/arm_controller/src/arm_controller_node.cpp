@@ -81,18 +81,18 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
 
 void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
     // Must hold L1 and R1 to get arm control
-    // if(joy_msg->buttons[4] == 0 || joy_msg->buttons[5] == 0){
-    //     return;
-    // }
+    if(joy_msg->buttons[4] == 0 || joy_msg->buttons[5] == 0){
+        return;
+    }
 
 
     // Or when L1 and R1 get fuckiing reammped?
     // if(joy_msg->buttons[9] == 0 || joy_msg->buttons[10] == 0){
     //     return;
     // }
-     if( ! ( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1 ) ){
-        return;
-    }
+    //  if( ! ( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1 ) ){
+    //     return;
+    // }
 
 
     // LEFT HORIZ : axes[0]
@@ -115,21 +115,21 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
         Hold R2 or L2 to control the turning the base rotation
         
     */
-    // float rotation = joy_msg->axes[2] - joy_msg->axes[5];
+    float rotation = (joy_msg->axes[2] - joy_msg->axes[5]) / 2;
 
-    float rotation;
+    // float rotation;
 
-    if(joy_msg->axes[4] < 1){
-       rotation = -(joy_msg->axes[4] - 1.f)/2.f;
-    }
-    else if(joy_msg->axes[5] < 1){
-       rotation = (joy_msg->axes[5] - 1.f)/2.f;
-    }
+    // if(joy_msg->axes[4] < 1){
+    //    rotation = -(joy_msg->axes[4] - 1.f)/2.f;
+    // }
+    // else if(joy_msg->axes[5] < 1){
+    //    rotation = (joy_msg->axes[5] - 1.f)/2.f;
+    // }
     
     
     //Map so L2 and R2 control base, left x, left y, right x then control the rest of the 12v motors
-    // float speeds[6] = {joy_msg->axes[2] - joy_msg->axes[5],joy_msg->axes[0],joy_msg->axes[1],joy_msg->axes[3],0,0};
-    float speeds[6] = {rotation,joy_msg->axes[0],-joy_msg->axes[1],-joy_msg->axes[3],0,0};
+    float speeds[6] = {joy_msg->axes[2] - joy_msg->axes[5],joy_msg->axes[0],joy_msg->axes[1],joy_msg->axes[3],0,0};
+    // float speeds[6] = {rotation,joy_msg->axes[0],-joy_msg->axes[1],-joy_msg->axes[3],0,0};
     
 
     
