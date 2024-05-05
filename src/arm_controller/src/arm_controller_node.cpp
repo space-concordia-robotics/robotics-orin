@@ -95,8 +95,8 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
             return;
         }
     } else {
-    // Or when L1 and R1 get fuckiing reammped?
-        if( ! ( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1 ) ){
+        // Or when L1 and R1 get fuckiing reammped?
+        if (( joy_msg->buttons[9] == 0 || joy_msg->buttons[10] == 0 ) ){
             return;
         }
     }
