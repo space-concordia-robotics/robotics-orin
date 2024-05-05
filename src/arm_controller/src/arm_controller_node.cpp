@@ -61,7 +61,8 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
 
     float speeds [6]= {msg->data[0],msg->data[1],msg->data[2],msg->data[3],msg->data[4],msg->data[5]};
     for(int i = 0 ; i < 6 ; i++){
-        memcpy(&out_buf[ (i*sizeof(float)) +2],&speeds[i],sizeof(float));
+        float speed = speeds[i] * MAX_MOTOR_SPEED;
+        memcpy(&out_buf[ (i*sizeof(float)) +2],&speed,sizeof(float));
     }
     out_buf[26] = 0x0A;
         
@@ -167,7 +168,7 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     out_buf[1] = sizeof(float)*6;
 
     for(int i = 0 ; i < 6 ; i++){
-        float speed = speeds[i] * 1024.f;
+        float speed = speeds[i] * MAX_MOTOR_SPEED;
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speed,sizeof(float));
         
     }
