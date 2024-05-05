@@ -78,7 +78,7 @@ class CadMouseJoyNode(Node):
       #while os.getcwd().split("/")[-1] != "robotics-orin" and os.getcwd() != "/":
       #  os.chdir("..")
       # os.system("cat robot/util/udev-rules/10-cadmouse.rules")
-      os.system("sudo cp ~/robotics-orin/util/udev-rules/10-cadmouse.rules /lib/udev/rules.d/10-cadmouse.rules && sudo udevadm trigger && echo done")
+      os.system("sudo cp ~/Programming/robotics-orin/util/udev-rules/10-cadmouse.rules /lib/udev/rules.d/10-cadmouse.rules && sudo udevadm trigger && echo done")
       print("attempting to run again...")
       time.sleep(4)
       self.readMouseInput()
