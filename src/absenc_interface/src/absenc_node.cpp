@@ -17,7 +17,7 @@
 #include <sensor_msgs/msg/joy.hpp>
     using namespace std::chrono_literals;
 
-#define GAIN 200.0
+#define GAIN 20.0
 
 float scaleClamp(float val, float scale, float min, float max) {
   val *= scale;

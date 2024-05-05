@@ -10,7 +10,7 @@ from geometry_msgs.msg import Quaternion
 from sensor_msgs.msg import JointState
 from std_msgs.msg import String
 import threading
-# from absenc_interface.msg import EncoderValues
+from absenc_interface.msg import EncoderValues
 
 # Publishes angles in radians for the motors
 
@@ -80,9 +80,8 @@ class IkNode(Node):
     self.abs_angles = None
     self.initialized = False
     self.angles = None
-    self.abs_angles = [0.0, 0.0, 0.0, 0.0]
-    #self.absenc_sub = self.create_subscription(EncoderValues, absenc_topic, self.absenc_callback, 10)
-    #self.get_logger().info('Created subscriber for topic "'+absenc_topic)
+    self.absenc_sub = self.create_subscription(EncoderValues, absenc_topic, self.absenc_callback, 10)
+    self.get_logger().info('Created subscriber for topic "'+absenc_topic)
 
   
   def have_abs_angles(self):
@@ -115,7 +114,6 @@ class IkNode(Node):
   
 
   def absenc_callback(self, message):
-    #self.get_logger().info(f"Callback for absenc value")
     self.abs_angles = [0, math.radians(message.angle_1), math.radians(message.angle_2), math.radians(message.angle_3)]
 
 
