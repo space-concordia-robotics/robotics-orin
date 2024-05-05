@@ -77,12 +77,12 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     if (controller_type == -1) {
         // Infer controller type. Assume that L2 and R2 are not pressed on startup,
         // and so will be at values 1.0.
-        if (joy_msg->axes[2] == 1.0 && joy_msg->axes[5]) {
+        if (joy_msg->axes[2] == 1.0 && joy_msg->axes[5] == 1.0) {
             RCLCPP_INFO(this->get_logger(), "Controller type 0");
             controller_type = 0;
-        } else if (joy_msg->axes[4] == 1.0 && joy_msg->axes[5]) {
-            controller_type = 1;
+        } else if (joy_msg->axes[4] == 1.0 && joy_msg->axes[5] == 1.0) {
             RCLCPP_INFO(this->get_logger(), "Controller type 1");
+            controller_type = 1;
         } else {
             return;
         }
@@ -155,8 +155,7 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     }
 
 
-
-    std::cout << "Motor speeds " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
+    std::cout << "Motor speeds (from -1 1) " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
     // // RIGHT BUMPER
     // if(joy_msg->buttons[7] == 1){
     //     speeds[2] = speeds[5] * -1.f;
@@ -168,7 +167,7 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     out_buf[1] = sizeof(float)*6;
 
     for(int i = 0 ; i < 6 ; i++){
-        float speed = speeds[i] * 250.f;
+        float speed = speeds[i] * 1024.f;
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speed,sizeof(float));
         
     }
