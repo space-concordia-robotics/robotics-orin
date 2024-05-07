@@ -137,6 +137,12 @@ class IkNode(Node):
     self.calculate_cartesian()
     self.get_logger().info(f"Initial coordinates {self.x} {self.y} {self.z}")
 
+    # Move slightly toward the origin to prevent floating point error from causing angle 0.0 0.0 0.0 from triggering out of range
+    if absenc_angles == [0.0, 0.0, 0.0, 0.0]:
+      self.x -= math.copysign(1, self.x) * 0.0000000000000004
+      self.y -= math.copysign(1, self.y) * 0.0000000000000004
+      self.z -= math.copysign(1, self.z) * 0.0000000000000004
+
     self.initialized = True
   
 
@@ -194,7 +200,8 @@ class IkNode(Node):
       B2 = (self.L1 ** 2 + self.L2 ** 2 - L ** 2) / (2 * self.L1 * self.L2)
       B3 = (self.L2 ** 2 + L ** 2 - self.L1 ** 2) / (2 * self.L2 * L)
       if any_out_of_range(-1, 1, B1, B2, B3):
-        self.get_logger().warn(f"Point (xyz) {self.x} {self.y} {self.z} pitch {self.pitch} (uvp) {self.u} {self.v} {self.phi} out of range")
+        self.get_logger().warn(f"Point (xyz) {self.x} {self.y} {self.z} pitch {self.pitch} " +
+                               f"(uvp) {self.u} {self.v} {self.phi} out of range (B1 B2 B3) {B1} {B2} {B3}")
         return False
       
       b1 = math.acos(B1)
@@ -265,7 +272,7 @@ class IkNode(Node):
     if self.last_message and self.last_message.buttons[7] != message.buttons[7] and message.buttons[7] == 1:
       self.solution = 0 if self.solution == 1 else 1
 
-    self.x += (self.sensitivity * -y / 75) # forward-back of joystick moves along x
+    self.x += (self.sensitivity * y / 75) # forward-back of joystick moves along x
     self.y += (self.sensitivity * x / 75) # left-right would move along y axis (doesn't since in 2D mode)
     self.z += (trim * self.sensitivity * -up_down / 75) # trigger/button 2 moves up/down
     self.th += (self.sensitivity * spin / 75) # spin of joystick (yaw) spins base
