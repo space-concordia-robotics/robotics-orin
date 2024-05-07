@@ -61,6 +61,10 @@ Absenc::Absenc() : Node("absenc_node")
 
   subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
   "cad_mouse_joy", 10, std::bind(&Absenc::cadValuesCallback, this, std::placeholders::_1));
+
+  subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
+  "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
+
   
   arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
 }
@@ -107,7 +111,7 @@ void Absenc::absEncPollingCallback()
       }
       return;
   }
-  message.angle_1 = -(absenc_meas_1.angval < 0 ? absenc_meas_1.angval + 180.f : absenc_meas_1.angval - 180);
+  message.angle_1 = (absenc_meas_1.angval < 0 ? absenc_meas_1.angval + 180.f : absenc_meas_1.angval - 180);
   message.angle_2 = absenc_meas_2.angval;
   message.angle_3 = absenc_meas_3.angval < 0 ? 180 + absenc_meas_3.angval : absenc_meas_3.angval - 180.f;
 
@@ -139,12 +143,24 @@ void Absenc::cadValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
   pitch = msg->axes[3];
   roll = msg->axes[4];
   yaw = msg->axes[5];
+  base_motor_input = yaw;
   leftButton = msg->buttons[0];
   rightButton = msg->buttons[1];
 
   if (rightButton) {
     controlEndEffector();
   }
+}
+
+void Absenc::joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
+  if (msg->axes.size() < 6) {
+    RCLCPP_ERROR(this->get_logger(),"Axes of joy wrong dimension");
+  }
+  if (msg->buttons.size() < 11) {
+    RCLCPP_ERROR(this->get_logger(),"Axes of joy wrong dimension");
+  }
+
+  base_motor_input = msg->axes[2];
 }
 
 void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg) {
@@ -180,7 +196,7 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
 
 
   // Set the base motor speed from the cad mouse directly
-  angles[0] = scaleClamp(yaw, -1.00, -1.0, 1.0);
+  angles[0] = scaleClamp(base_motor_input, -1.00, -1.0, 1.0);
   arm_command += std::to_string(angles[0]);
   arm_command += " ";
 

@@ -54,6 +54,7 @@ public:
 private:
     void absEncPollingCallback();
     void cadValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
+    void joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
     void ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg);
     void controlEndEffector();
 
@@ -62,6 +63,7 @@ private:
     rclcpp::TimerBase::SharedPtr timer;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_cad_mouse;
+    rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_joy;
     rclcpp::Publisher<absenc_interface::msg::EncoderValues>::SharedPtr angles_publisher;
 
     rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr arm_controller_publisher;
@@ -74,6 +76,8 @@ private:
     std::array<int, 4> motor_signs = {1, -1, -1, -1};
     // Store the axes of the cad mouse
     float x, y, z, pitch, roll, yaw;
+    // Stores value for controlling base motor
+    float base_motor_input;
     // Store button states of cad mouse
     int leftButton, rightButton;
 };

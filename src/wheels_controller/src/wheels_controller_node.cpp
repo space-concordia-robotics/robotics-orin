@@ -91,7 +91,19 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
 // }
 
 void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
-
+    if (controller_type == -1) {
+        // Infer controller type. Assume that L2 and R2 are not pressed on startup,
+        // and so will be at values 1.0.
+        if (joy_msg->axes[2] == 1.0 && joy_msg->axes[5] == 1.0) {
+            RCLCPP_INFO(this->get_logger(), "Controller type 0");
+            controller_type = 0;
+        } else if (joy_msg->axes[4] == 1.0 && joy_msg->axes[5] == 1.0) {
+            RCLCPP_INFO(this->get_logger(), "Controller type 1");
+            controller_type = 1;
+        } else {
+            return;
+        }
+    }
 
     if(joy_msg->buttons[0] ==1){
         color = "#0000FF";
@@ -104,19 +116,25 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
     }
     
     // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
-     if( ! ( joy_msg->buttons[9] == 1 && joy_msg->buttons[10] == 0 ) ){
-        return;
+    if (controller_type == 0) {
+        if(!(joy_msg->buttons[4] == 0 && joy_msg->buttons[5] == 1)) {
+            return;
+        }
+    } else {
+        if (!(( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1))){
+            return;
+        }
     }
-    float linear_y_axes_val = joy_msg->axes[1];
-    float angular_z_axes_val = joy_msg->axes[2];
+
+    float linear_y_axes_val = -joy_msg->axes[1];
+    float angular_z_axes_val = joy_msg->axes[0];
+
 
     geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
     twist_msg.linear.x = linear_y_axes_val;
     twist_msg.angular.z = angular_z_axes_val;
 
     twist_msg_publisher->publish(twist_msg);
-
-    
 }   
 
 void WheelsControllerNode::pollControllersCallback(){

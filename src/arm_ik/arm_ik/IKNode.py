@@ -147,7 +147,7 @@ class IkNode(Node):
   
 
   def absenc_callback(self, message):
-    self.abs_angles = [0, math.radians(message.angle_1), math.radians(message.angle_2), math.radians(message.angle_3)]
+    self.abs_angles = [0.0, math.radians(message.angle_1), math.radians(message.angle_2), math.radians(message.angle_3)]
 
 
   def coords_from_flex(self, angles):
@@ -170,6 +170,10 @@ class IkNode(Node):
 
     # If not initialized yet, don't publish
     if self.initialized:
+      if not self.angles:
+        self.get_logger().warn("Angles not initialized")
+        return
+
       joint_state = JointState()
 
       now = self.get_clock().now()
