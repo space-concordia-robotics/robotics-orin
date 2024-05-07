@@ -29,12 +29,6 @@ def generate_launch_description():
             name='arm_controller',
             output='screen'
         ),
-        # Node(
-        #     package='arm_ik',
-        #     executable='AbsencControlSystem',
-        #     name='absenc_control_system',
-        #     output='screen'
-        # ),
         Node(
             package='arm_ik',
             executable='IKNode',
@@ -53,14 +47,20 @@ def generate_launch_description():
                 {'local_mode': False}
             ]
                         ),
+        # Node(
+        #     package='arm_ik',
+        #     executable='CadMouseJoyNode',
+        #     name='cad_mouse_joy_node',
+        #     output='screen',
+        #     parameters=[
+        #         # More deadzone on yaw (pivot)
+        #         {'deadzones': [20, 20, 20, 20, 20, 200]}
+        #     ]
+        # ),
         Node(
-            package='arm_ik',
-            executable='CadMouseJoyNode',
-            name='cad_mouse_joy_node',
-            output='screen',
-            parameters=[
-                # More deadzone on yaw (pivot)
-                {'deadzones': [20, 20, 20, 20, 20, 200]}
-            ]
-            ),
+            package='joy',
+            executable='joy_node',
+            name='joy_node',
+            output='screen'
+        ),
     ])

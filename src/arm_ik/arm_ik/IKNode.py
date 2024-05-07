@@ -16,6 +16,12 @@ from absenc_interface.msg import EncoderValues
 
 devpath = "/dev/cadmouse"
 
+def map_range(value, min, max, new_min, new_max):
+  value = value - min
+  value = value * (new_max - new_min)
+  value = value + new_min
+  return value
+
 def any_out_of_range(min, max, *values):
   for value in values:
     if value < min or value > max:
@@ -36,6 +42,8 @@ class IkNode(Node):
     self.declare_parameter('joint_angle_maxes', [180.0, 180.0, 180.0, 180.0])
     self.declare_parameter('sensitivity', 1.0)
     self.declare_parameter('mode', "")
+    self.declare_parameter('solution', 0)
+    self.declare_parameter('local_mode', False)
 
     qos_profile = QoSProfile(depth=10)
     self.joint_pub = self.create_publisher(JointState, 'joint_states', qos_profile)
@@ -67,19 +75,35 @@ class IkNode(Node):
 
     # Sensitivity
     self.sensitivity = self.get_parameter('sensitivity').get_parameter_value().double_value
+    # Local mode
+    self.local_mode = self.get_parameter('local_mode').get_parameter_value().bool_value
+    # Which IK solution to use
+    self.solution = self.get_parameter('solution').get_parameter_value().integer_value
 
     # Mode - if 2D y value stays 0
     self.mode = self.get_parameter('mode').get_parameter_value().string_value
 
-    joy_topic = '/cad_mouse_joy'
+    cad_joy_topic = '/cad_mouse_joy'
+    self.cad_joy_sub = self.create_subscription(Joy, cad_joy_topic, self.cad_joy_callback, 10)
+    self.get_logger().info('Created publisher for topic "' + cad_joy_topic + '"')
+
+    joy_topic = '/joy'
     self.joy_sub = self.create_subscription(Joy, joy_topic, self.joy_callback, 10)
-    self.get_logger().info('Created publisher for topic "'+joy_topic)
+    self.get_logger().info('Created publisher for topic "' + joy_topic + '"')
+
 
     # Get the initial angle values 
     absenc_topic = '/absenc_values'
     self.abs_angles = None
     self.initialized = False
     self.angles = None
+
+    if self.local_mode:
+      self.abs_angles = [0.0, 0.0, 0.0, 0.0]
+      self.initialize_angles_coords()
+    # Will hold the previous joy message (used to toggle values)
+    self.last_message = None
+
     self.absenc_sub = self.create_subscription(EncoderValues, absenc_topic, self.absenc_callback, 10)
     self.get_logger().info('Created subscriber for topic "'+absenc_topic)
 
@@ -90,6 +114,7 @@ class IkNode(Node):
   
   def initialize_angles_coords(self):
     absenc_angles = self.abs_angles
+    self.angles = self.abs_angles
     self.get_logger().info(f"encoder angles: {absenc_angles}")
 
     # Start in cylindrical coords
@@ -111,6 +136,8 @@ class IkNode(Node):
     # Turn to cartesian (stored in self.x, y, z)
     self.calculate_cartesian()
     self.get_logger().info(f"Initial coordinates {self.x} {self.y} {self.z}")
+
+    self.initialized = True
   
 
   def absenc_callback(self, message):
@@ -134,10 +161,9 @@ class IkNode(Node):
     # If not initialized, initialize from abs enc values
     if not self.angles and self.abs_angles and not self.initialized:
       self.initialize_angles_coords()
-      self.initialized = True
 
     # If not initialized yet, don't publish
-    if self.angles:
+    if self.initialized:
       joint_state = JointState()
 
       now = self.get_clock().now()
@@ -188,6 +214,12 @@ class IkNode(Node):
       else:
         angles = [float(self.phi), (math.pi / 2) - (b1 + a1),
                           math.pi - b2, math.pi - (self.pitch + a2 + b3)]
+      
+      # If want to pick alternate solution
+      if self.solution == 1:
+        a3 = a2 - b3
+        angles = [angles[0], angles[1] + 2 * b1, b2 - math.pi, math.pi - (a3 + self.pitch)]
+
       if self.validAngles(angles):
         self.angles = angles
       else:
@@ -200,7 +232,7 @@ class IkNode(Node):
     except ValueError as e:
       self.get_logger().error(f"Caught error {e} with coordinates (x,y,z) {self.x} {self.y} {self.z} (u,v,phi,pitch) {self.u} {self.v} {self.phi} {self.pitch}")
   
-  def joy_callback(self, message: Joy):
+  def cad_joy_callback(self, message: Joy):
     # self.get_logger().info(f"Received from cad mouse")
     old_values = (self.x, self.y, self.z, self.th, self.pitch)
     left_button, right_button = message.buttons
@@ -216,8 +248,38 @@ class IkNode(Node):
 
     # Pitch is the one angle which is directly set, so check bounds here
     new_pitch = self.pitch + (self.sensitivity * roll / 30000)
-    self.pitch = new_pitch    
+    self.pitch = new_pitch
 
+    self.perform_calculations(old_values)
+
+
+  def joy_callback(self, message: Joy):
+    # self.get_logger().info(f"Received from cad mouse")
+    old_values = (self.x, self.y, self.z, self.th, self.pitch)
+    x, y, spin, trim, dpad_x, dpad_y = message.axes
+    trim  = map_range(trim, -1.0, 1.0, 1.0, 3.0)
+    # Move up and down with trigger and button 2
+    up_down = message.buttons[0] - message.buttons[1]
+
+    # Toggle between solutions with button 8 (index 7)
+    if self.last_message and self.last_message.buttons[7] != message.buttons[7] and message.buttons[7] == 1:
+      self.solution = 0 if self.solution == 1 else 1
+
+    self.x += (self.sensitivity * -y / 75) # forward-back of joystick moves along x
+    self.y += (self.sensitivity * x / 75) # left-right would move along y axis (doesn't since in 2D mode)
+    self.z += (trim * self.sensitivity * -up_down / 75) # trigger/button 2 moves up/down
+    self.th += (self.sensitivity * spin / 75) # spin of joystick (yaw) spins base
+
+    # Pitch is the one angle which is directly set, so check bounds here
+    new_pitch = self.pitch + (self.sensitivity * dpad_x / 50)
+    self.pitch = new_pitch
+
+    self.perform_calculations(old_values)
+    
+    self.last_message = message
+
+
+  def perform_calculations(self, old_values):
     self.calculate_cylindical()
 
     # if 2d, force y to be 0
@@ -230,6 +292,8 @@ class IkNode(Node):
       self.x, self.y, self.z, self.th, self.pitch = old_values
     # self.get_logger().info(f"Current location: {self.x} {self.y} {self.z} roll {self.th} pitch {self.pitch}")
     # self.get_logger().info(f"Cylindical coordinates: u {self.u} v {self.v} phi {self.phi}")
+
+
 
   def calculate_cylindical(self):
     if self.mode == "2D":

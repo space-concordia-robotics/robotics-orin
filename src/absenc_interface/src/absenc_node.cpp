@@ -107,7 +107,7 @@ void Absenc::absEncPollingCallback()
       }
       return;
   }
-  message.angle_1 = absenc_meas_1.angval < 0 ? absenc_meas_1.angval + 180.f : absenc_meas_1.angval - 180;
+  message.angle_1 = -(absenc_meas_1.angval < 0 ? absenc_meas_1.angval + 180.f : absenc_meas_1.angval - 180);
   message.angle_2 = absenc_meas_2.angval;
   message.angle_3 = absenc_meas_3.angval < 0 ? 180 + absenc_meas_3.angval : absenc_meas_3.angval - 180.f;
 
