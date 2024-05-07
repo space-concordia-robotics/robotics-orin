@@ -38,7 +38,9 @@ def generate_launch_description():
                 {'joint_angle_mins': [-180.0, -90.0, -170.0, -150.0]},
                 {'joint_angle_maxes': [180, 90.0, 170.0, 150.0]},
                 {'sensitivity': 2.0},
-                {'mode': '2D'}
+                {'mode': '2D'},
+                {'angle_set': 'vertical'},
+                {'local_mode': True}
             ]
                         ),
         Node(

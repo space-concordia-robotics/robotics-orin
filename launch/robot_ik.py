@@ -45,7 +45,12 @@ def generate_launch_description():
                 {'joint_angle_mins': [-180.0, -60.0, -111.0, -101.0]},
                 {'joint_angle_maxes': [180, 66.0, 115.0, 106.0]},
                 {'sensitivity': 1.0},
-                {'mode': '2D'}
+                {'mode': '2D'},
+                # "joint" sets final joint angle, while "vertical" sets the
+                # angle of the gripper relative to vertical while keeping the end effector
+                # position constant.
+                {'angle_set': 'vertical'},
+                {'local_mode': False}
             ]
                         ),
         Node(
@@ -54,7 +59,8 @@ def generate_launch_description():
             name='cad_mouse_joy_node',
             output='screen',
             parameters=[
-                {'deadzone': 20}
+                # More deadzone on yaw (pivot)
+                {'deadzones': [20, 20, 20, 20, 20, 200]}
             ]
             ),
     ])
