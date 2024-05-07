@@ -43,9 +43,15 @@ def generate_launch_description():
                 {'local_mode': True}
             ]
                         ),
+        # Node(
+        #     package='arm_ik',
+        #     executable='CadMouseJoyNode',
+        #     name='cad_mouse_joy_node',
+        #     output='screen'),
         Node(
-            package='arm_ik',
-            executable='CadMouseJoyNode',
-            name='cad_mouse_joy_node',
-            output='screen'),
+            package='joy',
+            executable='joy_node',
+            name='joy_node',
+            output='screen'
+        ),
     ])
