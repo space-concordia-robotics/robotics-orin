@@ -159,8 +159,10 @@ void Absenc::joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
   if (msg->buttons.size() < 11) {
     RCLCPP_ERROR(this->get_logger(),"Axes of joy wrong dimension");
   }
-
-  base_motor_input = msg->axes[2];
+  // When pressing button 3, moving wheels
+  if (msg->buttons[2] == 0) {
+    base_motor_input = msg->axes[2];
+  }
 }
 
 void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg) {
@@ -188,11 +190,11 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
   std::vector<float> angles(6);
 
 
-  std::cout << "Angles: ";
-  for (int i = 0; i < std::size(ik_angles); i++) {
-    std::cout << "ik " << ik_angles[i] << " abs " << abs_angles[i] << " ";
-  }
-  std::cout << "\n";
+  // std::cout << "Angles: ";
+  // for (int i = 0; i < std::size(ik_angles); i++) {
+  //   std::cout << "ik " << ik_angles[i] << " abs " << abs_angles[i] << " ";
+  // }
+  // std::cout << "\n";
 
 
   // Set the base motor speed from the cad mouse directly

@@ -64,4 +64,14 @@ def generate_launch_description():
             name='joy_node',
             output='screen'
         ),
+        Node(
+            package='wheels_controller',
+            executable='wheels_controller_node',
+            name='wheels_controller_node',
+            output='screen',
+            parameters=[
+                {'multiplier': 2000},
+                {'local_mode': False}
+            ]
+        ),
     ])
