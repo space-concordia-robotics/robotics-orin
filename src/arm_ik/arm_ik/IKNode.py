@@ -216,25 +216,35 @@ class IkNode(Node):
       # self.get_logger().info(f"cu {cu} cv {cv} a1 {a1} a2 {a2} L {L} b1 {b1} b2 {b2} b3 {b3}")
 
       # contains Shoulder Swivel, Shoulder Flex, Elbow Flex, Wrist Flex (in that order)
-      if cu < 0:
-        angles = [float(self.phi), -((math.pi / 2) - a1 + b1),
-                  math.pi - b2, math.pi - (self.pitch + b3)]
-      elif cv < 0:
-        angles = [float(self.phi), (math.pi) - (b1 + a2),
+      if cu < 0: # second quadrant
+        solution0_angles = [float(self.phi), -((math.pi/2) - a1 + b1),
+                  math.pi - b2, math.pi - (self.pitch + b3 - a2)]
+        x = self.pitch - a2 - b3
+        solution1_angles = [float(self.phi), -(math.pi / 2) + a1 + b1, -(math.pi - b2), math.pi - x]
+      elif cv < 0: # Third quadrant
+        solution0_angles = [float(self.phi), (math.pi) - (b1 + a2),
                   math.pi - b2, math.pi / 2 - (self.pitch + b3 + a1)]
-      else:
-        angles = [float(self.phi), (math.pi / 2) - (b1 + a1),
+        solution1_angles = None # Not implemented
+      else: # first quadrant (fourth is not implemented)
+        solution0_angles = [float(self.phi), (math.pi / 2) - (b1 + a1),
                           math.pi - b2, math.pi - (self.pitch + a2 + b3)]
-      
-      # If want to pick alternate solution
-      if self.solution == 1:
+        # If want to pick alternate solution
         a3 = a2 - b3
-        angles = [angles[0], angles[1] + 2 * b1, b2 - math.pi, math.pi - (a3 + self.pitch)]
+        solution1_angles = [solution0_angles[0], solution0_angles[1] + 2 * b1, b2 - math.pi, math.pi - (a3 + self.pitch)]
+      
 
-      if self.validAngles(angles):
-        self.angles = angles
+      # Try to use desired solution
+      if self.solution == 0 and self.validAngles(solution0_angles):
+        self.angles = solution0_angles
+      elif self.solution == 1 and self.validAngles(solution1_angles):
+        self.angles = solution1_angles
+      # If can't use desired solution use any valid one
+      elif self.validAngles(solution0_angles):
+        self.angles = solution0_angles
+      elif self.validAngles(solution1_angles):
+        self.angles = solution1_angles
       else:
-        self.get_logger().warn(f"Outside joint limits, angles: {angles}")
+        self.get_logger().warn(f"Outside joint limits, angles: {solution0_angles} {solution1_angles}")
         return False
 
       # self.get_logger().info(f"angles: {self.angles}")
@@ -341,6 +351,9 @@ class IkNode(Node):
 
   
   def validAngles(self, angles):
+    if angles == None or len(angles) != len(self.mins):
+      return False
+    
     for angle, min, max in zip(angles, self.mins, self.maxes):
       # Validate angle is between min and max
       if not(min <= angle and angle <= max):
