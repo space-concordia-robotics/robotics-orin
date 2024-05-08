@@ -56,7 +56,7 @@ private:
     void cadValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
     void joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
     void ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg);
-    void controlEndEffector();
+    void controlEndEffector(float spin, float close);
 
     int s_fd = -1;
 
@@ -74,10 +74,10 @@ private:
     std::array<float, 4> abs_angles = {0.0, 0.0, 0.0, 0.0};
     // Controls if motor sign is aligned with encoder direction
     std::array<int, 4> motor_signs = {1, -1, -1, -1};
-    // Store the axes of the cad mouse
-    float x, y, z, pitch, roll, yaw;
     // Stores value for controlling base motor
     float base_motor_input;
-    // Store button states of cad mouse
-    int leftButton, rightButton;
+    // Stores values for controlling claw
+    float claw_spin, claw_close;
+    // Inhibit movement of the arm (for 3d mouse control scheme)
+    bool inhibitArmMovement = false;
 };

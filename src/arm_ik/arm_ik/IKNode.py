@@ -290,7 +290,7 @@ class IkNode(Node):
     if self.last_message and self.last_message.buttons[7] != message.buttons[7] and message.buttons[7] == 1:
       self.solution = 0 if self.solution == 1 else 1
 
-    self.x += (self.sensitivity * y / 75) # forward-back of joystick moves along x
+    self.x += (self.sensitivity * -y / 75) # forward-back of joystick moves along x
     self.y += (self.sensitivity * x / 75) # left-right would move along y axis (doesn't since in 2D mode)
     self.z += (trim * self.sensitivity * -up_down / 75) # trigger/button 2 moves up/down
     self.th += (self.sensitivity * spin / 75) # spin of joystick (yaw) spins base

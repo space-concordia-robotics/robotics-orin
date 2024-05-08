@@ -125,15 +125,18 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
     // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
     if (controller_type == 0) {
         if(!(joy_msg->buttons[4] == 0 && joy_msg->buttons[5] == 1)) {
+            publishStop();
             return;
         }
     } else if (controller_type == 1) {
         if (!( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1)){
+            publishStop();
             return;
         }
     } else {
         // For logitech joystick, only move if button 3 is pressed.
         if (!(joy_msg->buttons[2] == 1)) {
+            publishStop();
             return;
         }
     }
@@ -154,7 +157,15 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
     twist_msg.angular.z = angular_z_axes_val;
 
     twist_msg_publisher->publish(twist_msg);
-}   
+}
+
+void WheelsControllerNode::publishStop() {
+    geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
+    twist_msg.linear.x = 0;
+    twist_msg.angular.z = 0;
+
+    twist_msg_publisher->publish(twist_msg);
+}
 
 void WheelsControllerNode::pollControllersCallback(){
     if (this->get_parameter("local_mode").as_bool()) {

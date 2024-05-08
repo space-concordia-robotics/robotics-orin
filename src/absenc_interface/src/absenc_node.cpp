@@ -137,18 +137,20 @@ void Absenc::cadValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
     RCLCPP_ERROR(this->get_logger(),"Axes of cad mouse wrong dimension");
   }
 
-  x = msg->axes[0];
-  y = msg->axes[1];
-  z = msg->axes[2];
-  pitch = msg->axes[3];
-  roll = msg->axes[4];
-  yaw = msg->axes[5];
-  base_motor_input = yaw;
-  leftButton = msg->buttons[0];
-  rightButton = msg->buttons[1];
+  float x = msg->axes[0];
+  float y = msg->axes[1];
+  float z = msg->axes[2];
+  float pitch = msg->axes[3];
+  float roll = msg->axes[4];
+  float yaw = msg->axes[5];
 
-  if (rightButton) {
-    controlEndEffector();
+  base_motor_input = yaw;
+  int leftButton = msg->buttons[0];
+  int rightButton = msg->buttons[1];
+  inhibitArmMovement = rightButton == 0;
+
+  if (!inhibitArmMovement) {
+    controlEndEffector(yaw, x);
   }
 }
 
@@ -159,10 +161,14 @@ void Absenc::joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
   if (msg->buttons.size() < 11) {
     RCLCPP_ERROR(this->get_logger(),"Axes of joy wrong dimension");
   }
-  // When pressing button 3, moving wheels
+  // Ensure not pressing button 3 (when pressing button 3, moving wheels)
   if (msg->buttons[2] == 0) {
     base_motor_input = msg->axes[2];
   }
+  inhibitArmMovement = false;
+  claw_spin = msg->axes[5];
+  claw_close = msg->buttons[4] - msg->buttons[5];
+  // controlEndEffector(spin, openClose);
 }
 
 void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg) {
@@ -170,7 +176,7 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
   for (int i = 0; i < 4; i++) {
     ik_angles[i] = msg->position[i] * 180.0 / M_PI;
   }
-  if (rightButton) {
+  if (inhibitArmMovement) {
     // Then should be controlling the end effector directly; abort here
     return;
   }
@@ -237,8 +243,8 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
   // Add 0 values for two last values
   arm_command += "0 0";
     // NICK SHIT
-  angles[4] = 0.f;
-  angles[5] = 0.f;
+  angles[4] = claw_spin;
+  angles[5] = claw_close;
   
   auto arm_msg_s = std_msgs::msg::String();
   arm_msg_s.data = arm_command;
@@ -249,7 +255,7 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
 }
 
 
-void Absenc::controlEndEffector() {
+void Absenc::controlEndEffector(float spin, float close) {
   auto arm_msg_2 = std_msgs::msg::Float32MultiArray();
   std::vector<float> angles(6);
 
@@ -259,8 +265,8 @@ void Absenc::controlEndEffector() {
   }
 
   // Control the end effector motors with 3d mouse
-  angles[4] = scaleClamp(yaw, 1.00, -1.0, 1.0);
-  angles[5] = scaleClamp(x, 1.00, -1.0, 1.0);
+  angles[4] = scaleClamp(spin, 1.00, -1.0, 1.0);
+  angles[5] = scaleClamp(close, 1.00, -1.0, 1.0);
 
   arm_msg_2.data = angles;
   arm_controller_publisher->publish(arm_msg_2);

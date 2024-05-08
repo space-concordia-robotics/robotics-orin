@@ -40,7 +40,7 @@ def generate_launch_description():
                 {'joint_angle_maxes': [180, 66.0, 115.0, 106.0]},
                 {'sensitivity': 1.0},
                 {'mode': '2D'},
-                {'solution': 0},
+                {'solution': 1},
                 # "joint" sets final joint angle, while "vertical" sets the
                 # angle of the gripper relative to vertical while keeping the end effector
                 # position constant.

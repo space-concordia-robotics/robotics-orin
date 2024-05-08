@@ -40,6 +40,7 @@ private :
     float AccelerateValue(float current, float desired, float rate, float dt);
     
     void publishOdom();
+    void publishStop();
 
     // void Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr odom_msg);
 
