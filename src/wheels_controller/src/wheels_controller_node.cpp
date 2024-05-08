@@ -7,18 +7,20 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
     this->declare_parameter("linear_acceleration_rate", 0.25);
     this->declare_parameter("angular_acceleration_rate", 0.25);
     this->declare_parameter("initial_ramp_factor", 3);
+    this->declare_parameter("local_mode", false);
 
     // this->declare_parameter("turning_rate", 2000);
     // float linear_acceleration_rate = 0.5
 
     start = std::chrono::system_clock::now();
 
-
-    if(CANController::configureCAN("can0") != SUCCESS){
-        RCLCPP_ERROR(this->get_logger(),"Error accessing CAN interface \n");
-        rclcpp::shutdown();
+    if (!this->get_parameter("local_mode").as_bool()) {
+        if(CANController::configureCAN("can0") != SUCCESS){
+            RCLCPP_ERROR(this->get_logger(),"Error accessing CAN interface \n");
+            rclcpp::shutdown();
+        }
+        RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
     }
-    RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
 
     /*)
      * This command will inform a motor controller to start transmitting periodic status frames.
@@ -92,6 +94,11 @@ WheelsControllerNode::WheelsControllerNode(): Node("wheels_controller") {
 
 void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
     if (controller_type == -1) {
+        // Detection for logitech joystick
+        if (joy_msg->buttons.size() == 12) {
+            RCLCPP_INFO(this->get_logger(), "Controller type 2");
+            controller_type = 2;
+        }
         // Infer controller type. Assume that L2 and R2 are not pressed on startup,
         // and so will be at values 1.0.
         if (joy_msg->axes[2] == 1.0 && joy_msg->axes[5] == 1.0) {
@@ -120,14 +127,26 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
         if(!(joy_msg->buttons[4] == 0 && joy_msg->buttons[5] == 1)) {
             return;
         }
+    } else if (controller_type == 1) {
+        if (!( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1)){
+            return;
+        }
     } else {
-        if (!(( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1))){
+        // For logitech joystick, only move if button 3 is pressed.
+        if (!(joy_msg->buttons[2] == 1)) {
             return;
         }
     }
 
-    float linear_y_axes_val = -joy_msg->axes[1];
-    float angular_z_axes_val = joy_msg->axes[0];
+    float linear_y_axes_val, angular_z_axes_val;
+
+    if (controller_type == 2) {
+        linear_y_axes_val = -joy_msg->axes[1];
+        angular_z_axes_val = joy_msg->axes[0];
+    } else {
+        linear_y_axes_val = -joy_msg->axes[1];
+        angular_z_axes_val = joy_msg->axes[0];
+    }
 
 
     geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
@@ -138,7 +157,11 @@ void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::Share
 }   
 
 void WheelsControllerNode::pollControllersCallback(){
-    
+    if (this->get_parameter("local_mode").as_bool()) {
+        // In local mode, don't do CANx
+        return;
+    }
+
     /*
         Rover not moving
     */

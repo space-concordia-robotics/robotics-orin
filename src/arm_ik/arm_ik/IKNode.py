@@ -265,6 +265,10 @@ class IkNode(Node):
 
 
   def joy_callback(self, message: Joy):
+    # For logitech joystick, moving wheels if button 3 is pressed; don't move arm
+    if message.buttons[2] == 1:
+        return
+
     # self.get_logger().info(f"Received from cad mouse")
     old_values = (self.x, self.y, self.z, self.th, self.pitch)
     x, y, spin, trim, dpad_x, dpad_y = message.axes
