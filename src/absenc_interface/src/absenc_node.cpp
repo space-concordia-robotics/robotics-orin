@@ -51,9 +51,19 @@ Absenc::Absenc() : Node("absenc_node")
   */
   RCLCPP_DEBUG_STREAM(get_logger(), "About to open serial connection\n");
 
-  ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
-  if(err.error != 0){
-    RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
+  while (true) {
+    ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
+    if(err.error != 0){
+      RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
+      // Wait 5 seconds before attempting reconnection
+      rclcpp::sleep_for(std::chrono::seconds(5));
+    } else {
+      break;
+    }
+
+    if (!rclcpp::ok()) {
+      return;
+    }
   }
 
   subscription = this->create_subscription<sensor_msgs::msg::JointState>(

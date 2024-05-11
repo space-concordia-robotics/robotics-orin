@@ -99,7 +99,7 @@ class IkNode(Node):
     self.angles = None
 
     if self.local_mode:
-      self.abs_angles = [0.0, 0.0, 0.0, 0.0]
+      self.abs_angles = [0.0, math.radians(0.04), math.radians(13.65), math.radians(-14.42)]
       self.initialize_angles_coords()
     # Will hold the previous joy message (used to toggle values)
     self.last_message = None
@@ -191,7 +191,7 @@ class IkNode(Node):
       cu = self.u - self.L3 * math.sin(self.pitch)
       cv = self.v + self.L3 * math.cos(self.pitch)
 
-      if cu < 0 and cv < 0:
+      if cu >= 0 and cv < 0:
         self.get_logger().warn(f"Point (xyz) {self.x} {self.y} {self.z} out of range, cu {cu} cv {cv}")
         return False
 
@@ -216,22 +216,34 @@ class IkNode(Node):
       # self.get_logger().info(f"cu {cu} cv {cv} a1 {a1} a2 {a2} L {L} b1 {b1} b2 {b2} b3 {b3}")
 
       # contains Shoulder Swivel, Shoulder Flex, Elbow Flex, Wrist Flex (in that order)
-      if cu < 0: # second quadrant
+      solution0_angles = None
+      solution1_angles = None
+
+      if cu < 0 and cv > 0: # second quadrant
         solution0_angles = [float(self.phi), -((math.pi/2) - a1 + b1),
                   math.pi - b2, math.pi - (self.pitch + b3 - a2)]
         x = self.pitch - a2 - b3
         solution1_angles = [float(self.phi), -(math.pi / 2) + a1 + b1, -(math.pi - b2), math.pi - x]
-      elif cv < 0: # Third quadrant
-        solution0_angles = [float(self.phi), (math.pi) - (b1 + a2),
-                  math.pi - b2, math.pi / 2 - (self.pitch + b3 + a1)]
-        solution1_angles = None # Not implemented
-      else: # first quadrant (fourth is not implemented)
+      elif cv < 0 and cu <= 0: # Third quadrant
+        solution0_angles = None
+        # solution0_angles = [float(self.phi), (math.pi) - (b1 + a2),
+        #           math.pi - b2, math.pi / 2 - (self.pitch + b3 + a1)]
+        x = b1 - a1
+        y = a2 - b3
+        a_3 = y - (2 * math.pi - self.pitch)
+
+        solution1_angles = [float(self.phi), -(math.pi/2 - x), -(math.pi - b2), -a_3]
+      elif cu >= 0 and cv >= 0: # first quadrant (fourth is not implemented)
+        self.get_logger().warn(f"first ")
+
         solution0_angles = [float(self.phi), (math.pi / 2) - (b1 + a1),
                           math.pi - b2, math.pi - (self.pitch + a2 + b3)]
         # If want to pick alternate solution
         a3 = a2 - b3
         solution1_angles = [solution0_angles[0], solution0_angles[1] + 2 * b1, b2 - math.pi, math.pi - (a3 + self.pitch)]
-      
+      else:
+        self.get_logger().warn(f"Fourth (ERROR)")
+
 
       # Try to use desired solution
       if self.solution == 0 and self.validAngles(solution0_angles):
