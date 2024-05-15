@@ -2,6 +2,9 @@
 
 gpsPublisherNode::gpsPublisherNode(const std::string& gpsTopic) : Node("gpsPublisherNode")
 {
+	auto res = gps_.openPort("/dev/i2c-7");
+	RCLCPP_INFO(this->get_logger(), "Result of gps_.openPort " + res);
+
 	publisher_ = this->create_publisher<NavSatFix>(gpsTopic, 10);
 	RCLCPP_INFO(this->get_logger(), "Started publishing GPS data to %s", gpsTopic.c_str());
 	timer_ =

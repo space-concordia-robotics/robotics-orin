@@ -466,14 +466,15 @@ class SAM_M8Q_GPS
 		return strlen(res);
 	}
 
-	ubx_status_t OpenPort(const char* fileName, char* res)
+	ubx_status_t openPort(const char* fileName)
 	{
 		s_fd = open(fileName, O_RDWR);
 
 		if (s_fd < 0)
 		{
 			// setStatusMessage(UBLOX_STATUS_FD_ERROR);
-			sprintf(res, "Open Port error :\n");
+//			sprintf(res, "Open Port error :\n");
+			std::cout << "Open Port error :\n" << std::endl;
 			return UBLOX_STATUS_FD_ERROR;
 		}
 		return UBLOX_STATUS_SUCCESS;
@@ -726,7 +727,7 @@ class SAM_M8Q_GPS
 //    SAM_M8Q_GPS gps;
 //
 //    char res[1000];
-//    ubx_status_t status = gps.OpenPort("/dev/i2c-7", res);
+//    ubx_status_t status = gps.openPort("/dev/i2c-7", res);
 //    if (status != UBLOX_STATUS_SUCCESS)
 //    {
 //        puts(res);
