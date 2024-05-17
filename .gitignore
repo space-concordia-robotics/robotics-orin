@@ -11,3 +11,4 @@ cmake-build-debug/
 .vscode
 node_modules
 .angular
+space-env/
