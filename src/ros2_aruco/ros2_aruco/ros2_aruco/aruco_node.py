@@ -118,12 +118,12 @@ class ArucoNode(rclpy.node.Node):
         self.video_capture = cv2.VideoCapture(camera_index)
 
         if cv2.__version__ < "4.7.0":
-            self.get_logger().error("Opencv python must be at least version 4.7.0!")
-            return
-        
-        aruco_dictionary = cv2.aruco.getPredefinedDictionary(dictionary_id)
-        parameters = cv2.aruco.DetectorParameters()
-        self.detector = cv2.aruco.ArucoDetector(aruco_dictionary, parameters)
+            self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
+            self.aruco_parameters = cv2.aruco.DetectorParameters_create()
+        else:
+            aruco_dictionary = cv2.aruco.getPredefinedDictionary(dictionary_id)
+            parameters = cv2.aruco.DetectorParameters()
+            self.detector = cv2.aruco.ArucoDetector(aruco_dictionary, parameters)
 
 
 
@@ -140,7 +140,12 @@ class ArucoNode(rclpy.node.Node):
 
         markers.header.stamp = self.get_clock().now().to_msg()
 
-        corners, marker_ids, rejected = self.detector.detectMarkers(cv_image)
+        if cv2.__version__ < "4.7.0":
+            corners, marker_ids, rejected = cv2.aruco.detectMarkers(
+                cv_image, self.aruco_dictionary, parameters=self.aruco_parameters
+            )
+        else:
+            corners, marker_ids, rejected = self.detector.detectMarkers(cv_image)
 
         if marker_ids is not None:
             # rvecs, tvecs, _ = cv2.aruco.estimatePoseSingleMarkers(

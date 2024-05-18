@@ -3,7 +3,7 @@ The code in this repo was built around ROS Humble. First [install that](https://
 Then, from this folder:
 - I recommend you setup a [Python venv](https://docs.python.org/3/library/venv.html). See steps below.
 - Install rosdep, colcon, catkin, and pip (if not already) (`sudo apt install python3-colcon-common-extensions catkin_pkg python3-pip python3-rosdep2`)
-- Update rosdep (`rosdep update`)
+- Init and update rosdep (`sudo rosdep init && rosdep update`)
 - Run rosdep so it installs packages: `rosdep install --from-paths src --ignore-src -r -y`. Enter your password when prompted.
 - Install misc python deps (`pip install -r requirements.txt`)
 - Install JetsonGPIO [from GitHub](https://github.com/pjueon/JetsonGPIO/blob/master/docs/installation_guide.md). This must be 
@@ -24,3 +24,7 @@ Installing the transforms3d library by hand required. Please run
 Run this command (in my case without the sudo and with pip) and it should work.
 Adding to PYTHONPATH is likely necessary. You will add a command like the following: 
 `export PYTHONPATH="/home/marc/Programming/robotics-orin/space-env/lib/python3.10/site-packages:$PYTHONPATH"`
+
+Another thing to consider is that while python3-opencv (installed with apt, from rosdep) works with
+this package, it also works with opencv-python (installed through pip). There is a version difference,
+which is why there are lines such as `if cv2.__version__ < "4.7.0":` in the source.

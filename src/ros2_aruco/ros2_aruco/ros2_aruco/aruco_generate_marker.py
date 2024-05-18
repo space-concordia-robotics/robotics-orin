@@ -48,7 +48,12 @@ def main():
     dictionary_id = cv2.aruco.__getattribute__(args.dictionary)
     dictionary = cv2.aruco.getPredefinedDictionary(dictionary_id)
     image = np.zeros((args.size, args.size), dtype=np.uint8)
-    image = cv2.aruco.generateImageMarker(dictionary, args.id, args.size, image, 1)
+
+    if cv2.__version__ < "4.7.0":
+        image = cv2.aruco.drawMarker(dictionary, args.id, args.size, image, 1)
+    else:
+        image = cv2.aruco.generateImageMarker(dictionary, args.id, args.size, image, 1)
+
     image = addWhiteBorder(image, args.border)
 
     cv2.imwrite("marker_{:04d}.png".format(args.id), image)
