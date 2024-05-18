@@ -16,6 +16,17 @@ class CustomFormatter(argparse.ArgumentDefaultsHelpFormatter,
     pass
 
 
+def addWhiteBorder(image, borderSize):
+    newSize = (image.shape[0] + borderSize * 2, image.shape[1] + borderSize * 2)
+
+    imageWithBorder = np.zeros(newSize, dtype=image.dtype)
+    imageWithBorder += 255
+
+    imageWithBorder[borderSize:-borderSize, borderSize:-borderSize] = image
+
+    return imageWithBorder
+
+
 def main():
     parser = argparse.ArgumentParser(formatter_class=CustomFormatter,
                                      description="Generate a .png image of a specified maker.")
@@ -23,6 +34,9 @@ def main():
                         help='Marker id to generate')
     parser.add_argument('--size', default=200, type=int,
                         help='Side length in pixels')
+    parser.add_argument('--border', default=20, type=int,
+                        help='White border size in pixels')
+    
     dict_options = [s for s in dir(cv2.aruco) if s.startswith("DICT")]
     option_str = ", ".join(dict_options)
     dict_help = "Dictionary to use. Valid options include: {}".format(option_str)
@@ -32,10 +46,13 @@ def main():
     args = parser.parse_args()
 
     dictionary_id = cv2.aruco.__getattribute__(args.dictionary)
-    dictionary = cv2.aruco.Dictionary_get(dictionary_id)
+    dictionary = cv2.aruco.getPredefinedDictionary(dictionary_id)
     image = np.zeros((args.size, args.size), dtype=np.uint8)
-    image = cv2.aruco.drawMarker(dictionary, args.id, args.size, image, 1)
+    image = cv2.aruco.generateImageMarker(dictionary, args.id, args.size, image, 1)
+    image = addWhiteBorder(image, args.border)
+
     cv2.imwrite("marker_{:04d}.png".format(args.id), image)
+
 
 
 if __name__ == "__main__":

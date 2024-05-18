@@ -12,3 +12,4 @@ cmake-build-debug/
 node_modules
 .angular
 space-env/
+marker_*.png

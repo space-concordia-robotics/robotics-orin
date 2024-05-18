@@ -13,6 +13,7 @@
   <test_depend>python3-pytest</test_depend>
 
   <depend>tf_transformations</depend>
+  <depend>arcuo_opencv</depend>
 
   <export>
     <build_type>ament_python</build_type>
