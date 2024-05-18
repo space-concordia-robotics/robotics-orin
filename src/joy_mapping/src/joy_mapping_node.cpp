@@ -1,6 +1,23 @@
 #include "joy_mapping_node.h"
 #include <byteswap.h>
 
+rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_msg_publisher;
+
+
+JoyMappingNode::JoyMappingNode(): Node("joy_mapping_controller") {
+    arm_vals_msg_publisher =
+      this->create_publisher<std_msgs::msg::Float32MultiArray>(
+      "arm_values", rclcpp::QoS(10));
+
+    joy_values_msg_subscriber = this->create_subscription<std_msgs::msg::Float32MultiArray>(
+        "joy", 10, std::bind(&JoyMappingNode::JoyMessageCallback, this, std::placeholders::_1)
+        );
+
+    
+}
+
+
+
 void JoyMappingNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
     // Must hold L1 and R1 to get arm control
     if(joy_msg->buttons[4] == 0 || joy_msg->buttons[5] == 0){
@@ -66,36 +83,11 @@ void JoyMappingNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr j
     // triangle-cross controls the second smart servo
     speeds[5] = joy_msg->buttons[3] - joy_msg->buttons[0];
 
-
-    // std::cout << "Motor speeds " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
-    // // RIGHT BUMPER
-    // if(joy_msg->buttons[7] == 1){
-    //     speeds[2] = speeds[5] * -1.f;
-    // }
-    
-    
-    uint8_t out_buf[1 + 1 + sizeof(float)*6 + 1] ={};
-    out_buf[0] = SET_MOTOR_SPEED;
-    out_buf[1] = sizeof(float)*6;
-
-    for(int i = 0 ; i < 6 ; i++){
-        float speed = speeds[i] * 250.f;
-        memcpy(&out_buf[ (i*sizeof(float)) +2],&speed,sizeof(float));
-        
-    }
-    out_buf[26] = 0x0A;
-
-    /* THIS FUCKING LINE CAUSES THE LINUX KERNEL TO CRASH WHEN USED (DMA ERROR???!!?!)
-    // tcflush(fd, TCIOFLUSH); 
-    */
-    if (isLocal) {
-        RCLCPP_INFO(this->get_logger(),"Speeds from joystick : %f %f %f %f %f %f\n", speeds[0], speeds[1], speeds[2], speeds[3], speeds[4], speeds[5]);
-    } else {
-        int status = write(fd,out_buf,sizeof(out_buf));
-        if(status == -1){
-            RCLCPP_ERROR(this->get_logger(),"Error : %d\n", errno);
-        }
-    }
+    // publish the array
+    // change speeds to a float32multiarray
+    std_msgs::msg::Float32MultiArray speeds2;
+    speeds2 = {speeds[0], speeds[1], speeds[2], speeds[3], speeds[4], speeds[5]};
+    arm_vals_msg_publisher->publish(speeds2);
 }
 
 int main(int argc, char * argv[])

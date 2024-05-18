@@ -27,9 +27,9 @@ public:
 
 private :
     bool isLocal;
-    rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_msg_callback;
-    rclcpp::Subscription<std_msgs::msg::Float32MultiArray>::SharedPtr arm_vals_msg_callback;
-    
+    rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_values_msg_subscriber;
+    rclcpp::Publisher<std_msgs::msg::Float32MultiArray>::SharedPtr arm_vals_msg_publisher;
+
     int fd;
 };
 
