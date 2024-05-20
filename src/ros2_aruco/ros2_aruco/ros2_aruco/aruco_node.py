@@ -86,11 +86,19 @@ class ArucoNode(rclpy.node.Node):
                 description="Which index under /dev/video to send camera stream to for other devices.",
             ),
         )
+    
+    def __enter__(self):
+        return self
 
+    def __exit__(self, exc_type, exc_value, traceback):
+        self.video_capture.release()
+        self.ffmpeg_process.terminate()
 
     def __init__(self):
         super().__init__("aruco_node")
+        self.ffmpeg_process = self.video_capture = None
 
+        # Declare params in separate function to de-clutter __init__
         self.declare_params()
 
         self.marker_size = (
@@ -128,8 +136,6 @@ class ArucoNode(rclpy.node.Node):
                 self.get_logger().error(f"Error setting up multicamera: {completion1.stderr}")
             if completion2.returncode != 0:
                 self.get_logger().error(f"Error setting up multicamera: {completion2.stderr}")
-        else:
-            self.ffmpeg_process = None
 
 
         # Make sure we have a valid dictionary id:
@@ -151,7 +157,6 @@ class ArucoNode(rclpy.node.Node):
         # Setup timers for opening camera (to allow easy retry) and for detecting aruco tags
         self.detect_timer = self.create_timer(poll_delay, self.image_callback)
         self.open_video_timer = self.create_timer(1.0, self.cam_callback)
-        self.video_capture = None
 
         if cv2.__version__ < "4.7.0":
             self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
@@ -224,15 +229,13 @@ class ArucoNode(rclpy.node.Node):
 
 def main():
     rclpy.init()
-    node = ArucoNode()
 
-    rclpy.spin(node)
-    node.video_capture.release()
-    node.ffmpeg_process.terminate()
-
-    node.destroy_node()
-    rclpy.shutdown()
-
+    # This node uses other resources (opencv camera, process for ffmpeg)
+    # So cleanup (outside of destroy_node) is needed.
+    with ArucoNode() as node:
+        rclpy.spin(node)
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == "__main__":
     main()
