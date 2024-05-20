@@ -91,7 +91,7 @@ class ArucoNode(rclpy.node.Node):
     def __init__(self):
         super().__init__("aruco_node")
 
-        self.declare_parameters()
+        self.declare_params()
 
         self.marker_size = (
             self.get_parameter("marker_size").get_parameter_value().double_value
@@ -108,20 +108,26 @@ class ArucoNode(rclpy.node.Node):
         )
         self.get_logger().info(f"Poll frequency: {poll_delay}")
 
-        camera_index = (
+        self.camera_index = (
             self.get_parameter("camera_index").get_parameter_value().integer_value
         )
-        self.get_logger().info(f"Camera index: {camera_index}")
+        self.get_logger().info(f"Camera index: {self.camera_index}")
 
         camera_destination_index = (
             self.get_parameter("camera_destination_index").get_parameter_value().integer_value
         )
         if camera_destination_index != -1:
             self.get_logger().info(f"Camera destination index: {camera_destination_index}")
-            subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
-            subprocess.run(["sudo", "modprobe", "v4l2loopback", f"video_nr={camera_destination_index}", "card_label=Video-Loopback", "exclusive_caps=1"])
-            self.ffmpeg_process = subprocess.Popen(["ffmpeg", "-i", f"/dev/video{camera_index}", "-f", "v4l2", "-codec:v", "rawvideo", "-pix_fmt", "yuv420p", f"/dev/video{camera_destination_index}"])
-            camera_index = camera_destination_index
+            completion1 = subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"], capture_output=True)
+            completion2 = subprocess.run(["sudo", "modprobe", "v4l2loopback", f"video_nr={camera_destination_index}", 
+                                          "card_label=Video-Loopback", "exclusive_caps=1"], capture_output=True)
+            self.ffmpeg_process = subprocess.Popen(["ffmpeg", "-i", f"/dev/video{self.camera_index}", "-f", "v4l2", "-codec:v", "rawvideo", "-pix_fmt", "yuv420p", f"/dev/video{camera_destination_index}"])
+            self.camera_index = camera_destination_index
+
+            if completion1.returncode != 0:
+                self.get_logger().error(f"Error setting up multicamera: {completion1.stderr}")
+            if completion2.returncode != 0:
+                self.get_logger().error(f"Error setting up multicamera: {completion2.stderr}")
         else:
             self.ffmpeg_process = None
 
@@ -142,12 +148,10 @@ class ArucoNode(rclpy.node.Node):
         self.poses_pub = self.create_publisher(PoseArray, "aruco_poses", 10)
         self.markers_pub = self.create_publisher(ArucoMarkers, "aruco_markers", 10)
 
-        # Setup timer and camera
-        try:
-            self.timer = self.create_timer(poll_delay, self.image_callback)
-            self.video_capture = cv2.VideoCapture(camera_index)
-        except:
-            self.get_logger().error(f"Could not open camera at index {camera_index}")
+        # Setup timers for opening camera (to allow easy retry) and for detecting aruco tags
+        self.detect_timer = self.create_timer(poll_delay, self.image_callback)
+        self.open_video_timer = self.create_timer(1.0, self.cam_callback)
+        self.video_capture = None
 
         if cv2.__version__ < "4.7.0":
             self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
@@ -157,9 +161,19 @@ class ArucoNode(rclpy.node.Node):
             parameters = cv2.aruco.DetectorParameters()
             self.detector = cv2.aruco.ArucoDetector(aruco_dictionary, parameters)
 
-
+    def cam_callback(self):
+        try:
+            self.video_capture = cv2.VideoCapture(self.camera_index)
+            # Once successful, don't try to open again
+            self.open_video_timer.cancel()
+        except:
+            self.get_logger().warn(f"Could not open camera at {self.camera_index}, trying again")
+            return
 
     def image_callback(self):
+        if self.video_capture is None:
+            self.get_logger().info(f"Still waiting on video stream")
+            return
         if not self.video_capture.isOpened():
             self.get_logger().warn("Video stream not opened for aruco detection")
             return

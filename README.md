@@ -16,15 +16,15 @@ Run `python3 -m venv ./space-env` from the robotics-orin folder.
 So you use it automatically, add the source to your ~/.bashrc: `echo "source ${PWD}/space-env/bin/activate" >> ~/.bashrc`
 
 #### Setting up ros2_aruco
+
 ##### Short version
 Run these commands:
 - `pip install transforms3d`
 - Find where your python packages are installed (eg run the above command again) and source it in `~/.bashrc`. This line should
 **look like** the following: `export PYTHONPATH="/home/marc/Programming/robotics-orin/space-env/lib/python3.10/site-packages:$PYTHONPATH"`
-- `sudo apt install ffmpeg v4l2loopback-dkms v4l2loopback-utils v4l-utils`
+- If need to duplicate video: `sudo apt install ffmpeg v4l2loopback-dkms v4l2loopback-utils v4l-utils`
 
 ##### Long version
-
 To get this working, you may see the following error:
 ```
 Installing the transforms3d library by hand required. Please run
