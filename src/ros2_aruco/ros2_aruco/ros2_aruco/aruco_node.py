@@ -15,8 +15,11 @@ Parameters:
                           (default DICT_5X5_250)
     poll_delay - how many seconds to wait between captures
     camera_index - which camera index to open
+    camera_destination_index - If present, will attempt to use v4l2loopback 
+                                to allow another process to access the camera.
+                                Needs ffmpeg and v4l2loopback-dev installed.
 
-Author: Nathan Sprague
+Author: Nathan Sprague, Marc Scattolin
 Version: 10/26/2020
 
 """
@@ -33,12 +36,11 @@ from sensor_msgs.msg import Image
 from geometry_msgs.msg import PoseArray, Pose
 from ros2_aruco_interfaces.msg import ArucoMarkers
 from rcl_interfaces.msg import ParameterDescriptor, ParameterType
+import subprocess
 
 
 class ArucoNode(rclpy.node.Node):
-    def __init__(self):
-        super().__init__("aruco_node")
-
+    def declare_params(self):
         # Declare and read parameters
         self.declare_parameter(
             name="marker_size",
@@ -76,6 +78,21 @@ class ArucoNode(rclpy.node.Node):
             ),
         )
 
+        self.declare_parameter(
+            name="camera_destination_index",
+            value=-1,
+            descriptor=ParameterDescriptor(
+                type=ParameterType.PARAMETER_INTEGER,
+                description="Which index under /dev/video to send camera stream to for other devices.",
+            ),
+        )
+
+
+    def __init__(self):
+        super().__init__("aruco_node")
+
+        self.declare_parameters()
+
         self.marker_size = (
             self.get_parameter("marker_size").get_parameter_value().double_value
         )
@@ -95,16 +112,28 @@ class ArucoNode(rclpy.node.Node):
             self.get_parameter("camera_index").get_parameter_value().integer_value
         )
         self.get_logger().info(f"Camera index: {camera_index}")
-        
+
+        camera_destination_index = (
+            self.get_parameter("camera_destination_index").get_parameter_value().integer_value
+        )
+        if camera_destination_index != -1:
+            self.get_logger().info(f"Camera destination index: {camera_destination_index}")
+            subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"])
+            subprocess.run(["sudo", "modprobe", "v4l2loopback", f"video_nr={camera_destination_index}", "card_label=Video-Loopback", "exclusive_caps=1"])
+            self.ffmpeg_process = subprocess.Popen(["ffmpeg", "-i", f"/dev/video{camera_index}", "-f", "v4l2", "-codec:v", "rawvideo", "-pix_fmt", "yuv420p", f"/dev/video{camera_destination_index}"])
+            camera_index = camera_destination_index
+        else:
+            self.ffmpeg_process = None
+
 
         # Make sure we have a valid dictionary id:
         try:
             dictionary_id = cv2.aruco.__getattribute__(dictionary_id_name)
             if type(dictionary_id) != type(cv2.aruco.DICT_5X5_100):
                 raise AttributeError
-        except AttributeError:
+        except AttributeError as e:
             self.get_logger().error(
-                "bad aruco_dictionary_id: {}".format(dictionary_id_name)
+                "bad aruco_dictionary_id: '{}'".format(dictionary_id_name)
             )
             options = "\n".join([s for s in dir(cv2.aruco) if s.startswith("DICT")])
             self.get_logger().error("valid options: {}".format(options))
@@ -114,8 +143,11 @@ class ArucoNode(rclpy.node.Node):
         self.markers_pub = self.create_publisher(ArucoMarkers, "aruco_markers", 10)
 
         # Setup timer and camera
-        self.timer = self.create_timer(poll_delay, self.image_callback)
-        self.video_capture = cv2.VideoCapture(camera_index)
+        try:
+            self.timer = self.create_timer(poll_delay, self.image_callback)
+            self.video_capture = cv2.VideoCapture(camera_index)
+        except:
+            self.get_logger().error(f"Could not open camera at index {camera_index}")
 
         if cv2.__version__ < "4.7.0":
             self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
@@ -182,6 +214,7 @@ def main():
 
     rclpy.spin(node)
     node.video_capture.release()
+    node.ffmpeg_process.terminate()
 
     node.destroy_node()
     rclpy.shutdown()
