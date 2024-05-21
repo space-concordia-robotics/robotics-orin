@@ -3,14 +3,16 @@
 #include <string.h>
 
 
-ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
+ArmControllerLifecycleNode::ArmControllerLifecycleNode(): LifecycleNode("arm_controller_node") {}
+
+callbackReturn ArmControllerLifecycleNode::on_configure(const rclcpp_lifecycle::State &){
     fd = open("/dev/ttyTHS0",O_RDWR);
     if(fd < 0){
         int errno0 = errno;
         RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n",errno0, strerror(errno));
         errno = 0;
         rclcpp::shutdown();
-        return;
+        return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::FAILURE;
     }   
 
     RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
@@ -35,26 +37,60 @@ ArmControllerNode::ArmControllerNode(): Node("arm_controller_node") {
 //  GPIO::setup(31, GPIO::OUT, GPIO::LOW);
 //  GPIO::setup(33, GPIO::OUT, GPIO::LOW);
 
-    
-    // this->create_wall_timer( 500ms, std::bind(&WheelsControllerNode::pollControllersCallback, this));
-
     joy_msg_callback = this->create_subscription<sensor_msgs::msg::Joy>(
-            "joy", 10, std::bind(&ArmControllerNode::JoyMessageCallback, this, std::placeholders::_1)
-            );
+        "joy", 10, std::bind(&ArmControllerLifecycleNode::JoyMessageCallback, this, std::placeholders::_1)
+    );
     
     arm_vals_msg_callback = this->create_subscription<std_msgs::msg::Float32MultiArray>(
-            "arm_values", 10, std::bind(&ArmControllerNode::ArmMessageCallback, this, std::placeholders::_1)
-            );
-    
+        "arm_values", 10, std::bind(&ArmControllerLifecycleNode::ArmMessageCallback, this, std::placeholders::_1)
+    );
+
+    RCLCPP_INFO(get_logger(), "on_configure() is called.");
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
 }
 
-ArmControllerNode::~ArmControllerNode() {
+callbackReturn ArmControllerLifecycleNode::on_activate(const rclcpp_lifecycle::State & state){
+    LifecycleNode::on_activate(state);
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
+};
+
+callbackReturn ArmControllerLifecycleNode::on_deactivate(const rclcpp_lifecycle::State & state){
+    LifecycleNode::on_deactivate(state);
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
+
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
+};
+
+callbackReturn ArmControllerLifecycleNode::on_cleanup(const rclcpp_lifecycle::State &){
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
+};
+
+callbackReturn ArmControllerLifecycleNode::on_shutdown(const rclcpp_lifecycle::State & state){
+
+    RCUTILS_LOG_INFO_NAMED(
+        get_name(),
+        "on shutdown is called from state %s.",
+        state.label().c_str()
+    );
+
+    return rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn::SUCCESS;
+};
+
+
+ArmControllerLifecycleNode::~ArmControllerLifecycleNode() {
     if (fd >= 0) {
         close(fd);
     }
 }
 
-void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArray::SharedPtr msg){
+void ArmControllerLifecycleNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArray::SharedPtr msg){
     uint8_t out_buf[1 + 1 + sizeof(float)*6 + 1] ={};
     out_buf[0] = SET_MOTOR_SPEED;
     out_buf[1] = sizeof(float)*6;
@@ -68,13 +104,13 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
         
     int status = write(fd,out_buf,sizeof(out_buf));
     if(status == -1){
-        int errno0 = errno;
+        // int errno0 = errno;
         // RCLCPP_WARN(this->get_logger(),"Write error : %s (%i)\n",strerr(errno0),errno0);
         errno = 0;
     }
 }
 
-void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
+void ArmControllerLifecycleNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
     if (controller_type == -1) {
         // Infer controller type. Assume that L2 and R2 are not pressed on startup,
         // and so will be at values 1.0.
@@ -186,7 +222,14 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
 int main(int argc, char * argv[])
 {
     rclcpp::init(argc, argv);
-    rclcpp::spin(std::make_shared<ArmControllerNode>());
+    rclcpp::executors::SingleThreadedExecutor exe;
+
+    std::shared_ptr<ArmControllerLifecycleNode> arm_controller_node = std::make_shared<ArmControllerLifecycleNode>();
+    exe.add_node(arm_controller_node->get_node_base_interface());
+
+
+    // rclcpp::spin(std::make_shared<ArmControllerLifecycleNode>());
+    exe.spin();
     rclcpp::shutdown();
     return 0;
 }

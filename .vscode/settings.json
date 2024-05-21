@@ -87,7 +87,12 @@
         "forward_list": "cpp",
         "unordered_set": "cpp",
         "regex": "cpp",
-        "valarray": "cpp"
+        "valarray": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "numbers": "cpp",
+        "semaphore": "cpp",
+        "stop_token": "cpp"
     },
     "cmake.sourceDirectory": "/home/nvidia/robotics-orin/src/wheels_controller"
 }

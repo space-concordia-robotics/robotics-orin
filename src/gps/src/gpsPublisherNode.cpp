@@ -1,14 +1,14 @@
-#include "gpsPublisherNode.h"
+#include "./gpsPublisherNode.h"
 
-gpsPublisherNode::gpsPublisherNode(const std::string& gpsTopic) : Node("gpsPublisherNode")
+gpsLifecyclePublisherNode::gpsLifecyclePublisherNode(const std::string& gpsTopic) : LifecycleNode("gpsLifecyclePublisherNode")
 {
 	publisher_ = this->create_publisher<NavSatFix>(gpsTopic, 10);
 	RCLCPP_INFO(this->get_logger(), "Started publishing GPS data to %s", gpsTopic.c_str());
 	timer_ =
-		this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&gpsPublisherNode::publishGpsData, this));
+		this->create_wall_timer(std::chrono::milliseconds(500), std::bind(&gpsLifecyclePublisherNode::publishGpsData, this));
 }
 
-void gpsPublisherNode::publishGpsData()
+void gpsLifecyclePublisherNode::publishGpsData()
 {
 	auto message = sensor_msgs::msg::NavSatFix();
 
@@ -21,7 +21,7 @@ void gpsPublisherNode::publishGpsData()
 	publisher_->publish(message);
 }
 
-gpsData gpsPublisherNode::extractGpsData()
+gpsData gpsLifecyclePublisherNode::extractGpsData()
 {
 	char res[256];
 	int32_t latitude, longitude, height;
@@ -36,7 +36,12 @@ gpsData gpsPublisherNode::extractGpsData()
 int main(int argc, char** argv)
 {
 	rclcpp::init(argc, argv);
-	rclcpp::spin(std::make_shared<gpsPublisherNode>());
+	rclcpp::executors::SingleThreadedExecutor exe;
+
+	std::shared_ptr<gpsLifecyclePublisherNode> gps_node = std::make_shared<gpsLifecyclePublisherNode>();
+	exe.add_node(gps_node->get_node_base_interface());
+
+	exe.spin();
 	rclcpp::shutdown();
 	return 0;
 }

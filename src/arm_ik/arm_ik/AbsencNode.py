@@ -6,6 +6,7 @@ from rclpy.node import Node
 import math
 from rclpy.node import Node
 from rclpy.qos import QoSProfile
+from rclpy.lifecycle import State, TransitionCallbackReturn, LifecycleNode
 from geometry_msgs.msg import Quaternion
 from std_msgs.msg import String, Header, Float32
 from sensor_msgs.msg import JointState
@@ -13,7 +14,7 @@ import threading
 
 
 
-class AbsencNode(Node):
+class AbsencNode(LifecycleNode):
   
     def __init__(self):
         node_name = 'absenc_node'
@@ -73,6 +74,21 @@ class AbsencNode(Node):
 
         self.arm_publisher.publish(arm_command)
 
+    def on_configure(self, state: State) -> TransitionCallbackReturn:
+        self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'configure'")
+        return TransitionCallbackReturn.SUCCESS
+
+    def on_activate(self, state: State) -> TransitionCallbackReturn:
+        self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'activate'")
+        return TransitionCallbackReturn.SUCCESS
+    
+    def on_deactivate(self, state: State) -> TransitionCallbackReturn:
+        self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'deactivate'")
+        return TransitionCallbackReturn.SUCCESS
+    
+    def on_shutdown(self, state: State) -> TransitionCallbackReturn:
+        self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'shutdown'")
+        return TransitionCallbackReturn.SUCCESS
 
 
 def main(args=None):
@@ -90,6 +106,6 @@ def main(args=None):
             absenc_node.publish_arm_command()
             loop_rate.sleep()
         except KeyboardInterrupt:
-            print("Node shutting down due to shutting down node.")
+            print("LifecycleNode shutting down")
 
     rclpy.shutdown()

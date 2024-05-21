@@ -15,15 +15,20 @@
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <sensor_msgs/msg/joy.hpp>
-    using namespace std::chrono_literals;
-class AbsEnc : public rclcpp::Node
-{
+
+#include "lifecycle_msgs/msg/transition.hpp"
+#include "rclcpp_lifecycle/lifecycle_node.hpp"
+#include "rclcpp_lifecycle/lifecycle_publisher.hpp"
+
+typedef rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn callbackReturn;
+
+using namespace std::chrono_literals;
+class AbsEnc : public rclcpp_lifecycle::LifecycleNode{
   public:
-    AbsEnc()
-    : Node("absenc_node")
-    {
+    AbsEnc(): LifecycleNode("absenc_node"){}
+    callbackReturn on_configure(const rclcpp_lifecycle::State &){
       RCLCPP_DEBUG_STREAM(get_logger(), "Starting absenc node\n");
-          /*
+      /*
         Set default parameter for the filepath of the absenc. To set, use 
         ros2 run absenc_interface absenc_node --ros-args -p absenc_polling_rate:=1000
         or during runtime (when the node is already running) as 
@@ -36,7 +41,7 @@ class AbsEnc : public rclcpp::Node
 
       arm_publisher = this->create_publisher<std_msgs::msg::String>("arm_command", 10);
       
-      timer = this->create_wall_timer(
+      timer_ = this->create_wall_timer(
       std::chrono::milliseconds(this->get_parameter("absenc_polling_rate").as_int()), 
       std::bind(&AbsEnc::absEncPollingCallback, this));
 
@@ -56,13 +61,52 @@ class AbsEnc : public rclcpp::Node
       subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
       "cad_mouse_joy", 10, std::bind(&AbsEnc::cadValuesCallback, this, std::placeholders::_1));
       
-      arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
+      arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10); 
+      return callbackReturn::SUCCESS;
     }
+    
+    callbackReturn on_activate(const rclcpp_lifecycle::State & state){
+      LifecycleNode::on_activate(state);
+
+      RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
+      std::this_thread::sleep_for(std::chrono::seconds(2));
+
+      return callbackReturn::SUCCESS;
+    }
+
+    callbackReturn on_deactivate(const rclcpp_lifecycle::State & state){
+      LifecycleNode::on_deactivate(state);
+
+      RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
+      return callbackReturn::SUCCESS;
+    }
+    callbackReturn on_cleanup(const rclcpp_lifecycle::State &){
+      timer_.reset();
+      angles_publisher.reset();
+      arm_publisher.reset();
+
+      RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
+      return callbackReturn::SUCCESS;
+    };
+
+    callbackReturn on_shutdown(const rclcpp_lifecycle::State & state){
+      timer_.reset();
+      angles_publisher.reset();
+      arm_publisher.reset();
+
+      RCUTILS_LOG_INFO_NAMED(
+          get_name(),
+          "on shutdown is called from state %s.",
+          state.label().c_str()
+      );
+
+      return callbackReturn::SUCCESS;
+    };
+    
 
   private:
     
-   void absEncPollingCallback()
-  {
+   void absEncPollingCallback(){
     auto message = absenc_interface::msg::EncoderValues();     
 
     ABSENC_Meas_t absenc_meas_1,absenc_meas_2,absenc_meas_3;
@@ -206,7 +250,6 @@ class AbsEnc : public rclcpp::Node
       arm_controller_publisher->publish(arm_msg);
     }
 
-
     void controlEndEffector() {
       auto arm_msg_2 = std_msgs::msg::Float32MultiArray();
       std::vector<float> angles(6);
@@ -228,9 +271,10 @@ class AbsEnc : public rclcpp::Node
       val *= scale;
       val = val < min ? min : val;
       val = val > max ? max : val;
+      return val;
     }
 
-    rclcpp::TimerBase::SharedPtr timer;
+    rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_cad_mouse;
     rclcpp::Publisher<absenc_interface::msg::EncoderValues>::SharedPtr angles_publisher;
@@ -253,7 +297,13 @@ int main(int argc, char * argv[])
 {
   std::cout << "Starting absenc node\n";
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<AbsEnc>());
+  rclcpp::executors::SingleThreadedExecutor exe;
+
+  std::shared_ptr<AbsEnc> abs_node = std::make_shared<AbsEnc>();
+
+  exe.add_node(abs_node->get_node_base_interface());
+  exe.spin();
+
   rclcpp::shutdown();
   return 0;
 }
