@@ -28,18 +28,32 @@ callbackReturn WheelsControllerLifecycleNode::on_configure(const rclcpp_lifecycl
     this->declare_parameter("linear_acceleration_rate", 0.25);
     this->declare_parameter("angular_acceleration_rate", 0.25);
     this->declare_parameter("initial_ramp_factor", 3);
+    this->declare_parameter("local_mode", false);
 
     // this->declare_parameter("turning_rate", 2000);
     // float linear_acceleration_rate = 0.5
 
     start = std::chrono::system_clock::now();
 
-    if(CANController::configureCAN("can0") != SUCCESS){
-        RCLCPP_ERROR(this->get_logger(),"Error accessing CAN interface \n");
-        rclcpp::shutdown();
+    if (!this->get_parameter("local_mode").as_bool()) {
+        if(CANController::configureCAN("can0") != SUCCESS){
+            RCLCPP_ERROR(this->get_logger(),"Error accessing CAN interface \n");
+            rclcpp::shutdown();
+        }
+        RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
     }
-    RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
 
+    /*)
+     * This command will inform a motor controller to start transmitting periodic status frames.
+     */
+    // RevMotorController::requestStatusFrame();
+    
+    // update_group = this->create_callback_group(rclcpp::callback_group::CallbackGroupType::Reentrant);
+    
+    timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::pollControllersCallback, this));
+    
+    // odom_timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::OdomCallback, this));
+    
     joy_msg_callback = this->create_subscription<sensor_msgs::msg::Joy>(
         "joy", 10, std::bind(&WheelsControllerLifecycleNode::JoyMessageCallback, this, std::placeholders::_1)
     );
@@ -65,7 +79,7 @@ callbackReturn WheelsControllerLifecycleNode::on_configure(const rclcpp_lifecycl
             }
     });
 
-    timer_ = this->create_wall_timer( 50ms, std::bind(&WheelsControllerLifecycleNode::pollControllersCallback, this));
+    timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerLifecycleNode::pollControllersCallback, this));
 
 
     RCLCPP_INFO(get_logger(), "on_configure() is called.");
@@ -90,7 +104,7 @@ callbackReturn WheelsControllerLifecycleNode::on_deactivate(const rclcpp_lifecyc
 };
 
 callbackReturn WheelsControllerLifecycleNode::on_cleanup(const rclcpp_lifecycle::State &){
-    timer_.reset();
+    timer.reset();
     twist_msg_publisher.reset();
     sil_publisher.reset();
 
@@ -99,7 +113,7 @@ callbackReturn WheelsControllerLifecycleNode::on_cleanup(const rclcpp_lifecycle:
 };
 
 callbackReturn WheelsControllerLifecycleNode::on_shutdown(const rclcpp_lifecycle::State & state){
-    timer_.reset();
+    timer.reset();
     twist_msg_publisher.reset();
     sil_publisher.reset();
     
@@ -227,8 +241,87 @@ void WheelsControllerLifecycleNode::JoyMessageCallback(const sensor_msgs::msg::J
     
 // } 
 
-void WheelsControllerLifecycleNode::pollControllersCallback(){
+void WheelsControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
+    if (controller_type == -1) {
+        // Detection for logitech joystick
+        if (joy_msg->buttons.size() == 12) {
+            RCLCPP_INFO(this->get_logger(), "Controller type 2");
+            controller_type = 2;
+        }
+        // Infer controller type. Assume that L2 and R2 are not pressed on startup,
+        // and so will be at values 1.0.
+        if (joy_msg->axes[2] == 1.0 && joy_msg->axes[5] == 1.0) {
+            RCLCPP_INFO(this->get_logger(), "Controller type 0");
+            controller_type = 0;
+        } else if (joy_msg->axes[4] == 1.0 && joy_msg->axes[5] == 1.0) {
+            RCLCPP_INFO(this->get_logger(), "Controller type 1");
+            controller_type = 1;
+        } else {
+            return;
+        }
+    }
+
+    if(joy_msg->buttons[0] ==1){
+        color = "#0000FF";
+    }
+    if(joy_msg->buttons[1] ==1){
+        color = "#FF0000";
+    }
+    if(joy_msg->buttons[3] ==1){
+        color = "#00FF00";
+    }
     
+    // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
+    if (controller_type == 0) {
+        if(!(joy_msg->buttons[4] == 0 && joy_msg->buttons[5] == 1)) {
+            publishStop();
+            return;
+        }
+    } else if (controller_type == 1) {
+        if (!( joy_msg->buttons[9] == 0 && joy_msg->buttons[10] == 1)){
+            publishStop();
+            return;
+        }
+    } else {
+        // For logitech joystick, only move if button 3 is pressed.
+        if (!(joy_msg->buttons[2] == 1)) {
+            publishStop();
+            return;
+        }
+    }
+
+    float linear_y_axes_val, angular_z_axes_val;
+
+    if (controller_type == 2) {
+        linear_y_axes_val = -joy_msg->axes[1];
+        angular_z_axes_val = joy_msg->axes[0];
+    } else {
+        linear_y_axes_val = -joy_msg->axes[1];
+        angular_z_axes_val = joy_msg->axes[0];
+    }
+
+
+    geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
+    twist_msg.linear.x = linear_y_axes_val;
+    twist_msg.angular.z = angular_z_axes_val;
+
+    twist_msg_publisher->publish(twist_msg);
+}
+
+void WheelsControllerNode::publishStop() {
+    geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
+    twist_msg.linear.x = 0;
+    twist_msg.angular.z = 0;
+
+    twist_msg_publisher->publish(twist_msg);
+}
+
+void WheelsControllerNode::pollControllersCallback(){
+    if (this->get_parameter("local_mode").as_bool()) {
+        // In local mode, don't do CANx
+        return;
+    }
+
     /*
         Rover not moving
     */

@@ -192,7 +192,7 @@ void ArmControllerLifecycleNode::JoyMessageCallback(const sensor_msgs::msg::Joy:
     }
 
 
-    std::cout << "Motor speeds (from -1 1) " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
+    // std::cout << "Motor speeds (from -1 1) " << speeds[0] << " "  << speeds[1] << " "  << speeds[2] << " "  << " "  << speeds[3] << " "  << speeds[4] << " "  << speeds[5] << std::endl;
     // // RIGHT BUMPER
     // if(joy_msg->buttons[7] == 1){
     //     speeds[2] = speeds[5] * -1.f;
