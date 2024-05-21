@@ -18,6 +18,8 @@
 #include "gps2.cpp"
 
 using sensor_msgs::msg::NavSatFix;
+typedef rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn callbackReturn;
+
 
 struct gpsData
 {
@@ -26,9 +28,14 @@ struct gpsData
 	float altitude;
 };
 
-class gpsLifecyclePublisherNode : public rclcpp_lifecycle::LifecycleNode {
+class gpsPublisherNode : public rclcpp_lifecycle::LifecycleNode {
 	public:
-		explicit gpsLifecyclePublisherNode(const std::string& gpsTopic = "/gps_data");
+		explicit gpsPublisherNode();
+		callbackReturn on_configure(const rclcpp_lifecycle::State &);
+        callbackReturn on_activate(const rclcpp_lifecycle::State & state);
+        callbackReturn on_deactivate(const rclcpp_lifecycle::State & state);
+        callbackReturn on_cleanup(const rclcpp_lifecycle::State &);
+        callbackReturn on_shutdown(const rclcpp_lifecycle::State & state);
 
  	private:
 		void publishGpsData();

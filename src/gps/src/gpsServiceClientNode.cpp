@@ -15,9 +15,9 @@
 using namespace std::chrono_literals;
 
 // which node to handle
-static constexpr char const * lifecycle_node = "gpsLifecyclePublisherNode";
-static constexpr char const * node_get_state_topic = "gpsLifecyclePublisherNode/get_state";
-static constexpr char const * node_change_state_topic = "gpsLifecyclePublisherNode/change_state";
+static constexpr char const * lifecycle_node = "gpsPublisherNode";
+static constexpr char const * node_get_state_topic = "gpsPublisherNode/get_state";
+static constexpr char const * node_change_state_topic = "gpsPublisherNode/change_state";
 
 template<typename FutureT, 
     typename WaitTimeT> std::future_status wait_for_result(

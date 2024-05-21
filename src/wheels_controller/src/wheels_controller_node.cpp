@@ -1,7 +1,7 @@
 #include "wheels_controller_node.h"
 
-WheelsControllerLifecycleNode::WheelsControllerLifecycleNode() : LifecycleNode("wheels_controller_node"){};    
-// explicit WheelsControllerLifecycleNode(const std::string& node_name, bool intra_process_comms = false)
+WheelsControllerNode::WheelsControllerNode() : LifecycleNode("wheels_controller_node"){};    
+// explicit WheelsControllerNode(const std::string& node_name, bool intra_process_comms = false)
 // : rclcpp_lifecycle::LifecycleNode(node_name, 
 // rclcpp::NodeOptions().use_intra_process_comms(intra_process_comms)){};
 
@@ -21,7 +21,7 @@ WheelsControllerLifecycleNode::WheelsControllerLifecycleNode() : LifecycleNode("
 //     pub_->publish(std::move(msg));
 // };
 
-callbackReturn WheelsControllerLifecycleNode::on_configure(const rclcpp_lifecycle::State &){
+callbackReturn WheelsControllerNode::on_configure(const rclcpp_lifecycle::State &){
     this->declare_parameter("can_path", "can0");
     this->declare_parameter("multiplier", 500);
     
@@ -55,11 +55,11 @@ callbackReturn WheelsControllerLifecycleNode::on_configure(const rclcpp_lifecycl
     // odom_timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::OdomCallback, this));
     
     joy_msg_callback = this->create_subscription<sensor_msgs::msg::Joy>(
-        "joy", 10, std::bind(&WheelsControllerLifecycleNode::JoyMessageCallback, this, std::placeholders::_1)
+        "joy", 10, std::bind(&WheelsControllerNode::JoyMessageCallback, this, std::placeholders::_1)
     );
     sil_publisher = this->create_publisher<std_msgs::msg::String>("SIL_Color", 10);
     twist_msg_callback = this->create_subscription<geometry_msgs::msg::Twist>(
-        "cmd_vel", 10, std::bind(&WheelsControllerLifecycleNode::TwistMessageCallback, this, std::placeholders::_1)
+        "cmd_vel", 10, std::bind(&WheelsControllerNode::TwistMessageCallback, this, std::placeholders::_1)
     );
     twist_msg_publisher = this->create_publisher<geometry_msgs::msg::Twist>("cmd_vel", 10);     
 
@@ -79,14 +79,14 @@ callbackReturn WheelsControllerLifecycleNode::on_configure(const rclcpp_lifecycl
             }
     });
 
-    timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerLifecycleNode::pollControllersCallback, this));
+    timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::pollControllersCallback, this));
 
 
     RCLCPP_INFO(get_logger(), "on_configure() is called.");
     return callbackReturn::SUCCESS;
 };
 
-callbackReturn WheelsControllerLifecycleNode::on_activate(const rclcpp_lifecycle::State & state){
+callbackReturn WheelsControllerNode::on_activate(const rclcpp_lifecycle::State & state){
     LifecycleNode::on_activate(state);
 
     RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
@@ -95,7 +95,7 @@ callbackReturn WheelsControllerLifecycleNode::on_activate(const rclcpp_lifecycle
     return callbackReturn::SUCCESS;
 };
 
-callbackReturn WheelsControllerLifecycleNode::on_deactivate(const rclcpp_lifecycle::State & state){
+callbackReturn WheelsControllerNode::on_deactivate(const rclcpp_lifecycle::State & state){
     LifecycleNode::on_deactivate(state);
 
     RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
@@ -103,7 +103,7 @@ callbackReturn WheelsControllerLifecycleNode::on_deactivate(const rclcpp_lifecyc
     return callbackReturn::SUCCESS;
 };
 
-callbackReturn WheelsControllerLifecycleNode::on_cleanup(const rclcpp_lifecycle::State &){
+callbackReturn WheelsControllerNode::on_cleanup(const rclcpp_lifecycle::State &){
     timer.reset();
     twist_msg_publisher.reset();
     sil_publisher.reset();
@@ -112,7 +112,7 @@ callbackReturn WheelsControllerLifecycleNode::on_cleanup(const rclcpp_lifecycle:
     return callbackReturn::SUCCESS;
 };
 
-callbackReturn WheelsControllerLifecycleNode::on_shutdown(const rclcpp_lifecycle::State & state){
+callbackReturn WheelsControllerNode::on_shutdown(const rclcpp_lifecycle::State & state){
     timer.reset();
     twist_msg_publisher.reset();
     sil_publisher.reset();
@@ -193,31 +193,7 @@ callbackReturn WheelsControllerLifecycleNode::on_shutdown(const rclcpp_lifecycle
 
 // }
 
-void WheelsControllerLifecycleNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg){
-    if(joy_msg->buttons[0] ==1){    
-        color = "#0000FF";
-    }
-    if(joy_msg->buttons[1] ==1){
-        color = "#FF0000";
-    }
-    if(joy_msg->buttons[3] ==1){
-        color = "#00FF00";
-    }
-    
-    // Only move if holding down R1 only (that is, L1 has to be unpressed and R1 pressed)
-    if( ! ( joy_msg->buttons[9] == 1 && joy_msg->buttons[10] == 0 ) ){
-        return;
-    }
-    float linear_y_axes_val = joy_msg->axes[1];
-    float angular_z_axes_val = joy_msg->axes[2];
-
-    geometry_msgs::msg::Twist twist_msg = geometry_msgs::msg::Twist{};
-    twist_msg.linear.x = linear_y_axes_val;
-    twist_msg.angular.z = angular_z_axes_val;
-
-    twist_msg_publisher->publish(twist_msg);
-}
-// void WheelsControllerLifecycleNode::publishOdom(){
+// void WheelsControllerNode::publishOdom(){
 //     odom_publisher->publish(current_odom); 
 // }
 
@@ -380,7 +356,7 @@ void WheelsControllerNode::pollControllersCallback(){
     RevMotorController::startMotor(mask);
 }
 
-void WheelsControllerLifecycleNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
+void WheelsControllerNode::AccelerateTwist(geometry_msgs::msg::Twist twist_msg){
     static float last_speed_change_ms;
     static float last_linear_speed = 0.0f;
     static float last_angular_speed = 0.0f;
@@ -419,7 +395,7 @@ void WheelsControllerLifecycleNode::AccelerateTwist(geometry_msgs::msg::Twist tw
     last_speed_change_ms = duration_cast< milliseconds >(system_clock::now().time_since_epoch()).count();
 }
 
-float WheelsControllerLifecycleNode::AccelerateValue(float current, float desired, float rate, float dt) {
+float WheelsControllerNode::AccelerateValue(float current, float desired, float rate, float dt) {
     /*
     Accelerates the current speed to a desired speed at a certain rate while
     considering a certain time difference. Ex : Current Speed 0.3 m/s, desired speed 0.5 m/s,
@@ -443,7 +419,7 @@ float WheelsControllerLifecycleNode::AccelerateValue(float current, float desire
     return new_value;
 }
 
-void WheelsControllerLifecycleNode::TwistMessageCallback(const geometry_msgs::msg::Twist::SharedPtr twist_msg)
+void WheelsControllerNode::TwistMessageCallback(const geometry_msgs::msg::Twist::SharedPtr twist_msg)
 {
     this->linear_y = twist_msg->linear.x;
     this->angular_z = twist_msg->angular.z;    
@@ -519,7 +495,7 @@ int main(int argc, char * argv[])
     
     rclcpp::executors::MultiThreadedExecutor exec;
     
-    std::shared_ptr<WheelsControllerLifecycleNode> wheels_controller_node = std::make_shared<WheelsControllerLifecycleNode>();
+    std::shared_ptr<WheelsControllerNode> wheels_controller_node = std::make_shared<WheelsControllerNode>();
     exec.add_node(wheels_controller_node->get_node_base_interface());
     exec.spin();
 

@@ -15,7 +15,9 @@
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <sensor_msgs/msg/joy.hpp>
-    using namespace std::chrono_literals;
+
+
+  using namespace std::chrono_literals;
   #define GAIN 20.0
 
   float scaleClamp(float val, float scale, float min, float max) {
@@ -25,58 +27,97 @@
     return val;
   }
 
-  Absenc::Absenc() : LifecycleNode("absenc_node"){}
-    callbackReturn on_configure(const rclcpp_lifecycle::State &){
-      RCLCPP_DEBUG_STREAM(get_logger(), "Starting absenc node\n");
-          /*
-        Set default parameter for the filepath of the absenc. To set, use 
-        ros2 run absenc_interface absenc_node --ros-args -p absenc_polling_rate:=1000
-        or during runtime (when the node is already running) as 
-        ros2 param set /absenc_node absenc_polling_rate 1000 
-      */
-      this->declare_parameter("absenc_path", "/dev/ttyUSB0");
-      this->declare_parameter("absenc_polling_rate", 100);
+  Absenc::Absenc() : LifecycleNode("absenc_node"){};
 
-  angles_publisher = this->create_publisher<absenc_interface::msg::EncoderValues>("absenc_values", 10);
+  callbackReturn Absenc::on_configure(const rclcpp_lifecycle::State &){
+    RCLCPP_DEBUG_STREAM(get_logger(), "Starting absenc node\n");
+        /*
+      Set default parameter for the filepath of the absenc. To set, use 
+      ros2 run absenc_interface absenc_node --ros-args -p absenc_polling_rate:=1000
+      or during runtime (when the node is already running) as 
+      ros2 param set /absenc_node absenc_polling_rate 1000 
+    */
+    this->declare_parameter("absenc_path", "/dev/ttyUSB0");
+    this->declare_parameter("absenc_polling_rate", 100);
 
-  arm_publisher = this->create_publisher<std_msgs::msg::String>("arm_command", 10);
-  
-  timer_ = this->create_wall_timer(
-  std::chrono::milliseconds(this->get_parameter("absenc_polling_rate").as_int()), 
-  std::bind(&Absenc::absEncPollingCallback, this));
+    angles_publisher = this->create_publisher<absenc_interface::msg::EncoderValues>("absenc_values", 10);
 
-  /*
-    Open serial to RS485 device
-  */
-  RCLCPP_DEBUG_STREAM(get_logger(), "About to open serial connection\n");
+    arm_publisher = this->create_publisher<std_msgs::msg::String>("arm_command", 10);
+    
+    timer_ = this->create_wall_timer(
+    std::chrono::milliseconds(this->get_parameter("absenc_polling_rate").as_int()), 
+    std::bind(&Absenc::absEncPollingCallback, this));
 
-  while (true) {
-    ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
-    if(err.error != 0){
-      RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
-      // Wait 5 seconds before attempting reconnection
-      rclcpp::sleep_for(std::chrono::seconds(5));
-    } else {
-      break;
+    /*
+      Open serial to RS485 device
+    */
+    RCLCPP_DEBUG_STREAM(get_logger(), "About to open serial connection\n");
+
+    while (true) {
+      ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
+      if(err.error != 0){
+        RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
+        // Wait 5 seconds before attempting reconnection
+        rclcpp::sleep_for(std::chrono::seconds(5));
+      } else {
+        break;
+      }
+
+      if (!rclcpp::ok()) {
+        return callbackReturn::FAILURE;
+      }
     }
 
-    if (!rclcpp::ok()) {
-      return;
-    }
-  }
+    subscription = this->create_subscription<sensor_msgs::msg::JointState>(
+      "joint_states", 10, std::bind(&Absenc::ikValuesCallback, this, std::placeholders::_1));
 
-  subscription = this->create_subscription<sensor_msgs::msg::JointState>(
-  "joint_states", 10, std::bind(&Absenc::ikValuesCallback, this, std::placeholders::_1));
+    subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
+      "cad_mouse_joy", 10, std::bind(&Absenc::cadValuesCallback, this, std::placeholders::_1));
 
-      subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
-      "cad_mouse_joy", 10, std::bind(&AbsEnc::cadValuesCallback, this, std::placeholders::_1));
+    subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
+      "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
 
-      subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
-        "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
+    arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
+  };
 
-      
-      arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
-    }
+  callbackReturn Absenc::on_activate(const rclcpp_lifecycle::State & state){
+    LifecycleNode::on_activate(state);
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+
+    return callbackReturn::SUCCESS;
+  };
+
+  callbackReturn Absenc::on_deactivate(const rclcpp_lifecycle::State & state){
+    LifecycleNode::on_deactivate(state);
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
+    return callbackReturn::SUCCESS;
+  };
+
+  callbackReturn Absenc::on_cleanup(const rclcpp_lifecycle::State &){
+    timer_.reset();
+    angles_publisher.reset();
+    arm_publisher.reset();
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
+    return callbackReturn::SUCCESS;
+  };
+
+  callbackReturn Absenc::on_shutdown(const rclcpp_lifecycle::State & state){
+    timer_.reset();
+    angles_publisher.reset();
+    arm_publisher.reset();
+
+    RCUTILS_LOG_INFO_NAMED(
+        get_name(),
+        "on shutdown is called from state %s.",
+        state.label().c_str()
+    );
+
+    return callbackReturn::SUCCESS;
+  };
 
   Absenc::~Absenc() {
     if (s_fd >= 0) {
@@ -287,7 +328,7 @@ int main(int argc, char * argv[])
   rclcpp::init(argc, argv);
   rclcpp::executors::SingleThreadedExecutor exe;
 
-  std::shared_ptr<AbsEnc> abs_node = std::make_shared<AbsEnc>();
+  std::shared_ptr<Absenc> abs_node = std::make_shared<Absenc>();
 
   exe.add_node(abs_node->get_node_base_interface());
   exe.spin();

@@ -33,9 +33,9 @@ using namespace std::chrono;
 using namespace std::literals::chrono_literals;
 typedef rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn callbackReturn;
 
-class WheelsControllerLifecycleNode : public rclcpp_lifecycle::LifecycleNode{
+class WheelsControllerNode : public rclcpp_lifecycle::LifecycleNode{
   public:
-    WheelsControllerLifecycleNode();
+    WheelsControllerNode();
     callbackReturn on_configure(const rclcpp_lifecycle::State &);
     callbackReturn on_activate(const rclcpp_lifecycle::State & state);
     callbackReturn on_deactivate(const rclcpp_lifecycle::State & state);

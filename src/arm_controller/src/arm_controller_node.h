@@ -26,10 +26,10 @@
 
 typedef rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn callbackReturn;
 
-class ArmControllerLifecycleNode : public rclcpp_lifecycle::LifecycleNode{
+class ArmControllerNode : public rclcpp_lifecycle::LifecycleNode{
     public:
-        ArmControllerLifecycleNode();
-        ~ArmControllerLifecycleNode();
+        ArmControllerNode();
+        ~ArmControllerNode();
         callbackReturn on_configure(const rclcpp_lifecycle::State &);
         callbackReturn on_activate(const rclcpp_lifecycle::State & state);
         callbackReturn on_deactivate(const rclcpp_lifecycle::State & state);
