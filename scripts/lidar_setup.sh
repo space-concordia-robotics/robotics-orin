@@ -26,6 +26,19 @@ launch_ouster(){
 	#sensor_hostname:=os1-992005000098.local metadata:=metadata.json
 }
 
+non_interactive_connection(){
+	sudo ip addr flush dev $interface_arg
+	ip addr show dev $interface_arg
+	sudo ip addr add 10.5.5.1/24 dev $interface_arg
+	sudo ip link set $interface_arg up
+	ip addr show dev $interface_arg
+
+	sudo systemctl stop dnsmasq
+
+	sudo dnsmasq -C /dev/null -kd -F 10.5.5.96,10.5.5.96 -i $interface_arg --bind-dynamic
+}
+
+# Take arg which is the ethernet interface to use (and have default)
 interface_arg=$1
 if ((${#interface_arg} == 0))
 then
@@ -33,6 +46,13 @@ then
 	echo "Took default interface of eth0"
 fi
 
+# If "non-interactive" is the second argument, run automatically
+# Does not quit automatically, since it runs dnsmasq
+non_interactive_arg=$2
+if [ "$non_interactive_arg" = "non-interactive" ]; then
+	non_interactive_connection
+	exit
+fi
 
 while true; do
 	echo "Connect lidar:	Press 1"
