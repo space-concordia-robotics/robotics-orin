@@ -13,7 +13,7 @@ Parameters:
     marker_size - size of the markers in meters (default .0625)
     aruco_dictionary_id - dictionary that was used to generate markers
                           (default DICT_5X5_250)
-    poll_delay - how many seconds to wait between captures
+    poll_delay_seconds - how many seconds to wait between captures
     camera_index - which camera index to open
     camera_destination_index - If present, will attempt to use v4l2loopback 
                                 to allow another process to access the camera.
@@ -61,7 +61,7 @@ class ArucoNode(rclpy.node.Node):
         )
 
         self.declare_parameter(
-            name="poll_delay",
+            name="poll_delay_seconds",
             value=0.1,
             descriptor=ParameterDescriptor(
                 type=ParameterType.PARAMETER_DOUBLE,
@@ -111,10 +111,10 @@ class ArucoNode(rclpy.node.Node):
         )
         self.get_logger().info(f"Marker type: {dictionary_id_name}")
 
-        poll_delay = (
-            self.get_parameter("poll_delay").get_parameter_value().double_value
+        poll_delay_seconds = (
+            self.get_parameter("poll_delay_seconds").get_parameter_value().double_value
         )
-        self.get_logger().info(f"Poll frequency: {poll_delay}")
+        self.get_logger().info(f"Poll frequency: {poll_delay_seconds}")
 
         self.camera_index = (
             self.get_parameter("camera_index").get_parameter_value().integer_value
@@ -155,7 +155,7 @@ class ArucoNode(rclpy.node.Node):
         self.markers_pub = self.create_publisher(ArucoMarkers, "aruco_markers", 10)
 
         # Setup timers for opening camera (to allow easy retry) and for detecting aruco tags
-        self.detect_timer = self.create_timer(poll_delay, self.image_callback)
+        self.detect_timer = self.create_timer(poll_delay_seconds, self.image_callback)
         self.open_video_timer = self.create_timer(1.0, self.cam_callback)
 
         if cv2.__version__ < "4.7.0":

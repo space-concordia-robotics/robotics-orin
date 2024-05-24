@@ -17,10 +17,19 @@ class CustomFormatter(argparse.ArgumentDefaultsHelpFormatter,
 
 
 def addWhiteBorder(image, borderSize):
+    """Add a white border of the given number of pixels around the image.
+
+    Parameters:
+    image  (np.array, type np.uint8, 2D): black and white image
+    borderSize: Number of pixels to add around each edge of the image
+
+    Returns:
+    np.array: image with border
+    """
+
     newSize = (image.shape[0] + borderSize * 2, image.shape[1] + borderSize * 2)
 
-    imageWithBorder = np.zeros(newSize, dtype=image.dtype)
-    imageWithBorder += 255
+    imageWithBorder = np.full(newSize, 255, dtype=image.dtype)
 
     imageWithBorder[borderSize:-borderSize, borderSize:-borderSize] = image
 
