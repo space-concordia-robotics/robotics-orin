@@ -18,6 +18,8 @@ Parameters:
     camera_destination_index - If present, will attempt to use v4l2loopback 
                                 to allow another process to access the camera.
                                 Needs ffmpeg and v4l2loopback-dev installed.
+    camera_matrix - Array corresponding to the 3x3 camera's intrinsic matrix K
+    distortion_coefficients - Array of distortion coefficients
 
 Author: Nathan Sprague, Marc Scattolin
 Version: 10/26/2020
@@ -37,6 +39,30 @@ from geometry_msgs.msg import PoseArray, Pose
 from ros2_aruco_interfaces.msg import ArucoMarkers
 from rcl_interfaces.msg import ParameterDescriptor, ParameterType
 import subprocess
+
+def estimatePoseSingleMarkers(corners, marker_size, mtx, distortion):
+    '''
+    This will estimate the rvec and tvec for each of the marker corners detected by:
+    corners, ids, rejectedImgPoints = detector.detectMarkers(image)
+    corners - is an array of detected corners for each detected marker in the image
+    marker_size - is the size of the detected markers
+    mtx - is the camera matrix
+    distortion - is the camera distortion matrix
+    RETURN list of rvecs, tvecs, and trash (so that it corresponds to the old estimatePoseSingleMarkers())
+    '''
+    marker_points = np.array([[-marker_size / 2, marker_size / 2, 0],
+                            [marker_size / 2, marker_size / 2, 0],
+                            [marker_size / 2, -marker_size / 2, 0],
+                            [-marker_size / 2, -marker_size / 2, 0]], dtype=np.float32)
+    trash = []
+    rvecs = []
+    tvecs = []
+    for c in corners:
+        nada, R, t = cv2.solvePnP(marker_points, c, mtx, distortion, False, cv2.SOLVEPNP_IPPE_SQUARE)
+        rvecs.append(R)
+        tvecs.append(t)
+        trash.append(nada)
+    return rvecs, tvecs, trash
 
 
 class ArucoNode(rclpy.node.Node):
@@ -86,13 +112,46 @@ class ArucoNode(rclpy.node.Node):
                 description="Which index under /dev/video to send camera stream to for other devices.",
             ),
         )
+
+        self.declare_parameter(
+            name="camera_matrix",
+            value=[0.],
+            descriptor=ParameterDescriptor(
+                type=ParameterType.PARAMETER_DOUBLE_ARRAY,
+                description="Camera intrinsic matrix flattened to an array",
+            ),
+        )
+
+        self.declare_parameter(
+            name="distortion_coefficients",
+            value=[0.],
+            descriptor=ParameterDescriptor(
+                type=ParameterType.PARAMETER_DOUBLE_ARRAY,
+                description="Camera distortion coefficients",
+            ),
+        )
     
     def __enter__(self):
         return self
 
     def __exit__(self, exc_type, exc_value, traceback):
         self.video_capture.release()
-        self.ffmpeg_process.terminate()
+        if self.ffmpeg_process:
+            self.ffmpeg_process.terminate()
+    
+    def setup_camera_loopback(self):
+        self.get_logger().info(f"Camera destination index: {self.camera_destination_index}")
+        completion1 = subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"], capture_output=True)
+        completion2 = subprocess.run(["sudo", "modprobe", "v4l2loopback", f"video_nr={self.camera_destination_index}", 
+                                        "card_label=Video-Loopback", "exclusive_caps=1"], capture_output=True)
+        self.ffmpeg_process = subprocess.Popen(["ffmpeg", "-i", f"/dev/video{self.camera_index}", "-f", "v4l2", "-codec:v", "rawvideo", "-pix_fmt", "yuv420p", f"/dev/video{self.camera_destination_index}"])
+        self.camera_index = self.camera_destination_index
+
+        if completion1.returncode != 0:
+            self.get_logger().error(f"Error setting up multicamera: {completion1.stderr}")
+        if completion2.returncode != 0:
+            self.get_logger().error(f"Error setting up multicamera: {completion2.stderr}")
+
 
     def __init__(self):
         super().__init__("aruco_node")
@@ -121,22 +180,27 @@ class ArucoNode(rclpy.node.Node):
         )
         self.get_logger().info(f"Camera index: {self.camera_index}")
 
-        camera_destination_index = (
+        self.camera_destination_index = (
             self.get_parameter("camera_destination_index").get_parameter_value().integer_value
         )
-        if camera_destination_index != -1:
-            self.get_logger().info(f"Camera destination index: {camera_destination_index}")
-            completion1 = subprocess.run(["sudo", "modprobe", "-r", "v4l2loopback"], capture_output=True)
-            completion2 = subprocess.run(["sudo", "modprobe", "v4l2loopback", f"video_nr={camera_destination_index}", 
-                                          "card_label=Video-Loopback", "exclusive_caps=1"], capture_output=True)
-            self.ffmpeg_process = subprocess.Popen(["ffmpeg", "-i", f"/dev/video{self.camera_index}", "-f", "v4l2", "-codec:v", "rawvideo", "-pix_fmt", "yuv420p", f"/dev/video{camera_destination_index}"])
-            self.camera_index = camera_destination_index
+        if self.camera_destination_index != -1:
+            self.setup_camera_loopback()
 
-            if completion1.returncode != 0:
-                self.get_logger().error(f"Error setting up multicamera: {completion1.stderr}")
-            if completion2.returncode != 0:
-                self.get_logger().error(f"Error setting up multicamera: {completion2.stderr}")
+        self.camera_matrix = (
+            self.get_parameter("camera_matrix").get_parameter_value().double_array_value
+        )
+        if len(self.camera_matrix) == 9:
+            self.camera_matrix = np.reshape(np.array(self.camera_matrix), (3,3))
+        else:
+            self.camera_matrix = None
 
+        self.distortion_coefficients = (
+            self.get_parameter("distortion_coefficients").get_parameter_value().double_array_value
+        )
+        if len(self.distortion_coefficients) >= 4: 
+            self.distortion_coefficients = np.array(self.distortion_coefficients)
+        else:
+            self.distortion_coefficients = None
 
         # Make sure we have a valid dictionary id:
         try:
@@ -199,31 +263,34 @@ class ArucoNode(rclpy.node.Node):
             corners, marker_ids, rejected = self.detector.detectMarkers(cv_image)
 
         if marker_ids is not None:
-            # rvecs, tvecs, _ = cv2.aruco.estimatePoseSingleMarkers(
-            #     corners, self.marker_size, self.intrinsic_mat, self.distortion
-            # )
+            if self.camera_matrix is not None and self.distortion_coefficients is not None:
+                rvecs, tvecs, _ = estimatePoseSingleMarkers(
+                    corners, self.marker_size, self.camera_matrix, self.distortion_coefficients
+                )
 
-            for i, marker_id in enumerate(marker_ids):
-                pass
-                # pose = Pose()
-                # pose.position.x = tvecs[i][0][0]
-                # pose.position.y = tvecs[i][0][1]
-                # pose.position.z = tvecs[i][0][2]
+                for i, marker_id in enumerate(marker_ids):
+                    pose = Pose()
+                    pose.position.x = tvecs[i][0][0]
+                    pose.position.y = tvecs[i][1][0]
+                    pose.position.z = tvecs[i][2][0]
 
-                # rot_matrix = np.eye(4)
-                # rot_matrix[0:3, 0:3] = cv2.Rodrigues(np.array(rvecs[i][0]))[0]
-                # quat = tf_transformations.quaternion_from_matrix(rot_matrix)
+                    # rot_matrix = np.eye(4)
+                    # rot_matrix[0:3, 0:3] = cv2.Rodrigues(np.array(rvecs))[0]
+                    # quat = tf_transformations.quaternion_from_matrix(rot_matrix)
 
-                # pose.orientation.x = quat[0]
-                # pose.orientation.y = quat[1]
-                # pose.orientation.z = quat[2]
-                # pose.orientation.w = quat[3]
+                    # pose.orientation.x = quat[0]
+                    # pose.orientation.y = quat[1]
+                    # pose.orientation.z = quat[2]
+                    # pose.orientation.w = quat[3]
 
-                # pose_array.poses.append(pose)
-                # markers.poses.append(pose)
-                markers.marker_ids.append(marker_id[0])
+                    pose_array.poses.append(pose)
+                    markers.poses.append(pose)
+                    markers.marker_ids.append(marker_id[0])
+            else:
+                for marker_id in marker_ids:
+                    markers.marker_ids.append(marker_id[0])
 
-            # self.poses_pub.publish(pose_array)
+            self.poses_pub.publish(pose_array)
             self.markers_pub.publish(markers)
 
 
