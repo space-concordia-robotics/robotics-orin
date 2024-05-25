@@ -11,3 +11,5 @@ cmake-build-debug/
 .vscode
 node_modules
 .angular
+space-env/
+marker_*.png
