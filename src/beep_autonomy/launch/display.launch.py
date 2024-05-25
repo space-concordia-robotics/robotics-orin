@@ -234,7 +234,7 @@ def generate_launch_description():
 
     slam_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
-            [slam_dir,'/launch/online_sync_launch.py']),
+            [slam_dir,'/launch/online_async_launch.py']),
             launch_arguments={'use_sim_time':'false'}.items()
     )
 
