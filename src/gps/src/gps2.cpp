@@ -458,6 +458,23 @@ public:
 		lng = navInformation.longitude.val;
 		height = navInformation.height_ellipsoid.val;
 
+		// ---------------- test only -----------
+
+		ubx_packet_t ubx_nav_sat{};
+		uint8_t buffer2[300]{};
+		ubx_nav_sat.payload = buffer2;
+
+		ubx_nav_sat.header._class = 0x01; // UBX_NAV_SAT = 0x35; // Satellite Information
+		ubx_nav_sat.header.id = 0x35;
+
+		sendCommand(&ubx_nav_sat);
+		receiveResponse(&ubx_nav_sat, false, nullptr);
+		auto numSatellites = ubx_nav_sat.payload[5] | 0;
+		std::cout << "\nNumber of satellites after ubx nav sat send and recieve: (now at the end of pollNAV_PVT)" << numSatellites << '\n'
+				  << std::endl;
+
+		// ----------------
+
 		int n = snprintf(res,
 						 RESULT_BUFFER_SIZE - strlen(res),
 						 "NAV-HPPOSLLH : \n Latitude : %f , Longitude : %f , Height (MSL) : %f",
@@ -739,21 +756,35 @@ public:
 
 #endif
 
-//int main()
-//{
-//    SAM_M8Q_GPS gps;
-//
-//    char res[1000];
-//    ubx_status_t status = gps.openPort("/dev/i2c-7", res);
-//    if (status != UBLOX_STATUS_SUCCESS)
-//    {
-//        puts(res);
-//    }
-//    status = gps.pollMON_VER(res);
-//    if (status != UBLOX_STATUS_SUCCESS)
-//    {
-//        puts(res);
-//    }
-//    sleep(5);
-//    // while(true);
-//}
+int main()
+{
+	SAM_M8Q_GPS gps;
+
+	char res[1000]{};
+	ubx_status_t status = gps.openPort("/dev/i2c-7");
+	if (status != UBLOX_STATUS_SUCCESS)
+	{
+		puts(res);
+	}
+	//    status = gps.pollMON_VER(res);
+
+	while (true)
+	{
+
+		int32_t latitude{}, longitude{}, height{};
+		auto resultLength = gps.pollNAV_PVT(res, latitude, longitude, height);
+
+		puts(res);
+		std::cout << "Main function results: " << std::endl;
+		std::cout << "Latitiude " << latitude << std::endl;
+		std::cout << "Longitude " << longitude << std::endl;
+		std::cout << "Height " << height << std::endl;
+
+		//    if (status != UBLOX_STATUS_SUCCESS)
+		//    {
+		//        puts(res);
+		//    }
+
+		sleep(1);
+	}
+}
