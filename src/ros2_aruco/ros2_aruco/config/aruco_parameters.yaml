@@ -1,31 +1,32 @@
 /aruco_node:
   ros__parameters:
-    poll_delay_seconds: 0.1
+    poll_delay_seconds: 0.2
     marker_size: 0.050
     aruco_dictionary_id: "DICT_5X5_250"
     camera_index: 2
+    capture_resolution: [1920, 1080]
     # camera_destination_index: 10
-    # Data comes from the C920 in the lab (on the gripper), calibrated with an 8x6 grid.
-    camera_matrix: [642.97733,   0.     , 322.98653,
-                    0.     , 642.5178 , 230.41907,
-                    0.     ,   0.     ,   1.     ]
-    distortion_coefficients: [0.049779, -0.209170, -0.000231, 0.000367, 0.000000]
+    # Data comes from a C920 in the lab calibrated with an 8x6 grid.
+    camera_matrix: [1727.79073,    0.     , 1063.47911,
+                    0.     , 1768.42988,  733.47827,
+                    0.     ,    0.     ,    1.     ]
+    distortion_coefficients: [0.383893, -0.475512, 0.031456, 0.005959, 0.000000]
 
 # This was the complete set of calibration data:
-# image_width: 640
-# image_height: 480
+# image_width: 1920
+# image_height: 1080
 # camera_name: narrow_stereo
 # camera_matrix:
 #   rows: 3
 #   cols: 3
-#   data: [642.97733,   0.     , 322.98653,
-#            0.     , 642.5178 , 230.41907,
-#            0.     ,   0.     ,   1.     ]
+#   data: [1727.79073,    0.     , 1063.47911,
+#             0.     , 1768.42988,  733.47827,
+#             0.     ,    0.     ,    1.     ]
 # distortion_model: plumb_bob
 # distortion_coefficients:
 #   rows: 1
 #   cols: 5
-#   data: [0.049779, -0.209170, -0.000231, 0.000367, 0.000000]
+#   data: [0.383893, -0.475512, 0.031456, 0.005959, 0.000000]
 # rectification_matrix:
 #   rows: 3
 #   cols: 3
@@ -35,6 +36,6 @@
 # projection_matrix:
 #   rows: 3
 #   cols: 4
-#   data: [642.64434,   0.     , 323.26127,   0.     ,
-#            0.     , 644.34004, 230.33636,   0.     ,
-#            0.     ,   0.     ,   1.     ,   0.     ]
+#   data: [1865.86427,    0.     , 1066.75093,    0.     ,
+#             0.     , 1879.6054 ,  758.5378 ,    0.     ,
+#             0.     ,    0.     ,    1.     ,    0.     ]

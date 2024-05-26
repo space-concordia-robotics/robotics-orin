@@ -105,6 +105,15 @@ class ArucoNode(rclpy.node.Node):
         )
 
         self.declare_parameter(
+            name="capture_resolution",
+            value=[0], # When not length 2, will be default resolution (often 640x480)
+            descriptor=ParameterDescriptor(
+                type=ParameterType.PARAMETER_INTEGER_ARRAY,
+                description="Which camera index to open."
+            ),
+        )
+
+        self.declare_parameter(
             name="camera_destination_index",
             value=-1,
             descriptor=ParameterDescriptor(
@@ -180,6 +189,16 @@ class ArucoNode(rclpy.node.Node):
         )
         self.get_logger().info(f"Camera index: {self.camera_index}")
 
+        self.capture_resolution = (
+            self.get_parameter("capture_resolution").get_parameter_value().integer_array_value
+        )
+        if len(self.capture_resolution) != 2:
+            self.capture_resolution = []
+            self.get_logger().info("Resolution set to default when camera opens.")
+        else:
+            self.capture_resolution = np.array(self.capture_resolution)
+            self.get_logger().info(f"Camera capture resolution: {self.capture_resolution}")
+
         self.camera_destination_index = (
             self.get_parameter("camera_destination_index").get_parameter_value().integer_value
         )
@@ -221,6 +240,7 @@ class ArucoNode(rclpy.node.Node):
         # Setup timers for opening camera (to allow easy retry) and for detecting aruco tags
         self.detect_timer = self.create_timer(poll_delay_seconds, self.image_callback)
         self.open_video_timer = self.create_timer(1.0, self.cam_callback)
+        self.cam_callback() # Attempts to open camera now, and then every second after.
 
         if cv2.__version__ < "4.7.0":
             self.aruco_dictionary = cv2.aruco.Dictionary_get(dictionary_id)
@@ -233,11 +253,26 @@ class ArucoNode(rclpy.node.Node):
     def cam_callback(self):
         try:
             self.video_capture = cv2.VideoCapture(self.camera_index)
+            if len(self.capture_resolution) == 2:
+                self.video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, self.capture_resolution[0])
+                self.video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, self.capture_resolution[1])
+            
+            self.actual_resolution = np.array([int(self.video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)), 
+                                      int(self.video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))])
+            self.get_logger().info(f"Desired camera resolution {self.capture_resolution}, actual resolution {self.actual_resolution}")
+            
             # Once successful, don't try to open again
             self.open_video_timer.cancel()
-        except:
-            self.get_logger().warn(f"Could not open camera at {self.camera_index}, trying again")
+        except Exception as e:
+            self.get_logger().warn(f"Could not open camera at {self.camera_index}, trying again, error {e}")
             return
+
+
+    def scale_corners_inplace(self, corners):
+        pass
+        # if len(self.capture_resolution) == 2:
+        #     if self.capture_resolution[0] != self.actual_resolution[0] or self.capture_resolution[1] != self.actual_resolution[1]:
+
 
     def image_callback(self):
         if self.video_capture is None:
@@ -261,6 +296,8 @@ class ArucoNode(rclpy.node.Node):
             )
         else:
             corners, marker_ids, rejected = self.detector.detectMarkers(cv_image)
+        
+        self.scale_corners_inplace(corners)
 
         if marker_ids is not None:
             if self.camera_matrix is not None and self.distortion_coefficients is not None:
