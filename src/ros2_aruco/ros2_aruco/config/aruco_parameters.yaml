@@ -6,26 +6,26 @@
     camera_index: 2
     # camera_destination_index: 10
     # Data comes from the C920 in the lab (on the gripper), calibrated with an 8x6 grid.
-    camera_matrix: [1431.3944 ,    0.     ,  890.65546,
-                    0.     , 1433.52778,  497.59295,
-                    0.     ,    0.     ,    1.     ]
-    distortion_coefficients: [0.058807, -0.181086, 0.002435, -0.003756, 0.000000]
+    camera_matrix: [642.97733,   0.     , 322.98653,
+                    0.     , 642.5178 , 230.41907,
+                    0.     ,   0.     ,   1.     ]
+    distortion_coefficients: [0.049779, -0.209170, -0.000231, 0.000367, 0.000000]
 
 # This was the complete set of calibration data:
-# image_width: 1920
-# image_height: 1080
+# image_width: 640
+# image_height: 480
 # camera_name: narrow_stereo
 # camera_matrix:
 #   rows: 3
 #   cols: 3
-#   data: [1431.3944 ,    0.     ,  890.65546,
-#             0.     , 1433.52778,  497.59295,
-#             0.     ,    0.     ,    1.     ]
+#   data: [642.97733,   0.     , 322.98653,
+#            0.     , 642.5178 , 230.41907,
+#            0.     ,   0.     ,   1.     ]
 # distortion_model: plumb_bob
 # distortion_coefficients:
 #   rows: 1
 #   cols: 5
-#   data: [0.058807, -0.181086, 0.002435, -0.003756, 0.000000]
+#   data: [0.049779, -0.209170, -0.000231, 0.000367, 0.000000]
 # rectification_matrix:
 #   rows: 3
 #   cols: 3
@@ -35,6 +35,6 @@
 # projection_matrix:
 #   rows: 3
 #   cols: 4
-#   data: [1408.47852,    0.     ,  873.88624,    0.     ,
-#             0.     , 1441.61267,  498.62912,    0.     ,
-#             0.     ,    0.     ,    1.     ,    0.     ]
+#   data: [642.64434,   0.     , 323.26127,   0.     ,
+#            0.     , 644.34004, 230.33636,   0.     ,
+#            0.     ,   0.     ,   1.     ,   0.     ]
