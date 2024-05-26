@@ -15,6 +15,10 @@ Parameters:
                           (default DICT_5X5_250)
     poll_delay_seconds - how many seconds to wait between captures
     camera_index - which camera index to open
+    calibration_resolution - at which resolution the camera was calibrated. 
+                            Used to scale the pixel values if doesn't match 
+                            current capture resolution.
+    capture_resolution - Desired resolution to open the camera stream at.
     camera_destination_index - If present, will attempt to use v4l2loopback 
                                 to allow another process to access the camera.
                                 Needs ffmpeg and v4l2loopback-dev installed.
@@ -114,6 +118,15 @@ class ArucoNode(rclpy.node.Node):
         )
 
         self.declare_parameter(
+            name="calibration_resolution",
+            value=[0], # When not length 2, will ignore resolution compensation
+            descriptor=ParameterDescriptor(
+                type=ParameterType.PARAMETER_INTEGER_ARRAY,
+                description="Which camera index to open."
+            ),
+        )
+
+        self.declare_parameter(
             name="camera_destination_index",
             value=-1,
             descriptor=ParameterDescriptor(
@@ -199,6 +212,17 @@ class ArucoNode(rclpy.node.Node):
             self.capture_resolution = np.array(self.capture_resolution)
             self.get_logger().info(f"Camera capture resolution: {self.capture_resolution}")
 
+        self.calibration_resolution = (
+            self.get_parameter("calibration_resolution").get_parameter_value().integer_array_value
+        )
+        if len(self.calibration_resolution) != 2:
+            self.calibration_resolution = []
+            self.get_logger().info("Calibration resolution unset.")
+        else:
+            self.calibration_resolution = np.array(self.calibration_resolution)
+            self.get_logger().info(f"Camera calibration resolution: {self.calibration_resolution}")
+
+
         self.camera_destination_index = (
             self.get_parameter("camera_destination_index").get_parameter_value().integer_value
         )
@@ -268,10 +292,23 @@ class ArucoNode(rclpy.node.Node):
             return
 
 
-    def scale_corners_inplace(self, corners):
-        pass
-        # if len(self.capture_resolution) == 2:
-        #     if self.capture_resolution[0] != self.actual_resolution[0] or self.capture_resolution[1] != self.actual_resolution[1]:
+    def scale_corners(self, corners):
+        if len(corners) == 0:
+            return corners
+ 
+        corners = np.copy(corners)
+
+        if len(self.calibration_resolution) == 2:
+            # If calibration and capture resolutions mismatch, re-scale the corners
+            # so pose estimation works.
+            if (self.calibration_resolution != self.actual_resolution).all():
+                corners[0,0,:, 0] /= self.actual_resolution[0]
+                corners[0,0,:, 0] *= self.calibration_resolution[0]
+
+                corners[0,0,:, 1] /= self.actual_resolution[1]
+                corners[0,0,:, 1] *= self.calibration_resolution[1]
+
+        return corners
 
 
     def image_callback(self):
@@ -297,7 +334,7 @@ class ArucoNode(rclpy.node.Node):
         else:
             corners, marker_ids, rejected = self.detector.detectMarkers(cv_image)
         
-        self.scale_corners_inplace(corners)
+        corners = self.scale_corners(corners)
 
         if marker_ids is not None:
             if self.camera_matrix is not None and self.distortion_coefficients is not None:

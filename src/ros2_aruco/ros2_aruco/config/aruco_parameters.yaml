@@ -4,6 +4,7 @@
     marker_size: 0.050
     aruco_dictionary_id: "DICT_5X5_250"
     camera_index: 2
+    calibration_resolution: [1920, 1080]
     capture_resolution: [1920, 1080]
     # camera_destination_index: 10
     # Data comes from a C920 in the lab calibrated with an 8x6 grid.

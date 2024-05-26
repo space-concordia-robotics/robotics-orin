@@ -24,6 +24,12 @@ Parameters:
 * `camera_destination_index` - If present, will attempt to use v4l2loopback 
                                 to allow another process to access the camera.
                                 Needs ffmpeg and v4l2loopback-dev installed.
+* `calibration_resolution` - At which resolution the camera was calibrated. 
+                             Used to scale the pixel values if doesn't match 
+                             current capture resolution.
+* `capture_resolution` - Desired resolution to open the camera stream at.
+* `camera_matrix` - Array corresponding to the 3x3 camera's intrinsic matrix K
+* `distortion_coefficients` - Array of distortion coefficients
 
 ## Running Marker Detection
 
