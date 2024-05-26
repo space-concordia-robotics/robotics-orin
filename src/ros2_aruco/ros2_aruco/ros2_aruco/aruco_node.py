@@ -324,6 +324,7 @@ class ArucoNode(rclpy.node.Node):
         cv_image = frame
         markers = ArucoMarkers()
         pose_array = PoseArray()
+        pose_array.header.frame_id = 'base_link'
 
         markers.header.stamp = self.get_clock().now().to_msg()
 
@@ -348,14 +349,14 @@ class ArucoNode(rclpy.node.Node):
                     pose.position.y = tvecs[i][1][0]
                     pose.position.z = tvecs[i][2][0]
 
-                    # rot_matrix = np.eye(4)
-                    # rot_matrix[0:3, 0:3] = cv2.Rodrigues(np.array(rvecs))[0]
-                    # quat = tf_transformations.quaternion_from_matrix(rot_matrix)
+                    rot_matrix = np.eye(4)
+                    rot_matrix[0:3, 0:3] = cv2.Rodrigues(np.array(rvecs))[0]
+                    quat = tf_transformations.quaternion_from_matrix(rot_matrix)
 
-                    # pose.orientation.x = quat[0]
-                    # pose.orientation.y = quat[1]
-                    # pose.orientation.z = quat[2]
-                    # pose.orientation.w = quat[3]
+                    pose.orientation.x = quat[0]
+                    pose.orientation.y = quat[1]
+                    pose.orientation.z = quat[2]
+                    pose.orientation.w = quat[3]
 
                     pose_array.poses.append(pose)
                     markers.poses.append(pose)
