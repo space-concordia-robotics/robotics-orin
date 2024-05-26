@@ -427,6 +427,8 @@ public:
 	uint16_t pollNAV_PVT(char *res, int32_t &lat, int32_t &lng, int32_t &height)
 	{
 		ubx_packet_t ubx_packet;
+		uint8_t buffer[300]{};
+		ubx_packet.payload = buffer;
 
 		nav_pvt_t navInformation{};
 
