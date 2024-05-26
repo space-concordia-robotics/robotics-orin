@@ -40,8 +40,7 @@ typedef enum
 	UBLOX_STATUS_I2C_COMM_FAILURE,
 } ubx_status_t;
 
-const uint8_t
-	UBX_CLASS_NAV = 0x01; // Navigation Results Messages: Position, Speed, Time, Acceleration, Heading, DOP, SVs used
+const uint8_t UBX_CLASS_NAV = 0x01; // Navigation Results Messages: Position, Speed, Time, Acceleration, Heading, DOP, SVs used
 const uint8_t UBX_CLASS_MON = 0x0A; // Monitoring Messages: Communication Status, CPU Load, Stack Usage, Task Status
 const uint8_t UBX_CLASS_ACK = 0x05; // Monitoring Messages: Communication Status, CPU Load, Stack Usage, Task Status
 
@@ -85,7 +84,7 @@ typedef struct ubx_header_t
 typedef struct ubx_packet_t
 {
 	ubx_header_t header;
-	uint8_t* payload;
+	uint8_t *payload;
 	uint8_t checksumA = 0;
 	uint8_t checksumB = 0;
 } ubx_packet_t;
@@ -143,13 +142,13 @@ class SAM_M8Q_GPS
 	char statusBuffer[100];
 	inline static int s_fd;
 
-	moduleSWVersion_t* moduleVersion = nullptr;
+	moduleSWVersion_t *moduleVersion = nullptr;
 
 	uint8_t i2cPollingWait =
 		100; // Default to 100ms. Adjusted when user calls setNavigationFrequency() or setHNRNavigationRate() or setMeasurementRate()
 	uint32_t lastCheck;
 
- public:
+public:
 	SAM_M8Q_GPS()
 	{
 		struct timeval tv;
@@ -157,7 +156,7 @@ class SAM_M8Q_GPS
 		lastCheck = (uint32_t)(tv.tv_sec) * 1000 + (uint32_t)(tv.tv_usec) / 1000;
 	};
 
-	void setStatusMessage(const ubx_status_t& status)
+	void setStatusMessage(const ubx_status_t &status)
 	{
 		switch (status)
 		{
@@ -186,7 +185,7 @@ class SAM_M8Q_GPS
 		}
 	}
 
-	ubx_status_t pollNAV_STATUS(char* res)
+	ubx_status_t pollNAV_STATUS(char *res)
 	{
 
 		ubx_packet_t ubxPacket;
@@ -210,7 +209,7 @@ class SAM_M8Q_GPS
 		//        }
 	}
 
-	ubx_status_t pollNAV_SAT(char* res)
+	ubx_status_t pollNAV_SAT(char *res)
 	{
 
 		ubx_packet_t ubxPacket;
@@ -250,62 +249,62 @@ class SAM_M8Q_GPS
 			uint32_t flags;
 			memcpy(&flags, &ubxPacket.payload[16 + 12 * i], sizeof(uint32_t));
 
-			char* gnssType;
-			char* qualityInd;
+			char *gnssType;
+			char *qualityInd;
 			uint8_t qualityIndex = flags & 0x7;
 
 			switch (gnssID)
 			{
 			case 0:
-				gnssType = const_cast<char*>("GPS");
+				gnssType = const_cast<char *>("GPS");
 				break;
 			case 1:
-				gnssType = const_cast<char*>("SBAS");
+				gnssType = const_cast<char *>("SBAS");
 				break;
 			case 2:
-				gnssType = const_cast<char*>("Galileo");
+				gnssType = const_cast<char *>("Galileo");
 				break;
 			case 3:
-				gnssType = const_cast<char*>("BeiDou");
+				gnssType = const_cast<char *>("BeiDou");
 				break;
 			case 4:
-				gnssType = const_cast<char*>("IMES");
+				gnssType = const_cast<char *>("IMES");
 				break;
 			case 5:
-				gnssType = const_cast<char*>("QZSS");
+				gnssType = const_cast<char *>("QZSS");
 				break;
 			case 6:
-				gnssType = const_cast<char*>("GLONASS");
+				gnssType = const_cast<char *>("GLONASS");
 				break;
 			default:
-				gnssType = const_cast<char*>("Unknown");
+				gnssType = const_cast<char *>("Unknown");
 				break;
 			}
 			switch (qualityIndex)
 			{
 			case 0:
-				qualityInd = const_cast<char*>("no signal");
+				qualityInd = const_cast<char *>("no signal");
 				break;
 			case 1:
-				qualityInd = const_cast<char*>("searching signal");
+				qualityInd = const_cast<char *>("searching signal");
 				break;
 			case 2:
-				qualityInd = const_cast<char*>("signal acquired");
+				qualityInd = const_cast<char *>("signal acquired");
 				break;
 			case 3:
-				qualityInd = const_cast<char*>("signal detected but unusable");
+				qualityInd = const_cast<char *>("signal detected but unusable");
 				break;
 			case 4:
-				qualityInd = const_cast<char*>("code locked and time synchronized");
+				qualityInd = const_cast<char *>("code locked and time synchronized");
 				break;
 			default:
-				qualityInd = const_cast<char*>("code and carrier locked and time synchronized");
+				qualityInd = const_cast<char *>("code and carrier locked and time synchronized");
 				break;
 			}
 			if (qualityIndex >= 4)
 			{
 				snprintf(res + strlen(res), RESULT_BUFFER_SIZE, "%s, %s, %u dBHz\n", gnssType, qualityInd,
-					signalStrength);
+						 signalStrength);
 			}
 			if (strlen(res) >= RESULT_BUFFER_SIZE)
 			{
@@ -315,7 +314,7 @@ class SAM_M8Q_GPS
 		return err;
 	}
 
-	ubx_status_t cfgPRT(char* res, uint8_t portID, uint8_t settings)
+	ubx_status_t cfgPRT(char *res, uint8_t portID, uint8_t settings)
 	{
 
 		ubx_packet_t ubxPacket;
@@ -360,7 +359,7 @@ class SAM_M8Q_GPS
 		}
 	}
 
-	ubx_status_t sendCommand(ubx_packet_t* outPacket)
+	ubx_status_t sendCommand(ubx_packet_t *outPacket)
 	{
 		calcChecksum(outPacket);
 		/*
@@ -369,9 +368,9 @@ class SAM_M8Q_GPS
 		return sendI2CCommand(outPacket);
 	}
 
-	ubx_status_t receiveResponse(ubx_packet_t* outPacket,
-		bool expectingAckOnly = false,
-		ubx_packet_t* ackPacket = nullptr)
+	ubx_status_t receiveResponse(ubx_packet_t *outPacket,
+								 bool expectingAckOnly = false,
+								 ubx_packet_t *ackPacket = nullptr)
 	{
 
 		auto retVal = UBLOX_STATUS_NONE;
@@ -385,7 +384,7 @@ class SAM_M8Q_GPS
 			{
 #ifdef _hwDebug
 				sprintf(statusBuffer, "ACK-MISMATCH \n. ACKed class : %u - id : %u , request was %u - id : %u",
-					ackPacket->header._class, ackPacket->header.id, outPacket->header._class, outPacket->header.id);
+						ackPacket->header._class, ackPacket->header.id, outPacket->header._class, outPacket->header.id);
 #endif
 				return UBLOX_STATUS_ACK_FAILURE;
 			}
@@ -393,7 +392,7 @@ class SAM_M8Q_GPS
 		}
 		return status;
 	}
-	ubx_status_t pollMON_VER(char* res)
+	ubx_status_t pollMON_VER(char *res)
 	{
 
 		ubx_packet_t ubx_packet;
@@ -425,7 +424,7 @@ class SAM_M8Q_GPS
 		return UBLOX_STATUS_SUCCESS;
 	}
 
-	uint16_t pollNAV_PVT(char* res, int32_t& lat, int32_t& lng, int32_t& height)
+	uint16_t pollNAV_PVT(char *res, int32_t &lat, int32_t &lng, int32_t &height)
 	{
 		ubx_packet_t ubx_packet;
 
@@ -458,34 +457,35 @@ class SAM_M8Q_GPS
 		height = navInformation.height_ellipsoid.val;
 
 		int n = snprintf(res,
-			RESULT_BUFFER_SIZE - strlen(res),
-			"NAV-HPPOSLLH : \n Latitude : %f , Longitude : %f , Height (MSL) : %f",
-			navInformation.latitude.val / 10000000.f,
-			navInformation.longitude.val / 10000000.f,
-			navInformation.height_msl.val / 1000.f);
+						 RESULT_BUFFER_SIZE - strlen(res),
+						 "NAV-HPPOSLLH : \n Latitude : %f , Longitude : %f , Height (MSL) : %f",
+						 navInformation.latitude.val / 10000000.f,
+						 navInformation.longitude.val / 10000000.f,
+						 navInformation.height_msl.val / 1000.f);
 		return strlen(res);
 	}
 
-	ubx_status_t openPort(const char* fileName)
+	ubx_status_t openPort(const char *fileName)
 	{
 		s_fd = open(fileName, O_RDWR);
 
 		if (s_fd < 0)
 		{
 			// setStatusMessage(UBLOX_STATUS_FD_ERROR);
-//			sprintf(res, "Open Port error :\n");
-			std::cout << "Open Port error :\n" << std::endl;
+			//			sprintf(res, "Open Port error :\n");
+			std::cout << "Open Port error :\n"
+					  << std::endl;
 			return UBLOX_STATUS_FD_ERROR;
 		}
 		return UBLOX_STATUS_SUCCESS;
 	}
-	ubx_status_t sendI2CCommand(ubx_packet_t* outPacket) const
+	ubx_status_t sendI2CCommand(ubx_packet_t *outPacket) const
 	{
 
 		uint16_t bytesToSend = outPacket->header.payload_length + 8; // How many bytes need to be sent
-		uint16_t bytesSent = 0;                                      // How many bytes have been sent
-		uint16_t bytesLeftToSend = bytesToSend;                      // How many bytes remain to be sent
-		uint16_t startSpot = 0;                                      // Payload pointer
+		uint16_t bytesSent = 0;										 // How many bytes have been sent
+		uint16_t bytesLeftToSend = bytesToSend;						 // How many bytes remain to be sent
+		uint16_t startSpot = 0;										 // Payload pointer
 
 		while (bytesLeftToSend > 0)
 		{
@@ -528,15 +528,15 @@ class SAM_M8Q_GPS
 					out_buf[bytesSent + 1] = outPacket->checksumB;
 					bytesSent += 2;
 				}
-				struct i2c_msg message = { (__u16)deviceAddress, 0, bytesSent, out_buf };
-				struct i2c_rdwr_ioctl_data ioctl_data = { &message, 1 };
+				struct i2c_msg message = {(__u16)deviceAddress, 0, bytesSent, out_buf};
+				struct i2c_rdwr_ioctl_data ioctl_data = {&message, 1};
 				int status = ioctl(s_fd, I2C_RDWR, &ioctl_data);
 			}
 		}
 		return UBLOX_STATUS_SUCCESS;
 	}
 
-	void calcChecksum(ubx_packet_t* packet)
+	void calcChecksum(ubx_packet_t *packet)
 	{
 		packet->checksumA = 0;
 		packet->checksumB = 0;
@@ -560,7 +560,7 @@ class SAM_M8Q_GPS
 		}
 	}
 
-	ubx_status_t readIncomingI2C(uint8_t* incomingDataBuf)
+	ubx_status_t readIncomingI2C(uint8_t *incomingDataBuf)
 	{
 
 		struct timeval tv;
@@ -616,7 +616,7 @@ class SAM_M8Q_GPS
 
 #ifdef _hwDebug
 			snprintf(statusBuffer, RESULT_BUFFER_SIZE - strlen(statusBuffer),
-				"I2C Error in request for register FD, bytes returned %i\n", nbytes);
+					 "I2C Error in request for register FD, bytes returned %i\n", nbytes);
 #endif
 			return UBLOX_STATUS_I2C_COMM_FAILURE;
 		}
@@ -631,13 +631,14 @@ class SAM_M8Q_GPS
 		{
 #ifdef _hwDebug
 			snprintf(statusBuffer,
-				RESULT_BUFFER_SIZE - strlen(statusBuffer),
-				"Available bytes, got %i\n",
-				bytesAvailable);
+					 RESULT_BUFFER_SIZE - strlen(statusBuffer),
+					 "Available bytes, got %i\n",
+					 bytesAvailable);
 #endif
 			return UBLOX_STATUS_I2C_COMM_FAILURE;
 		}
 
+		std::cout << "Bytes available in readIncomingI2C: " << bytesAvailable << std::endl;
 		// Check for undocumented bit error. We found this doing logic scans.
 		// This error is rare but if we incorrectly interpret the first bit of the two 'data available' bytes as 1
 		// then we have far too many bytes to check. May be related to I2C setup time violations: https://github.com/sparkfun/SparkFun_Ublox_Arduino_Library/issues/40
@@ -673,21 +674,35 @@ class SAM_M8Q_GPS
 			int status = ioctl(s_fd, I2C_RDWR, &packet);
 
 			bytesAvailable -= bytesToRead;
-			memcpy(&incomingDataBuf[bytesRead], in_data_buf, sizeof(in_data_buf));
+			memcpy(&incomingDataBuf[0], in_data_buf, sizeof(in_data_buf));
 			bytesRead += bytesToRead;
 		}
 		return UBLOX_STATUS_SUCCESS;
 	}
 
-	ubx_status_t waitForResponse(ubx_packet_t* ubxPacket,
-		ubx_packet_t* ackPacket = nullptr,
-		bool expectingAckOnly = false)
+	ubx_status_t waitForResponse(ubx_packet_t *ubxPacket,
+								 ubx_packet_t *ackPacket = nullptr,
+								 bool expectingAckOnly = false)
 	{
 
 		uint8_t incomingDataBuffer[300];
 		const auto status = readIncomingI2C(incomingDataBuffer);
+
+		printf("\nincomingDataBuffer in waitForResponse(...)\n");
+
+		// TODO: remove
+		for (int i = 0; i < 300; i++)
+		{
+			printf("%02X ", incomingDataBuffer[i]);
+			if ((i + 1) % 16 == 0)
+			{
+				printf("\n");
+			}
+		}
+
 		if (status == UBLOX_STATUS_SUCCESS)
 		{
+			std::cout << "UBX packet payload " << (uint64_t)(ubxPacket->payload) << std::endl;
 
 			ubxPacket->header.preambleA = incomingDataBuffer[0];
 			ubxPacket->header.preambleB = incomingDataBuffer[1];
