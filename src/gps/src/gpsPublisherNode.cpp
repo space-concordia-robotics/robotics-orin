@@ -27,7 +27,7 @@ void gpsPublisherNode::publishGpsData()
 gpsData gpsPublisherNode::extractGpsData()
 {
 	char res[256];
-	int32_t latitude, longitude, height;
+	int32_t latitude{}, longitude{}, height{};
 	gps_.pollNAV_PVT(res, latitude, longitude, height);
 	gpsData data{};
 	data.latitude = float(latitude) * MULTIPLYING_FACTOR;
