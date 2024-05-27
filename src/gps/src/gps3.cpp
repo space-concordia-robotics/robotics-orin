@@ -148,3 +148,54 @@ typedef struct {
     uint16_t chksum; 
 } UBX_AbstractPacket_t; 
 
+
+class UbxSerializer {
+private:
+    std::vector<uint8_t> payload; 
+
+public:
+    UbxSerializer(uint32_t initialSize) {
+        this->payload.reserve(initialSize); 
+    }
+
+    UbxSerializer & writeU1(uint8_t data) {
+        this->payload.push_back(static_cast<uint8_t>data); 
+        return *this; 
+    }
+
+    UbxSerializer & writeI1(int8_t data) {
+        this->writeU1(static_cast<uint8_t>data); 
+        return *this; 
+    }
+
+    UbxSerializer & writeU2(uint16_t data) {
+        this->payload.push_back(static_cast<uint8_t>(data & 0xFF)); 
+        this->payload.push_back(static_cast<uint8_t>(data >> 8 & 0xFF)); 
+        return *this; 
+    }
+
+    UbxSerializer & writeI2(int16_t data) {
+        this->writeU2(static_cast<uint16_t>data); 
+        return *this; 
+    }
+
+    UbxSerializer & writeU4(uint32_t data) {
+        this->payload.push_back(static_cast<uint8_t>(data & 0xFF)); 
+        this->payload.push_back(static_cast<uint8_t>(data >> 8 & 0xFF)); 
+        this->payload.push_back(static_cast<uint8_t>(data >> 16 & 0xFF)); 
+        this->payload.push_back(static_cast<uint8_t>(data >> 24 & 0xFF)); 
+        return *this; 
+    }
+
+    UbxSerializer & writeI4(int32_t data) {
+        this->writeU4(static_cast<uint32_t>data); 
+        return *this; 
+    }
+
+    UbxSerializer & writeR4(float data) {
+        
+    }
+
+}; 
+
+
