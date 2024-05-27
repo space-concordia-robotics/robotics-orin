@@ -35,7 +35,7 @@ non_interactive_connection(){
 
 	sudo systemctl stop dnsmasq
 
-	sudo dnsmasq -C /dev/null -kd -F 10.5.5.96,10.5.5.96 -i $interface_arg --bind-dynamic
+	sudo dnsmasq -C /dev/null -F 10.5.5.96,10.5.5.96 -i $interface_arg --bind-dynamic
 }
 
 # Take arg which is the ethernet interface to use (and have default)
