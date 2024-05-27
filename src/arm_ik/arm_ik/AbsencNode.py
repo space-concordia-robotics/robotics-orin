@@ -20,7 +20,6 @@ class AbsencNode(LifecycleNode):
         node_name = 'absenc_node'
         super().__init__(node_name)
 
-
     def ik_callback(self, message:JointState):
         # Receive values and convert to degrees
         self.ik_angles = [math.degrees(x) for x in list(message.position)]
@@ -57,24 +56,27 @@ class AbsencNode(LifecycleNode):
         self.arm_publisher.publish(arm_command)
 
     def on_configure(self, state: State) -> TransitionCallbackReturn:
-        self.get_logger().info('Initialized "' + self.node_name + '" node for functionality')
+        self.declare_parameter("local_mode", False);
+        local_mode = self.get_parameter("local_mode")
 
         arm_topic = '/arm_command'
         self.arm_publisher = self.create_publisher(String, arm_topic, 10)
         self.get_logger().info('Created publisher for topic "'+arm_topic)
 
-        ik_topic = '/joint_states'
-        self.ik_sub = self.create_subscription(JointState, ik_topic, self.ik_callback, 10)
-        self.get_logger().info('Created subscriber for topic "'+ik_topic)
+        if not local_mode:
+            ik_topic = '/joint_states'
+            self.ik_sub = self.create_subscription(JointState, ik_topic, self.ik_callback, 10)
+            self.get_logger().info('Created subscriber for topic "'+ik_topic)
 
-        absenc_topic = '/absenc_states'
-        self.absenc_sub = self.create_subscription(JointState, absenc_topic, self.absenc_callback, 10)
-        self.get_logger().info('Created subscriber for topic "' + absenc_topic)
+            absenc_topic = '/absenc_states'
+            self.absenc_sub = self.create_subscription(JointState, absenc_topic, self.absenc_callback, 10)
+            self.get_logger().info('Created subscriber for topic "' + absenc_topic)
 
-        # Angles reported from absenc
-        self.abs_angles = None
-        # Angles reported from IK
-        self.ik_angles = None
+            # Angles reported from absenc
+            self.abs_angles = None
+            # Angles reported from IK
+            self.ik_angles = None
+
         self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'configure'")
         return TransitionCallbackReturn.SUCCESS
 
@@ -95,7 +97,6 @@ def main(args=None):
     rclpy.init(args=args)
 
     absenc_node = AbsencNode()
-
     # Spin in a separate thread
     thread = threading.Thread(target=rclpy.spin, args=(absenc_node, ), daemon=True)
     thread.start()

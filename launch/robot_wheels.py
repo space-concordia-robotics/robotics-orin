@@ -17,25 +17,26 @@ def generate_launch_description():
 
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
-    driver_node = LifecycleNode(package='wheels_controller',
-                                executable='wheels_controller_node',
-                                name='wheels_controller_node',
-                                output='screen',
-                                parameters=[
-                                    {'multiplier': 2000},
-                                    {'local_mode': False}
-                                ],
-                                namespace='/',
+    wheels_controller_driver = LifecycleNode(
+        package='wheels_controller',
+        executable='wheels_controller_node',
+        name='wheels_controller_node',
+        output='screen',
+        parameters=[
+            {'multiplier': 2000},
+            {'local_mode': False}
+        ],
+        namespace='/',
     )
 
     configure_event = RegisterEventHandler(
         OnStateTransition(
-            target_lifecycle_node=driver_node, goal_state='configured',
+            target_lifecycle_node=wheels_controller_driver, goal_state='configured',
             entities=[
                 LogInfo(
                     msg="[LifecycleLaunch] wheels controller node is configuring."),
                 EmitEvent(event=ChangeState(
-                    lifecycle_node_matcher=matches_action(driver_node),
+                    lifecycle_node_matcher=matches_action(wheels_controller_driver),
                     transition_id=lifecycle_msgs.msg.Transition.TRANSITION_CONFIGURE,
                 )),
             ],
@@ -61,7 +62,7 @@ def generate_launch_description():
         #         {'deadzones': [20, 20, 20, 20, 20, 200]}
         #     ]
         # ),
-        driver_node,
+        wheels_controller_driver,
         configure_event,
         LifecycleNode(
             package='joy',
@@ -70,14 +71,4 @@ def generate_launch_description():
             output='screen',
             namespace="/"
         ),
-        # Node(
-        #     package='wheels_controller',
-        #     executable='wheels_controller_node',
-        #     name='wheels_controller_node',
-        #     output='screen',
-        #     parameters=[
-        #         {'multiplier': 2000},
-        #         {'local_mode': False}
-        #     ]
-        # ),
     ])

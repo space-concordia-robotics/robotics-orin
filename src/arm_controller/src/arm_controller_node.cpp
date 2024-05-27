@@ -2,18 +2,25 @@
 #include <byteswap.h>
 #include <string.h>
 
-
 ArmControllerNode::ArmControllerNode(): LifecycleNode("arm_controller_node") {}
 
 callbackReturn ArmControllerNode::on_configure(const rclcpp_lifecycle::State &){
-    fd = open("/dev/ttyTHS0",O_RDWR);
-    if(fd < 0){
-        int errno0 = errno;
-        RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n",errno0, strerror(errno));
-        errno = 0;
-        rclcpp::shutdown();
-        return callbackReturn::FAILURE;
-    }   
+    this->declare_parameter("local_mode", false);
+    bool local_mode = this->get_parameter("local_mode").as_bool();
+    RCLCPP_INFO(this->get_logger(),"entered on_configured");
+
+
+
+    if (!local_mode){
+        fd = open("/dev/ttyTHS0",O_RDWR);
+        if(fd < 0){
+            int errno0 = errno;
+            RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n",errno0, strerror(errno));
+            errno = 0;
+            rclcpp::shutdown();
+            return callbackReturn::FAILURE;
+        }   
+    }
 
     RCLCPP_INFO(this->get_logger(),"Initialized node : %s\n",this->get_name());
 
@@ -29,7 +36,10 @@ callbackReturn ArmControllerNode::on_configure(const rclcpp_lifecycle::State &){
     ttycfg.c_cc[VMIN] = 0; // Return anything read so far
     cfsetispeed(&ttycfg,B57600);
     cfsetospeed(&ttycfg,B57600);
-    tcsetattr(fd, TCSANOW, &ttycfg);
+
+    if(!local_mode){
+        tcsetattr(fd, TCSANOW, &ttycfg);   
+    }
 
 //  GPIO::setmode(GPIO::BOARD);
 
@@ -85,8 +95,10 @@ callbackReturn ArmControllerNode::on_shutdown(const rclcpp_lifecycle::State & st
 
 
 ArmControllerNode::~ArmControllerNode() {
-    if (fd >= 0) {
-        close(fd);
+    if (!this->get_parameter("local_mode").as_bool()){
+        if (fd >= 0) {
+            close(fd);
+        }
     }
 }
 
@@ -101,12 +113,14 @@ void ArmControllerNode::ArmMessageCallback(const std_msgs::msg::Float32MultiArra
         memcpy(&out_buf[ (i*sizeof(float)) +2],&speed,sizeof(float));
     }
     out_buf[26] = 0x0A;
-        
-    int status = write(fd,out_buf,sizeof(out_buf));
-    if(status == -1){
-        // int errno0 = errno;
-        // RCLCPP_WARN(this->get_logger(),"Write error : %s (%i)\n",strerr(errno0),errno0);
-        errno = 0;
+
+    if (!this->get_parameter("local_mode").as_bool()){   
+        int status = write(fd,out_buf,sizeof(out_buf));
+        if(status == -1){
+            // int errno0 = errno;
+            // RCLCPP_WARN(this->get_logger(),"Write error : %s (%i)\n",strerr(errno0),errno0);
+            errno = 0;
+        }
     }
 }
 
@@ -213,10 +227,12 @@ void ArmControllerNode::JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPt
     /* THIS FUCKING LINE CAUSES THE LINUX KERNEL TO CRASH WHEN USED (DMA ERROR???!!?!)
     // tcflush(fd, TCIOFLUSH); 
     */
-    int status = write(fd,out_buf,sizeof(out_buf));
-    if(status == -1){
-        std::cout << "Error : " << errno << " \n"; 
-    }
+   if (!this->get_parameter("local_mode").as_bool()){
+        int status = write(fd,out_buf,sizeof(out_buf));
+        if(status == -1){
+            std::cout << "Error : " << errno << " \n"; 
+        }
+   }
 }
 
 int main(int argc, char * argv[])
