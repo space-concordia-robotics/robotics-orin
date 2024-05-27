@@ -755,36 +755,36 @@ public:
 };
 
 #endif
-
-int main()
-{
-	SAM_M8Q_GPS gps;
-
-	char res[1000]{};
-	ubx_status_t status = gps.openPort("/dev/i2c-7");
-	if (status != UBLOX_STATUS_SUCCESS)
-	{
-		puts(res);
-	}
-	//    status = gps.pollMON_VER(res);
-
-	while (true)
-	{
-
-		int32_t latitude{}, longitude{}, height{};
-		auto resultLength = gps.pollNAV_PVT(res, latitude, longitude, height);
-
-		puts(res);
-		std::cout << "Main function results: " << std::endl;
-		std::cout << "Latitiude " << latitude << std::endl;
-		std::cout << "Longitude " << longitude << std::endl;
-		std::cout << "Height " << height << std::endl;
-
-		//    if (status != UBLOX_STATUS_SUCCESS)
-		//    {
-		//        puts(res);
-		//    }
-
-		sleep(1);
-	}
-}
+//
+// int main()
+// {
+// 	SAM_M8Q_GPS gps;
+//
+// 	char res[1000]{};
+// 	ubx_status_t status = gps.openPort("/dev/i2c-7");
+// 	if (status != UBLOX_STATUS_SUCCESS)
+// 	{
+// 		puts(res);
+// 	}
+// 	//    status = gps.pollMON_VER(res);
+//
+// 	while (true)
+// 	{
+//
+// 		int32_t latitude{}, longitude{}, height{};
+// 		auto resultLength = gps.pollNAV_PVT(res, latitude, longitude, height);
+//
+// 		puts(res);
+// 		std::cout << "Main function results: " << std::endl;
+// 		std::cout << "Latitiude " << latitude << std::endl;
+// 		std::cout << "Longitude " << longitude << std::endl;
+// 		std::cout << "Height " << height << std::endl;
+//
+// 		//    if (status != UBLOX_STATUS_SUCCESS)
+// 		//    {
+// 		//        puts(res);
+// 		//    }
+//
+// 		sleep(1);
+// 	}
+// }
