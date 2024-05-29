@@ -23,9 +23,13 @@ if (BUILD_TESTING)
 endif ()
 
 add_executable(gps_node src/gpsPublisherNode.cpp
-        src/gps2.cpp
+#        src/gps2.cpp
         src/UbxAbstractConnection.cpp
-        src/UbxPacket.hpp)
+        src/UbxPacket.hpp
+        src/UbxPacket.cpp
+        src/gps3.cpp
+        src/UbxSerializer.cpp
+        src/UbxSerializer.h)
 ament_target_dependencies(gps_node rclcpp std_msgs sensor_msgs)
 install(TARGETS
         gps_node
