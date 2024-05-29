@@ -6,10 +6,9 @@
 #include <linux/i2c.h>
 #include <linux/i2c-dev.h>
 
-
-/* -------- UBX I2C adapter layer -------- */
-
-// Suggested class name: UBX_I2CAdapter : UBX_AbstractAdapter
+#include <exception>
+#include <string>
+#include <vector>
 
 #define I2C_MAX_TRANSACTION 16
 
@@ -38,15 +37,16 @@ static void GPS_UBXI2C_LoadRdSegment(struct i2c_msg &segment, uint8_t *buf, int 
     segment.len = len;
 }
 
-static int GPS_UBXI2C_DoTransaction(const GPS_Device_t *obj, struct i2c_msg *segments, int count)
+static int GPS_UBXI2C_DoTransaction(const GPS_Device_t *obj, struct i2c_msg *segments, int transactionCount)
 {
-    if (count == 0)
+    if (transactionCount == 0)
     {
-        return;
+        return 0;
     }
+
     struct i2c_rdwr_ioctl_data transaction;
     transaction.msgs = segments;
-    transaction.nmsgs = count;
+    transaction.nmsgs = transactionCount;
 
     // Perform compound I2C transaction
     int nbytes = ioctl(obj->fd, I2C_RDWR, &transaction);
@@ -67,9 +67,11 @@ static int GPS_UBXI2C_BytesAvailable(const GPS_Device_t *obj, uint16_t *size)
     // Segment 1: set address pointer to 0xFD
     uint8_t writeBuffer[1] = {0xFD};
     GPS_UBXI2C_LoadWrSegment(&transactionSegments[0], writeBuffer, 1);
+
     // Segment 2: read 2 bytes
     uint8_t readBuffer[2];
     GPS_UBXI2C_LoadRdSegment(&transactionSegments[1], readBuffer, 2);
+
     // Perform compound transaction
     int status = GPS_UBXI2C_DoTransaction(obj, transactionSegments, 2);
     if (status == 0)
@@ -85,7 +87,7 @@ static int GPS_UBXI2C_BytesAvailable(const GPS_Device_t *obj, uint16_t *size)
 
 // Public method
 // TODO: encapsulate buffer + capacity as an object
-int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t * buffer, uint32_t capacity, uint32_t *frameSize0)
+int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t *buffer, uint32_t capacity, uint32_t *frameSize0)
 {
     uint16_t frameSize;
     int result = GPS_UBXI2C_BytesAvailable(obj, &frameSize);
@@ -97,105 +99,172 @@ int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t * buffer, uint32_t capacity
         frameSize = capacity;
     }
     *frameSize0 = frameSize;
-    if(frameSize == 0)
+    if (frameSize == 0)
     {
         // Nothing to read
-        return 0; 
+        return 0;
     }
     // Initiate reads not exceeding max transfer length
     int bytesToRead = frameSize;
-    uint8_t i2cReadBuffer[I2C_MAX_TRANSACTION]; 
+    uint8_t i2cReadBuffer[I2C_MAX_TRANSACTION];
     for (int index = 0;;)
     {
-        int bytesToReadNow = (bytesToRead > I2C_MAX_TRANSACTION) ? I2C_MAX_TRANSACTION : bytesToRead; 
-        struct i2c_msg transactionSegment; 
-        GPS_UBXI2C_LoadRdSegment(&transactionSegment, i2cReadBuffer, bytesToReadNow); 
-        int status = GPS_UBXI2C_DoTransaction(obj, &transactionSegment, 1); 
-        if(status != 0)
+        int bytesToReadNow = (bytesToRead > I2C_MAX_TRANSACTION) ? I2C_MAX_TRANSACTION : bytesToRead;
+        struct i2c_msg transactionSegment;
+        GPS_UBXI2C_LoadRdSegment(&transactionSegment, i2cReadBuffer, bytesToReadNow);
+        int status = GPS_UBXI2C_DoTransaction(obj, &transactionSegment, 1);
+        if (status != 0)
         {
-            return status; 
+            return status;
         }
-        memcpy(buffer + index, i2cReadBuffer, bytesToReadNow); 
-        index += bytesToReadNow; 
-        bytesToRead -= bytesToReadNow; 
+        memcpy(buffer + index, i2cReadBuffer, bytesToReadNow);
+        index += bytesToReadNow;
+        bytesToRead -= bytesToReadNow;
     }
     return 0;
 }
 
 // Public method
 // TODO: encapsulate buffer + length as an object
-int GPS_UBXI2C_Write(const GPS_Device_t * obj, uint8_t * buffer, uint32_t length)
+int GPS_UBXI2C_Write(const GPS_Device_t *obj, uint8_t *buffer, uint32_t length)
 {
-    if(length == 0)
+    if (length == 0)
     {
-        fprintf(stderr, "[WARN] Line %d: Attempting to send 0 bytes.\n"); 
-        return 0; 
+        fprintf(stderr, "[WARN] Line %d: Attempting to send 0 bytes.\n");
+        return 0;
     }
-    struct i2c_msg transactionSegment; 
-    GPS_UBXI2C_LoadWrSegment(&transactionSegment, buffer, length); 
-    int status = GPS_UBXI2C_DoTransaction(obj, &transactionSegment, 1); 
-    return status; 
+    struct i2c_msg transactionSegment;
+    GPS_UBXI2C_LoadWrSegment(&transactionSegment, buffer, length);
+    int status = GPS_UBXI2C_DoTransaction(obj, &transactionSegment, 1);
+    return status;
 }
 
+/* -------- UBX packet deserialization -------- */
 
-/* -------- UBX packet serialization -------- */
-
-typedef struct {
-    uint16_t preamble; 
-    uint8_t category; 
-    uint8_t id; 
-    uint16_t length; 
-    uint16_t chksum; 
-} UBX_AbstractPacket_t; 
-
-
-class UbxSerializer {
+class UbxDeserializerException : public std::exception
+{
 private:
-    std::vector<uint8_t> payload; 
+    std::vector<uint8_t> payload; // these are all read only, can we make optimizations?
+    uint32_t readIndex;
+    uint32_t readLength;
+    std::string message;
 
 public:
-    UbxSerializer(uint32_t initialSize) {
-        this->payload.reserve(initialSize); 
+    explicit UbxDeserializerException(const std::vector<uint8_t> &payload, uint32_t readIndex, uint32_t readLength, const std::string &message)
+    {
+        // Initialize this in a better way?
+        this->payload = payload;
+        this->readIndex = readIndex;
+        this->readLength = readLength;
+        this->message = message;
     }
 
-    UbxSerializer & writeU1(uint8_t data) {
-        this->payload.push_back(static_cast<uint8_t>data); 
-        return *this; 
+    virtual const char *what() const noexcept override
+    {
+        // How can I build a message like this:
+        // "Error reading index <readIndex> length <readLength>: <message> (<payload bytes in hex>)"
+        // Example: "Error reading 4 length 1: Payload drained. (64 00 1A 93)"
+    }
+};
+
+class UbxPayloadDrainedException : public UbxDeserializerException
+{
+
+public:
+    // Only change is the constructor now contains the error message
+    explicit UbxPayloadDrainedException(const std::vector<uint8_t> &payload, uint32_t readIndex, uint32_t readLength)
+        : UbxDeserializerException::UbxDeserializerException(payload, readIndex, readLength, "Payload drained.")
+    {
+    }
+};
+
+class UbxDeserializer
+{
+private:
+    std::vector<uint8_t> payload;
+    uint32_t index;
+
+    void assertBytesAvailable(uint32_t length) {
+        uint32_t requiredLength = this->index + length; 
+        if(this->payload.size() < requiredLength) {
+            throw UbxPayloadDrainedException(this->payload, this->index, length); 
+        }
     }
 
-    UbxSerializer & writeI1(int8_t data) {
-        this->writeU1(static_cast<uint8_t>data); 
-        return *this; 
+    uint8_t readByte() {
+        return this->payload.at(this->index++); 
     }
 
-    UbxSerializer & writeU2(uint16_t data) {
-        this->payload.push_back(static_cast<uint8_t>(data & 0xFF)); 
-        this->payload.push_back(static_cast<uint8_t>(data >> 8 & 0xFF)); 
-        return *this; 
+public:
+    UbxDeserializer(std::vector<uint8_t> payload)
+    {
+        this->payload = payload;
+        this->index = 0;
     }
 
-    UbxSerializer & writeI2(int16_t data) {
-        this->writeU2(static_cast<uint16_t>data); 
-        return *this; 
+    void reset()
+    {
+        this->index = 0;
     }
 
-    UbxSerializer & writeU4(uint32_t data) {
-        this->payload.push_back(static_cast<uint8_t>(data & 0xFF)); 
-        this->payload.push_back(static_cast<uint8_t>(data >> 8 & 0xFF)); 
-        this->payload.push_back(static_cast<uint8_t>(data >> 16 & 0xFF)); 
-        this->payload.push_back(static_cast<uint8_t>(data >> 24 & 0xFF)); 
-        return *this; 
+    uint8_t readU1() {
+        this->assertBytesAvailable(1); 
+        return this->readByte(); 
     }
 
-    UbxSerializer & writeI4(int32_t data) {
-        this->writeU4(static_cast<uint32_t>data); 
-        return *this; 
+    int8_t readS1() {
+        this->assertBytesAvailable(1); 
+        return static_cast<int8_t>(this->readByte()); 
     }
 
-    UbxSerializer & writeR4(float data) {
-        
+    uint16_t readU2() {
+        this->assertBytesAvailable(2); 
+        uint16_t data; 
+        data  =  static_cast<uint16_t>(this->readByte()); 
+        data |= (static_cast<uint16_t>(this->readByte())) << 8; 
+        return data; 
+    }
+
+    int16_t readI2() {
+        return static_cast<int16_t>(this->readU2()); 
+    }
+
+    uint32_t readU4() {
+        this->assertBytesAvailable(4); 
+        uint32_t data; 
+        data  =  static_cast<uint32_t>(this->readByte()); 
+        data |= (static_cast<uint32_t>(this->readByte())) << 8; 
+        data |= (static_cast<uint32_t>(this->readByte())) << 16; 
+        data |= (static_cast<uint32_t>(this->readByte())) << 24; 
+        return data; 
+    }
+
+    int32_t readI4() {
+        return static_cast<int32_t>(this->readU4()); 
+    }
+
+    void readByteArray(uint8_t * data, uint32_t length) {
+        this->assertBytesAvailable(length); 
+        for(int i = 0; i < length; i++) {
+            data[i] = this->readByte(); 
+        }
+    }
+
+    float readR4() {
+        float data; 
+        this->readByteArray(reinterpret_cast<uint8_t *>(&data), 4); 
+        return data; 
+    }
+
+    double readR8() {
+        double data; 
+        this->readByteArray(reinterpret_cast<uint8_t *>(&data), 8); 
+        return data; 
+    }
+    
+    char readCh() {
+        this->assertBytesAvailable(1); 
+        return static_cast<char>(this->readByte()); 
     }
 
 }; 
-
-
