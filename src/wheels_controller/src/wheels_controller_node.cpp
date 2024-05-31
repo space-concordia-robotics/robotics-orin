@@ -1,6 +1,6 @@
 #include "wheels_controller_node.h"
 
-WheelsControllerNode::WheelsControllerNode() : LifecycleNode("wheels_controller_node"){};    
+WheelsControllerNode::WheelsControllerNode() : LifecycleNode("wheels_controller_node"){}
 // explicit WheelsControllerNode(const std::string& node_name, bool intra_process_comms = false)
 // : rclcpp_lifecycle::LifecycleNode(node_name, 
 // rclcpp::NodeOptions().use_intra_process_comms(intra_process_comms)){};

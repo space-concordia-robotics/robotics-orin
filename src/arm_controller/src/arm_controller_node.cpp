@@ -66,7 +66,7 @@ callbackReturn ArmControllerNode::on_activate(const rclcpp_lifecycle::State & st
     std::this_thread::sleep_for(std::chrono::seconds(2));
 
     return callbackReturn::SUCCESS;
-};
+}
 
 callbackReturn ArmControllerNode::on_deactivate(const rclcpp_lifecycle::State & state){
     LifecycleNode::on_deactivate(state);
@@ -74,13 +74,13 @@ callbackReturn ArmControllerNode::on_deactivate(const rclcpp_lifecycle::State & 
     RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
 
     return callbackReturn::SUCCESS;
-};
+}
 
 callbackReturn ArmControllerNode::on_cleanup(const rclcpp_lifecycle::State &){
 
     RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
     return callbackReturn::SUCCESS;
-};
+}
 
 callbackReturn ArmControllerNode::on_shutdown(const rclcpp_lifecycle::State & state){
 
@@ -91,7 +91,7 @@ callbackReturn ArmControllerNode::on_shutdown(const rclcpp_lifecycle::State & st
     );
 
     return callbackReturn::SUCCESS;
-};
+}
 
 
 ArmControllerNode::~ArmControllerNode() {
