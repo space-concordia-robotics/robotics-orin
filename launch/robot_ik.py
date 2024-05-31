@@ -38,7 +38,7 @@ def generate_launch_description():
                 {'joint_lengths': [1.354, 1.333, 1.250]},
                 {'joint_angle_mins': [-180.0, -80.0, -111.0, -101.0]},
                 {'joint_angle_maxes': [180, 80.0, 115.0, 106.0]},
-                {'sensitivity': 1.0},
+                {'sensitivity': 0.75},
                 {'mode': '2D'},
                 {'solution': 1},
                 # "joint" sets final joint angle, while "vertical" sets the
