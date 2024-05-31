@@ -3,11 +3,15 @@
 <package format="3">
   <name>service_client</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
+  <description>manages lifecycle nodes</description>
   <maintainer email="lemarandar@pm.me">lemar</maintainer>
   <license>TODO: License declaration</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
+  <build_depend>rosidl_default_generators</build_depend>
+  <exec_depend>rosidl_default_runtime</exec_depend>
+  <member_of_group>rosidl_interface_packages</member_of_group>
+
 
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
