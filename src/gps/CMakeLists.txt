@@ -21,19 +21,31 @@ if (BUILD_TESTING)
     set(ament_cmake_cpplint_FOUND TRUE)
     ament_lint_auto_find_test_dependencies()
 endif ()
+set(HEADER_FILES
+        src/packet/UbxPacket.hpp
+        src/serdes/UbxSerializer.hpp
+        src/connection/UbxAbstractConnection.hpp
+)
 
-add_executable(gps_node src/gpsPublisherNode.cpp
-#        src/gps2.cpp
-        src/UbxAbstractConnection.cpp
-        src/UbxPacket.hpp
-        src/UbxPacket.cpp
-        src/gps3.cpp
-        src/UbxSerializer.cpp
-        src/UbxSerializer.h)
+set(SOURCE_FILES
+        src/packet/UbxPacket.cpp
+        #        src/gps3.cpp
+        src/serdes/UbxSerializer.cpp
+        src/connection/UbxAbstractConnection.cpp
+)
+
+add_library(gps_node STATIC ${SOURCE_FILES} ${HEADER_FILES})
+#add_executable(gps_node src/gpsPublisherNode.cpp)
+
+
 ament_target_dependencies(gps_node rclcpp std_msgs sensor_msgs)
 install(TARGETS
         gps_node
         DESTINATION lib/${PROJECT_NAME}
 )
+include_directories(src)
+
 
 ament_package()
+
+add_subdirectory(Google_tests)
