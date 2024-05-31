@@ -10,7 +10,7 @@ from launch.actions import Shutdown
 
 
 def generate_launch_description():
-    localMode = False
+    localMode = True
 
     wheels_controller_node = LifecycleNode(
         package='wheels_controller',

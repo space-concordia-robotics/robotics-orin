@@ -80,9 +80,13 @@
 
       subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
         "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
+      RCLCPP_ERROR(this->get_logger(), "Done, got joint_states");
+    
     }
 
     arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
+    
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_configure() is called.");
     return callbackReturn::SUCCESS;
   }
 
@@ -230,15 +234,18 @@ void Absenc::joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
 }
 
 void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg) {
+    RCLCPP_ERROR(this->get_logger(), "In ik callback");
   // Convert ik angles to degrees
   for (int i = 0; i < 4; i++) {
     ik_angles[i] = msg->position[i] * 180.0 / M_PI;
   }
   if (inhibitArmMovement) {
+        RCLCPP_ERROR(this->get_logger(), "arm movement inhibited");
     // Then should be controlling the end effector directly; abort here
     return;
   }
   if (std::isnan(abs_angles[0])) {
+        RCLCPP_ERROR(this->get_logger(), "abs angle are nan");
     // Don't have latest values, return
     return;
   }
