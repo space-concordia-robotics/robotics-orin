@@ -10,7 +10,7 @@ from launch.actions import Shutdown
 
 
 def generate_launch_description():
-    localMode = False
+    localMode = True
 
     wheels_controller_node = LifecycleNode(
         package='wheels_controller',
@@ -70,7 +70,7 @@ def generate_launch_description():
     wheel_sc_node = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='service_client',
+        name='wheel_sc_node',
         output='screen',
         parameters=[
             {"node": 'wheels_controller'},
@@ -81,7 +81,7 @@ def generate_launch_description():
     absenc_sc_node = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='service_client',
+        name='absenc_sc_node',
         output='screen',
         parameters=[
             {"node": 'absenc_node'},
@@ -92,7 +92,7 @@ def generate_launch_description():
     arm_sc_node = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='service_client',
+        name='arm_sc_node',
         output='screen',
         parameters=[
             {"node": 'arm_controller'},

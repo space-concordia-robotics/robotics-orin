@@ -83,6 +83,7 @@
     }
 
     arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
+    return callbackReturn::SUCCESS;
   }
 
   callbackReturn Absenc::on_activate(const rclcpp_lifecycle::State & state){
@@ -134,6 +135,7 @@ void Absenc::absEncPollingCallback(){
   if (this->get_parameter("local_mode").as_bool()){
     return;
   }
+
   auto message = absenc_interface::msg::EncoderValues();     
 
   ABSENC_Meas_t absenc_meas_1,absenc_meas_2,absenc_meas_3;
