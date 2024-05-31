@@ -17,7 +17,7 @@
 #include <sensor_msgs/msg/joy.hpp>
     using namespace std::chrono_literals;
 
-#define GAIN 20.0
+#define GAIN 25.0
 
 float scaleClamp(float val, float scale, float min, float max) {
   val *= scale;
@@ -227,7 +227,7 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
     float absolute_difference = std::abs(absenc_angle - ik_angle);
     int difference_sign = absenc_angle - ik_angle >= 0 ? 1 : -1;
 
-    if (absolute_difference <= 1) {
+    if (absolute_difference == 0) {
       // NICK SHIT
       angles[i] = 0;
       arm_command += "0 ";
