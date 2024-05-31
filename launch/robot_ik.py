@@ -100,6 +100,17 @@ def generate_launch_description():
         namespace='/',
     )
 
+    aik_sc_node = LifecycleNode(
+        package='service_client',
+        executable='service_client',
+        name='aik_sc_node',
+        output='screen',
+        parameters=[
+            {"node": 'ik_node'},
+        ],
+        namespace='/',
+    )
+
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
     urdf_file_name = 'astro_arm.urdf'
@@ -119,9 +130,11 @@ def generate_launch_description():
         arm_ik_node,
         arm_controller_node,
         absenc_interface_node,
+        aik_sc_node,
         wheel_sc_node,
-        arm_sc_node,
         absenc_sc_node,
+        arm_sc_node,
+
 
         LifecycleNode(
             package='joy',

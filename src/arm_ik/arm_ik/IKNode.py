@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 
 import rclpy
+import rclpy.executors
 from sensor_msgs.msg import Joy
 from rclpy.node import Node
 import math
 from rclpy.node import Node
 from rclpy.qos import QoSProfile
+from rclpy.lifecycle import State, TransitionCallbackReturn, LifecycleNode
 from geometry_msgs.msg import Quaternion
 from sensor_msgs.msg import JointState
 from std_msgs.msg import String
@@ -30,7 +32,7 @@ def any_out_of_range(min, max, *values):
   return False
 
 
-class IkNode(Node):
+class IkNode(LifecycleNode):
   
   def __init__(self):
     node_name = 'ik_node'
@@ -46,8 +48,9 @@ class IkNode(Node):
     self.declare_parameter('solution', 0)
     self.declare_parameter('local_mode', False)
 
+  def on_configure(self, state: State) -> TransitionCallbackReturn:
     qos_profile = QoSProfile(depth=10)
-    self.joint_pub = self.create_publisher(JointState, 'joint_states', qos_profile)
+    self.joint_pub = self.create_lifecycle_publisher(JointState, 'joint_states', qos_profile)
 
     # Cartesian coordinates of desired location of end effector
     self.x = 1
@@ -108,10 +111,25 @@ class IkNode(Node):
     self.absenc_sub = self.create_subscription(EncoderValues, absenc_topic, self.absenc_callback, 10)
     self.get_logger().info('Created subscriber for topic "'+absenc_topic)
 
+    self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'configure'")
+    return TransitionCallbackReturn.SUCCESS
+
+  def on_activate(self, state: State) -> TransitionCallbackReturn:
+    self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'activate'")
+    return TransitionCallbackReturn.SUCCESS
+  
+  def on_deactivate(self, state: State) -> TransitionCallbackReturn:
+    self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'deactivate'")
+    return TransitionCallbackReturn.SUCCESS
+  
+  def on_shutdown(self, state: State) -> TransitionCallbackReturn:
+    self.destroy_lifecycle_publisher(self.joint_pub)
+
+    self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'shutdown'")
+    return TransitionCallbackReturn.SUCCESS
   
   def have_abs_angles(self):
     return len(self.abs_angles) > 0
-    
   
   def initialize_angles_coords(self):
     absenc_angles = self.abs_angles
@@ -146,10 +164,8 @@ class IkNode(Node):
 
     self.initialized = True
   
-
   def absenc_callback(self, message):
     self.abs_angles = [0.0, math.radians(message.angle_1), math.radians(message.angle_2), math.radians(message.angle_3)]
-
 
   def coords_from_flex(self, angles):
     # Finds the 2d coords from a series of flex joints (ie arms rotating)
@@ -163,7 +179,6 @@ class IkNode(Node):
       v += length * math.cos(cumulative_angle)
     return u, v
 
-  
   def publish_joint_state(self):
     # If not initialized, initialize from abs enc values
     if not self.angles and self.abs_angles and not self.initialized:
@@ -182,7 +197,6 @@ class IkNode(Node):
       joint_state.name = ["Shoulder Swivel", "Shoulder Flex", "Elbow Flex", "Wrist Flex"]
       joint_state.position = self.angles
       self.joint_pub.publish(joint_state)
-
   
   def calculate_angles(self):
     """ Performs IK calculation and stores values in self.angles.
@@ -377,19 +391,25 @@ class IkNode(Node):
 def main(args=None):
   rclpy.init(args=args)
 
+  executor = rclpy.executors.SingleThreadedExecutor()
   ik_node = IkNode()
+  executor.add_node(ik_node)
 
   # Spin in a separate thread
-  thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
-  thread.start()
+  # thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
+  # thread.start()
 
-  loop_rate = ik_node.create_rate(30)
-  while rclpy.ok():
-    try:
-        ik_node.publish_joint_state()
-        loop_rate.sleep()
-    except KeyboardInterrupt:
-        print("Node shutting down due to shutting down node.")
-        break
+  # loop_rate = ik_node.create_rate(30)
+
+  # while rclpy.ok():
+
+  try:
+      executor.spin()
+      ik_node.publish_joint_state()
+      # loop_rate.sleep()
+  except KeyboardInterrupt:
+      ik_node.destroy_node()
+      print("Node shutting down due to shutting down node.")
+      # break
 
   rclpy.shutdown()
