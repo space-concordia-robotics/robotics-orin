@@ -11,7 +11,7 @@ from launch.actions import Shutdown
 
 def generate_launch_description():
     localMode = True
-    
+
     wheels_controller_node = LifecycleNode(
         package='wheels_controller',
         executable='wheels_controller_node',
@@ -67,6 +67,39 @@ def generate_launch_description():
         ]
     )
 
+    wheel_sc_node = LifecycleNode(
+        package='service_client',
+        executable='service_client',
+        name='service_client',
+        output='screen',
+        parameters=[
+            {"node": 'wheels_controller'},
+        ],
+        namespace='/',
+    )
+
+    absenc_sc_node = LifecycleNode(
+        package='service_client',
+        executable='service_client',
+        name='service_client',
+        output='screen',
+        parameters=[
+            {"node": 'absenc_node'},
+        ],
+        namespace='/',
+    )
+
+    arm_sc_node = LifecycleNode(
+        package='service_client',
+        executable='service_client',
+        name='service_client',
+        output='screen',
+        parameters=[
+            {"node": 'arm_controller'},
+        ],
+        namespace='/',
+    )
+
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
     urdf_file_name = 'astro_arm.urdf'
@@ -82,11 +115,13 @@ def generate_launch_description():
         
         # runs a script that enables automatic transitions to inactive
         # Node(package='lifecycle', executable='lifecycle_service_client', output='screen', on_exit=Shutdown()),
-        
         wheels_controller_node,
         arm_ik_node,
         arm_controller_node,
         absenc_interface_node,
+        wheel_sc_node,
+        arm_sc_node,
+        absenc_sc_node,
 
         LifecycleNode(
             package='joy',

@@ -131,6 +131,9 @@
   }
 
 void Absenc::absEncPollingCallback(){
+  if (this->get_parameter("local_mode").as_bool()){
+    return;
+  }
   auto message = absenc_interface::msg::EncoderValues();     
 
   ABSENC_Meas_t absenc_meas_1,absenc_meas_2,absenc_meas_3;

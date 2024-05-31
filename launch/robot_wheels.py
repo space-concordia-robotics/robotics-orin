@@ -24,7 +24,7 @@ def generate_launch_description():
         output='screen',
         parameters=[
             {'multiplier': 2000},
-            {'local_mode': False}
+            {'local_mode': True}
         ],
         namespace='/',
     )
