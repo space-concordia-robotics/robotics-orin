@@ -25,7 +25,7 @@ public:
 
     // getter
     virtual std::vector<uint8_t> serialize() const;
-
+    
     uint16_t getPid() const
     {
         return this->pid;
@@ -50,4 +50,7 @@ public:
     {
         return this->chksum;
     }
+
+    virtual void ensurePid(uint16_t pid) const = 0; 
+
 };

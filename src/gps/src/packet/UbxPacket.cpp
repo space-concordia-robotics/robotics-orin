@@ -75,3 +75,11 @@ std::vector<uint8_t> UbxPacket::serialize() const
 {
     return this->serializedFrame;
 }
+
+void UbxPacket::ensurePid(uint16_t pid) const
+{
+    if(this->pid != pid)
+    {
+        // TODO: throw exception later
+    }
+}
