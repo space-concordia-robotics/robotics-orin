@@ -52,7 +52,7 @@ Absenc::Absenc() : Node("absenc_node")
   RCLCPP_DEBUG_STREAM(get_logger(), "About to open serial connection\n");
 
   while (true) {
-    ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
+    ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, socket_fd);
     if(err.error != 0){
       RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
       // Wait 5 seconds before attempting reconnection
@@ -80,8 +80,8 @@ Absenc::Absenc() : Node("absenc_node")
 }
 
 Absenc::~Absenc() {
-  if (s_fd >= 0) {
-    AbsencDriver::ClosePort(s_fd);
+  if (socket_fd >= 0) {
+    AbsencDriver::ClosePort(socket_fd);
   }
 }
 
@@ -92,9 +92,9 @@ void Absenc::absEncPollingCallback()
 
   ABSENC_Meas_t absenc_meas_1,absenc_meas_2,absenc_meas_3;
 
-  ABSENC_Error_t err1 = AbsencDriver::PollSlave(1,&absenc_meas_1, s_fd);
-  ABSENC_Error_t err2 = AbsencDriver::PollSlave(2,&absenc_meas_2, s_fd);
-  ABSENC_Error_t err3 = AbsencDriver::PollSlave(3,&absenc_meas_3, s_fd);
+  ABSENC_Error_t err1 = AbsencDriver::PollSlave(1,&absenc_meas_1, socket_fd);
+  ABSENC_Error_t err2 = AbsencDriver::PollSlave(2,&absenc_meas_2, socket_fd);
+  ABSENC_Error_t err3 = AbsencDriver::PollSlave(3,&absenc_meas_3, socket_fd);
   
   /*
   Check to see if there were any fails at the serial level
