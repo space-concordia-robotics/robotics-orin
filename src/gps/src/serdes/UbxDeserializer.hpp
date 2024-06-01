@@ -23,6 +23,7 @@ public:
         this->message = message;
     }
 
+    // TODO
     virtual const char* what() const noexcept override
     {
         // How can I build a message like this:
@@ -65,6 +66,22 @@ public:
     explicit UbxDeserializer(std::vector<uint8_t> payload);
     void reset();
     void assertBytesAvailable(uint32_t length);
+    /**
+     * @param bytesToSkip number of bytes that will be skipped in payload
+     *
+     * This function throws a UbxPayloadDrainedException if bytesToSkip is greater than bytes available
+     */
+    void skipBytes(int bytesToSkip) noexcept(false);
+    /**
+     * This function throws a UbxPayloadDrainedException if bytesToSkip is greater than bytes available
+     */
+    void skip1Byte();
+    void skip2Bytes();
+    void skip4Bytes();
+    /**
+    *
+    * This function throws a UbxPayloadExcessException if index > payload size
+    */
     void assertEmpty();
     uint8_t readU1();
     int8_t readS1();

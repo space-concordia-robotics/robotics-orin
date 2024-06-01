@@ -1,12 +1,5 @@
 #include "UbxDeserializer.hpp"
 
-/**
- *
-* could you also implement the following methods in deserializer:
-skipN(int nBytes) first asserts that there are nBytes bytes available by using the assertBytes(..) method or whatever it is called, then advances the read pointer by nBytes
-skip1(), skip2() and skip4() are simply convenient wrappers for skipN(1), skipN(2), skipN(4).
- */
-
 
 uint8_t UbxDeserializer::readByteNochk()
 {
@@ -33,11 +26,34 @@ void UbxDeserializer::assertBytesAvailable(uint32_t length)
     }
 }
 
+void UbxDeserializer::skipBytes(int bytesToSkip) noexcept(false)
+{
+    assertBytesAvailable(bytesToSkip);
+    index += bytesToSkip;
+}
+
+void UbxDeserializer::skip1Byte()
+{
+    skipBytes(1);
+}
+
+void UbxDeserializer::skip2Bytes()
+{
+    skipBytes(2);
+}
+
+void UbxDeserializer::skip4Bytes()
+{
+    skipBytes(4);
+}
+
+
 void UbxDeserializer::assertEmpty()
 {
     if (this->index < this->payload.size())
     {
-        throw UbxPayloadExcessException(this->payload);
+        // TODO: josh readLength here?
+        throw UbxPayloadExcessException(this->payload, this->index, 0);
     }
 }
 
