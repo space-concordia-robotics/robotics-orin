@@ -40,6 +40,7 @@ private :
     float AccelerateValue(float current, float desired, float rate, float dt);
     
     void publishOdom();
+    void publishStop();
 
     // void Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr odom_msg);
 
@@ -81,6 +82,13 @@ private :
 
   rclcpp::Subscription<nav2_msgs::action::NavigateToPose::Impl::GoalStatusMessage>::SharedPtr
     navigation_goal_status_sub_;
+
+  // The mapping seems to change randomly between reboots. Stores the
+  // inferred type of the controller.
+  // Type 0 is where L2 and R2 are at axes[2] and axes[5],
+  // Type 1 is where L2 and R2 are at axes[4] and axes[5],
+  // Type 2 is the flight joystick
+  int controller_type = -1;
 
    //navigation_goal_status_sub_ = node->create_subscription<action_msgs::msg::GoalStatusArray>;
 };
