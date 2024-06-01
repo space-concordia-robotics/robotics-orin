@@ -90,7 +90,6 @@ callbackReturn WheelsControllerNode::on_activate(const rclcpp_lifecycle::State &
     LifecycleNode::on_activate(state);
 
     RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
-    std::this_thread::sleep_for(std::chrono::seconds(2));
 
     return callbackReturn::SUCCESS;
 }

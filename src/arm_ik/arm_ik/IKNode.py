@@ -48,10 +48,14 @@ class IkNode(LifecycleNode):
     self.declare_parameter('solution', 0)
     self.declare_parameter('local_mode', False)
 
+    self.abs_angles = None
+    self.initialized = False
+    self.angles = None
+
   def on_configure(self, state: State) -> TransitionCallbackReturn:
     qos_profile = QoSProfile(depth=10)
     self.joint_pub = self.create_lifecycle_publisher(JointState, 'joint_states', qos_profile)
-
+  
     # Cartesian coordinates of desired location of end effector
     self.x = 1
     self.y = 0
@@ -98,10 +102,7 @@ class IkNode(LifecycleNode):
 
     # Get the initial angle values 
     absenc_topic = '/absenc_values'
-    self.abs_angles = None
-    self.initialized = False
-    self.angles = None
-
+    
     if self.local_mode:
       self.abs_angles = [0.0, math.radians(0.04), math.radians(13.65), math.radians(-14.42)]
       self.initialize_angles_coords()
@@ -329,7 +330,6 @@ class IkNode(LifecycleNode):
     
     self.last_message = message
 
-
   def perform_calculations(self, old_values):
     self.calculate_cylindical()
 
@@ -343,8 +343,6 @@ class IkNode(LifecycleNode):
       self.x, self.y, self.z, self.th, self.pitch = old_values
     # self.get_logger().info(f"Current location: {self.x} {self.y} {self.z} roll {self.th} pitch {self.pitch}")
     # self.get_logger().info(f"Cylindical coordinates: u {self.u} v {self.v} phi {self.phi}")
-
-
 
   def calculate_cylindical(self):
     if self.mode == "2D":
@@ -391,25 +389,24 @@ class IkNode(LifecycleNode):
 def main(args=None):
   rclpy.init(args=args)
 
-  executor = rclpy.executors.SingleThreadedExecutor()
+  # executor = rclpy.executors.SingleThreadedExecutor()
   ik_node = IkNode()
-  executor.add_node(ik_node)
+  # executor.add_node(ik_node)
 
   # Spin in a separate thread
-  # thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
-  # thread.start()
+  thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
+  thread.start()
 
-  # loop_rate = ik_node.create_rate(30)
+  loop_rate = ik_node.create_rate(30)
 
-  # while rclpy.ok():
-
-  try:
-      executor.spin()
-      ik_node.publish_joint_state()
-      # loop_rate.sleep()
-  except KeyboardInterrupt:
-      ik_node.destroy_node()
-      print("Node shutting down due to shutting down node.")
-      # break
+  while rclpy.ok():
+    try:
+        ik_node.publish_joint_state()
+        # executor.spin()
+        loop_rate.sleep()
+    except KeyboardInterrupt:
+        # ik_node.destroy_node()
+        print("Node shutting down due to shutting down node.")
+        break
 
   rclpy.shutdown()
