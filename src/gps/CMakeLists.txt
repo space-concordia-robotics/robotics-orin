@@ -24,6 +24,7 @@ endif ()
 set(HEADER_FILES
         src/packet/UbxPacket.hpp
         src/serdes/UbxSerializer.hpp
+        src/serdes/UbxDeserializer.hpp
         src/connection/UbxAbstractConnection.hpp
 )
 
@@ -31,6 +32,7 @@ set(SOURCE_FILES
         src/packet/UbxPacket.cpp
         #        src/gps3.cpp
         src/serdes/UbxSerializer.cpp
+        src/serdes/UbxDeserializer.cpp
         src/connection/UbxAbstractConnection.cpp
 )
 
