@@ -10,7 +10,7 @@ class I2CTransactionHelper
 {
 private:
     std::vector<struct i2c_msg> segments;
-    struct i2c_msg buildSegment(uint8_t* buffer, int length);
+    struct i2c_msg buildPartialSegment(uint8_t* buffer, int length);
 
 public:
     static int openDevice(const std::string& path);
@@ -35,7 +35,7 @@ public:
     template <std::size_t N>
     I2CTransactionHelper& readArray(std::array<uint8_t, N>& buffer);
     template <typename T>
-    I2CTransactionHelper& readAny(T&& data);
+    I2CTransactionHelper& readAny(T& data);
 
     int doTransaction(int fd);
 };
