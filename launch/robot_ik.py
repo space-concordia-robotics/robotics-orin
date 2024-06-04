@@ -10,7 +10,7 @@ from launch.actions import Shutdown
 
 
 def generate_launch_description():
-    localMode = True
+    localMode = False
 
     wheels_controller_node = LifecycleNode(
         package='wheels_controller',
@@ -67,7 +67,7 @@ def generate_launch_description():
         ]
     )
 
-    wheel_sc_node = LifecycleNode(
+    wheel_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
         name='wheel_sc_node',
@@ -78,7 +78,7 @@ def generate_launch_description():
         namespace='/',
     )
 
-    absenc_sc_node = LifecycleNode(
+    absenc_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
         name='absenc_sc_node',
@@ -89,7 +89,7 @@ def generate_launch_description():
         namespace='/',
     )
 
-    arm_sc_node = LifecycleNode(
+    arm_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
         name='arm_sc_node',
@@ -100,7 +100,7 @@ def generate_launch_description():
         namespace='/',
     )
 
-    aik_sc_node = LifecycleNode(
+    aik_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
         name='aik_sc_node',
@@ -130,11 +130,11 @@ def generate_launch_description():
         arm_ik_node,
         arm_controller_node,
         absenc_interface_node,
-        aik_sc_node,
-        wheel_sc_node,
-        absenc_sc_node,
-        arm_sc_node,
 
+        wheel_sc,
+        absenc_sc,
+        aik_sc,
+        arm_sc,
 
         LifecycleNode(
             package='joy',

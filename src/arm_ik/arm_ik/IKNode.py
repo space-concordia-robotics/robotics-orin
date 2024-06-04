@@ -52,11 +52,7 @@ class IkNode(LifecycleNode):
     self.initialized = False
     self.angles = None
 
-  def on_configure(self, state: State) -> TransitionCallbackReturn:
-    qos_profile = QoSProfile(depth=10)
-    self.joint_pub = self.create_lifecycle_publisher(JointState, 'joint_states', qos_profile)
-  
-    # Cartesian coordinates of desired location of end effector
+      # Cartesian coordinates of desired location of end effector
     self.x = 1
     self.y = 0
     self.z = 1
@@ -79,7 +75,7 @@ class IkNode(LifecycleNode):
     maxes = self.get_parameter('joint_angle_maxes').get_parameter_value().double_array_value
     # Convert them to radians
     self.mins = [math.radians(x)  for x in mins]
-    self.maxes = [math.radians(x)  for x in maxes]
+    self.maxes = [math.radians(x)  for x in maxes]  
 
     # Sensitivity
     self.sensitivity = self.get_parameter('sensitivity').get_parameter_value().double_value
@@ -87,9 +83,12 @@ class IkNode(LifecycleNode):
     self.local_mode = self.get_parameter('local_mode').get_parameter_value().bool_value
     # Which IK solution to use
     self.solution = self.get_parameter('solution').get_parameter_value().integer_value
-
     # Mode - if 2D y value stays 0
     self.mode = self.get_parameter('mode').get_parameter_value().string_value
+
+  def on_configure(self, state: State) -> TransitionCallbackReturn:
+    qos_profile = QoSProfile(depth=10)
+    self.joint_pub = self.create_publisher(JointState, 'joint_states', qos_profile)  
 
     cad_joy_topic = '/cad_mouse_joy'
     self.cad_joy_sub = self.create_subscription(Joy, cad_joy_topic, self.cad_joy_callback, 10)
@@ -98,7 +97,6 @@ class IkNode(LifecycleNode):
     joy_topic = '/joy'
     self.joy_sub = self.create_subscription(Joy, joy_topic, self.joy_callback, 10)
     self.get_logger().info('Created publisher for topic "' + joy_topic + '"')
-
 
     # Get the initial angle values 
     absenc_topic = '/absenc_values'
