@@ -19,6 +19,11 @@ ekf_filter_node:
         publish_tf: true
 
         print_diagnostics: true
+
+        debug: false
+        debug_out_file: "ekf-log.txt"
+
+        print_diagnostics: true
         debug: true
 
 # 1. Set the map_frame, odom_frame, and base_link frames to the appropriate frame names for your system.
@@ -32,10 +37,10 @@ ekf_filter_node:
 #         from robot_localization! However, that instance should *not* fuse the global data.
         map_frame: map              # Defaults to "map" if unspecified
         odom_frame: odom            # Defaults to "odom" if unspecified
-        base_link_frame: base_link  # Defaults to "base_link" ifunspecified
+        base_link_frame: os_imu  # Defaults to "base_link" ifunspecified
         world_frame: odom           # Defaults to the value ofodom_frame if unspecified
 
-        imu0: zed/zed_node/imu/data
+        imu0: /ouster/imu
         imu0_config: [false, false, false,
                         false,  false,  true,
                         false, false, false,

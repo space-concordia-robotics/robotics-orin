@@ -27,6 +27,15 @@ def generate_launch_description():
        parameters=[os.path.join(pkg_share, 'config/video-ekf.yaml'), {'use_sim_time': LaunchConfiguration('use_sim_time')}]
     )
 
+    joint_state_publisher_node = launch_ros.actions.Node(
+        package='joint_state_publisher',
+        executable='joint_state_publisher',
+        name='joint_state_publisher',
+        arguments=[default_model_path],
+        parameters=[{'use_sim_time':LaunchConfiguration('use_sim_time')}],
+    )
+
+
 
     slam_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
@@ -37,6 +46,7 @@ def generate_launch_description():
     return launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
                                     description='Flag to enable use_sim_time'),
-        robot_localization_node
+        robot_localization_node,
+        joint_state_publisher_node,
         # slam_launch
     ])
