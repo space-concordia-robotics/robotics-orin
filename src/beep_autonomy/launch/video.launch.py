@@ -35,18 +35,45 @@ def generate_launch_description():
         parameters=[{'use_sim_time':LaunchConfiguration('use_sim_time')}],
     )
 
-
+    robot_state_publisher_node = launch_ros.actions.Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        parameters=[{'robot_description': Command(['xacro ', LaunchConfiguration('model')])},
+                    {'use_sim_time':LaunchConfiguration('use_sim_time')}]
+    )
 
     slam_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
             [slam_dir,'/launch/online_async_launch.py']),
-            launch_arguments={'use_sim_time':'false'}.items()
+            launch_arguments={'use_sim_time':'false', 'base_frame': 'zed_camera_link'}.items()
+    )
+
+    zed_launch=launch.actions.IncludeLaunchDescription(
+        launch.launch_description_sources.PythonLaunchDescriptionSource(
+            [zed2_dir,'/launch/zed_camera.launch.py']),
+            launch_arguments={'publish_urdf': 'true', 'use_sim_time':'false', 
+            'camera_model': 'zed2', 'publish_tf': 'true', 'publish_map_tf': 'false',
+            'xacro_path': default_model_path}.items()
+    )
+
+    lidar_launch=launch.actions.IncludeLaunchDescription(
+        launch.launch_description_sources.PythonLaunchDescriptionSource(
+            [ouster_dir,'/launch/driver.launch.py']),
+            launch_arguments={'params_file':ouster_dir+'/config/driver_params.yaml',
+                                'viz':'false'}.items()
     )
 
     return launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
                                     description='Flag to enable use_sim_time'),
-        robot_localization_node,
-        joint_state_publisher_node,
-        # slam_launch
+        launch.actions.DeclareLaunchArgument(name='model', default_value=default_model_path,
+                                    description='Absolute path to robot urdf file'),
+        # robot_localization_node,
+        
+        # joint_state_publisher_node,
+        # robot_state_publisher_node,
+        
+        slam_launch,
+        lidar_launch,
+        zed_launch
     ])
