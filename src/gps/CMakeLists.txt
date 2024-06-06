@@ -36,6 +36,8 @@ set(SOURCE_FILES
         src/serdes/UbxDeserializer.cpp
         src/connection/UbxAbstractConnection.cpp
         src/connection/UbxI2CConnection.cpp
+        src/connection/I2CTransactionBuilder.cpp
+        src/packet/UbxPacketNavSat.cpp
 )
 
 add_library(gps_node STATIC ${SOURCE_FILES} ${HEADER_FILES})
