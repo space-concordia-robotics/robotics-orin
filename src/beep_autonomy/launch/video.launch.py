@@ -59,7 +59,7 @@ def generate_launch_description():
     lidar_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
             [ouster_dir,'/launch/driver.launch.py']),
-            launch_arguments={'params_file':ouster_dir+'/config/driver_params.yaml',
+            launch_arguments={'params_file':os.path.join(pkg_share, 'config/ouster_driver_params.yaml'),
                                 'viz':'false'}.items()
     )
 
