@@ -84,7 +84,7 @@ public:
     */
     void assertEmpty();
     uint8_t readU1();
-    int8_t readS1();
+    int8_t readI1();
     uint16_t readU2();
     int16_t readI2();
     uint32_t readU4();
