@@ -26,6 +26,7 @@ public:
 
     template <std::size_t N>
     I2CTransactionHelper& writeArray(std::array<uint8_t, N>& buffer);
+    I2CTransactionHelper& I2CTransactionHelper::writeArray(std::initializer_list<uint8_t> ilist);
 
     template <typename T>
     I2CTransactionHelper& writeAny(T&& data);

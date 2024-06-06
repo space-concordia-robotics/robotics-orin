@@ -15,23 +15,25 @@
 int I2CTransactionHelper::openDevice(const std::string& path)
 {
     // "/dev/i2c-x"
-    int fd = open(path.c_str(), O_RDWR); 
-    if (fd < 0) {
+    int fd = open(path.c_str(), O_RDWR);
+    if (fd < 0)
+    {
         // TODO: throw exception?
         std::cerr << "Failed to open i2C device " << path << ". Error: " << strerror(errno) << std::endl;
-        errno = 0; 
+        errno = 0;
         return -1;
     }
-    return fd; 
+    return fd;
 }
 
 void I2CTransactionHelper::closeDevice(int fd)
 {
-    int status = close(fd); 
-    if (fd < 0) {
+    int status = close(fd);
+    if (fd < 0)
+    {
         // TODO: throw exception?
         std::cerr << "Failed to close i2C device. Error: " << strerror(errno) << std::endl;
-        errno = 0; 
+        errno = 0;
     }
 }
 
@@ -41,7 +43,7 @@ I2CTransactionHelper::I2CTransactionHelper(uint8_t devAddr) :
 }
 
 I2CTransactionHelper::I2CTransactionHelper(uint8_t devAddr, int reserveSize) :
-    devAddr {devAddr}
+    devAddr{devAddr}
 {
     this->segments.reserve(reserveSize);
 }
@@ -88,6 +90,12 @@ template <std::size_t N>
 I2CTransactionHelper& I2CTransactionHelper::writeArray(std::array<uint8_t, N>& buffer)
 {
     return this->write(buffer.data(), N);
+}
+
+I2CTransactionHelper& I2CTransactionHelper::writeArray(std::initializer_list<uint8_t> ilist)
+{
+    std::vector<uint8_t> buffer(ilist);
+    return this->write(buffer.data(), buffer.size());
 }
 
 // Read into array container
