@@ -10,7 +10,7 @@ class UbxI2CConnection : public UbxAbstractConnection
 protected:
     int fd;
     uint8_t devaddr;
-    int bytesAvailable();
+    int bytesAvailable() const;
     bool recvFrame(std::vector<uint8_t>& frame) override;
     bool sendFrame(std::vector<uint8_t>& frame) override;
 
