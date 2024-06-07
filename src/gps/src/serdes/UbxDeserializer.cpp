@@ -63,7 +63,7 @@ uint8_t UbxDeserializer::readU1()
     return this->readByteNochk();
 }
 
-int8_t UbxDeserializer::readS1()
+int8_t UbxDeserializer::readI1()
 {
     this->assertBytesAvailable(1);
     return static_cast<int8_t>(this->readByteNochk());

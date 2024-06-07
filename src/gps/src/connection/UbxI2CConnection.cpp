@@ -10,82 +10,47 @@
 
 UbxI2CConnection::UbxI2CConnection(const std::string& devicePath, uint8_t devaddr) :
     devaddr{devaddr},
-    fd{I2CTran{sactionHelper::openDevice(devicePath)}
-        {
-        }
+    fd{I2CTransactionHelper::openDevice(devicePath)}
+{
+}
 
-        UbxI2CConnection::~UbxI2CConneAdd UbxI2CConnection to build filesction()
-        {
-            I2CTransactionHelper::closeDevice(this->fd);
+UbxI2CConnection::~UbxI2CConnection()
+{
+    I2CTransactionHelper::closeDevice(this->fd);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-        }
-
-int UbxI2CConnection::bytesAvailable()
-        {
+int UbxI2CConnection::bytesAvailable() const
+{
     I2CTransactionHelper t{this->devaddr};
-    std::array<uint8_t, 2> buf;
-            t.writeArray({0xFD});
-            t.readArray(buf);
-            t.doTransaction(this->fd);
-    return (int)buf[0] << 8 | (int)buf[1];
+    std::array<uint8_t, 2> readBuffer{};
 
+    t.writeArray({0xFD});
+    t.readArray(readBuffer);
+    t.doTransaction(this->fd);
 
+    return (int)readBuffer[0] << 8 | (int)readBuffer[1];
+}
 
-
-
-
-
-
-
-
-
-
-
-        }
-
-bool UbxI2CConnection::recvFrame(std::vector<uint8_t> & frame)
-        {
+bool UbxI2CConnection::recvFrame(std::vector<uint8_t>& frame)
+{
     int bytesToRead = this->bytesAvailable();
     if (bytesToRead <= 0)
-            {
-                // No bytes available
+    {
+        // No bytes available
         return false;
-
-
-
-
-
-
-
-
-
-
-
-
-
-            }
-            // Read bytes
+    }
+    // Read bytes
     std::vector<uint8_t> buf(bytesToRead);
     for (int bytesToReadNow = bytesToRead <= MAX_TRANSACTION_SIZE ? bytesToRead : MAX_TRANSACTION_SIZE;
-            bytesToRead > 0;
-            bytesToRead -= bytesToReadNow)
-            {
-            }
-        }
+         bytesToRead > 0;
+         bytesToRead -= bytesToReadNow)
+    {
+    }
+    return true;
+}
 
-bool UbxI2CConnection::sendFrame(std::vector<uint8_t> & frame)
-        {
-        }
-
+bool UbxI2CConnection::sendFrame(std::vector<uint8_t>& frame)
+{
+    // TODO: josh
+    return false;
+}
