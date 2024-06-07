@@ -84,6 +84,12 @@ public:
     static uint16_t PID;
     const bool isPollingPacket{};
 
+    void ensurePid(uint16_t pid) const
+    {
+        // todo: fill
+        // if (pid != PID) throw
+    }
+
     // Deserializing constructor
     UbxPacketNavSat(const std::vector<uint8_t>& frame) : UbxPacket(frame), isPollingPacket{false}
     {
@@ -92,7 +98,7 @@ public:
         this->iTOW = des.readU4();
         this->version = des.readU1();
         this->numSvs = des.readU1();
-        des.skip2();
+        des.skip2Bytes();
         this->satellites.reserve(this->numSvs);
         for (int i = 0; i < this->numSvs; i++)
         {
@@ -101,9 +107,10 @@ public:
         }
     }
 
+
     // Serializing constructor for polling
-    UbxPacketNavSat()
-    isPollingPacket { true }
+    UbxPacketNavSat():
+        isPollingPacket{true}
 
     {
         UbxPacket(PID, {});
