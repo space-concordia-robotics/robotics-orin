@@ -21,7 +21,7 @@ typedef struct
 
 // TODO: constructor; leave constructor empty for now, the constructor will open GPS device
 
-static void GPS_UBXI2C_LoadWrSegment(struct i2c_msg &segment, uint8_t *buf, int len)
+static void GPS_UBXI2C_LoadWrSegment(struct i2c_msg& segment, uint8_t* buf, int len)
 {
     segment.addr = GPS_I2C_ADDR;
     segment.flags = 0;
@@ -29,7 +29,7 @@ static void GPS_UBXI2C_LoadWrSegment(struct i2c_msg &segment, uint8_t *buf, int 
     segment.len = len;
 }
 
-static void GPS_UBXI2C_LoadRdSegment(struct i2c_msg &segment, uint8_t *buf, int len)
+static void GPS_UBXI2C_LoadRdSegment(struct i2c_msg& segment, uint8_t* buf, int len)
 {
     segment.addr = GPS_I2C_ADDR;
     segment.flags = I2C_M_RD;
@@ -37,7 +37,7 @@ static void GPS_UBXI2C_LoadRdSegment(struct i2c_msg &segment, uint8_t *buf, int 
     segment.len = len;
 }
 
-static int GPS_UBXI2C_DoTransaction(const GPS_Device_t *obj, struct i2c_msg *segments, int transactionCount)
+static int GPS_UBXI2C_DoTransaction(const GPS_Device_t* obj, struct i2c_msg* segments, int transactionCount)
 {
     if (transactionCount == 0)
     {
@@ -61,16 +61,16 @@ static int GPS_UBXI2C_DoTransaction(const GPS_Device_t *obj, struct i2c_msg *seg
     return 0;
 }
 
-static int GPS_UBXI2C_BytesAvailable(const GPS_Device_t *obj, uint16_t *size)
+static int GPS_UBXI2C_BytesAvailable(const GPS_Device_t* obj, uint16_t* size)
 {
     struct i2c_msg transactionSegments[2];
     // Segment 1: set address pointer to 0xFD
     uint8_t writeBuffer[1] = {0xFD};
-    GPS_UBXI2C_LoadWrSegment(&transactionSegments[0], writeBuffer, 1);
+    GPS_UBXI2C_LoadWrSegment(transactionSegments[0], writeBuffer, 1);
 
     // Segment 2: read 2 bytes
     uint8_t readBuffer[2];
-    GPS_UBXI2C_LoadRdSegment(&transactionSegments[1], readBuffer, 2);
+    GPS_UBXI2C_LoadRdSegment(transactionSegments[1], readBuffer, 2);
 
     // Perform compound transaction
     int status = GPS_UBXI2C_DoTransaction(obj, transactionSegments, 2);
@@ -87,7 +87,7 @@ static int GPS_UBXI2C_BytesAvailable(const GPS_Device_t *obj, uint16_t *size)
 
 // Public method
 // TODO: encapsulate buffer + capacity as an object
-int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t *buffer, uint32_t capacity, uint32_t *frameSize0)
+int GPS_UBXI2C_Read(const GPS_Device_t* obj, uint8_t* buffer, uint32_t capacity, uint32_t* frameSize0)
 {
     uint16_t frameSize;
     int result = GPS_UBXI2C_BytesAvailable(obj, &frameSize);
@@ -95,7 +95,8 @@ int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t *buffer, uint32_t capacity,
         return result;
     if (frameSize > capacity)
     {
-        fprintf(stderr, "[WARN] Line %d: Receiving %d bytes but buffer capacity is only %d\n", __LINE__, frameSize, capacity);
+        fprintf(stderr, "[WARN] Line %d: Receiving %d bytes but buffer capacity is only %d\n", __LINE__, frameSize,
+                capacity);
         frameSize = capacity;
     }
     *frameSize0 = frameSize;
@@ -107,11 +108,12 @@ int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t *buffer, uint32_t capacity,
     // Initiate reads not exceeding max transfer length
     int bytesToRead = frameSize;
     uint8_t i2cReadBuffer[I2C_MAX_TRANSACTION];
-    for (int bytesToReadNow, index = 0; bytesToReadNow > 0; )
+    for (int bytesToReadNow, index = 0; bytesToReadNow > 0;)
     {
         bytesToReadNow = (bytesToRead > I2C_MAX_TRANSACTION) ? I2C_MAX_TRANSACTION : bytesToRead;
         struct i2c_msg transactionSegment;
-        GPS_UBXI2C_LoadRdSegment(&transactionSegment, i2cReadBuffer, bytesToReadNow);
+
+        GPS_UBXI2C_LoadRdSegment(transactionSegment, i2cReadBuffer, bytesToReadNow);
         int status = GPS_UBXI2C_DoTransaction(obj, &transactionSegment, 1);
         if (status != 0)
         {
@@ -126,7 +128,7 @@ int GPS_UBXI2C_Read(const GPS_Device_t *obj, uint8_t *buffer, uint32_t capacity,
 
 // Public method
 // TODO: encapsulate buffer + length as an object
-int GPS_UBXI2C_Write(const GPS_Device_t *obj, uint8_t *buffer, uint32_t length)
+int GPS_UBXI2C_Write(const GPS_Device_t* obj, uint8_t* buffer, uint32_t length)
 {
     if (length == 0)
     {
@@ -150,7 +152,8 @@ private:
     std::string message;
 
 public:
-    explicit UbxDeserializerException(const std::vector<uint8_t> &payload, uint32_t readIndex, uint32_t readLength, const std::string &message)
+    explicit UbxDeserializerException(const std::vector<uint8_t>& payload, uint32_t readIndex, uint32_t readLength,
+                                      const std::string& message)
     {
         // Initialize this in a better way?
         this->payload = payload;
@@ -159,7 +162,7 @@ public:
         this->message = message;
     }
 
-    virtual const char *what() const noexcept override
+    virtual const char* what() const noexcept override
     {
         // How can I build a message like this:
         // "Error reading index <readIndex> length <readLength>: <message> (<payload bytes in hex>)"
@@ -169,10 +172,9 @@ public:
 
 class UbxPayloadDrainedException : public UbxDeserializerException
 {
-
 public:
     // Only change is the constructor now contains the error message
-    explicit UbxPayloadDrainedException(const std::vector<uint8_t> &payload, uint32_t readIndex, uint32_t readLength)
+    explicit UbxPayloadDrainedException(const std::vector<uint8_t>& payload, uint32_t readIndex, uint32_t readLength)
         : UbxDeserializerException::UbxDeserializerException(payload, readIndex, readLength, "Payload drained.")
     {
     }
@@ -180,11 +182,12 @@ public:
 
 class UbxPayloadExcessException : public UbxDeserializerException
 {
-
 public:
     // Only change is the constructor now contains the error message
-    explicit UbxPayloadExcessException(const std::vector<uint8_t> &payload, uint32_t currentIndex)
-        : UbxDeserializerException::UbxDeserializerException(payload, readIndex, payload, "Payload has more bytes.")
+    explicit UbxPayloadExcessException(const std::vector<uint8_t>& payload, uint32_t currentIndex)
+        : UbxDeserializerException(payload, readIndex, payload, "Payload has more bytes.")
+    // explicit UbxDeserializerException(const std::vector<uint8_t>& payload, uint32_t readIndex, uint32_t readLength,
+    // const std::string& message)
     {
     }
 };
@@ -195,10 +198,11 @@ class UbxDeserializer
 private:
     std::vector<uint8_t> payload;
     uint32_t index;
-    uint32_t bitfieldBuffer; 
+    uint32_t bitfieldBuffer;
 
-    uint8_t readByteNochk() {
-        return this->payload.at(this->index++); 
+    uint8_t readByteNochk()
+    {
+        return this->payload.at(this->index++);
     }
 
 public:
@@ -213,151 +217,170 @@ public:
         this->index = 0;
     }
 
-    void assertBytesAvailable(uint32_t length) {
-        uint32_t requiredLength = this->index + length; 
-        if(this->payload.size() < requiredLength) {
-            throw UbxPayloadDrainedException(this->payload, this->index, length); 
+    void assertBytesAvailable(uint32_t length)
+    {
+        uint32_t requiredLength = this->index + length;
+        if (this->payload.size() < requiredLength)
+        {
+            throw UbxPayloadDrainedException(this->payload, this->index, length);
         }
     }
 
     void assertEmpty()
     {
-        if(this->index < this->payload.size())
+        if (this->index < this->payload.size())
         {
-            throw UbxPayloadExcessException(this->payload); 
+            throw UbxPayloadExcessException(this->payload);
         }
     }
 
-    uint8_t readU1() {
-        this->assertBytesAvailable(1); 
-        return this->readByteNochk(); 
+    uint8_t readU1()
+    {
+        this->assertBytesAvailable(1);
+        return this->readByteNochk();
     }
 
-    int8_t readS1() {
-        this->assertBytesAvailable(1); 
-        return static_cast<int8_t>(this->readByteNochk()); 
+    int8_t readS1()
+    {
+        this->assertBytesAvailable(1);
+        return static_cast<int8_t>(this->readByteNochk());
     }
 
-    uint16_t readU2() {
-        this->assertBytesAvailable(2); 
-        uint16_t data; 
-        data  =  static_cast<uint16_t>(this->readByteNochk()); 
-        data |= (static_cast<uint16_t>(this->readByteNochk())) << 8; 
-        return data; 
+    uint16_t readU2()
+    {
+        this->assertBytesAvailable(2);
+        uint16_t data;
+        data = static_cast<uint16_t>(this->readByteNochk());
+        data |= (static_cast<uint16_t>(this->readByteNochk())) << 8;
+        return data;
     }
 
-    int16_t readI2() {
-        return static_cast<int16_t>(this->readU2()); 
+    int16_t readI2()
+    {
+        return static_cast<int16_t>(this->readU2());
     }
 
-    uint32_t readU4() {
-        this->assertBytesAvailable(4); 
-        uint32_t data; 
-        data  =  static_cast<uint32_t>(this->readByteNochk()); 
-        data |= (static_cast<uint32_t>(this->readByteNochk())) << 8; 
-        data |= (static_cast<uint32_t>(this->readByteNochk())) << 16; 
-        data |= (static_cast<uint32_t>(this->readByteNochk())) << 24; 
-        return data; 
+    uint32_t readU4()
+    {
+        this->assertBytesAvailable(4);
+        uint32_t data;
+        data = static_cast<uint32_t>(this->readByteNochk());
+        data |= (static_cast<uint32_t>(this->readByteNochk())) << 8;
+        data |= (static_cast<uint32_t>(this->readByteNochk())) << 16;
+        data |= (static_cast<uint32_t>(this->readByteNochk())) << 24;
+        return data;
     }
 
-    int32_t readI4() {
-        return static_cast<int32_t>(this->readU4()); 
+    int32_t readI4()
+    {
+        return static_cast<int32_t>(this->readU4());
     }
 
-    void readByteArray(uint8_t * data, uint32_t length) {
-        this->assertBytesAvailable(length); 
-        for(int i = 0; i < length; i++) {
-            data[i] = this->readByteNochk(); 
+    void readByteArray(uint8_t* data, uint32_t length)
+    {
+        this->assertBytesAvailable(length);
+        for (int i = 0; i < length; i++)
+        {
+            data[i] = this->readByteNochk();
         }
     }
 
     std::vector<uint8_t> readVector(uint32_t length)
     {
-        this->assertBytesAvailable(length); 
-        std::vector<uint8_t> data; 
-        data.resize(length); 
-        this->readByteArray(data.data(), data.size()); 
-        return data; 
+        this->assertBytesAvailable(length);
+        std::vector<uint8_t> data;
+        data.resize(length);
+        this->readByteArray(data.data(), data.size());
+        return data;
     }
 
-    float readR4() {
-        float data; 
-        this->readByteArray(reinterpret_cast<uint8_t *>(&data), 4); 
-        return data; 
+    float readR4()
+    {
+        float data;
+        this->readByteArray(reinterpret_cast<uint8_t*>(&data), 4);
+        return data;
     }
 
-    double readR8() {
-        double data; 
-        this->readByteArray(reinterpret_cast<uint8_t *>(&data), 8); 
-        return data; 
-    }
-    
-    char readCh() {
-        this->assertBytesAvailable(1); 
-        return static_cast<char>(this->readByteNochk()); 
+    double readR8()
+    {
+        double data;
+        this->readByteArray(reinterpret_cast<uint8_t*>(&data), 8);
+        return data;
     }
 
-    void readX1() {
-        this->bitfieldBuffer = static_cast<uint32_t>(this->readU1()); 
+    char readCh()
+    {
+        this->assertBytesAvailable(1);
+        return static_cast<char>(this->readByteNochk());
     }
 
-    void readX2() {
-        this->bitfieldBuffer = static_cast<uint32_t>(this->readU2()); 
+    void readX1()
+    {
+        this->bitfieldBuffer = static_cast<uint32_t>(this->readU1());
     }
 
-    void readX4() {
-        this->bitfieldBuffer = this->readU4(); 
+    void readX2()
+    {
+        this->bitfieldBuffer = static_cast<uint32_t>(this->readU2());
     }
 
-    bool readXF(int bit) {
-        if(bit < 0 || bit > 31)
+    void readX4()
+    {
+        this->bitfieldBuffer = this->readU4();
+    }
+
+    bool readXF(int bit)
+    {
+        if (bit < 0 || bit > 31)
         {
-            return false; 
+            return false;
         }
-        return !!(this->bitfieldBuffer & (1 << bit)); 
+        return !!(this->bitfieldBuffer & (1 << bit));
     }
 
-    uint32_t readXU(int msb, int lsb) {
+    uint32_t readXU(int msb, int lsb)
+    {
         if (msb < 0 || lsb < 0 || msb > 31 || lsb > 31 || msb < lsb)
         {
             return 0;
         }
-        uint32_t temp = this->bitfieldBuffer >> lsb; 
-        if(msb < 31)
+        uint32_t temp = this->bitfieldBuffer >> lsb;
+        if (msb < 31)
         {
-            uint32_t mask = (1 << msb - lsb + 1) - 1; 
-            return temp & mask; 
+            uint32_t mask = (1 << msb - lsb + 1) - 1;
+            return temp & mask;
         }
         else
         {
-            return temp; 
+            return temp;
         }
     }
 
-    int32_t readXI(int msb, int lsb) {
+    int32_t readXI(int msb, int lsb)
+    {
         if (msb < 0 || lsb < 0 || msb > 31 || lsb > 31 || msb < lsb)
         {
             return 0;
         }
-        int32_t temp = static_cast<int32_t>(this->bitfieldBuffer) >> lsb; 
-        if(msb < 31)
+        int32_t temp = static_cast<int32_t>(this->bitfieldBuffer) >> lsb;
+        if (msb < 31)
         {
-            uint32_t mask = (1 << msb - lsb + 1) - 1; 
-            return temp & mask; 
+            uint32_t mask = (1 << msb - lsb + 1) - 1;
+            return temp & mask;
         }
         else
         {
-            return temp; 
+            return temp;
         }
     }
 
-    int32_t readXS(int msb, int lsb) {
+    int32_t readXS(int msb, int lsb)
+    {
         if (msb < 0 || lsb < 0 || msb > 31 || lsb > 31 || msb <= lsb) // Note the <=, we need at least 2 bits
         {
             return 0;
         }
-        uint32_t magnitude = this->readXU(msb - 1, lsb); 
-        return this->readXF(msb) ? -magnitude : magnitude; 
+        uint32_t magnitude = this->readXU(msb - 1, lsb);
+        return this->readXF(msb) ? -magnitude : magnitude;
     }
-
 };
