@@ -43,6 +43,7 @@ from geometry_msgs.msg import PoseArray, Pose
 from ros2_aruco_interfaces.msg import ArucoMarkers
 from rcl_interfaces.msg import ParameterDescriptor, ParameterType
 import subprocess
+import time
 
 def estimatePoseSingleMarkers(corners, marker_size, mtx, distortion):
     '''
@@ -169,6 +170,7 @@ class ArucoNode(rclpy.node.Node):
         self.ffmpeg_process = subprocess.Popen(["ffmpeg", "-i", f"/dev/video{self.camera_index}", "-f", "v4l2", "-codec:v", "rawvideo", "-pix_fmt", "yuv420p", f"/dev/video{self.camera_destination_index}"])
         self.camera_index = self.camera_destination_index
 
+
         if completion1.returncode != 0:
             self.get_logger().error(f"Error setting up multicamera: {completion1.stderr}")
         if completion2.returncode != 0:
@@ -226,8 +228,6 @@ class ArucoNode(rclpy.node.Node):
         self.camera_destination_index = (
             self.get_parameter("camera_destination_index").get_parameter_value().integer_value
         )
-        if self.camera_destination_index != -1:
-            self.setup_camera_loopback()
 
         self.camera_matrix = (
             self.get_parameter("camera_matrix").get_parameter_value().double_array_value
@@ -261,6 +261,10 @@ class ArucoNode(rclpy.node.Node):
         self.poses_pub = self.create_publisher(PoseArray, "aruco_poses", 10)
         self.markers_pub = self.create_publisher(ArucoMarkers, "aruco_markers", 10)
 
+        # Setup duplicate cameras if requested
+        if self.camera_destination_index != -1:
+            self.setup_camera_loopback()
+
         # Setup timers for opening camera (to allow easy retry) and for detecting aruco tags
         self.detect_timer = self.create_timer(poll_delay_seconds, self.image_callback)
         self.open_video_timer = self.create_timer(1.0, self.cam_callback)
@@ -283,8 +287,11 @@ class ArucoNode(rclpy.node.Node):
             
             self.actual_resolution = np.array([int(self.video_capture.get(cv2.CAP_PROP_FRAME_WIDTH)), 
                                       int(self.video_capture.get(cv2.CAP_PROP_FRAME_HEIGHT))])
+            if self.actual_resolution[0] == 0 or self.actual_resolution[1] == 0:
+                self.get_logger().warn(f"Could not open camera at {self.camera_index}, trying again, error {e}")
+                return
+
             self.get_logger().info(f"Desired camera resolution {self.capture_resolution}, actual resolution {self.actual_resolution}")
-            
             # Once successful, don't try to open again
             self.open_video_timer.cancel()
         except Exception as e:
@@ -350,7 +357,7 @@ class ArucoNode(rclpy.node.Node):
                     pose.position.z = tvecs[i][2][0]
 
                     rot_matrix = np.eye(4)
-                    rot_matrix[0:3, 0:3] = cv2.Rodrigues(np.array(rvecs))[0]
+                    rot_matrix[0:3, 0:3] = cv2.Rodrigues(np.array(rvecs[i]))[0]
                     quat = tf_transformations.quaternion_from_matrix(rot_matrix)
 
                     pose.orientation.x = quat[0]

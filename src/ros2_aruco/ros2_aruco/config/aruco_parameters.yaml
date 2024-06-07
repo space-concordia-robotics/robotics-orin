@@ -1,12 +1,12 @@
 /aruco_node:
   ros__parameters:
     poll_delay_seconds: 0.2
-    marker_size: 0.050
+    marker_size: 0.070
     aruco_dictionary_id: "DICT_5X5_250"
     camera_index: 2
     calibration_resolution: [1920, 1080]
     capture_resolution: [1920, 1080]
-    # camera_destination_index: 10
+    camera_destination_index: 10
     # Data comes from a C920 in the lab calibrated with an 8x6 grid.
     camera_matrix: [1727.79073,    0.     , 1063.47911,
                     0.     , 1768.42988,  733.47827,
