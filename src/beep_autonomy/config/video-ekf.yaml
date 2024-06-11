@@ -15,12 +15,12 @@ ekf_filter_node:
 # Whether to publish the acceleration state. Defaults to false if unspecified.
         publish_acceleration: true
 
-# Whether to broadcast the transformation over the /tf topic. Defaultsto true if unspecified.
+# Whether to broadcast the transformation over the /tf topic. Defaults to true if unspecified.
         publish_tf: true
 
         print_diagnostics: true
 
-        debug: false
+        debug: true
         debug_out_file: "ekf-log.txt"
 
         print_diagnostics: true
@@ -45,7 +45,7 @@ ekf_filter_node:
                         false, false, false,
                         true,  true, true,
                         true,  true,  true]
-        imu0_differential: false  # If using a real robot you might want to set this to true, since usually absolute measurements from real imu's are not very accurate
+        imu0_differential: true  # If using a real robot you might want to set this to true, since usually absolute measurements from real imu's are not very accurate
         imu0_relative: false
         imu0_queue_size: 10
         imu0_remove_gravitational_acceleration: true

@@ -51,8 +51,8 @@ def generate_launch_description():
     zed_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
             [zed2_dir,'/launch/zed_camera.launch.py']),
-            launch_arguments={'publish_urdf': 'true', 'use_sim_time':'false', 
-            'camera_model': 'zed2', 'publish_tf': 'true', 'publish_map_tf': 'false',
+            launch_arguments={'publish_urdf': 'false', 'use_sim_time':'false', 
+            'camera_model': 'zed2', 'publish_tf': 'false', 'publish_map_tf': 'false',
             'xacro_path': default_model_path}.items()
     )
 
@@ -68,10 +68,10 @@ def generate_launch_description():
                                     description='Flag to enable use_sim_time'),
         launch.actions.DeclareLaunchArgument(name='model', default_value=default_model_path,
                                     description='Absolute path to robot urdf file'),
-        # robot_localization_node,
+        robot_localization_node,
         
-        # joint_state_publisher_node,
-        # robot_state_publisher_node,
+        joint_state_publisher_node,
+        robot_state_publisher_node,
         
         slam_launch,
         lidar_launch,
