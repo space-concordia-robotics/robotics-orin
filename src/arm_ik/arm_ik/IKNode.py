@@ -86,6 +86,8 @@ class IkNode(LifecycleNode):
     # Mode - if 2D y value stays 0
     self.mode = self.get_parameter('mode').get_parameter_value().string_value
 
+    self.timer = self.create_timer(1/30, self.publish_joint_state)
+
   def on_configure(self, state: State) -> TransitionCallbackReturn:
     qos_profile = QoSProfile(depth=10)
     self.joint_pub = self.create_publisher(JointState, 'joint_states', qos_profile)  
@@ -391,20 +393,23 @@ def main(args=None):
   ik_node = IkNode()
   # executor.add_node(ik_node)
 
+  rclpy.spin(ik_node)
+  ik_node.destroy_node()
+
   # Spin in a separate thread
-  thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
-  thread.start()
+  # thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
+  # thread.start()
 
-  loop_rate = ik_node.create_rate(30)
+  # loop_rate = ik_node.create_rate(30)
 
-  while rclpy.ok():
-    try:
-        ik_node.publish_joint_state()
-        # executor.spin()
-        loop_rate.sleep()
-    except KeyboardInterrupt:
-        # ik_node.destroy_node()
-        print("Node shutting down due to shutting down node.")
-        break
+  # while rclpy.ok():
+  #   try:
+  #       ik_node.publish_joint_state()
+  #       # executor.spin()
+  #       loop_rate.sleep()
+  #   except KeyboardInterrupt:
+  #       # ik_node.destroy_node()
+  #       print("Node shutting down due to shutting down node.")
+  #       break
 
   rclpy.shutdown()

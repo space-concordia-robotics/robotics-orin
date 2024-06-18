@@ -71,18 +71,18 @@
       if (!rclcpp::ok()) {
         return callbackReturn::FAILURE;
       }
-    
-      subscription = this->create_subscription<sensor_msgs::msg::JointState>(
-        "joint_states", 10, std::bind(&Absenc::ikValuesCallback, this, std::placeholders::_1));
-
-      subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
-        "cad_mouse_joy", 10, std::bind(&Absenc::cadValuesCallback, this, std::placeholders::_1));
-
-      subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
-        "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
-      RCLCPP_ERROR(this->get_logger(), "Done, got joint_states");
-    
     }
+
+    subscription = this->create_subscription<sensor_msgs::msg::JointState>(
+      "joint_states", 10, std::bind(&Absenc::ikValuesCallback, this, std::placeholders::_1));
+
+    subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
+      "cad_mouse_joy", 10, std::bind(&Absenc::cadValuesCallback, this, std::placeholders::_1));
+
+    subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
+      "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
+    RCLCPP_ERROR(this->get_logger(), "Done, got joint_states");
+    
 
     arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
     
@@ -233,13 +233,12 @@ void Absenc::joyValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg) {
 }
 
 void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg) {
-    RCLCPP_ERROR(this->get_logger(), "In ik callback");
   // Convert ik angles to degrees
   for (int i = 0; i < 4; i++) {
     ik_angles[i] = msg->position[i] * 180.0 / M_PI;
   }
   if (inhibitArmMovement) {
-        RCLCPP_ERROR(this->get_logger(), "arm movement inhibited");
+        // RCLCPP_ERROR(this->get_logger(), "arm movement inhibited");
     // Then should be controlling the end effector directly; abort here
     return;
   }

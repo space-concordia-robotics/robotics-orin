@@ -70,7 +70,7 @@ def generate_launch_description():
     wheel_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='wheel_sc_node',
+        name='wheel_sc',
         output='screen',
         parameters=[
             {"node": 'wheels_controller'},
@@ -81,7 +81,7 @@ def generate_launch_description():
     absenc_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='absenc_sc_node',
+        name='absenc_sc',
         output='screen',
         parameters=[
             {"node": 'absenc_node'},
@@ -92,7 +92,7 @@ def generate_launch_description():
     arm_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='arm_sc_node',
+        name='arm_sc',
         output='screen',
         parameters=[
             {"node": 'arm_controller'},
@@ -103,7 +103,7 @@ def generate_launch_description():
     aik_sc = LifecycleNode(
         package='service_client',
         executable='service_client',
-        name='aik_sc_node',
+        name='aik_sc',
         output='screen',
         parameters=[
             {"node": 'ik_node'},
@@ -119,6 +119,7 @@ def generate_launch_description():
         urdf_file_name)
     with open(urdf, 'r') as infp:
         robot_desc = infp.read()
+
 
     return LaunchDescription([
 
