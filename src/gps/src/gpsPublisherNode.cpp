@@ -45,7 +45,8 @@ callbackReturn gpsPublisherNode::on_shutdown(const rclcpp_lifecycle::State & sta
         "on shutdown is called from state %s.",
         state.label().c_str()
     );
-
+	
+	rclcpp::shutdown();
     return callbackReturn::SUCCESS;
 }
 

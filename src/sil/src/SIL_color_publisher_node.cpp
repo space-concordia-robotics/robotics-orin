@@ -103,6 +103,7 @@ class Configuration : public rclcpp_lifecycle::LifecycleNode{
         state.label().c_str()
       );
 
+      rclcpp::shutdown();
       return callbackReturn::SUCCESS;
     }
 

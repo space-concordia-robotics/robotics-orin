@@ -127,6 +127,8 @@ class IkNode(LifecycleNode):
     self.destroy_lifecycle_publisher(self.joint_pub)
 
     self.get_logger().info(f"LifecycleNode '{self.get_name()} is in state '{state.label}. Transitioning to 'shutdown'")
+    
+    rclpy.shutdown()
     return TransitionCallbackReturn.SUCCESS
   
   def have_abs_angles(self):
