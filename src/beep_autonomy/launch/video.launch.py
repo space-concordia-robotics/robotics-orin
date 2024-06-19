@@ -45,13 +45,14 @@ def generate_launch_description():
     slam_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
             [slam_dir,'/launch/online_async_launch.py']),
-            launch_arguments={'use_sim_time':'false', 'base_frame': 'zed_camera_link', 'resolution': '0.01'}.items()
+            launch_arguments={'use_sim_time':LaunchConfiguration('use_sim_time'), 
+                            'base_frame': 'zed_camera_link', 'resolution': '0.01'}.items()
     )
 
     zed_launch=launch.actions.IncludeLaunchDescription(
         launch.launch_description_sources.PythonLaunchDescriptionSource(
             [zed2_dir,'/launch/zed_camera.launch.py']),
-            launch_arguments={'publish_urdf': 'false', 'use_sim_time':'false', 
+            launch_arguments={'publish_urdf': 'false', 'use_sim_time':LaunchConfiguration('use_sim_time'), 
             'camera_model': 'zed2', 'publish_tf': 'false', 'publish_map_tf': 'false',
             'xacro_path': default_model_path}.items()
     )
@@ -64,7 +65,7 @@ def generate_launch_description():
     )
 
     return launch.LaunchDescription([
-        launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='True',
+        launch.actions.DeclareLaunchArgument(name='use_sim_time', default_value='false',
                                     description='Flag to enable use_sim_time'),
         launch.actions.DeclareLaunchArgument(name='model', default_value=default_model_path,
                                     description='Absolute path to robot urdf file'),
