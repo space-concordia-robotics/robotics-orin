@@ -125,6 +125,7 @@
         state.label().c_str()
     );
 
+    rclcpp::shutdown();
     return callbackReturn::SUCCESS;
   }
 

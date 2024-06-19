@@ -89,6 +89,7 @@ callbackReturn ArmControllerNode::on_shutdown(const rclcpp_lifecycle::State & st
         state.label().c_str()
     );
 
+    rclcpp::shutdown();
     return callbackReturn::SUCCESS;
 }
 
