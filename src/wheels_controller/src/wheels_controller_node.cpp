@@ -122,8 +122,6 @@ callbackReturn WheelsControllerNode::on_shutdown(const rclcpp_lifecycle::State &
         state.label().c_str()
     );
     rclcpp::shutdown();
-
-    rclcpp::shutdown();
     return callbackReturn::SUCCESS;
 }
 
