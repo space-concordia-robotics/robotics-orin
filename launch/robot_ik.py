@@ -122,7 +122,6 @@ def generate_launch_description():
 
 
     return LaunchDescription([
-
         # TODO: create a separate package that is abstract enough to avoid having to create a service_client file for every node concerned
         
         # runs a script that enables automatic transitions to inactive
