@@ -3,15 +3,10 @@
 import rclpy
 import rclpy.executors
 from sensor_msgs.msg import Joy
-from rclpy.node import Node
 import math
-from rclpy.node import Node
 from rclpy.qos import QoSProfile
 from rclpy.lifecycle import State, TransitionCallbackReturn, LifecycleNode
-from geometry_msgs.msg import Quaternion
 from sensor_msgs.msg import JointState
-from std_msgs.msg import String
-import threading
 from absenc_interface.msg import EncoderValues
 
 # Publishes angles in radians for the motors
@@ -391,27 +386,9 @@ class IkNode(LifecycleNode):
 def main(args=None):
   rclpy.init(args=args)
 
-  # executor = rclpy.executors.SingleThreadedExecutor()
   ik_node = IkNode()
-  # executor.add_node(ik_node)
 
   rclpy.spin(ik_node)
   ik_node.destroy_node()
-
-  # Spin in a separate thread
-  # thread = threading.Thread(target=rclpy.spin, args=(ik_node, ), daemon=True)
-  # thread.start()
-
-  # loop_rate = ik_node.create_rate(30)
-
-  # while rclpy.ok():
-  #   try:
-  #       ik_node.publish_joint_state()
-  #       # executor.spin()
-  #       loop_rate.sleep()
-  #   except KeyboardInterrupt:
-  #       # ik_node.destroy_node()
-  #       print("Node shutting down due to shutting down node.")
-  #       break
 
   rclpy.shutdown()

@@ -160,20 +160,6 @@ void callee_script(std::shared_ptr<ServiceClient> client){
             return;
         }
     }
-
-    // // and finally shutdown
-    // {
-    //     time_between_state_changes.sleep();
-    //     if (!rclcpp::ok()) {
-    //         return;
-    //     }
-    //     if (!client->change_state(lifecycle_msgs::msg::Transition::TRANSITION_UNCONFIGURED_SHUTDOWN)){
-    //         return;
-    //     }
-    //     if (!client->get_state()) {
-    //         return;
-    //     }
-    // }
 }
 
 void wake_executor(std::shared_future<void> future, rclcpp::executors::SingleThreadedExecutor & exec){

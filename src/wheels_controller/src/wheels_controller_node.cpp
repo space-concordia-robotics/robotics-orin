@@ -1,25 +1,6 @@
 #include "wheels_controller_node.h"
 
 WheelsControllerNode::WheelsControllerNode() : LifecycleNode("wheels_controller_node"){}
-// explicit WheelsControllerNode(const std::string& node_name, bool intra_process_comms = false)
-// : rclcpp_lifecycle::LifecycleNode(node_name, 
-// rclcpp::NodeOptions().use_intra_process_comms(intra_process_comms)){};
-
-// void topic_callback(){
-//     static size_t count = 0;
-//     auto msg = std::make_unique<std_msgs::msg::String>();
-//     msg->data = "Lifecycle HelloWorld #" + std::to_string(++count);
-
-//     // Print the current state for demo purposes
-//     if (!pub_->is_activated()) {
-//         RCLCPP_INFO(
-//         get_logger(), "Lifecycle publisher is currently inactive. Messages are not published.");
-//     } else {
-//         RCLCPP_INFO(
-//         get_logger(), "Lifecycle publisher is active. Publishing: [%s]", msg->data.c_str());
-//     }
-//     pub_->publish(std::move(msg));
-// };
 
 callbackReturn WheelsControllerNode::on_configure(const rclcpp_lifecycle::State &){
     this->declare_parameter("can_path", "can0");
