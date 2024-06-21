@@ -14,6 +14,11 @@
 #include <sensor_msgs/msg/joy.hpp>
 #include "std_msgs/msg/string.hpp"
 
+#include "rclcpp_lifecycle/lifecycle_node.hpp"
+#include "rclcpp_lifecycle/lifecycle_publisher.hpp"
+#include "lifecycle_msgs/msg/transition.hpp"
+
+
 #define NO_ERROR            0
 #define ERR_SERIAL_FAILURE  1
 #define ERR_SLAVE_INVALID   2
@@ -24,6 +29,8 @@ typedef struct {
     int cause; 
     int line; 
 } ABSENC_Error_t;
+
+typedef rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn callbackReturn;
 
 // Gets string corresponding to error code
 const char* strAbsencErr(int err);
@@ -47,10 +54,16 @@ public:
     static ABSENC_Error_t ClosePort(int s_fd);
 };
 
-class Absenc: public rclcpp::Node{
+class Absenc: public rclcpp_lifecycle::LifecycleNode{
 public:
     Absenc();
     ~Absenc();
+    callbackReturn on_configure(const rclcpp_lifecycle::State &);
+    callbackReturn on_activate(const rclcpp_lifecycle::State & state);
+    callbackReturn on_deactivate(const rclcpp_lifecycle::State & state);
+    callbackReturn on_cleanup(const rclcpp_lifecycle::State &);
+    callbackReturn on_shutdown(const rclcpp_lifecycle::State & state);
+
 private:
     void absEncPollingCallback();
     void cadValuesCallback(const sensor_msgs::msg::Joy::SharedPtr msg);
@@ -60,7 +73,7 @@ private:
 
     int s_fd = -1;
 
-    rclcpp::TimerBase::SharedPtr timer;
+    rclcpp::TimerBase::SharedPtr timer_;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_cad_mouse;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_joy;

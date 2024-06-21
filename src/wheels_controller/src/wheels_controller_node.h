@@ -15,6 +15,10 @@
 #include <geometry_msgs/msg/point.hpp>
 #include <geometry_msgs/msg/quaternion.hpp>
 
+#include "lifecycle_msgs/msg/transition.hpp"
+#include "rclcpp_lifecycle/lifecycle_node.hpp"
+#include "rclcpp_lifecycle/lifecycle_publisher.hpp"
+
 #include "nav2_msgs/action/navigate_to_pose.hpp"
 #include <chrono>
 using namespace std::chrono;
@@ -27,14 +31,20 @@ using namespace std::chrono;
 #define DEVICE_6_ID 6
 
 using namespace std::literals::chrono_literals;
+typedef rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn callbackReturn;
 
-class WheelsControllerNode : public rclcpp::Node{
-public:
+class WheelsControllerNode : public rclcpp_lifecycle::LifecycleNode{
+  public:
     WheelsControllerNode();
+    callbackReturn on_configure(const rclcpp_lifecycle::State &);
+    callbackReturn on_activate(const rclcpp_lifecycle::State & state);
+    callbackReturn on_deactivate(const rclcpp_lifecycle::State & state);
+    callbackReturn on_cleanup(const rclcpp_lifecycle::State &);
+    callbackReturn on_shutdown(const rclcpp_lifecycle::State & state);
+
     void TwistMessageCallback(const geometry_msgs::msg::Twist::SharedPtr twist_msg);
     void JoyMessageCallback(const sensor_msgs::msg::Joy::SharedPtr joy_msg);
-
-private :
+  private :
 
     void AccelerateTwist(geometry_msgs::msg::Twist);
     float AccelerateValue(float current, float desired, float rate, float dt);
@@ -45,6 +55,10 @@ private :
     // void Zed2OdomCallback(const nav_msgs::msg::Odometry::SharedPtr odom_msg);
 
     //rclcpp::callback_group::CallbackGroup::SharedPtr update_group;
+    rclcpp::TimerBase::SharedPtr timer_;
+		// rclcpp::Publisher::SharedPtr pub_;
+    std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>> pub_;
+    
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr twist_msg_callback;
     rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr twist_msg_publisher;
     
