@@ -60,9 +60,6 @@ callbackReturn WheelsControllerNode::on_configure(const rclcpp_lifecycle::State 
             }
     });
 
-    timer = this->create_wall_timer( 50ms, std::bind(&WheelsControllerNode::pollControllersCallback, this));
-
-
     RCLCPP_INFO(get_logger(), "on_configure() is called.");
     return callbackReturn::SUCCESS;
 }

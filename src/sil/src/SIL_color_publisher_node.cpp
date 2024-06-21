@@ -23,22 +23,6 @@ class Configuration : public rclcpp_lifecycle::LifecycleNode{
     : rclcpp_lifecycle::LifecycleNode(node_name, 
       rclcpp::NodeOptions().use_intra_process_comms(intra_process_comms)){}
 
-    void callback(){
-      static size_t count = 0;
-      auto msg = std::make_unique<std_msgs::msg::String>();
-      msg->data = "Lifecycle HelloWorld #" + std::to_string(++count);
-
-      // Print the current state for demo purposes
-      if (!pub_->is_activated()) {
-        RCLCPP_INFO(
-          get_logger(), "Lifecycle publisher is currently inactive. Messages are not published.");
-      } else {
-        RCLCPP_INFO(
-          get_logger(), "Lifecycle publisher is active. Publishing: [%s]", msg->data.c_str());
-      }
-      pub_->publish(std::move(msg));
-    }
-
     callbackReturn on_configure(const rclcpp_lifecycle::State &){
       this->declare_parameter("sil_path", "/dev/ttyUSB1");
 
@@ -61,10 +45,6 @@ class Configuration : public rclcpp_lifecycle::LifecycleNode{
       cfsetospeed(&options, B115200);
       tcsetattr(fd, TCSANOW, &options);
 
-      timer_ = this->create_wall_timer(
-        std::chrono::seconds(1), std::bind(&Configuration::callback, this)
-      );
-
       RCLCPP_INFO(get_logger(), "on_configure() is called.");
       return callbackReturn::SUCCESS;
     }
@@ -86,7 +66,6 @@ class Configuration : public rclcpp_lifecycle::LifecycleNode{
     }
 
     callbackReturn on_cleanup(const rclcpp_lifecycle::State &){
-      timer_.reset();
       pub_.reset();
 
       RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
@@ -94,7 +73,6 @@ class Configuration : public rclcpp_lifecycle::LifecycleNode{
     }
 
     callbackReturn on_shutdown(const rclcpp_lifecycle::State & state){
-      timer_.reset();
       pub_.reset();
 
       RCUTILS_LOG_INFO_NAMED(
@@ -110,7 +88,6 @@ class Configuration : public rclcpp_lifecycle::LifecycleNode{
     
   private:
     std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>> pub_;
-    std::shared_ptr<rclcpp::TimerBase> timer_;
 
     rclcpp::Subscription<std_msgs::msg::String>::SharedPtr subscription_;
     int fd;
