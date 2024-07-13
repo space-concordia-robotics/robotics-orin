@@ -73,7 +73,7 @@ private:
 
     int s_fd = -1;
 
-    rclcpp::TimerBase::SharedPtr timer_;
+    rclcpp::TimerBase::SharedPtr timer;
     rclcpp::Subscription<sensor_msgs::msg::JointState>::SharedPtr subscription;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_cad_mouse;
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr subscription_joy;

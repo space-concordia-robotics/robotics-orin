@@ -28,7 +28,11 @@
     return val;
   }
 
-  Absenc::Absenc() : LifecycleNode("absenc_node"){}
+  Absenc::Absenc() : LifecycleNode("absenc_node"){
+    this->declare_parameter("absenc_path", "/dev/ttyUSB0");
+    this->declare_parameter("local_mode", false);
+    this->declare_parameter("absenc_polling_rate", 100);
+  }
 
   callbackReturn Absenc::on_configure(const rclcpp_lifecycle::State &){
     RCLCPP_DEBUG_STREAM(get_logger(), "Starting absenc node\n");
@@ -40,17 +44,13 @@
     */
     // RCLCPP_DEBUG_STREAM(get_logger(), state.label());
 
-    this->declare_parameter("absenc_path", "/dev/ttyUSB0");
-    this->declare_parameter("local_mode", false);
-    this->declare_parameter("absenc_polling_rate", 100);
-
     bool local_mode = this->get_parameter("local_mode").as_bool();
 
     angles_publisher = this->create_publisher<absenc_interface::msg::EncoderValues>("absenc_values", 10);
 
     arm_publisher = this->create_publisher<std_msgs::msg::String>("arm_command", 10);
     
-    timer_ = this->create_wall_timer(
+    timer = this->create_wall_timer(
     std::chrono::milliseconds(this->get_parameter("absenc_polling_rate").as_int()), 
     std::bind(&Absenc::absEncPollingCallback, this));
     
@@ -107,7 +107,7 @@
   }
 
   callbackReturn Absenc::on_cleanup(const rclcpp_lifecycle::State &){
-    timer_.reset();
+    timer.reset();
     angles_publisher.reset();
     arm_publisher.reset();
 
@@ -116,7 +116,7 @@
   }
 
   callbackReturn Absenc::on_shutdown(const rclcpp_lifecycle::State & state){
-    timer_.reset();
+    timer.reset();
     angles_publisher.reset();
     arm_publisher.reset();
 

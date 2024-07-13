@@ -243,8 +243,6 @@ int main(int argc, char * argv[])
     std::shared_ptr<ArmControllerNode> arm_controller_node = std::make_shared<ArmControllerNode>();
     exe.add_node(arm_controller_node->get_node_base_interface());
 
-
-    // rclcpp::spin(std::make_shared<ArmControllerNode>());
     exe.spin();
     rclcpp::shutdown();
     return 0;

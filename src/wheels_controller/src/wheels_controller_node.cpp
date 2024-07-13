@@ -1,15 +1,16 @@
 #include "wheels_controller_node.h"
 
-WheelsControllerNode::WheelsControllerNode() : LifecycleNode("wheels_controller_node"){}
-
-callbackReturn WheelsControllerNode::on_configure(const rclcpp_lifecycle::State &){
+WheelsControllerNode::WheelsControllerNode() : LifecycleNode("wheels_controller_node"){
     this->declare_parameter("can_path", "can0");
     this->declare_parameter("multiplier", 500);
-    
     this->declare_parameter("linear_acceleration_rate", 0.25);
     this->declare_parameter("angular_acceleration_rate", 0.25);
     this->declare_parameter("initial_ramp_factor", 3);
     this->declare_parameter("local_mode", false);
+}
+
+callbackReturn WheelsControllerNode::on_configure(const rclcpp_lifecycle::State &){
+    
 
     // this->declare_parameter("turning_rate", 2000);
     // float linear_acceleration_rate = 0.5

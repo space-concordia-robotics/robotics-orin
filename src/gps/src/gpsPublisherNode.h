@@ -42,9 +42,6 @@ class gpsPublisherNode : public rclcpp_lifecycle::LifecycleNode {
 		gpsData extractGpsData();
 		const float MULTIPLYING_FACTOR = 1e-7;
 
-		// std::shared_ptr<rclcpp_lifecycle::LifecyclePublisher<std_msgs::msg::String>> pub_;
-		// std::shared_ptr<rclcpp::TimerBase> timer_;
-
 		rclcpp::TimerBase::SharedPtr timer_;
 		rclcpp::Publisher<NavSatFix>::SharedPtr publisher_;
 		SAM_M8Q_GPS gps_;
