@@ -15,79 +15,132 @@
 #include <std_msgs/msg/float32_multi_array.hpp>
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <sensor_msgs/msg/joy.hpp>
-    using namespace std::chrono_literals;
 
 #define GAIN 25.0
 
-float scaleClamp(float val, float scale, float min, float max) {
-  val *= scale;
-  val = val < min ? min : val;
-  val = val > max ? max : val;
-  return val;
-}
+  using namespace std::chrono_literals;
+  #define GAIN 20.0
 
-Absenc::Absenc() : Node("absenc_node")
-{
-  RCLCPP_DEBUG_STREAM(get_logger(), "Starting absenc node\n");
-      /*
-    Set default parameter for the filepath of the absenc. To set, use 
-    ros2 run absenc_interface absenc_node --ros-args -p absenc_polling_rate:=1000
-    or during runtime (when the node is already running) as 
-    ros2 param set /absenc_node absenc_polling_rate 1000 
-  */
-  this->declare_parameter("absenc_path", "/dev/ttyUSB0");
-  this->declare_parameter("absenc_polling_rate", 100);
+  float scaleClamp(float val, float scale, float min, float max) {
+    val *= scale;
+    val = val < min ? min : val;
+    val = val > max ? max : val;
+    return val;
+  }
 
-  angles_publisher = this->create_publisher<absenc_interface::msg::EncoderValues>("absenc_values", 10);
+  Absenc::Absenc() : LifecycleNode("absenc_node"){
+    this->declare_parameter("absenc_path", "/dev/ttyUSB0");
+    this->declare_parameter("local_mode", false);
+    this->declare_parameter("absenc_polling_rate", 100);
+  }
 
-  arm_publisher = this->create_publisher<std_msgs::msg::String>("arm_command", 10);
-  
-  timer = this->create_wall_timer(
-  std::chrono::milliseconds(this->get_parameter("absenc_polling_rate").as_int()), 
-  std::bind(&Absenc::absEncPollingCallback, this));
+  callbackReturn Absenc::on_configure(const rclcpp_lifecycle::State &){
+    RCLCPP_DEBUG_STREAM(get_logger(), "Starting absenc node\n");
+        /*
+      Set default parameter for the filepath of the absenc. To set, use 
+      ros2 run absenc_interface absenc_node --ros-args -p absenc_polling_rate:=1000
+      or during runtime (when the node is already running) as 
+      ros2 param set /absenc_node absenc_polling_rate 1000 
+    */
+    // RCLCPP_DEBUG_STREAM(get_logger(), state.label());
 
-  /*
-    Open serial to RS485 device
-  */
-  RCLCPP_DEBUG_STREAM(get_logger(), "About to open serial connection\n");
+    bool local_mode = this->get_parameter("local_mode").as_bool();
 
-  while (true) {
-    ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
-    if(err.error != 0){
-      RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
-      // Wait 5 seconds before attempting reconnection
-      rclcpp::sleep_for(std::chrono::seconds(5));
-    } else {
-      break;
+    angles_publisher = this->create_publisher<absenc_interface::msg::EncoderValues>("absenc_values", 10);
+
+    arm_publisher = this->create_publisher<std_msgs::msg::String>("arm_command", 10);
+    
+    timer = this->create_wall_timer(
+    std::chrono::milliseconds(this->get_parameter("absenc_polling_rate").as_int()), 
+    std::bind(&Absenc::absEncPollingCallback, this));
+    
+    /*
+      Open serial to RS485 device
+    */
+    RCLCPP_DEBUG_STREAM(get_logger(), "About to open serial connection\n");
+
+    while (!local_mode) {
+      ABSENC_Error_t err = AbsencDriver::OpenPort(this->get_parameter("absenc_path").as_string().c_str(),B57600, s_fd);
+      if(err.error != 0){
+        RCLCPP_ERROR(this->get_logger(),"Error opening file : %i. Message: %s\n", err.error, strerror(err.error));
+        // Wait 5 seconds before attempting reconnection
+        rclcpp::sleep_for(std::chrono::seconds(5));
+      } else {
+        break;
+      }
+
+      if (!rclcpp::ok()) {
+        return callbackReturn::FAILURE;
+      }
     }
 
-    if (!rclcpp::ok()) {
-      return;
+    subscription = this->create_subscription<sensor_msgs::msg::JointState>(
+      "joint_states", 10, std::bind(&Absenc::ikValuesCallback, this, std::placeholders::_1));
+
+    subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
+      "cad_mouse_joy", 10, std::bind(&Absenc::cadValuesCallback, this, std::placeholders::_1));
+
+    subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
+      "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
+    RCLCPP_ERROR(this->get_logger(), "Done, got joint_states");
+    
+
+    arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
+    
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_configure() is called.");
+    return callbackReturn::SUCCESS;
+  }
+
+  callbackReturn Absenc::on_activate(const rclcpp_lifecycle::State & state){
+    LifecycleNode::on_activate(state);
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_activate() is called.");
+
+    return callbackReturn::SUCCESS;
+  }
+
+  callbackReturn Absenc::on_deactivate(const rclcpp_lifecycle::State & state){
+    LifecycleNode::on_deactivate(state);
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on_deactivate() is called.");
+    return callbackReturn::SUCCESS;
+  }
+
+  callbackReturn Absenc::on_cleanup(const rclcpp_lifecycle::State &){
+    timer.reset();
+    angles_publisher.reset();
+    arm_publisher.reset();
+
+    RCUTILS_LOG_INFO_NAMED(get_name(), "on cleanup is called.");
+    return callbackReturn::SUCCESS;
+  }
+
+  callbackReturn Absenc::on_shutdown(const rclcpp_lifecycle::State & state){
+    timer.reset();
+    angles_publisher.reset();
+    arm_publisher.reset();
+
+    RCUTILS_LOG_INFO_NAMED(
+        get_name(),
+        "on shutdown is called from state %s.",
+        state.label().c_str()
+    );
+
+    rclcpp::shutdown();
+    return callbackReturn::SUCCESS;
+  }
+
+  Absenc::~Absenc() {
+    if (s_fd >= 0) {
+      AbsencDriver::ClosePort(s_fd);
     }
   }
 
-  subscription = this->create_subscription<sensor_msgs::msg::JointState>(
-  "joint_states", 10, std::bind(&Absenc::ikValuesCallback, this, std::placeholders::_1));
-
-  subscription_cad_mouse = this->create_subscription<sensor_msgs::msg::Joy>(
-  "cad_mouse_joy", 10, std::bind(&Absenc::cadValuesCallback, this, std::placeholders::_1));
-
-  subscription_joy = this->create_subscription<sensor_msgs::msg::Joy>(
-  "joy", 10, std::bind(&Absenc::joyValuesCallback, this, std::placeholders::_1));
-
-  
-  arm_controller_publisher = this->create_publisher<std_msgs::msg::Float32MultiArray>("arm_values",10);
-}
-
-Absenc::~Absenc() {
-  if (s_fd >= 0) {
-    AbsencDriver::ClosePort(s_fd);
+void Absenc::absEncPollingCallback(){
+  if (this->get_parameter("local_mode").as_bool()){
+    return;
   }
-}
 
-  
-void Absenc::absEncPollingCallback()
-{
   auto message = absenc_interface::msg::EncoderValues();     
 
   ABSENC_Meas_t absenc_meas_1,absenc_meas_2,absenc_meas_3;
@@ -187,10 +240,12 @@ void Absenc::ikValuesCallback(const sensor_msgs::msg::JointState::SharedPtr msg)
     ik_angles[i] = msg->position[i] * 180.0 / M_PI;
   }
   if (inhibitArmMovement) {
+        // RCLCPP_ERROR(this->get_logger(), "arm movement inhibited");
     // Then should be controlling the end effector directly; abort here
     return;
   }
   if (std::isnan(abs_angles[0])) {
+        RCLCPP_ERROR(this->get_logger(), "abs angle are nan");
     // Don't have latest values, return
     return;
   }
@@ -288,7 +343,13 @@ int main(int argc, char * argv[])
 {
   std::cout << "Starting absenc node\n";
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<Absenc>());
+  rclcpp::executors::SingleThreadedExecutor exe;
+
+  std::shared_ptr<Absenc> abs_node = std::make_shared<Absenc>();
+
+  exe.add_node(abs_node->get_node_base_interface());
+  exe.spin();
+
   rclcpp::shutdown();
   return 0;
 }
